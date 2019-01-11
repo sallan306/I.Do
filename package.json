@@ -6,12 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sallan306/I.Do.git"
-  },
+  "repository": "git+https://github.com/sallan306/I.Do.git",
   "keywords": [],
-  "author": "",
+  "author": "<Cody.1337@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sallan306/I.Do/issues"
