@@ -1,0 +1,20 @@
+{
+  "name": "ido",
+  "version": "1.0.0",
+  "description": "this is a readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sallan306/I.Do.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sallan306/I.Do/issues"
+  },
+  "homepage": "https://github.com/sallan306/I.Do#readme"
+}
