@@ -1,24 +1,24 @@
-const express = require("express");
-
-const mongoose = require("mongoose");
-const routes = require("./routes");
-const app = express();
+const express = require('express');
+var app  = express();
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-// Add routes, both API and view
-app.use(routes);
+//MIDDLE WARE - require initMiddleWare
+require('./server/middleware').initMiddleWare(app);
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+//routing - require initRouting
+require('./api/v1').initRouting(app)
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+//Services - require initServices
+require('./api/v1/services').initServices(app)
+
+//Index
+app.get('/', function (req, res, next) {
+    res.sendFile('./client/public/index.html')
+})
+
+//Error Handling - require initErrorHandling
+
+//Listening
+app.listen(PORT, () => {
+    console.log('listening port 3001')
 });
