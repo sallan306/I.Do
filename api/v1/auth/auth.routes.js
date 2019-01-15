@@ -1,9 +1,9 @@
+const passport = require('../services/passport');
+module.exports.initRoutes = (app)=>{
+    app.get('/login', /*MIDDLE WARE,*/(req, res, next)=>{
+        console.log(req.body);
 
-module.exports.initRoutes = (app) => {
-    
-    app.get('/login', (req, res, next)=> {
-        console.log("log in attempt");
-    })
+        res.json({"msg": req.body});
+
+    });
 }
-
-//passport.authenticate('local')
