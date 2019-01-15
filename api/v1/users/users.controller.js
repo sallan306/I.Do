@@ -1,10 +1,30 @@
 const controller = {}
 const db = require('./users.model')
 
+//BCRYPT
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 //add a new user to the db
-controller.create = (data) =>{
-    
-    console.log(data);
+controller.addUser = (req, res, next) =>{
+    const data = req.body;
+    //hashing incoming user password for storage in DB
+    bcrypt.hash(data.password, saltRounds).then(function(hash) {
+        // Store hash in your password DB.
+        //packaging data for newUser to be sent to db.
+        const newUser = {
+            password: hash,
+            email: data.email
+        }
+
+        //creating new user in the DB, 
+        db.create(newUser, function(err, result) {
+            if (err) return handleError(err);
+            res.status(200).json({data: "User Created"})
+        });
+
+        
+    }); 
 }
 
 //TODO
@@ -23,3 +43,5 @@ controller.find = (args) => {
 controller.update = () => {
     console.log("update");
 }
+
+module.exports = controller;
