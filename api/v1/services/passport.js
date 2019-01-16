@@ -8,14 +8,23 @@ passport.use(new LocalStrategy(
     usernameField: "email"
   },
   function(email, password, done){
-    db.User.findOne({ where: {email: email}})
-        .then(function(dbUser){
+      console.log("Inside passport: ", email, password)
+      db.find().then(result => {
+          console.log(result);
+      })
+      db.findOne({ 
+          where: {
+            email: "Cody.1@gmail.com"
+            }
+        })
+        .then((dbUser) => {
+            console.log (dbUser);/*
             if(!dbUser){
                 return done(null, false, { message: "Incorrect Email"});
             } else if(!dbUser.validPassword(password)){
                 return done(null, false, { message: "Incorrect password"});
             }
-            return done(null, dbUser);
+            return done(null, dbUser);*/
         });
   }
 ));
