@@ -6,9 +6,9 @@ const mongoose = require('mongoose')
 const Contact = mongoose.model('Contact', { 
     firstName: String,
     lastName: String,
-    address: Array,
-    phone: Array,
-    email: Array,
+    address: String,
+    phone: String,
+    email: String,
     birthDay: String,
     relation: String,
     note: String

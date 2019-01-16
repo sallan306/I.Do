@@ -2,7 +2,9 @@
 const mongoose = require('mongoose')
 const bcrypt = require ('bcrypt');
 
-const User = mongoose.model('User', { 
+const User = mongoose.model('User', {
+    firstName: String,
+    lastName: String,
     email: String,
     password: String
 });
