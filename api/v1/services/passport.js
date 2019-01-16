@@ -8,27 +8,26 @@ passport.use(new LocalStrategy(
     usernameField: "email"
   },
   function(email, password, done){
-      console.log("Inside passport: ", email, password)
-      db.find().then(result => {
-          console.log(result);
-      })
-      db.findOne({ 
-          where: {
-            email: "Cody.1@gmail.com"
-            }
-        })
-        .then((dbUser) => {
-            console.log (dbUser);/*
-            if(!dbUser){
+
+      db.findOne({email: email}
+        )
+        .then(response => {
+
+            if(!response){
+                console.log("bad email");
                 return done(null, false, { message: "Incorrect Email"});
-            } else if(!dbUser.validPassword(password)){
+            } else if(!response.validPassword(password)){
+                console.log("bad password");
                 return done(null, false, { message: "Incorrect password"});
             }
-            return done(null, dbUser);*/
+            console.log("info looked good");
+            return done(null, response);
+            
         });
   }
 ));
 
+passport.initialize();
 passport.serializeUser(function(user, cb){
   cb(null, user);
 });

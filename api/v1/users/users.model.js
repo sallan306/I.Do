@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose')
+const bcrypt = require ('bcrypt');
 
 const User = mongoose.model('User', { 
     email: String,
