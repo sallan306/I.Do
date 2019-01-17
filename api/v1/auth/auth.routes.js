@@ -1,9 +1,9 @@
+const passport = require('../services/passport');
+module.exports.initRoutes = (app)=>{
+    app.get('/login', passport.authenticate('local'),(req, res, next)=>{
+        console.log(req.user);
 
-module.exports.initRoutes = (app) => {
-    
-    app.get('/login', (req, res, next)=> {
-        console.log("log in attempt");
-    })
+        res.json({"msg": req.body});
+        //TODO AUTHORIZATION SEEMS TO BE WORKING. REDIRECTS NEXT
+    });
 }
-
-//passport.authenticate('local')
