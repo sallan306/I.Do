@@ -17,8 +17,10 @@ export default {
   deleteUser: () => {},
 
   //sms
+
+  //sentTO must be "+16032755557" to use twilio.
+    //any other number isnt supported due to twilio free account.
   sendText: (sendTo, message) => {
-    axios.post('/api/v1/sms', 
-    {sendTo: sendTo, txtBody: message });
+    axios.post('/api/v1/sms', {sendTo: sendTo, txtBody: message });
   }
 };
