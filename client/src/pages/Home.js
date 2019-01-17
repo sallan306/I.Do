@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import API from "../utils/API";
 import { Input } from "../components/Input";
+import { Button } from "../components/Button";
+
 
 class Users extends Component {
     state = {
@@ -93,12 +95,12 @@ class Users extends Component {
                         name="password2"
                         placeholder="Re-enter Password"
                     />
-                    <button
+                    <Button
                         disabled={!(this.state.firstName && this.state.email)}
                         onClick={this.handleFormSubmit}
                     >
                         Submit
-              </button>
+              </Button>
                 </form>
 
             </div>
