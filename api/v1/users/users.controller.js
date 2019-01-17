@@ -2,7 +2,7 @@ const controller = {}
 const db = require('./users.model')
 
 //BCRYPT
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 
 //add a new user to the db
