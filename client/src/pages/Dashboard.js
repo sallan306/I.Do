@@ -1,5 +1,6 @@
 import React from "react";
 import { Panel, PanelGroup } from 'react-bootstrap';
+// import { PrintText}  from "../components/PrintText"
 
 
 function Dashboard (props) {
@@ -12,7 +13,12 @@ function Dashboard (props) {
             <Panel eventKey="1">
                 <Panel.Heading>
 
-                    <Panel.Title toggle>PrintText</Panel.Title>
+                    <Panel.Title toggle>
+                    {/* <PrintText
+                    
+                    /> */}
+                    
+                    </Panel.Title>
 
                 </Panel.Heading>
 

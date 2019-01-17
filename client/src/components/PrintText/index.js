@@ -1,9 +1,9 @@
 import React from "react";
 
-export function PrintText(props) {
+export function PrintText() {
     return (
         <div>
-            {...props}
+            <p>Hey Annie</p>
         </div>
     )
 }
