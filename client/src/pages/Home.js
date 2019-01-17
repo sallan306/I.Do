@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import API from "../utils/API";
 import {Button} from "../components/Button";
-import { Input } from "../components/Input";
+import {Input} from "../components/Input";
 
 class Users extends Component {
     state = {
@@ -9,7 +9,7 @@ class Users extends Component {
         lastName: "",
         email: "",
         password: "",
-        password2: "",
+        password2: ""
     };
 
     // componentDidMount() {
@@ -44,6 +44,11 @@ class Users extends Component {
         }
     }
 
+    handleFormLogin = event => {
+        event.preventDefault();
+            alert("Congratualations! You're the one!");
+    }
+
     // handleFormSubmit = event => {
     //   event.preventDefault();
     //   if (this.state.title && this.state.author) {
@@ -56,7 +61,6 @@ class Users extends Component {
     //       .catch(err => console.log(err));
     //   }
     // };
-
     render() {
         return (
             <div>
@@ -100,6 +104,29 @@ class Users extends Component {
                     >
                         Submit
               </Button>
+                </form>
+{/* Login */}
+                <form>
+                   
+                    <Input
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                        name="email"
+                        placeholder="Email (required)"
+                    />
+                    <Input
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        name="password"
+                        placeholder="Password (required)"
+                    />
+                
+                    <Button
+                        disabled={!(this.state.email && this.state.password)}
+                        onClick={this.handleFormLogin}
+                    >
+                        Login
+                    </Button>
                 </form>
 
             
