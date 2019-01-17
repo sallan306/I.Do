@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getContact: () => {},
+  getContact: () => {
+  },
   // Gets the book with the given id
   getContacts: (id) => {},
   // Deletes the book with the given id
@@ -13,6 +14,10 @@ export default {
   getUser: function() {},
   createUser: ()=>{},
   updateUser: ()=>{},
-  deleteUser: () => {}
+  deleteUser: () => {},
 
+  //sms
+  sendText: () => {
+    axios.post({});
+  }
 };
