@@ -17,7 +17,8 @@ export default {
   deleteUser: () => {},
 
   //sms
-  sendText: () => {
-    axios.post({});
+  sendText: (sendTo, message) => {
+    axios.post('/api/v1/sms', 
+    {sendTo: sendTo, txtBody: message });
   }
 };
