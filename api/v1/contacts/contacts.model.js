@@ -6,12 +6,12 @@ const mongoose = require('mongoose')
 const Contact = mongoose.model('Contact', { 
     firstName: String,
     lastName: String,
-    address: String,
+    street: String,
+    city: String,
+    state: String,
+    zipcode: String,
     phone: String,
     email: String,
-    birthDay: String,
-    relation: String,
-    note: String
 });
 
 module.exports = Contact;

@@ -12,10 +12,15 @@ export default {
   createContact: (bookData) => {},
   editContact: () => {},
   getUser: function() {},
-  createUser: ()=>{},
-  updateUser: ()=>{},
-  deleteUser: () => {},
-
+  createUser: (user)=>{
+    axios.post('', {})
+  },
+  updateUser: (id, contact)=>{
+    axios.put(`/api/v1/${id}`, {contact})
+  },
+  deleteUser: (id) => {
+    axios.post(`/api/v1/${id}`);
+  },
   //sms
 
   //sentTO must be "+16032755557" to use twilio.

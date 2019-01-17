@@ -6,7 +6,8 @@ const User = mongoose.model('User', {
     firstName: String,
     lastName: String,
     email: String,
-    password: String
+    password: String,
+    contacts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contact'}]
 });
 
 User.prototype.validPassword = function(password){

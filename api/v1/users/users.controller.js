@@ -1,5 +1,5 @@
 const controller = {}
-const db = require('./users.model')
+const db = require('./users.model');
 
 //BCRYPT
 const bcrypt = require('bcrypt-nodejs');
@@ -43,7 +43,7 @@ controller.findAll = (req, res, next) => {
     db.find({}, (err, results) => {
         console.log(results);
         res.status(200).json({success:true, msg: results});
-    })
+    }).then( (results) => console.log("Rogue One", results))
 }//end findAll
 
 controller.findSpecificUser = (req, res, next) => {
