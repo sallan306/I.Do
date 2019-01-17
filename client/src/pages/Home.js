@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 // import API from "../utils/API";
-import {Button} from "../components/Button";
-import {Input} from "../components/Input";
+import { Input } from "../components/Input";
+import { Button } from "../components/Button";
+
 
 class Users extends Component {
     state = {
