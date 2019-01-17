@@ -10,7 +10,10 @@ class Users extends Component {
         lastName: "",
         email: "",
         password: "",
-        password2: ""
+        password2: "",
+        isUserSignUp: false,
+        loginemail: "",
+        loginpassword: ""
     };
 
     // componentDidMount() {
@@ -38,6 +41,11 @@ class Users extends Component {
         });
     };
 
+    handleSignUpForm = event => {
+        this.setState({ isUserSignUp: !this.state.isUserSignUp });
+    }
+
+
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.password === this.state.password2) {
@@ -62,77 +70,82 @@ class Users extends Component {
     //       .catch(err => console.log(err));
     //   }
     // };
+
     render() {
         return (
             <div>
                 <div>
                     <h1>Sign up with I.Do!</h1>
                 </div>
-                <form>
-                    <Input
-                        value={this.state.firstName}
-                        onChange={this.handleInputChange}
-                        name="firstName"
-                        placeholder="First Name (required)"
-                    />
-                    <Input
-                        value={this.state.lastName}
-                        onChange={this.handleInputChange}
-                        name="lastName"
-                        placeholder="Last Name (required)"
-                    />
-                    <Input
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                        name="email"
-                        placeholder="Email (required)"
-                    />
-                    <Input
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                        name="password"
-                        placeholder="Password (required)"
-                    />
-                    <Input
-                        value={this.state.password2}
-                        onChange={this.handleInputChange}
-                        name="password2"
-                        placeholder="Re-enter Password"
-                    />
-                    <Button
-                        disabled={!(this.state.firstName && this.state.email)}
-                        onClick={this.handleFormSubmit}
-                    >
-                        Submit
-              </Button>
-                </form>
-{/* Login */}
-                <form>
-                   
-                    <Input
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                        name="email"
-                        placeholder="Email (required)"
-                    />
-                    <Input
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                        name="password"
-                        placeholder="Password (required)"
-                    />
-                
-                    <Button
-                        disabled={!(this.state.email && this.state.password)}
-                        onClick={this.handleFormLogin}
-                    >
-                        Login
-                    </Button>
-                </form>
+                <Button
+                    onClick={this.handleSignUpForm}
+                >
+                {this.state.isUserSignUp ? "Login" : "Sign Up"}
+                </Button>   
 
-            
+  {this.state.isUserSignUp ?
+    <form>
+        <Input
+            value={this.state.firstName}
+            onChange={this.handleInputChange}
+            name="firstName"
+            placeholder="First Name (required)"
+        />
+        <Input
+            value={this.state.lastName}
+            onChange={this.handleInputChange}
+            name="lastName"
+            placeholder="Last Name (required)"
+        />
+        <Input
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            name="email"
+            placeholder="Email (required)"
+        />
+        <Input
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            name="password"
+            placeholder="Password (required)"
+        />
+        <Input
+            value={this.state.password2}
+            onChange={this.handleInputChange}
+            name="password2"
+            placeholder="Re-enter Password"
+        />
+        <Button
+            disabled={!(this.state.firstName && this.state.email)}
+            onClick={this.handleFormSubmit}
+        >
+            Submit
+        </Button>
+    </form>
+    :  
+    <form>
+        {/* Login */}
+        <Input
+            value={this.state.loginemail}
+            onChange={this.handleInputChange}
+            name="loginemail"
+            placeholder="Email (required)"
+        />
+        <Input
+            value={this.state.loginpassword}
+            onChange={this.handleInputChange}
+            name="loginpassword"
+            placeholder="Password (required)"
+        />
+        <Button
+            disabled={!(this.state.loginemail && this.state.loginpassword)}
+            onClick={this.handleFormLogin}
+        >
+            Login
+        </Button>
+    </form>
+  }
             </div>
-
         )
     }
 };
