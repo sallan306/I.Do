@@ -21,3 +21,5 @@ venv
 node_modules
 .sass-cache
 npm-debug.log
+package-lock.json
+client/package-lock.json
