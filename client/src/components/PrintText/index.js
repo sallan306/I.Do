@@ -9,7 +9,7 @@ export var Test = {firstName: "Lola", lastName:"Starfinder", email: "ScienceOffi
 export function PrintText(props) {
     return (
         <div>
-            {props.children};
+            {props.children}
         </div>
     )
 }
