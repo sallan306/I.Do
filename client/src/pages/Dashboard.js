@@ -11,7 +11,7 @@ function Dashboard () {
     <div>
        <Container>
        
-        <h1 style={{textAlign:"center"}}>i.Do Dashboard</h1>
+        <h1 id="dashboard-title">Dashboard</h1>
         <PanelGroup accordion id="accordion-example">
             <Panel eventKey="1">
                 <Panel.Heading>
