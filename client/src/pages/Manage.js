@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Panel, PanelGroup } from 'react-bootstrap';
 import {Input} from '../components/Input';
 import {Button} from '../components/Button';
-import { PrintText, Test}  from "../components/PrintText";
+import {PrintText, Test}  from "../components/PrintText";
 
 
 
