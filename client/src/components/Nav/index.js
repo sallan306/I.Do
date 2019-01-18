@@ -1,12 +1,20 @@
 import React from "react";
 
+
+
+
 function Nav() {
   return (
     <div>
-      <div>
-        <h1>i.Do</h1>
-        <h2>the ultimate event planning app</h2>
-      </div>
+     
+        
+          <div>
+            
+            <h1>i.Do</h1>
+            <h2>the ultimate event planning app</h2>
+            
+          </div>
+       
       <nav>
         <a href="/">
           i.Do  |
@@ -18,7 +26,9 @@ function Nav() {
           |  Edit/Add Guests 
         </a>
       </nav>
+      
     </div>
+    
   );
 }
 
