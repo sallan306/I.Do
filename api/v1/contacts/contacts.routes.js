@@ -11,25 +11,25 @@ module.exports.initRoutes = (app) => {
 
     //read ALL contacts
         //inorder to see contacts belonging to user, checking auth.
-    app.get('/api/v1/contacts/:userID', isAuth, (req,res,next) => {
-        res.status(200).json({data: `get contacts belonging to.... ${req.params.userID}`});
+    app.get('/api/v1/contacts/', isAuth, (req,res,next) => {
+        res.status(200).json({data: `get contacts belonging to.... ${req.user._id}`});
     });
 
     //read ONE contact
         //inorder to see contact belonging to user, checking auth.
-    app.get('/api/v1/contacts/:userID/:contactID' , isAuth, (req, res, next) => {
-        res.status(200).json({data: `get specific contact. user it belonds to ${req.params.userID}, looking for ${req.params.contactID}`});
+    app.get('/api/v1/contacts/:contactID' , isAuth, (req, res, next) => {
+        res.status(200).json({data: `get specific contact. user it belonds to ${req.user._id}, looking for ${req.params.contactID}`});
     });
 
     //update contact
         //to update a contact belonging to a user, checking auth
-    app.put('/api/v1/contacts/:userID/:contactID', isAuth, (req,res,next) =>{
-        res.status(200).json({data: `i want to update a contact for user: ${req.params.userID} with id ${req.params.contactID}`})
+    app.put('/api/v1/contacts/:contactID', isAuth, (req,res,next) =>{
+        res.status(200).json({data: `i want to update a contact for user: ${req.user._id} with id ${req.params.contactID}`})
     });
 
     //delete contact
         //to delete a contact belonging to a user, checking auth
-    app.delete('/api/v1/contacts/:userID/:contactID', isAuth, (req, res , next) => {
+    app.delete('/api/v1/contacts/:contactID', isAuth, (req, res , next) => {
         res.status(200).json({data: `I want to delete contact with the id: ${req.params.contactID}`});
     });
 }

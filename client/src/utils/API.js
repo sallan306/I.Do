@@ -6,28 +6,29 @@ export default {
   //CONTACTS CRUD
   //==========================================================
 
-  // Gets all contacts associated with user
-  getContact: (userID, contactID) => {
-    axios.get(`/api/v1/contacts/${userID}/${contactID}`, {});
-  },
-
-  // Gets the contact with the given id
-  getContacts: (userID) => {
-    axios.get(`/api/v1/contacts/${userID}`, {});
-  },
-
-  // Deletes the contact with the given id
-  deleteContacts: (userID, contactID) => {
-    axios.delete(`/api/v1/contacts/${userID}/${contactID}`, {});
-  },
-
   // Saves a Contact to the database
+    //requires userID passed. req.user.id cant be assumed to be present.
   createContact: (userID, userData) => {
     axios.post(`/api/v1/contacts/${userID}`, {userData})
   },
 
-  editContact: (userID, contactID, userData) => {
-    axios.put(`/api/v1/contacts/${userID}/${contactID}`, {userData});
+  // Gets all contacts associated with user
+  getContacts: () => {
+    axios.get(`/api/v1/contacts/`, {});
+  },
+
+  // Gets the contact with the given id
+  getContact: (contactID) => {
+    axios.get(`/api/v1/contacts/${contactID}`, {});
+  },
+
+  editContact: (contactID, userData) => {
+    axios.put(`/api/v1/contacts/${contactID}`, {userData});
+  },
+
+   // Deletes the contact with the given id
+   deleteContacts: (contactID) => {
+    axios.delete(`/api/v1/contacts/${contactID}`, {});
   },
 
   //==========================================================
