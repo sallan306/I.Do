@@ -1,0 +1,41 @@
+#title {
+    text-align: center;
+    background-color: rgba(247, 238, 228, .8);
+    width: 79%;
+    margin-top: 3%;
+    margin-left: 10.2%;
+    padding: 10px 0 30px 0;
+}
+
+#nav-title {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 70px;
+    letter-spacing: 2px;
+}
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+nav {
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+#dashboard-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+#manage-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
