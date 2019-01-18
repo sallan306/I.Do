@@ -74,9 +74,7 @@ class Users extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <h1>Sign up with I.Do!</h1>
-                </div>
+                <h2>{this.state.isUserSignUp ? "sign up with i.Do to get started!" : "login to your account"}</h2>
                 <Button
                     onClick={this.handleSignUpForm}
                 >
@@ -84,7 +82,7 @@ class Users extends Component {
                 </Button>   
 
   {this.state.isUserSignUp ?
-    <form>
+    <form className="formClass" id="createAccountForm">
         <Input
             value={this.state.firstName}
             onChange={this.handleInputChange}
@@ -115,7 +113,7 @@ class Users extends Component {
             name="password2"
             placeholder="Re-enter Password"
         />
-        <Button
+        <Button id="createAccountButton"
             disabled={!(this.state.firstName && this.state.email)}
             onClick={this.handleFormSubmit}
         >
@@ -123,7 +121,7 @@ class Users extends Component {
         </Button>
     </form>
     :  
-    <form>
+    <form className="formClass" id="loginForm">
         {/* Login */}
         <Input
             value={this.state.loginemail}
@@ -137,7 +135,7 @@ class Users extends Component {
             name="loginpassword"
             placeholder="Password (required)"
         />
-        <Button
+        <Button id="loginButton"
             disabled={!(this.state.loginemail && this.state.loginpassword)}
             onClick={this.handleFormLogin}
         >
