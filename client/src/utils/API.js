@@ -1,20 +1,56 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
+
+  //==========================================================
+  //CONTACTS CRUD
+  //==========================================================
+
+  // Gets all contacts associated with user
+  getContact: (userID, contactID) => {
+    axios.get(`/api/v1/contacts/${userID}/${contactID}`, {});
   },
-  // Gets the book with the given id
-  getBook: function(id) {
-    return axios.get("/api/books/" + id);
+  // Gets the contact with the given id
+  getContacts: (userID) => {
+    axios.get(`/api/v1/contacts/${userID}`, {});
   },
-  // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
+  // Deletes the contact with the given id
+  deleteContacts: (userID, contactID) => {
+    axios.delete(`/api/v1/contacts/${userID}/${contactID}`, {});
   },
-  // Saves a book to the database
-  saveBook: function(bookData) {
-    return axios.post("/api/books", bookData);
+  // Saves a Contact to the database
+  createContact: (userID, userData) => {
+    axios.post(`/api/v1/contacts/${userID}`, {userData})
+  },
+  editContact: (userID, contactID, userData) => {
+    axios.put(`/api/v1/contacts/${userID}/${contactID}`, {userData});
+  },
+
+  //==========================================================
+  //USER CRUD
+  //==========================================================
+
+  createUser: (user)=>{
+    axios.post(`/api/v1/users`, {user})
+  },
+  getUser: (userID) => {
+    axios.get(`/api/v1/users/${userID}`, {});
+  },
+  //DEV PATH ONLY
+  getUsers: () => {
+    axios.get(`/dev/users`, {})
+  },
+  updateUser: (userID, contact)=>{
+    axios.put(`/api/v1/users/${userID}`, {contact})
+  },
+  deleteUser: (userID) => {
+    axios.post(`/api/v1/users/${userID}`, {});
+  },
+  //sms
+
+  //sentTO must be "+16032755557" to use twilio.
+    //any other number isnt supported due to twilio free account.
+  sendText: (sendTo, message) => {
+    axios.post('/api/v1/sms', {sendTo: "+16032755557", txtBody: message });
   }
 };
