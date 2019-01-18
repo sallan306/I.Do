@@ -37,7 +37,7 @@ class Guests extends Component {
         return (
             <div>
                 <div>
-                    <h1>Let's Get Started</h1>
+                    <h3>Please Enter Your Contact Info Below</h3>
                 </div>
                 <form className="formClass" id="guestInfoForm">
                     <Input

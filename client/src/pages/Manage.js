@@ -39,7 +39,7 @@ class CRUD extends Component {
         return (
             <div>
         
-            <h1 style={{textAlign:"center"}}>I.Do | Manage Guests</h1>
+            <h1 style={{textAlign:"center"}}>i.Do | Manage Guests</h1>
             <PanelGroup className="guestInfoCard" accordion id="accordion-example">
                 <Panel eventKey="1">
                     <Panel.Heading>

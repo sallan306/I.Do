@@ -74,9 +74,7 @@ class Users extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <h1>Sign up with I.Do!</h1>
-                </div>
+                <h2>{this.state.isUserSignUp ? "sign up with i.Do to get started!" : "login to your account"}</h2>
                 <Button
                     onClick={this.handleSignUpForm}
                 >

@@ -8,7 +8,7 @@ function Dashboard (props) {
       
     <div>
        
-        <h1 style={{textAlign:"center"}}>I.Do Dashboard</h1>
+        <h1 style={{textAlign:"center"}}>i.Do Dashboard</h1>
         <PanelGroup accordion id="accordion-example">
             <Panel eventKey="1">
                 <Panel.Heading>
