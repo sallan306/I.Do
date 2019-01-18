@@ -6,10 +6,10 @@ export var Test = {firstName: "Lola", lastName:"Starfinder", email: "ScienceOffi
 
 
 
-export function PrintText() {
+export function PrintText(props) {
     return (
         <div>
-            {Test.firstName}
+            {props.children};
         </div>
     )
 }

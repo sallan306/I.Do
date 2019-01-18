@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Panel, PanelGroup } from 'react-bootstrap';
 import {Input} from '../components/Input';
 import {Button} from '../components/Button';
-import { PrintText}  from "../components/PrintText";
+import { PrintText, Test}  from "../components/PrintText";
 
 
 
@@ -47,7 +47,7 @@ class CRUD extends Component {
                         <Panel.Title toggle>
                             Test Tester
                             <PrintText>
-                                
+                                {Test.firstName}
                             </PrintText>
                             {/* TODO: NEED TO USE PRINTTEXT COMPONENT HERE! */}
                         
@@ -58,6 +58,9 @@ class CRUD extends Component {
                     <Panel.Body collapsible>
                         (123) 234-5678   |   test@email.com
                         123 Main Street, Disney World, FL, 11111
+                        <PrintText>
+                            {Test.email}
+                        </PrintText>
                         {/* TODO: NEED TO USE PRINTTEXT COMPONENT HERE! */}
                         <Button id="guestCrudButton"
                             onClick={this.handleGuestEdit}
