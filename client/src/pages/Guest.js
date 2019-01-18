@@ -37,9 +37,9 @@ class Guests extends Component {
         return (
             <div>
                 <div>
-                    <h1>Let's Get Started</h1>
+                    <h3>Please Enter Your Contact Info Below</h3>
                 </div>
-                <form>
+                <form className="formClass" id="guestInfoForm">
                     <Input
                         value={this.state.firstName}
                         onChange={this.handleInputChange}
@@ -88,7 +88,7 @@ class Guests extends Component {
                         name="zipcode"
                         placeholder="Zipcode(required)"
                     />
-                    <Button
+                    <Button id="guestInfoFormButton"
                         disabled={!(this.state.firstName && this.state.email)}
                         onClick={this.handleFormSubmit}
                     >
