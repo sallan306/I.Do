@@ -14,10 +14,10 @@ passport.use(new LocalStrategy(
         .then(response => {
 
             if(!response){
-                console.log("bad email");
+                console.log("Email does not exist");
                 return done(null, false, { message: "Incorrect Email"});
             } else if(!response.validPassword(password)){
-                console.log("bad password");
+                console.log("Password is incorrect");
                 return done(null, false, { message: "Incorrect password"});
             }
             console.log("info looked good");
