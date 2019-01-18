@@ -4,7 +4,13 @@ function Nav() {
   return (
     <nav>
       <a href="/">
-        i.Do
+        i.Do  |
+      </a>
+      <a href="/Dashboard">
+        |  View Guest List |
+      </a>
+      <a href="/Manage">
+        |  Edit/Add Guests 
       </a>
     </nav>
   );

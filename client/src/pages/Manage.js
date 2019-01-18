@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Panel, PanelGroup } from 'react-bootstrap';
 import {Input} from '../components/Input';
 import {Button} from '../components/Button';
-// import { PrintText}  from "../components/PrintText"
+import { PrintText}  from "../components/PrintText";
+
 
 
 class CRUD extends Component {
@@ -45,6 +46,9 @@ class CRUD extends Component {
 
                         <Panel.Title toggle>
                             Test Tester
+                            <PrintText>
+                                
+                            </PrintText>
                             {/* TODO: NEED TO USE PRINTTEXT COMPONENT HERE! */}
                         
                         </Panel.Title>
