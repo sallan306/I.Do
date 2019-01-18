@@ -40,7 +40,7 @@ export default {
   },
 
   getUser: (userID) => {
-    axios.get(`/api/v1/users/${userID}`, {});
+    axios.get(`/api/v1/users`, {});
   },
 
   //DEV PATH ONLY
@@ -49,11 +49,11 @@ export default {
   },
 
   updateUser: (userID, contact)=>{
-    axios.put(`/api/v1/users/${userID}`, {contact})
+    axios.put(`/api/v1/users`, {contact})
   },
 
   deleteUser: (userID) => {
-    axios.post(`/api/v1/users/${userID}`, {});
+    axios.post(`/api/v1/users/`, {});
   },
 
   //==========================================================
