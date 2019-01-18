@@ -45,22 +45,24 @@ class CRUD extends Component {
                     <Panel.Heading>
 
                         <Panel.Title toggle>
-                            Test Tester
                             <PrintText>
-                                {Test.firstName}
+                                {Test.firstName} {Test.lastName}
                             </PrintText>
-                            {/* TODO: NEED TO USE PRINTTEXT COMPONENT HERE! */}
+                            
                         
                         </Panel.Title>
 
                     </Panel.Heading>
 
                     <Panel.Body collapsible>
-                        (123) 234-5678   |   test@email.com
-                        123 Main Street, Disney World, FL, 11111
                         <PrintText>
-                            {Test.email}
+                            Phone: {Test.phone}   |   Email: {Test.email}
                         </PrintText>
+                        <PrintText>
+                            Address: {Test.address}
+                        </PrintText>
+                        
+                        
                         {/* TODO: NEED TO USE PRINTTEXT COMPONENT HERE! */}
                         <Button id="guestCrudButton"
                             onClick={this.handleGuestEdit}
