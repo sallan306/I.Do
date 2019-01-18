@@ -8,34 +8,45 @@ const saltRounds = 10;
 //add a new user to the db
 controller.addUser = (req, res, next) =>{
     const data = req.body;
-    db.findOne({email: req.body.email}, (err, response) => {
-        if (err) throw err;
-        if (response){
-            console.log("bro, this email already exists.");
-            res.status('400').json({success: false, msg:"This email is already in use."});
-        } 
-        else {
-            bcrypt.hash(data.password, saltRounds).then(function(hash) {
-                // Store hash in your password DB.
-                //packaging data for newUser to be sent to db.
-                const newUser = {
-                    password: hash,
-                    email: data.email
-                }
-        
-                //creating new user in the DB, 
-                db.create(newUser, function(err, result) {
-                    if (err) return handleError(err);
+    //console.log(data);
+    db.findOne({email:data.email})
+        .then( (result) => {
 
-                    if (result){ res.status(200).json({ success: true, msg: "User Created"}) }
-                    else ( res.status(500).json({ success: false, msg: "Something strange is going on brah...."}))
+            //console.log ("FindOne Result" ,result);
+
+            if (result){ 
+                res.status(400).json({success: false, msg:"Email already in use"})
+            }
+            else{
+                //console.log(data.password);
+                bcrypt.hash(data.password, bcrypt.genSaltSync(saltRounds), null, (err, hash) => { 
+                    //console.log(hash);
+                    const newUser = {
+                        password: hash,
+                        email: data.email,
+                        firstName: data.firstName,
+                        lastName: data.lastName
+                    }
+            
+                    //creating new user in the DB, 
+                    db.create(newUser)
+                        .then( (result) => {
+                            //console.log(`result: ${result}`);
+                            if (result){
+                                res.status(200).json({success: true, msg: `account ${result.email} was created`});
+                            }
+                            else {
+                                res.status(400).json({success: false, msg: `account not created`});
+                            }
+                            
+                        })
+                        .catch( (err) => {
+                            res.status(500).jsoin({success: false, msg: `Something went wrong on our end...`})
+                        });
                 });
-            });//End Hash
-
-            res.status(200).json("")
-        }//end Else
-    });//end findOne
-}//end addUser
+            }//end else
+    });//END FIND ONE
+}//END ADD USER
 
 //DEV ONLY FUNCTION
 controller.findAll = (req, res, next) => {
