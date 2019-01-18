@@ -48,7 +48,7 @@ controller.findAll = (req, res, next) => {
 
 controller.findSpecificUser = (req, res, next) => {
     console.log("Read");
-    db.findOne({id: ObjectId(req.params.id)}, (result)  => {
+    db.findOne({id: req.params.id}, (result)  => {
         console.log (result);
         res.status(200).json({success: true, msg: result})
     })
