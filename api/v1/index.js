@@ -3,5 +3,5 @@ module.exports.initRouting = (app)=>{
     require('./contacts/contacts.routes').initRoutes(app);
     require('./auth/auth.routes').initRoutes(app);
     require('./sms/twilio.routes').initRoutes(app);
-
+    require('./email/nodemailer.routes').initRoutes(app)
 }
