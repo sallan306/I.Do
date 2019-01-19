@@ -6,7 +6,7 @@ module.exports.initRoutes = (app) => {
     //create new contact
         //no AUTH necessay. this is to add a card to the rolodex on behalf of the user.
     app.post('/api/v1/contacts/:userID', (req,res,next) => {
-        res.status(500).json({data:`eventually I'll put contact info into ${req.params.userID}`});
+        controller.create(req, res, next);
     });
 
     //read ALL contacts
