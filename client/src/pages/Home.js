@@ -5,9 +5,11 @@ import { Button } from "../components/Button";
 import "../components/Nav/";
 import "../components/Nav/style.css";
 import Container from "../components/Container";
+import API from "../utils/API";
+// import Api = require("twilio/lib/rest/Api");
 
 
-class Users extends Component {
+class Home extends Component {
     state = {
         firstName: "",
         lastName: "",
@@ -18,6 +20,7 @@ class Users extends Component {
         loginemail: "",
         loginpassword: ""
     };
+
 
     // componentDidMount() {
     //   this.loadBooks();
@@ -49,11 +52,21 @@ class Users extends Component {
     }
 
 
-    handleFormSubmit = event => {
+    handleNewUserSubmit = event => {
         event.preventDefault();
+        let userInfo = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password
+            };
         if (this.state.password === this.state.password2) {
             alert("Passwords Match!");
+            API.createUser(userInfo).then((response) => {
+                console.log(response);
+            })                // alert("New User Made!");
         }
+        // add code make sure things are correct first before submit
     }
 
     handleFormLogin = event => {
@@ -106,12 +119,14 @@ class Users extends Component {
                                         placeholder="Email (required)"
                                     />
                                     <Input
+                                        type="password"
                                         value={this.state.password}
                                         onChange={this.handleInputChange}
                                         name="password"
                                         placeholder="Password (required)"
                                     />
                                     <Input
+                                        type="password"
                                         value={this.state.password2}
                                         onChange={this.handleInputChange}
                                         name="password2"
@@ -119,7 +134,7 @@ class Users extends Component {
                                     />
                                     <Button id="createAccountButton"
                                         disabled={!(this.state.firstName && this.state.email)}
-                                        onClick={this.handleFormSubmit}
+                                        onClick={this.handleNewUserSubmit}
                                     >
                                         Submit
                                     </Button>
@@ -134,6 +149,7 @@ class Users extends Component {
                                         placeholder="Email (required)"
                                     />
                                     <Input
+                                        type="password"
                                         value={this.state.loginpassword}
                                         onChange={this.handleInputChange}
                                         name="loginpassword"
@@ -155,4 +171,4 @@ class Users extends Component {
 
 
 
-export default Users;
+export default Home;

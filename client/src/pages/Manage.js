@@ -5,7 +5,7 @@ import Container from "../components/Container";
 import GuestForm from '../components/GuestForm';
 
 
-class CRUD extends Component {
+class Manage extends Component {
     state = {
         firstName: "",
         lastName: "",
@@ -75,4 +75,4 @@ class CRUD extends Component {
 
 };
 
-export default CRUD;
+export default Manage;

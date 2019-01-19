@@ -5,7 +5,7 @@ import React from "react";
 
 function Nav() {
   return (
-    <div class="container-title">
+    <div className="container-title">
       {/* This is where the title is styled. */}
        
       <div id="title">
@@ -14,19 +14,6 @@ function Nav() {
         <h2>the ultimate event planning app</h2>
 
       </div>
-        
-       
-      <nav>
-        <a href="/">
-          i.Do  |
-        </a>
-        <a href="/Dashboard">
-          |  View Guest List |
-        </a>
-        <a href="/Manage">
-          |  Edit/Add Guests 
-        </a>
-      </nav>
       
     </div>
     

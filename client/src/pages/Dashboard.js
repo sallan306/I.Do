@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import {NavLinks} from "../components/NavLinks";
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 
@@ -12,7 +12,8 @@ class Dashboard extends Component {
         return (
       
             <div>
-               <Container>
+                <NavLinks/>
+                <Container>
                
                 <h1 style={{textAlign:"center"}}>i.Do Dashboard</h1>
                 <ContactCard/>

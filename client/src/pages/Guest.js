@@ -35,6 +35,7 @@ class Guests extends Component {
     render() {
         return (
             <div>
+                <h3>Let's Get Started!</h3>
                 <GuestForm 
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
