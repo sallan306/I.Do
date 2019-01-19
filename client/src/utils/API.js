@@ -9,7 +9,7 @@ export default {
   // Saves a Contact to the database
     //requires userID passed. req.user.id cant be assumed to be present.
   createContact: (userID, userData) => {
-    axios.post(`/api/v1/contacts/${userID}`, {userData})
+    axios.post("/api/v1/contacts/"+{userID}, {userData})
   },
 
   // Gets all contacts associated with user
@@ -35,8 +35,13 @@ export default {
   //USER CRUD
   //==========================================================
 
-  createUser: (user)=>{
-    axios.post(`/api/v1/users`, {user})
+  createUser: (user, cb)=>{
+    console.log("create user api.js")
+    axios.post(`/api/v1/users`, user).then( result =>{
+      result 
+      ? cb(result)
+      : console.log(result)
+    })
   },
 
   getUser: (userID) => {

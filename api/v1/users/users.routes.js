@@ -5,7 +5,8 @@ module.exports.initRoutes = (app)=>{
     //CREATE USER
     //TODO DATA VALIDATION. EMAIL CORRECT FORMAT? NAMES ONLY HAVE CHARACTERS? ETC.
     app.post('/api/v1/users', (req, res, next) => {
-        //res.status(200).json({data: `create user route. I do nothing right now`});
+        // console.log("app.post")
+        // console.log("req.body", req.body);
         controller.addUser(req,res,next);
     });
 

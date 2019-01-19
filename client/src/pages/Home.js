@@ -5,7 +5,8 @@ import { Button } from "../components/Button";
 import "../components/Nav/";
 import "../components/Nav/style.css";
 import Container from "../components/Container";
-
+// import API from "../utils/API";
+import axios from 'axios';
 
 class Users extends Component {
     state = {
@@ -49,11 +50,48 @@ class Users extends Component {
     }
 
 
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     if (this.state.password === this.state.password2) {
+    //         // alert("Passwords Match!");
+    //         let userInfo = {
+    //             firstName: this.state.firstName, 
+    //             lastName: this.state.lastName,
+    //             email: this.state.email,
+    //             password: this.state.password
+    //             };
+    //             // console.log(userInfo);
+    //         API.createUser(userInfo, function(result){
+    //             console.log("result on handleFormSubmit result");
+    //             // return result
+    //         }); 
+            
+    //     } else {
+    //         alert("Pleas have matching passwords!")
+    //     }
+      
+    // }
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.password === this.state.password2) {
-            alert("Passwords Match!");
+            // alert("Passwords Match!");
+            let userInfo = {
+                firstName: this.state.firstName, 
+                lastName: this.state.lastName,
+                email: this.state.email,
+                password: this.state.password
+                };
+                console.log(userInfo);
+            axios.post(`/api/v1/users`, userInfo, function(results){
+                console.log(results)
+            }).then(res =>{
+                console.log("res.data on handleformsubmit",res.data);
+            })
+            
+        } else {
+            alert("Pleas have matching passwords!")
         }
+      
     }
 
     handleFormLogin = event => {
