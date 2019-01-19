@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import API from "../utils/API";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
+import GuestForm from '../components/GuestForm';
 
 
 class Guests extends Component {
@@ -36,67 +35,18 @@ class Guests extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <h3>Please Enter Your Contact Info Below</h3>
-                </div>
-                <form className="formClass" id="guestInfoForm">
-                    <Input
-                        value={this.state.firstName}
-                        onChange={this.handleInputChange}
-                        name="firstName"
-                        placeholder="First Name (required)"
-                    />
-                    <Input
-                        value={this.state.lastName}
-                        onChange={this.handleInputChange}
-                        name="lastName"
-                        placeholder="Last Name (required)"
-                    />
-                    <Input
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                        name="email"
-                        placeholder="Email (required)"
-                    />
-                    <Input
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                        name="phone"
-                        placeholder="Phone Number (required)"
-                    />
-                    <Input
-                        value={this.state.password2}
-                        onChange={this.handleInputChange}
-                        name="streetAddress"
-                        placeholder="Street Address (required)"
-                    />
-                    <Input
-                        value={this.state.password2}
-                        onChange={this.handleInputChange}
-                        name="city"
-                        placeholder="City (required)"
-                    />
-                    <Input
-                        value={this.state.password2}
-                        onChange={this.handleInputChange}
-                        name="state"
-                        placeholder="State(required)"
-                    />
-                    <Input
-                        value={this.state.password2}
-                        onChange={this.handleInputChange}
-                        name="zipcode"
-                        placeholder="Zipcode(required)"
-                    />
-                    <Button id="guestInfoFormButton"
-                        disabled={!(this.state.firstName && this.state.email)}
-                        onClick={this.handleFormSubmit}
-                    >
-                        Submit
-              </Button>
-                </form>
-
-            
+                <GuestForm 
+                    handleInputChange={this.handleInputChange}
+                    handleFormSubmit={this.handleFormSubmit}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    email={this.state.email}
+                    phone={this.state.phone}
+                    address={this.state.address}
+                    city={this.state.city}
+                    state={this.state.state}
+                    zipcode={this.state.zipcode}
+                />
             </div>
 
         )
