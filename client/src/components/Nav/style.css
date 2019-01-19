@@ -4,8 +4,11 @@
     width: 79%;
     margin-top: 3%;
     margin-left: 10.2%;
+    margin-bottom: 20px;
     padding: 10px 0 30px 0;
 }
+
+
 
 #nav-title {
     font-family: 'Source Code Pro', monospace;
@@ -29,13 +32,19 @@ nav {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 #manage-title {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+#guest-title {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
 }

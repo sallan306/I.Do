@@ -39,32 +39,32 @@ class CRUD extends Component {
             <div>
                <Container>
                
-                <h1 style={{textAlign:"center"}}>i.Do Add/Edit Guests</h1>
+                <h1 className="manage-guests" id="manage-title">Manage Guests</h1>
                 <ContactCard/>
 
                       <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
-                <Panel eventKey="1">
-                  <Panel.Heading>
+                        <Panel eventKey="1">
+                        <Panel.Heading>
 
-                         <Panel.Title toggle>
-                             Add New Guest
-                         </Panel.Title>
+                            <Panel.Title toggle>
+                                Add New Guest
+                            </Panel.Title>
 
-                     </Panel.Heading>
+                         </Panel.Heading>
 
                      <Panel.Body collapsible>
                      <GuestForm 
-                    handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
-                    firstName={this.state.firstName}
-                    lastName={this.state.lastName}
-                    email={this.state.email}
-                    phone={this.state.phone}
-                    address={this.state.address}
-                    city={this.state.city}
-                    state={this.state.state}
-                    zipcode={this.state.zipcode}
-                />
+                        handleInputChange={this.handleInputChange}
+                        handleFormSubmit={this.handleFormSubmit}
+                        firstName={this.state.firstName}
+                        lastName={this.state.lastName}
+                        email={this.state.email}
+                        phone={this.state.phone}
+                        address={this.state.address}
+                        city={this.state.city}
+                        state={this.state.state}
+                        zipcode={this.state.zipcode}
+                 />
                     </Panel.Body>
                 </Panel>
             </PanelGroup>            
