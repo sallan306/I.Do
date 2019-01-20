@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require('bcrypt-nodejs');
 
 const db = require("../users/users.model");
 
@@ -11,18 +12,22 @@ passport.use(new LocalStrategy(
 
       db.findOne({email: email}
         )
-        .then(response => {
+        .then(user => {
+          //if user was returned, need to check the passwords
+          if(user){
+            //console.log("user found...");
+            //checking password
+            bcrypt.compare(password, user.password, function(err, res) {
+              //console.log(`err: ${err}, result: ${res}`);
+              //if passwords matched....
+              if (res) return done(null, user);
+              else return done(null, false, {message: 'Incorrect Username or Password'})
+            })
+          }
+          else{ return done(null, false, {message: 'Incorrect Username or Password'})}
 
-            if(!response){
-                console.log("Email does not exist");
-                return done(null, false, { message: "Incorrect Email"});
-            } else if(!response.validPassword(password)){
-                console.log("Password is incorrect");
-                return done(null, false, { message: "Incorrect password"});
-            }
-            console.log("info looked good");
-            return done(null, response);
-            
+        }).catch( (err) => {
+          console.log(err)
         });
   }
 ));

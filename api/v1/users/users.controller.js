@@ -12,7 +12,7 @@ controller.addUser = (req, res, next) =>{
     db.findOne({email:data.email})
         .then( (result) => {
 
-            console.log ("FindOne Result" ,result);
+            //console.log ("FindOne Result" ,result);
             
             if (result){ 
                 res.status(400).json({success: false, msg:"Email already in use"})
@@ -24,15 +24,16 @@ controller.addUser = (req, res, next) =>{
                     const newUser = {
                         password: hash,
                         email: data.email,
-                        password: data.password,
                         firstName: data.firstName,
                         lastName: data.lastName
                     }
+                    console.log(newUser);
                     db.create(newUser, (err, result) => {
+                        //console.log (err, result)
                         if (err) {
                             res.status(400).json({success: false, msg:err});
-                        } else {
-                            res.statusstatus(200).json({success:true, msg: result.nameemail })
+                        } else if (result) {
+                            res.status(200).json({success:true, msg: result.email })
                         }
                     });
                 })//end Bcrypt
@@ -40,7 +41,6 @@ controller.addUser = (req, res, next) =>{
             }//end else
             
     });//END FIND ONE
-    //res.status(500).send({success: false, msg:"OOPS"});
 }//END ADD USER
 
 //DEV ONLY FUNCTION
