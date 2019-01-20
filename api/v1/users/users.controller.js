@@ -15,7 +15,7 @@ controller.addUser = (req, res, next) =>{
             //console.log ("FindOne Result" ,result);
             
             if (result){ 
-                res.status(400).json({success: false, msg:"Email already in use"})
+                res.status(200).json({success: false, msg:"Email already in use"})
             }
             else{
                 //res.status(200).json({success: true, msg:"No user exists. attempt to make"})
