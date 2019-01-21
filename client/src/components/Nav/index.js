@@ -1,15 +1,16 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
+import $ from "jquery"
 
 
 
 function Nav() {
   return (
-    <div class="container-title">
+    <div className="container-title">
       {/* This is where the title is styled. */}
        
       <div id="title">
-
+        <div class="styleBox"></div>
         <h1 id="nav-title">i.Do</h1>
         <h2>the ultimate event planning app</h2>
 
@@ -17,15 +18,9 @@ function Nav() {
         
        
       <nav>
-        <a href="/">
-          i.Do  |
-        </a>
-        <a href="/Dashboard">
-          |  View Guest List |
-        </a>
-        <a href="/Manage">
-          |  Edit/Add Guests 
-        </a>
+        <Link className="linkHome" to="/">Home Page</Link>//
+        <Link className="linkDash" to="/Dashboard">View Guest List</Link>//
+        <Link className="linkMng" to="/Manage">Edit Guest List</Link>
       </nav>
       
     </div>
