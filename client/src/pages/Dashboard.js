@@ -5,7 +5,7 @@ import ContactCard from "../components/ContactCard";
 
 class Dashboard extends Component {
     state = {
-        isAuthenticated: true
+        isAuthenticated: true,
     }
 
     render() {
@@ -17,6 +17,7 @@ class Dashboard extends Component {
                
                 <h1 style={{textAlign:"center"}}>i.Do Dashboard</h1>
                 <ContactCard/>
+                    
                 </Container>
             </div>
         );

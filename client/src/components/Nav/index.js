@@ -1,8 +1,5 @@
 import React from "react";
 
-
-
-
 function Nav() {
   return (
     <div className="container-title">
@@ -21,3 +18,4 @@ function Nav() {
 }
 
 export default Nav;
+
