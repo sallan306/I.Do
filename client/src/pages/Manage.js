@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Panel, PanelGroup } from 'react-bootstrap';
-import ContactCard from '../components/ContactCard';
+import {PrintText, Test} from '../components/PrintText';
+import {Button} from "../components/Button";
 import Container from "../components/Container";
 import GuestForm from '../components/GuestForm';
 
 
-class CRUD extends Component {
+
+class Manage extends Component {
     state = {
         firstName: "",
         lastName: "",
@@ -14,7 +16,7 @@ class CRUD extends Component {
         address: "",
         city: "",
         state: "",
-        zipcode: ""
+        zipcode: "",
     }
 
     handleInputChange = event => {
@@ -34,17 +36,60 @@ class CRUD extends Component {
         alert("Hey! Submit Button works! That's something to be proud of");
     }
 
+    handleContactEdit = event => {
+        event.preventDefault();
+        alert("Hey! This is where editing code goes!")
+    }
+
     render() {
         return (
             <div>
                <Container>
                
-                <h1 className="manage-guests" id="manage-title">Manage Guests</h1>
-                <ContactCard/>
+                <h1 style={{textAlign:"center"}}>i.Do Add/Edit Guests</h1>
+                <PanelGroup accordion id="accordion-example">
+            <Panel eventKey="1">
+                <Panel.Heading>
 
-                      <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
-                        <Panel eventKey="1">
-                        <Panel.Heading>
+                    <Panel.Title toggle>
+                        
+                        <PrintText>
+                            {Test.firstName} {Test.lastName}
+                        </PrintText>
+
+                    </Panel.Title>
+
+                </Panel.Heading>
+
+                <Panel.Body collapsible>   
+
+                    <PrintText className="infoArea">
+                        <PrintText>
+                            {Test.phone}
+                            {Test.email}
+                        </PrintText>
+                        <PrintText>
+                            {Test.address}
+                            {Test.city}
+                            {Test.state}
+                            {Test.zipcode}
+                        </PrintText>
+                        <Button
+                            onClick={this.handleFormSubmit}
+                        >
+                            Edit
+                        </Button>
+                    </PrintText>
+
+
+                </Panel.Body>
+
+            </Panel>
+        </PanelGroup>
+
+                    <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
+                <Panel eventKey="1">
+                  <Panel.Heading>
 
                             <Panel.Title toggle>
                                 Add New Guest
@@ -75,4 +120,4 @@ class CRUD extends Component {
 
 };
 
-export default CRUD;
+export default Manage;

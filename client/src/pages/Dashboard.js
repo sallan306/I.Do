@@ -1,21 +1,23 @@
 import React, {Component} from "react";
-
+import {NavLinks} from "../components/NavLinks";
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 
 class Dashboard extends Component {
     state = {
-        isAuthenticated: true
+        isAuthenticated: true,
     }
 
     render() {
         return (
       
             <div>
-               <Container>
+                <NavLinks/>
+                <Container>
                
                 <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                 <ContactCard/>
+                    
                 </Container>
             </div>
         );

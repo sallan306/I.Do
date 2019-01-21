@@ -1,8 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import $ from "jquery"
-
-
 
 function Nav() {
   return (
@@ -15,13 +11,7 @@ function Nav() {
         <h2>the ultimate event planning app</h2>
 
       </div>
-        
-       
-      <nav>
-        <Link className="linkHome" to="/">Home Page</Link>//
-        <Link className="linkDash" to="/Dashboard">View Guest List</Link>//
-        <Link className="linkMng" to="/Manage">Edit Guest List</Link>
-      </nav>
+
       
     </div>
     
@@ -29,3 +19,4 @@ function Nav() {
 }
 
 export default Nav;
+
