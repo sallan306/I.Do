@@ -9,8 +9,7 @@
     border-radius: 10px;
 }
 
-
-.form-control, #nav-title, .btn-success, #title {
+.form-control, #nav-title, .btn-success, #title, .panel-default {
     opacity: .85;
 }
 
@@ -48,7 +47,7 @@ nav {
     text-decoration: none;
 }
 .linkHome:hover, .linkDash:hover, .linkMng:hover { 
-    background: #faf4ee9f;
+    background: #faf4ee4d;
     transition: 0.4s;
     text-decoration: none;
 
