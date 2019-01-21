@@ -2,6 +2,9 @@ import React, { Component } from "react";
 // import API from "../utils/API";
 import GuestForm from '../components/GuestForm';
 
+import {NavLinks} from '../components/NavLinks';
+
+
 
 class Guests extends Component {
     state = {
@@ -35,6 +38,8 @@ class Guests extends Component {
     render() {
         return (
             <div>
+                <NavLinks/>
+                <h3>Let's Get Started!</h3>
                 <GuestForm 
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}

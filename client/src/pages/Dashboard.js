@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-
 import API from '../utils/API'
-
+import {NavLinks} from "../components/NavLinks";
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 
@@ -47,9 +46,10 @@ class Dashboard extends Component {
         return (
       
             <div>
-               <Container>
+                <NavLinks/>
+                <Container>
                
-                <h1 style={{textAlign:"center"}}>i.Do Dashboard</h1>
+                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                 {this.state.contacts.map(contact=>
                     <ContactCard 
                         key={contact.belongsTo}

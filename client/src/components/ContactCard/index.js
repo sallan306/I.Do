@@ -1,7 +1,7 @@
 import React from "react";
 import { Panel } from 'react-bootstrap';
 import { PanelGroup} from 'react-bootstrap';
-import {PrintText } from "../PrintText";
+import {PrintText, Test} from "../PrintText";
 
 export default function ContactCard(props) {
     
@@ -9,31 +9,28 @@ export default function ContactCard(props) {
             <PanelGroup accordion id="accordion-example">
                 <Panel eventKey="1">
                     <Panel.Heading>
-
                         <Panel.Title toggle>
-                            
                             <PrintText>
                                 {props.firstName} {props.lastName}
                             </PrintText>
-
                         </Panel.Title>
-
                     </Panel.Heading>
 
-                    <Panel.Body collapsible>   
-
+                    <Panel.Body collapsible>  
                         <PrintText className="infoArea">
-                            <PrintText>{props.phone}</PrintText>
-                            <PrintText>{props.email}</PrintText>
+                            <PrintText>
+                                {Test.phone}
+                                {Test.email}
+                            </PrintText>
+                            <PrintText>
+                                {Test.address}
+                                {Test.city}
+                                {Test.state}
+                                {Test.zipcode}
+                            </PrintText>
                         </PrintText>
-
                     </Panel.Body>
-
                 </Panel>
             </PanelGroup>
         )
-    
 };
-
-
-
