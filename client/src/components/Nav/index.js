@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,15 +17,9 @@ function Nav() {
         
        
       <nav>
-        <a href="/">
-          i.Do  |
-        </a>
-        <a href="/Dashboard">
-          |  View Guest List |
-        </a>
-        <a href="/Manage">
-          |  Edit/Add Guests 
-        </a>
+        <Link to="/">i.Do  |</Link>
+        <Link to="/Dashboard">|  View Guest List |</Link>
+        <Link to="/Manage">|  Edit/Add Guests </Link>
       </nav>
       
     </div>
