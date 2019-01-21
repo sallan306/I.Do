@@ -5,7 +5,7 @@ import React from "react";
 
 function Nav() {
   return (
-    <div class="container-title">
+    <div className="container-title">
       {/* This is where the title is styled. */}
        
       <div id="title">
