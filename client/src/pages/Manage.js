@@ -40,7 +40,7 @@ class CRUD extends Component {
                <Container>
                
                 <h1 style={{textAlign:"center"}}>i.Do Add/Edit Guests</h1>
-                <ContactCard/>
+                <ContactCard />
 
                       <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
                 <Panel eventKey="1">

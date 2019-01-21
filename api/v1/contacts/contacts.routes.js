@@ -1,4 +1,5 @@
 const controller = require('./contacts.controller');
+const passport = require('passport');
 const isAuth = require('../services/isAuth');
 
 module.exports.initRoutes = (app) => {
@@ -9,12 +10,16 @@ module.exports.initRoutes = (app) => {
         controller.create(req, res, next);
     });
 
-    //read ALL contacts
-        //inorder to see contacts belonging to user, checking auth.
-    app.get('/api/v1/contacts/', isAuth, (req,res,next) => {
-        res.status(200).json({data: `get contacts belonging to.... ${req.user._id}`});
-    });
-
+    // read ALL contacts
+        // inorder to see contacts belonging to user, checking auth.
+    app.get('/api/v1/contacts/', (req,res,next) => {
+        passport.authenticate('local', (err, user, info) => {
+            //console.log("req.user",req.user);
+            console.log("user: ", user)
+            console.log(req);
+            //res.status(200).json({success: false});
+        })
+    })
     //read ONE contact
         //inorder to see contact belonging to user, checking auth.
     app.get('/api/v1/contacts/:contactID' , isAuth, (req, res, next) => {

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export default {
-
   //==========================================================
   //CONTACTS CRUD
   //==========================================================
@@ -13,8 +12,12 @@ export default {
   },
 
   // Gets all contacts associated with user
-  getContacts: () => {
-    axios.get(`/api/v1/contacts/`, {});
+  getContacts: ( cb ) => {
+    axios.get(`/api/v1/contacts/`)
+      .then( result => {
+        cb(result);
+      })
+      .catch( err => console.log(err));
   },
 
   // Gets the contact with the given id
@@ -71,7 +74,18 @@ export default {
     axios.post('/api/v1/sms', {sendTo: "+16032755557", txtBody: message });
   },
 
-  login: (email, password) => {
-    axios.post('/api/v1/login', {email: email, password: password});
+  login: (email, password, cb) => {
+    console.log("REACT TO API: Trying to Log in");
+    console.log("password", password);
+    console.log("email", email);
+    axios.post('/api/v1/login', {email: email, password: password})
+      .then( (result) => {
+        console.log(result);
+        cb(result);
+      })
+      .catch( err => {
+        console.log(err);
+        return err;
+      });
   }
 };

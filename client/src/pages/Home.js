@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 // import API from "../utils/API";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
@@ -7,6 +8,7 @@ import "../components/Nav/style.css";
 import Container from "../components/Container";
 // import API from "../utils/API";
 import axios from 'axios';
+import API from "../utils/API";
 
 class Users extends Component {
     state = {
@@ -17,11 +19,12 @@ class Users extends Component {
         password2: "",
         isUserSignUp: false,
         loginemail: "",
-        loginpassword: ""
+        loginpassword: "",
+        isAuthenticated: false
     };
-
+    // TO DO !!!!========================
     // componentDidMount() {
-    //   this.loadBooks();
+    //   // Check to see if user is authenticated. If authenticated, log in, if not should be good.
     // }
 
     // loadBooks = () => {
@@ -49,28 +52,6 @@ class Users extends Component {
         this.setState({ isUserSignUp: !this.state.isUserSignUp });
     }
 
-
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     if (this.state.password === this.state.password2) {
-    //         // alert("Passwords Match!");
-    //         let userInfo = {
-    //             firstName: this.state.firstName, 
-    //             lastName: this.state.lastName,
-    //             email: this.state.email,
-    //             password: this.state.password
-    //             };
-    //             // console.log(userInfo);
-    //         API.createUser(userInfo, function(result){
-    //             console.log("result on handleFormSubmit result");
-    //             // return result
-    //         }); 
-            
-    //     } else {
-    //         alert("Pleas have matching passwords!")
-    //     }
-      
-    // }
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.password === this.state.password2) {
@@ -85,6 +66,7 @@ class Users extends Component {
             axios.post(`/api/v1/users`, userInfo, function(results){
                 console.log(results)
             }).then(res =>{
+                // this.handleFormLogin();
                 console.log("res.data on handleformsubmit",res.data);
             })
             
@@ -96,21 +78,14 @@ class Users extends Component {
 
     handleFormLogin = event => {
         event.preventDefault();
-            alert("Congratualations! You're the one!");
+        API.login(this.state.email, this.state.password, (result) =>{
+            console.log ("custom cb",result);
+            API.getContacts( (results) => console.log(results))
+        })
+        console.log('redirect to dashboard');
+        return <Redirect to='/Dashboard' />
+        
     }
-
-    // handleFormSubmit = event => {
-    //   event.preventDefault();
-    //   if (this.state.title && this.state.author) {
-    //     API.saveBook({
-    //       title: this.state.title,
-    //       author: this.state.author,
-    //       synopsis: this.state.synopsis
-    //     })
-    //       .then(res => this.loadBooks())
-    //       .catch(err => console.log(err));
-    //   }
-    // };
 
     render() {
         return (
@@ -166,19 +141,19 @@ class Users extends Component {
                                 <form className="formClass" id="loginForm">
                                     {/* Login */}
                                     <Input
-                                        value={this.state.loginemail}
+                                        value={this.state.email}
                                         onChange={this.handleInputChange}
-                                        name="loginemail"
+                                        name="email"
                                         placeholder="Email (required)"
                                     />
                                     <Input
-                                        value={this.state.loginpassword}
+                                        value={this.state.password}
                                         onChange={this.handleInputChange}
-                                        name="loginpassword"
+                                        name="password"
                                         placeholder="Password (required)"
                                     />
                                     <Button id="loginButton"
-                                        disabled={!(this.state.loginemail && this.state.loginpassword)}
+                                        disabled={!(this.state.email && this.state.password)}
                                         onClick={this.handleFormLogin}
                                     >
                                         Login

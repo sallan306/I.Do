@@ -13,4 +13,8 @@ controller.create = (req, res, next) => {
     console.log(newContact);
 }
 
+controller.get =  (req, res, next) => {
+    console.log 
+}
+
 module.exports = controller;
