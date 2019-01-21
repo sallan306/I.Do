@@ -91,25 +91,25 @@ class Manage extends Component {
                 <Panel eventKey="1">
                   <Panel.Heading>
 
-                         <Panel.Title toggle>
-                             Add New Guest
-                         </Panel.Title>
+                            <Panel.Title toggle>
+                                Add New Guest
+                            </Panel.Title>
 
-                     </Panel.Heading>
+                         </Panel.Heading>
 
                      <Panel.Body collapsible>
                      <GuestForm 
-                    handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
-                    firstName={this.state.firstName}
-                    lastName={this.state.lastName}
-                    email={this.state.email}
-                    phone={this.state.phone}
-                    address={this.state.address}
-                    city={this.state.city}
-                    state={this.state.state}
-                    zipcode={this.state.zipcode}
-                />
+                        handleInputChange={this.handleInputChange}
+                        handleFormSubmit={this.handleFormSubmit}
+                        firstName={this.state.firstName}
+                        lastName={this.state.lastName}
+                        email={this.state.email}
+                        phone={this.state.phone}
+                        address={this.state.address}
+                        city={this.state.city}
+                        state={this.state.state}
+                        zipcode={this.state.zipcode}
+                 />
                     </Panel.Body>
                 </Panel>
             </PanelGroup>            

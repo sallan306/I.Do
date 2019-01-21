@@ -15,7 +15,7 @@ class Dashboard extends Component {
                 <NavLinks/>
                 <Container>
                
-                <h1 style={{textAlign:"center"}}>i.Do Dashboard</h1>
+                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                 <ContactCard/>
                     
                 </Container>

@@ -1,16 +1,25 @@
 #title {
     text-align: center;
     background-color: rgba(247, 238, 228, .8);
-    width: 79%;
+    width: 85%;
     margin-top: 3%;
-    margin-left: 10.2%;
+    margin-left: 7.5%;
+    margin-bottom: 20px;
     padding: 10px 0 30px 0;
+    border-radius: 10px;
 }
+
+.form-control, #nav-title, .btn-success, #title, .panel-default {
+    opacity: .85;
+}
+
 
 #nav-title {
     font-family: 'Source Code Pro', monospace;
     font-size: 70px;
-    letter-spacing: 2px;
+    letter-spacing: 5px;
+    border-radius: 5px;
+    opacity: 1.5;
 }
 h2 {
     font-family: Arial, Helvetica, sans-serif;
@@ -24,18 +33,44 @@ nav {
     letter-spacing: 2px;
 }
 
+.linkHome, .linkDash, .linkMng {
+    color: black;
+    transition: 0.4s;
+    margin-right: 5px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+.linkHome:link, .linkDash:link, .linkMng:link { 
+    text-decoration: none;
+}
+.linkHome:visited, .linkDash:visited, .linkMng:visited { 
+    text-decoration: none;
+}
+.linkHome:hover, .linkDash:hover, .linkMng:hover { 
+    background: #faf4ee4d;
+    transition: 0.4s;
+    text-decoration: none;
+
+  }
+
 #dashboard-title {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 #manage-title {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+#guest-title {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
 }

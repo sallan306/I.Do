@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 // import API from "../utils/API";
 import GuestForm from '../components/GuestForm';
+
 import {NavLinks} from '../components/NavLinks';
+
 
 
 class Guests extends Component {

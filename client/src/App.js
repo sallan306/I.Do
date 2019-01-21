@@ -6,12 +6,14 @@ import Dashboard from "./pages/Dashboard"
 import ErrorPage from "./pages/ErrorPage";
 import Guest from "./pages/Guest";
 import Nav from "./components/Nav";
-import { homedir } from "os";
+import ColorMenu from "./components/ColorMenu"
 
 function App() {
+  
   return (
     <Router>
       <div>
+          <ColorMenu/>
         <Nav/>
         <Switch>
           <Route exact path="/" component={Home} />
