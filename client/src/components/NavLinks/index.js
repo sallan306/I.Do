@@ -1,21 +1,16 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import { renderComponent } from "recompose";
 
 export function NavLinks() {
+
     return(
         <nav>
-            <a href="/">
-                i.Do  |
-            </a>
-            <a href="/Dashboard">
-                |  View Guest List |
-            </a>
-            <a href="/Manage">
-                |  Edit/Add Guests |
-            </a>
-            <a href="/Logout">
-                |  Log Out
-            {/* Add code here to make only appear on logged in pages? */}
-            </a>
+            <Link className="linkHome" to="/">i.Do  |</Link>
+            <Link className="linkDash" to="/Dashboard">|  View Guest List  |</Link>
+            <Link className="linkMng" to="/Manage">|  Edit/Add Guests  |</Link>
+            <Link className="linkLogOut" to="/">|  Log Out</Link>
         </nav>
     )
+    
 };
