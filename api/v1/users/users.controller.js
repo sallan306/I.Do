@@ -18,25 +18,18 @@ controller.addUser = (req, res, next) =>{
                 res.status(200).json({success: false, msg:"Email already in use"})
             }
             else{
-                //res.status(200).json({success: true, msg:"No user exists. attempt to make"})
-                bcrypt.hash(data.password, bcrypt.genSaltSync(saltRounds), null, (err, hash) => {
-                    //console.log (`err ${err}, hash ${hash}`);
-                    const newUser = {
-                        password: hash,
-                        email: data.email,
-                        firstName: data.firstName,
-                        lastName: data.lastName
+
+                db.create({
+                    password: data.password,
+                    email: data.email
+                }, (err, result) => {
+                    console.log (err, result)
+                    if (err) {
+                        res.status(200).json({success: false, msg:err});
+                    } else if (result) {
+                        res.status(200).json({success:true, msg: result.email })
                     }
-                    //console.log(newUser);
-                    db.create(newUser, (err, result) => {
-                        //console.log (err, result)
-                        if (err) {
-                            res.status(200).json({success: false, msg:err});
-                        } else if (result) {
-                            res.status(200).json({success:true, msg: result.email })
-                        }
-                    });
-                })//end Bcrypt
+                });
 
             }//end else
             
