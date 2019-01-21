@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import $ from "jquery"
 
 
 
@@ -9,7 +10,7 @@ function Nav() {
       {/* This is where the title is styled. */}
        
       <div id="title">
-
+        <div class="styleBox"></div>
         <h1 id="nav-title">i.Do</h1>
         <h2>the ultimate event planning app</h2>
 
@@ -17,9 +18,9 @@ function Nav() {
         
        
       <nav>
-        <Link to="/">i.Do  |</Link>
-        <Link to="/Dashboard">|  View Guest List |</Link>
-        <Link to="/Manage">|  Edit/Add Guests </Link>
+        <Link className="linkHome" to="/">Home Page</Link>//
+        <Link className="linkDash" to="/Dashboard">View Guest List</Link>//
+        <Link className="linkMng" to="/Manage">Edit Guest List</Link>
       </nav>
       
     </div>

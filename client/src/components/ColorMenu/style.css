@@ -3,6 +3,9 @@
 body, #title, .bar1, .bar2, .bar3, .circle-picker-container {
     transition: 0.3s;
 }
+body {
+    background: #2196f3;
+}
 
 .circle-picker {
     width:100px;
