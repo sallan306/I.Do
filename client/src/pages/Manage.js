@@ -4,7 +4,7 @@ import {PrintText, Test} from '../components/PrintText';
 import {Button} from "../components/Button";
 import Container from "../components/Container";
 import GuestForm from '../components/GuestForm';
-
+import {NavLinks} from "../components/NavLinks";
 
 
 class Manage extends Component {
@@ -44,6 +44,7 @@ class Manage extends Component {
     render() {
         return (
             <div>
+            <NavLinks />
                <Container>
                
                 <h1 style={{textAlign:"center"}}>i.Do Add/Edit Guests</h1>
