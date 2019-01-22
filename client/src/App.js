@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
-import Manage from "./pages/Manage";
 import Dashboard from "./pages/Dashboard"
 import ErrorPage from "./pages/ErrorPage";
 import Guest from "./pages/Guest";
@@ -29,7 +28,13 @@ class App extends React.Component {
   }
 
   logOut = () => {
-    
+    // API LOGOUTT
+    this.setState({loggedIn: false})
+    return <Redirect
+      to={{
+        pathname: "/"
+      }}
+    />
   }
 
   render(){
@@ -42,9 +47,9 @@ class App extends React.Component {
 
             <Route exact path="/" render={this.renderDefaultView} />
             <Route exact path="/Guest" component={Guest} />
-            <Route exact path="/Manage" component={Manage} />
-            <Route exact path="/Dashboard" component={Dashboard} />
-            <Route exact path="/Logout" render={<Redirect to="/" />} />
+            {/* <Route exact path="/Manage" component={Manage} /> */}
+            {/* <Route exact path="/Dashboard" component={Dashboard} /> */}
+            <Route exact path="/Logout" render={this.logOut} />
               />
             <Route component={ErrorPage} />
           </Switch>
