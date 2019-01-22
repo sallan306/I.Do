@@ -80,12 +80,12 @@ export default {
     console.log("email", email);
     axios.post('/api/v1/login', {email: email, password: password})
       .then( (result) => {
-        console.log("result from axios.post on api.js",result);
+        // console.log("result from axios.post on api.js",result);
         
-        cb("CB RESULT",result);
+        cb(result);
       })
-      .catch( err => {
-        console.log(err);
+      .catch( (err) => {
+        // console.log(err);
         return err;
       });
   }
