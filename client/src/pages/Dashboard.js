@@ -33,7 +33,8 @@ class Dashboard extends Component {
     componentDidMount() {
         
         API.getContacts( results => {
-            this.setState({contacts: results})
+            this.setState({ contacts: results.user.contacts })
+
             // console.log(this.state.contacts);
         });
         // call API.getContacts
