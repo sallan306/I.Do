@@ -4,16 +4,11 @@ const isAuth = require('../services/isAuth');
 
 module.exports.initRoutes = (app) => {
 
-    // read ALL contacts
+    // read ALL contacts belonging to user
         // inorder to see contacts belonging to user, checking auth.
-    app.get('/api/v1/contacts/', (req,res,next) => {
-        console.log()
-        passport.authenticate('local', (err, user, info) => {
-            //console.log("req.user",req.user);
-            console.log("user: ", user)
-            console.log(req);
-            //res.status(200).json({success: false});
-        })
+    app.get('/api/v1/contacts/', passport.authenticate('local', {failureRedirect: '/login'}), (req, res) => {
+        console.log(req.user);
+        res.json(req.user);
     })
     
 }
