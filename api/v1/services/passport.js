@@ -16,7 +16,6 @@ passport.use(new LocalStrategy(
 
       db.findOne({email: email})
         .then(user => {
-          debugger;
           //if user was returned, need to check the passwords
           if(user){
               if (user.password == password) return done(null, user);
@@ -28,9 +27,11 @@ passport.use(new LocalStrategy(
 
 
 passport.serializeUser(function(user, cb){
+  console.log("user", user);
   cb(null, user);
 });
 passport.deserializeUser(function(obj, cb){
+  console.log("object", obj);
   cb(null, obj);
 });
 
