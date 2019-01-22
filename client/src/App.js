@@ -28,7 +28,6 @@ class App extends React.Component {
   }
 
   logOut = () => {
-    // API LOGOUTT
     this.setState({loggedIn: false})
     return <Redirect
       to={{
@@ -47,8 +46,6 @@ class App extends React.Component {
 
             <Route exact path="/" render={this.renderDefaultView} />
             <Route exact path="/:userID" component={Guest} />
-            {/* <Route exact path="/Manage" component={Manage} /> */}
-            {/* <Route exact path="/Dashboard" component={Dashboard} /> */}
             <Route exact path="/Logout" render={this.logOut} />
               />
             <Route component={ErrorPage} />
