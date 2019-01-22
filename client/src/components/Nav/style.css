@@ -9,8 +9,8 @@
     border-radius: 10px;
 }
 
-.form-control, #nav-title, .btn-success, #title, .panel-default {
-    opacity: .85;
+.form-control, #nav-title, .btn, #title, .panel-default, #title, .form-control, #loginButton {
+    opacity: .7;
 }
 
 

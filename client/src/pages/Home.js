@@ -91,11 +91,10 @@ class Home extends Component {
         return (
             <div>
                <Container>
-                    <h2>{this.state.isUserSignUp ? "sign up with i.Do to get started!" : "login to your account"}</h2>
                         <Button
                             onClick={this.handleSignUpForm}
                         >
-                        {this.state.isUserSignUp ? "Login" : "Sign Up"}
+                        {this.state.isUserSignUp ? "Already registered? Login!" : "New users click here!"}
                         </Button>   
 
                             {this.state.isUserSignUp ?
@@ -136,7 +135,7 @@ class Home extends Component {
                                         disabled={!(this.state.firstName && this.state.email)}
                                         onClick={this.handleNewUserSubmit}
                                     >
-                                        Submit
+                                        Create Account
                                     </Button>
                                 </form>
                                 :  
