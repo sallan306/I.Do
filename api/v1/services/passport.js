@@ -10,12 +10,14 @@ passport.use(new LocalStrategy(
     passwordField: "password"
   },
   function(email, password, done){
+      email = email.toUpperCase();
       console.log("passport use:");
       console.log("User: ", email);
       console.log("password: ", password);
 
       db.findOne({email: email})
         .then(user => {
+          console.log(user);
           //if user was returned, need to check the passwords
           if(user){
               if (user.password == password) return done(null, user);
