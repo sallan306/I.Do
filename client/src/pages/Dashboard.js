@@ -30,17 +30,11 @@ class Dashboard extends Component {
         }],
         isAuthenticated: true
     }
+
     componentDidMount() {
-        
         API.getContacts( results => {
             this.setState({ contacts: results.data.contacts })
-
-            // console.log(this.state.contacts);
         });
-        // call API.getContacts
-        // it will bring back a list of all contacts belonging to currect user
-        // store it in state
-        // loop through contacts and display page.
     }
 
     render() {
@@ -67,7 +61,7 @@ class Dashboard extends Component {
                 </Container>
             </div>
         );
-};
+    };
 
 };
 

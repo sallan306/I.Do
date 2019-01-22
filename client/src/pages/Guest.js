@@ -2,8 +2,23 @@ import React, { Component } from "react";
 // import API from "../utils/API";
 import GuestForm from '../components/GuestForm';
 
-import {NavLinks} from '../components/NavLinks';
 
+// class Profile extends React.Component {
+//     state = {
+//       user: null
+//     }
+//     componentDidMount () {
+//       const { handle } = this.props.match.params
+  
+//       fetch(`https://api.twitter.com/user/${handle}`)
+//         .then((user) => {
+//           this.setState(() => ({ user }))
+//         })
+//     }
+//     render() {
+//       ...
+//     }
+//   }
 
 
 class Guests extends Component {
@@ -18,7 +33,17 @@ class Guests extends Component {
         zipcode: ""
     };
 
-
+    componentDidMount(){
+        // console.log(this.match.params.userID)
+        const userID = this.props.match.params.userID
+        console.log(userID);
+        // fetch(`http://localhost:3000/${userID}`)
+        // .then((userID) => {
+        //   this.setState({userID:userID})
+        //   console.log(this.state.userID)
+        // })
+        
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -38,7 +63,6 @@ class Guests extends Component {
     render() {
         return (
             <div>
-                <NavLinks/>
                 <h3>Let's Get Started!</h3>
                 <GuestForm 
                     handleInputChange={this.handleInputChange}

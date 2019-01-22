@@ -49,8 +49,8 @@ class Home extends Component {
             axios.post(`/api/v1/users`, userInfo, function(results){
                 console.log(results)
             }).then(res =>{
-                // this.handleFormLogin();
-                console.log("res.data on handleformsubmit",res.data);
+                this.handleFormLogin(res);
+                // console.log("res.data on handleformsubmit",res.data);
             })
             
         } else {
@@ -58,26 +58,28 @@ class Home extends Component {
         }
       
     }
-
-    handleFormLogin = event => {
-        event.preventDefault();
-        console.log(this.props)
+    APILogin (){
         API.login(this.state.email, this.state.password, (result) =>{
-            // console.log("result =====",result);
-
-
             result.status === 200
             ? this.props.flipToDash()
             : alert("that username/password combination doesn'tt work")
-
-
-
-            //  if success, change app state
-            // console.log ("custom cb",result);
-            // API.getContacts( (results) => 
-            // this.props.flipToDash()
-            // )
         })
+    }
+
+    handleFormLogin = event => {
+        event.preventDefault();
+        // console.log(this.props)
+        this.APILogin();
+        // API.login(this.state.email, this.state.password, (result) =>{
+        //     result.status === 200
+        //     ? this.props.flipToDash()
+        //     : alert("that username/password combination doesn'tt work")
+        // })
+        //  if success, change app state
+        // console.log ("custom cb",result);
+        // API.getContacts( (results) => 
+        // this.props.flipToDash()
+        // )
         // console.log('redirect to dashboard');
         
         
