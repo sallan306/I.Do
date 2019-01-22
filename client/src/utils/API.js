@@ -74,14 +74,15 @@ export default {
     axios.post('/api/v1/sms', {sendTo: "+16032755557", txtBody: message });
   },
 
-  login: (email, password, cb) => {
+  login: function(email, password, cb) {
     console.log("REACT TO API: Trying to Log in");
     console.log("password", password);
     console.log("email", email);
     axios.post('/api/v1/login', {email: email, password: password})
       .then( (result) => {
-        console.log(result);
-        cb(result);
+        console.log("result from axios.post on api.js",result);
+        
+        cb("CB RESULT",result);
       })
       .catch( err => {
         console.log(err);

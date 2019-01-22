@@ -25,7 +25,7 @@ passport.use(new LocalStrategy(
   }
 ))
 
-passport.initialize();
+
 passport.serializeUser(function(user, cb){
   cb(null, user);
 });

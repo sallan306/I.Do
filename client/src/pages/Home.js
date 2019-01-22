@@ -52,7 +52,7 @@ class Home extends Component {
         this.setState({ isUserSignUp: !this.state.isUserSignUp });
     }
 
-    handleFormSubmit = event => {
+    handleNewUserSubmit = event => {
         event.preventDefault();
         let userInfo = {
             firstName: this.state.firstName,
@@ -80,10 +80,11 @@ class Home extends Component {
         event.preventDefault();
         API.login(this.state.email, this.state.password, (result) =>{
             console.log ("custom cb",result);
-            API.getContacts( (results) => console.log(results))
+            API.getContacts( (results) => 
+            <Redirect to='/Dashboard' userInfo={results}/>)
         })
-        console.log('redirect to dashboard');
-        return <Redirect to='/Dashboard' />
+        // console.log('redirect to dashboard');
+        
         
     }
 
