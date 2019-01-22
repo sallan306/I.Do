@@ -13,38 +13,26 @@ controller.addUser = (req, res, next) =>{
         .then( (result) => {
 
             //console.log ("FindOne Result" ,result);
-
+            
             if (result){ 
-                res.status(400).json({success: false, msg:"Email already in use"})
+                res.status(200).json({success: false, msg:"Email already in use"})
             }
             else{
-                //console.log(data.password);
-                bcrypt.hash(data.password, bcrypt.genSaltSync(saltRounds), null, (err, hash) => { 
-                    //console.log(hash);
-                    const newUser = {
-                        password: hash,
-                        email: data.email,
-                        firstName: data.firstName,
-                        lastName: data.lastName
+
+                db.create({
+                    password: data.password,
+                    email: data.email
+                }, (err, result) => {
+                    console.log (err, result)
+                    if (err) {
+                        res.status(200).json({success: false, msg:err});
+                    } else if (result) {
+                        res.status(200).json({success:true, msg: result.email })
                     }
-            
-                    //creating new user in the DB, 
-                    db.create(newUser)
-                        .then( (result) => {
-                            //console.log(`result: ${result}`);
-                            if (result){
-                                res.status(200).json({success: true, msg: `account ${result.email} was created`});
-                            }
-                            else {
-                                res.status(400).json({success: false, msg: `account not created`});
-                            }
-                            
-                        })
-                        .catch( (err) => {
-                            res.status(500).jsoin({success: false, msg: `Something went wrong on our end...`})
-                        });
                 });
+
             }//end else
+            
     });//END FIND ONE
 }//END ADD USER
 

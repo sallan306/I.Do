@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require('bcrypt-nodejs');
 
 const db = require("../users/users.model");
 
@@ -8,31 +9,29 @@ passport.use(new LocalStrategy(
     usernameField: "email"
   },
   function(email, password, done){
+      console.log("passport use:");
+      console.log("User: ", email);
+      console.log("password: ", password);
 
-      db.findOne({email: email}
-        )
-        .then(response => {
 
-            if(!response){
-                console.log("Email does not exist");
-                return done(null, false, { message: "Incorrect Email"});
-            } else if(!response.validPassword(password)){
-                console.log("Password is incorrect");
-                return done(null, false, { message: "Incorrect password"});
-            }
-            console.log("info looked good");
-            return done(null, response);
-            
-        });
+      db.findOne({email: email})
+        .then(user => {
+          //if user was returned, need to check the passwords
+          if(user){
+              if (user.password = password) return done(null, user);
+              else return done(null, false)
+          }
+        })
   }
-));
+))
 
-passport.initialize();
+
 passport.serializeUser(function(user, cb){
   cb(null, user);
 });
 passport.deserializeUser(function(obj, cb){
   cb(null, obj);
 });
+
 
 module.exports = passport;

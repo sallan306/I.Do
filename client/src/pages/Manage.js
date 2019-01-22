@@ -5,6 +5,7 @@ import {Button} from "../components/Button";
 import Container from "../components/Container";
 import GuestForm from '../components/GuestForm';
 import {NavLinks} from "../components/NavLinks";
+import ContactCard from "../components/ContactCard";
 
 
 class Manage extends Component {
@@ -48,6 +49,7 @@ class Manage extends Component {
                <Container>
                
                 <h1 style={{textAlign:"center"}}>i.Do Add/Edit Guests</h1>
+                <ContactCard />
                 <PanelGroup accordion id="accordion-example">
             <Panel eventKey="1">
                 <Panel.Heading>

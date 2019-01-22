@@ -1,10 +1,14 @@
 
 const passport = require('../services/passport');
 
+
 module.exports.initRoutes = (app) => {
+
+    console.log("auth.routes.js ====================================")
     app.post('/api/v1/login', passport.authenticate('local'), function(req, res, next) {
-        // If this function gets called, authentication was successful.
-        // `req.user` contains the authenticated user.
-        res.status(200).json({success: true, msg:"Log in successful", user: req.user});
+        // console.log ('reqbody HERE: ', req.body)
+        res.json({"JSON":req.user});
+        // res.status(200).json({success: true, msg:"logged in", requser: req.user});
+
     });
 }

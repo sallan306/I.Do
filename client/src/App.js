@@ -20,7 +20,6 @@ function App() {
           <Route exact path="/Guest" component={Guest} />
           <Route exact path="/Manage" component={Manage} />
           <Route exact path="/Dashboard"component={Dashboard} />
-          {/* <Route exact path="/books/:id" component={Detail} /> */}
           <Route component={ErrorPage} />
         </Switch>
       </div>

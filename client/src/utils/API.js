@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export default {
-
   //==========================================================
   //CONTACTS CRUD
   //==========================================================
@@ -9,12 +8,16 @@ export default {
   // Saves a Contact to the database
     //requires userID passed. req.user.id cant be assumed to be present.
   createContact: (userID, userData) => {
-    axios.post(`/api/v1/contacts/${userID}`, {userData})
+    axios.post("/api/v1/contacts/"+{userID}, {userData})
   },
 
   // Gets all contacts associated with user
-  getContacts: () => {
-    axios.get(`/api/v1/contacts/`, {});
+  getContacts: ( cb ) => {
+    axios.get(`/api/v1/contacts/`)
+      .then( result => {
+        cb(result);
+      })
+      .catch( err => console.log(err));
   },
 
   // Gets the contact with the given id
@@ -35,8 +38,13 @@ export default {
   //USER CRUD
   //==========================================================
 
-  createUser: (user)=>{
-    axios.post(`/api/v1/users`, {user})
+  createUser: (user, cb)=>{
+    console.log("create user api.js")
+    axios.post(`/api/v1/users`, user).then( result =>{
+      result 
+      ? cb(result)
+      : console.log(result)
+    })
   },
 
   getUser: (userID) => {
@@ -66,7 +74,19 @@ export default {
     axios.post('/api/v1/sms', {sendTo: "+16032755557", txtBody: message });
   },
 
-  login: (email, password) => {
-    axios.post('/api/v1/login', {email: email, password: password});
+  login: function(email, password, cb) {
+    console.log("REACT TO API: Trying to Log in");
+    console.log("password", password);
+    console.log("email", email);
+    axios.post('/api/v1/login', {email: email, password: password})
+      .then( (result) => {
+        console.log("result from axios.post on api.js",result);
+        
+        cb("CB RESULT",result);
+      })
+      .catch( err => {
+        console.log(err);
+        return err;
+      });
   }
 };
