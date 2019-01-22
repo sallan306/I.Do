@@ -46,7 +46,7 @@ class App extends React.Component {
           <Switch>
 
             <Route exact path="/" render={this.renderDefaultView} />
-            <Route exact path="/Guest" component={Guest} />
+            <Route exact path="/:userID" component={Guest} />
             {/* <Route exact path="/Manage" component={Manage} /> */}
             {/* <Route exact path="/Dashboard" component={Dashboard} /> */}
             <Route exact path="/Logout" render={this.logOut} />
