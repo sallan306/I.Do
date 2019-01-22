@@ -79,7 +79,7 @@ class Home extends Component {
     handleFormLogin = event => {
         event.preventDefault();
         console.log(this.props)
-        API.login(this.state.email, this.state.password, (result) =>{
+        API.login(this.state.email, this.state.password, function(result){
             this.props.flipToDash()
             //  if success, change app state
             console.log ("custom cb",result);
