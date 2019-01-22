@@ -1,19 +1,29 @@
 const controller = require('./contacts.controller');
 const passport = require('passport');
-const isAuth = require('../services/isAuth');
+const isAuth = require('../services/isAuth').isAuthenticated;
+
+const isAuthenticated = (req, res, next) =>{
+    if(!req.isAuthenticated()){
+        return res.redirect('/login');
+    }
+    next();
+    
+}
 
 module.exports.initRoutes = (app) => {
 
-    // read ALL contacts
+    // read ALL contacts belonging to user
         // inorder to see contacts belonging to user, checking auth.
-    app.get('/api/v1/contacts/', (req,res,next) => {
-        console.log()
-        passport.authenticate('local', (err, user, info) => {
-            //console.log("req.user",req.user);
-            console.log("user: ", user)
-            console.log(req);
-            //res.status(200).json({success: false});
-        })
-    })
+    app.get('/api/v1/contacts/',  isAuth , controller.getContacts);
+
+    //create a contact
+    app.post('/api/v1/contacts', isAuth, (req,res) => {
+        controller.createContactUser(req, res);
+    });
+
+    //create a contact as guest
+    app.post('/api/v1/contacts/:userID', (req, res) => {
+        controller.createContactGuest(req, res);
+    });
     
 }
