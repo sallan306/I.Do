@@ -23,7 +23,6 @@ import GuestForm from '../components/GuestForm';
 
 class Guests extends Component {
     state = {
-        userID: "",
         firstName: "",
         lastName: "",
         email: "",
