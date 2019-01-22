@@ -22,8 +22,8 @@ module.exports.initRoutes = (app) => {
     });
 
     //create a contact as guest
-    app.post('/api/v1/contacts/:userID', isAuth, (req, res) => {
-        console.log(req.user);
+    app.post('/api/v1/contacts/:userID', (req, res) => {
+        controller.createContactGuest(req, res);
     });
     
 }

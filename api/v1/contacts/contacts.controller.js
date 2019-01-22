@@ -9,8 +9,9 @@ controller.createContactUser = (req, res) => {
         lastName: req.body.LastName,
         
     }
-    //db.create(newContact);
-    console.log(newContact);
+    db.create(newContact)
+    .then( results => console.log(results))
+    .catch( err => console.log(err) );
 }
 controller.createContactGuest = (req, res) => {
     const newContact = {
@@ -18,6 +19,13 @@ controller.createContactGuest = (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName
     }
+    db.create(newContact)
+    .then( result => {
+        console.log(result)
+    })
+    .catch( err => {
+        console.log(err);
+    });
 }
 
 controller.getContacts =  (req, res) => {
@@ -26,7 +34,7 @@ controller.getContacts =  (req, res) => {
         .then( (result) => {
             res.status(200).json({
                 success: true,
-                msg: "contacts....",
+                msg: "contacts for: mr/mrs/ms: "+req.user._id,
                 contacts: result})
         })
         .catch( (err) => {
