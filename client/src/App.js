@@ -8,23 +8,44 @@ import Guest from "./pages/Guest";
 import Nav from "./components/Nav";
 import ColorMenu from "./components/ColorMenu"
 
-function App() {
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isLoggedIn: false
+    }
+  }
+
+  renderDefaultView = () => {
+    if(this.state.loggedIn){
+      return <Dashboard />
+    } else {
+      return <Home flipToDash={this.flipToDash}/>
+    }
+  }
   
-  return (
-    <Router>
-      <div>
+  flipToDash = () => {
+    this.setState({loggedIn: !this.state.loggedIn})
+  }
+
+  render(){
+    return (
+      <Router>
+        <div>
           <ColorMenu/>
-        <Nav/>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/Guest" component={Guest} />
-          <Route exact path="/Manage" component={Manage} />
-          <Route exact path="/Dashboard"component={Dashboard} />
-          <Route component={ErrorPage} />
-        </Switch>
-      </div>
-    </Router>
-  );
+          <Nav/>
+          <Switch>
+
+            <Route exact path="/" render={this.renderDefaultView} />
+            <Route exact path="/Guest" component={Guest} />
+            <Route exact path="/Manage" component={Manage} />
+            <Route exact path="/Dashboard"component={Dashboard} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
