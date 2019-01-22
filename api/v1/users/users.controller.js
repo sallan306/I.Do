@@ -36,14 +36,15 @@ controller.addUser = (req, res, next) =>{
     });//END FIND ONE
 }//END ADD USER
 
-//DEV ONLY FUNCTION
-controller.findAll = (req, res, next) => {
-    console.log ("Read all");
-    db.find({}, (err, results) => {
-        console.log(results);
-        res.status(200).json({success:true, msg: results});
-    }).then( (results) => console.log("Rogue One", results))
-}//end findAll
+controller.deleteThisUser = (req, res, next) => {
+
+    db.deleteOne({_id: req.user.id})
+    .then( result => {
+        console.log (result);
+        res.json({success: true, msg:`deleted user: ${req.user.id}`});
+    })
+    .catch()
+}
 
 controller.findSpecificUser = (req, res, next) => {
     console.log("Read");
@@ -52,6 +53,5 @@ controller.findSpecificUser = (req, res, next) => {
         res.status(200).json({success: true, msg: result})
     })
 }
-
 
 module.exports = controller;

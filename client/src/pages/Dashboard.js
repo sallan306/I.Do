@@ -33,8 +33,9 @@ class Dashboard extends Component {
     componentDidMount() {
         
         API.getContacts( results => {
-            this.setState({contacts: results})
-            console.log(this.state.contacts);
+            this.setState({ contacts: results.data.contacts })
+
+            // console.log(this.state.contacts);
         });
         // call API.getContacts
         // it will bring back a list of all contacts belonging to currect user

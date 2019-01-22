@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom'
-// import API from "../utils/API";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import "../components/Nav/";
 import "../components/Nav/style.css";
 import Container from "../components/Container";
-// import API from "../utils/API";
 import axios from 'axios';
 import API from "../utils/API";
 
@@ -26,20 +23,6 @@ class Home extends Component {
     // componentDidMount() {
     //   // Check to see if user is authenticated. If authenticated, log in, if not should be good.
     // }
-
-    // loadBooks = () => {
-    //   API.getBooks()
-    //     .then(res =>
-    //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-    //     )
-    //     .catch(err => console.log(err));
-    // };
-
-    // deleteBook = id => {
-    //   API.deleteBook(id)
-    //     .then(res => this.loadBooks())
-    //     .catch(err => console.log(err));
-    // };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -71,7 +54,7 @@ class Home extends Component {
             })
             
         } else {
-            alert("Pleas have matching passwords!")
+            alert("Please have matching passwords!")
         }
       
     }
@@ -80,9 +63,17 @@ class Home extends Component {
         event.preventDefault();
         console.log(this.props)
         API.login(this.state.email, this.state.password, (result) =>{
-            this.props.flipToDash()
+            // console.log("result =====",result);
+
+
+            result.status === 200
+            ? this.props.flipToDash()
+            : alert("that username/password combination doesn'tt work")
+
+
+
             //  if success, change app state
-            console.log ("custom cb",result);
+            // console.log ("custom cb",result);
             // API.getContacts( (results) => 
             // this.props.flipToDash()
             // )
