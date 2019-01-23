@@ -97,6 +97,15 @@ class Dashboard extends Component {
         return bigArray;
     }
 
+    handleFormEdit = event => {
+        event.preventDefault();
+        //This is where we edit things
+    }
+
+    handleSendMassMessage = event => {
+        event.preventDefault();
+        //This is where we call the component for sending messages out to guests
+    }
     componentDidMount() {
         API.getContacts( results => {
             results.data.contacts
@@ -115,6 +124,13 @@ class Dashboard extends Component {
                 <Container>
                
                     <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
+                    <Button
+                        onClick={this.handleSendMassMessage}
+                    >
+                        Send Email
+                    </Button>
+                    <br/>
+                    <a href="http://localhost:3000/event/5c4768f1b3d09f0d05a59bb2">Click Here</a>
                     <PanelGroup>
                     {this.state.contacts.map(contact=>
                         <ContactCard 
@@ -150,6 +166,7 @@ class Dashboard extends Component {
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
                             />
+                            
                             </Panel.Body>
                         </Panel>
                     </PanelGroup>            
