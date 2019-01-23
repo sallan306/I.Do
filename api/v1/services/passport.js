@@ -9,6 +9,7 @@ passport.use(new LocalStrategy(
     usernameField: "email",
     passwordField: "password"
   },
+  
   function(email, password, done){
       email = email.toUpperCase();
       console.log("passport use:");
@@ -26,7 +27,6 @@ passport.use(new LocalStrategy(
         })
   }
 ))
-
 
 passport.serializeUser(function(user, cb){
   console.log("user", user);

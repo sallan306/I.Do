@@ -96,8 +96,38 @@ controller.getContacts =  (req, res) => {
 
 }
 
-controller.updateContact = (req, res) => {
-    console.log (req.body)
+controller.editContact = (req, res) => {
+    //finding the contact in the DB.
+    db.findOne({_id: req.params.contactID})
+    .then( result => {
+        //checking the result to make sure it belongs to current user
+        console.log(result);
+        if (result._id == req.user._id){
+            console.log ("Permission to change contact granted");
+            //update contact.
+            db.findOneAndUpdate(req.params._id, {
+                $set: { 
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    street: req.body.street,
+                    city: req.body.city,
+                    state: req.body.state,
+                    zipcode: req.body.zipcode,
+                    phone: req.body.phone,
+                    email: req.body.email
+                }
+            })
+        }
+        else {
+            res.status(200).json({success: false, errCode: 400, msg:"Access to change this contact Denied"})
+        }
+        
+    })
+    .catch( err => {
+        //printing the error
+        console.log(err)
+        res.status(200).json({success: false, errCode: 500, msg: "something went wrong with the DB."})
+    });
 }
 
 module.exports = controller;
