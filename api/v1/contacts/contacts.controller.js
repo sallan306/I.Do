@@ -128,6 +128,13 @@ controller.editContact = (req, res) => {
                     data: result
                 })
             })
+            .catch( (err) => {
+                res.status(200).json({
+                    success: true,
+                    err: 500,
+                    msg: 'Problem with the DB'
+                })
+            })
         }
         else {
             res.status(200).json({success: false, errCode: 400, msg:"Access to change this contact Denied"})
