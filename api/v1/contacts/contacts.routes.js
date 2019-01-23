@@ -33,7 +33,7 @@ module.exports.initRoutes = (app) => {
 
     //delete a contact
     app.delete('/api/v1/contacts/:contactID', isAuthenticated, (req, res) => {
-        controller.delteContact(req, res);
+        controller.deleteContact(req, res);
     })
     
 }

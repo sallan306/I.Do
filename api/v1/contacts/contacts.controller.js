@@ -100,12 +100,15 @@ controller.editContact = (req, res) => {
     //finding the contact in the DB.
     db.findOne({_id: req.params.contactID})
     .then( result => {
+        console.log("INSIDE EDIT CONTACT");
         //checking the result to make sure it belongs to current user
-        console.log(result);
-        if (result._id == req.user._id){
+        console.log(result.belongsTo);
+        console.log(req.user._id);
+        if (result.belongsTo == req.user._id){
             console.log ("Permission to change contact granted");
             //update contact.
-            db.findOneAndUpdate(req.params._id, {
+
+            db.findOneAndUpdate({_id:req.params.contactID}, {
                 $set: { 
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
@@ -116,6 +119,14 @@ controller.editContact = (req, res) => {
                     phone: req.body.phone,
                     email: req.body.email
                 }
+            })
+            .then ( (result) => {
+                console.log (result)
+                res.status(200).json({
+                    success: true,
+                    msg: "Contact has been edited",
+                    data: result
+                })
             })
         }
         else {
@@ -130,38 +141,46 @@ controller.editContact = (req, res) => {
     });
 }
 
-controller.delteContact = (req, res) => {
-    //locating contact
-    db.findOne({id: req.params.contactID})
+controller.deleteContact = (req, res) => {
+    //finding the contact in the DB.
+    db.findOne({_id: req.params.contactID})
     .then( result => {
-        console.log(result)
-        //contact located. checking ownership of the contact
-        if (result._id == req.user._id){
-            db.findByIdAndDelete({_id: req.params.contactID})
-            .then( result => {
-                console.log(result);
-                res.state(200).json({
+        console.log("INSIDE EDIT CONTACT");
+        //checking the result to make sure it belongs to current user
+        console.log(result.belongsTo);
+        console.log(req.user._id);
+        if (result.belongsTo == req.user._id){
+            console.log ("Permission to change contact granted");
+            //update contact.
+
+            db.findOneAndDelete({_id:req.params.contactID})
+            .then( (result) => {
+                console.log (result)
+                res.status(200).json({
                     success: true,
-                    msg: "Contact Deleted"
+                    msg: "Contact has been deleted",
+                    data: result
                 })
             })
-            .catch( err=> {
-                console.log(result);
-                res.state(200).json({
-                    success: false, 
+            .catch( (err) => {
+                console.log (err);
+                res.status(200).json({
+                    success: false,
                     err: 500,
-                    msg: "Something went wrong with the DB"    
+                    msg: "Something went wrong with the DB"
                 })
-            });
+            })
         }
+        else {
+            res.status(200).json({success: false, errCode: 400, msg:"Access to change this contact Denied"})
+        }
+        
     })
     .catch( err => {
+        //printing the error
         console.log(err)
-        res.status(200).json({
-            success: false, 
-            err:500, 
-            msg: "Problem with the DB"})
-    })
+        res.status(200).json({success: false, errCode: 500, msg: "something went wrong with the DB."})
+    });
 }
 
 module.exports = controller;
