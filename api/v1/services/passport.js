@@ -11,7 +11,7 @@ passport.use(new LocalStrategy(
   },
   
   function(email, password, done){
-      email = email.toUpperCase();
+      email = email.toLowerCase();
       console.log("passport use:");
       console.log("User: ", email);
       console.log("password: ", password);
@@ -27,8 +27,13 @@ passport.use(new LocalStrategy(
               else return (done, null, false);
             });
           }
+          else{
+            console.log("user not found");
+            return (done, null, false);
+          }
         })
         .catch( err => {
+          console.log("found One false");
           return(done, null, false);
         })
   }
