@@ -142,13 +142,13 @@ class Dashboard extends Component {
     // -------------------------------------------
 
     componentDidMount() {
-        // API.getContacts( results => {
-        //     results.data.contacts
-        //     ? this.setState({ contacts: results.data.contacts })
-        //     : this.setState({ contacts: [{ firstName: "No Contacts" }]})
+        API.getContacts( results => {
+            results.data.contacts
+            ? this.setState({ contacts: results.data.contacts })
+            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
 
-        // //     console.log(this.state.contacts);
-        // });
+        //     console.log(this.state.contacts);
+        });
         
         const guestCheckboxes = Test.reduce(
             (checkboxObj, guest) => ({
