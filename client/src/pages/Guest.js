@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import GuestForm from '../components/GuestForm';
+import API from "../utils/API";
 
 class Guests extends Component {
     state = {
+        userID: "",
+        
         firstName: "",
         lastName: "",
         email: "",
@@ -17,6 +20,7 @@ class Guests extends Component {
         const userID = this.props.match.params.userID
         console.log(userID);
         // TODO Assign userID to state
+        this.setState({userID: userID})
     }
 
     handleInputChange = event => {
@@ -28,6 +32,12 @@ class Guests extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        API.createGuestContact(this.state.userID, this.state, result =>
+            // console.log("RESULT",result)
+            result.status === 200
+            ? alert("Thanks for submitting")
+            : alert("Sorry that didn't go through")
+            )
         // TODO on submit of the form, send data to userID database
     }
 

@@ -19,14 +19,14 @@ export default function ContactCard(props) {
                     <Panel.Body collapsible>  
                         <PrintText className="infoArea">
                             <PrintText>
-                                {Test.phone}
-                                {Test.email}
+                                {props.phone}
+                                {props.email}
                             </PrintText>
                             <PrintText>
-                                {Test.address}
-                                {Test.city}
-                                {Test.state}
-                                {Test.zipcode}
+                                {props.address}
+                                {props.city}
+                                {props.state}
+                                {props.zipcode}
                             </PrintText>
                         </PrintText>
                     </Panel.Body>

@@ -8,7 +8,23 @@ export default {
   // Saves a Contact to the database
     //requires userID passed. req.user.id cant be assumed to be present.
   createContact: (userID, userData) => {
-    axios.post("/api/v1/contacts/"+{userID}, {userData})
+    axios.post("/api/v1/contacts/"+{userID}, userData)
+  },
+
+  createUserContact: (contactData, cb) => {
+    axios.post('/api/v1/contacts', contactData)
+    .then(result => {
+      cb(result)
+    })
+    .catch()
+  },
+
+  createGuestContact: (userID, contactData, cb) => {
+    axios.post('/api/v1/contacts/'+userID, contactData)
+    .then( result => {
+      cb(result)
+    })
+    .catch()
   },
 
   // Gets all contacts associated with user
@@ -27,7 +43,7 @@ export default {
   },
 
   editContact: (contactID, userData) => {
-    axios.put(`/api/v1/contacts/${contactID}`, {userData});
+    axios.put(`/api/v1/contacts/${contactID}`, userData);
   },
 
    // Deletes the contact with the given id
@@ -58,7 +74,7 @@ export default {
   },
 
   updateUser: (userID, contact)=>{
-    axios.put(`/api/v1/users`, {contact})
+    axios.put(`/api/v1/users`, contact)
   },
 
   deleteUser: (userID) => {
