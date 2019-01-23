@@ -42,7 +42,7 @@ class Dashboard extends Component {
         event.preventDefault();
         API.createUserContact(this.state, result =>
             result.status === 200
-            ? console.log("Contact Added")
+            ? this.componentDidMount()
             : console.log("Sorry that didn't go through")
             )
     }
