@@ -6,34 +6,16 @@ import ContactCard from "../components/ContactCard";
 
 class Dashboard extends Component {
     state = {
-        contacts: [{
-            belongsTo: 1,
-            firstName: "Kyle",
-            lastName: "Bauer",
-            street: "5915 Avenue P",
-            city: "Santa Fe",
-            state: "TX",
-            zipcode: 77510,
-            phone: "409-939-7554",
-            email: "kbauertx@gmail.com"
-        },
-        {
-            belongsTo: 2,
-            firstName: "Bob",
-            lastName: "Overhaven",
-            street: "1 Brewster Lane",
-            city: "North",
-            state: "Alaska",
-            zipcode: 8,
-            phone: "2",
-            email: "1@gmail.com"
-        }],
-        isAuthenticated: true
+        contacts: []
     }
 
     componentDidMount() {
         API.getContacts( results => {
-            this.setState({ contacts: results.data.contacts })
+            results.data.contacts
+            ? this.setState({ contacts: results.data.contacts })
+            : this.setState({ contacts:{firstName: "No Contacts"}})
+
+            // console.log(this.state.contacts);
         });
     }
 
@@ -62,7 +44,6 @@ class Dashboard extends Component {
             </div>
         );
     };
-
 };
 
 export default Dashboard;

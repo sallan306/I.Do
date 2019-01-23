@@ -14,11 +14,9 @@ class Home extends Component {
         email: "",
         password: "",
         password2: "",
-        isUserSignUp: false,
-        loginemail: "",
-        loginpassword: "",
-        isAuthenticated: false
+        isUserSignUp: false
     };
+
     // TO DO !!!!========================
     // componentDidMount() {
     //   // Check to see if user is authenticated. If authenticated, log in, if not should be good.
@@ -44,20 +42,18 @@ class Home extends Component {
             password: this.state.password
             };
         if (this.state.password === this.state.password2) {
-            // alert("Passwords Match!");
                 console.log(userInfo);
             axios.post(`/api/v1/users`, userInfo, function(results){
                 console.log(results)
             }).then(res =>{
                 this.handleFormLogin(res);
-                // console.log("res.data on handleformsubmit",res.data);
             })
-            
         } else {
             alert("Please have matching passwords!")
         }
       
     }
+
     APILogin (){
         API.login(this.state.email, this.state.password, (result) =>{
             result.status === 200
@@ -68,21 +64,7 @@ class Home extends Component {
 
     handleFormLogin = event => {
         event.preventDefault();
-        // console.log(this.props)
         this.APILogin();
-        // API.login(this.state.email, this.state.password, (result) =>{
-        //     result.status === 200
-        //     ? this.props.flipToDash()
-        //     : alert("that username/password combination doesn'tt work")
-        // })
-        //  if success, change app state
-        // console.log ("custom cb",result);
-        // API.getContacts( (results) => 
-        // this.props.flipToDash()
-        // )
-        // console.log('redirect to dashboard');
-        
-        
     }
 
     render() {
@@ -166,7 +148,5 @@ class Home extends Component {
         )
     }
 };
-
-
 
 export default Home;

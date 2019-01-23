@@ -29,11 +29,12 @@ class App extends React.Component {
 
   logOut = () => {
     this.setState({loggedIn: false})
+    // TODO API Signout call.
     return <Redirect
-      to={{
-        pathname: "/"
-      }}
-    />
+        to={{
+          pathname: "/"
+        }}
+      />
   }
 
   render(){
@@ -43,11 +44,9 @@ class App extends React.Component {
           <ColorMenu/>
           <Nav/>
           <Switch>
-
             <Route exact path="/" render={this.renderDefaultView} />
             <Route exact path="/:userID" component={Guest} />
             <Route exact path="/Logout" render={this.logOut} />
-              />
             <Route component={ErrorPage} />
           </Switch>
         </div>

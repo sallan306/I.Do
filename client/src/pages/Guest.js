@@ -1,25 +1,5 @@
 import React, { Component } from "react";
-// import API from "../utils/API";
 import GuestForm from '../components/GuestForm';
-
-
-// class Profile extends React.Component {
-//     state = {
-//       user: null
-//     }
-//     componentDidMount () {
-//       const { handle } = this.props.match.params
-  
-//       fetch(`https://api.twitter.com/user/${handle}`)
-//         .then((user) => {
-//           this.setState(() => ({ user }))
-//         })
-//     }
-//     render() {
-//       ...
-//     }
-//   }
-
 
 class Guests extends Component {
     state = {
@@ -34,15 +14,9 @@ class Guests extends Component {
     };
 
     componentDidMount(){
-        // console.log(this.match.params.userID)
         const userID = this.props.match.params.userID
         console.log(userID);
-        // fetch(`http://localhost:3000/${userID}`)
-        // .then((userID) => {
-        //   this.setState({userID:userID})
-        //   console.log(this.state.userID)
-        // })
-        
+        // TODO Assign userID to state
     }
 
     handleInputChange = event => {
@@ -54,11 +28,8 @@ class Guests extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.password === this.state.password2) {
-            alert("Passwords Match!");
-        }
+        // TODO on submit of the form, send data to userID database
     }
-
 
     render() {
         return (
@@ -81,7 +52,5 @@ class Guests extends Component {
         )
     }
 };
-
-
 
 export default Guests;
