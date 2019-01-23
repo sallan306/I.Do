@@ -10,20 +10,19 @@ module.exports.initRoutes = (app) => {
             msg: "User Logged in"})
     });
 
-    app.post('api/v1/auth'), passport.authenticate('local'), function(req, res, next) {
-        if (req.user)
+    app.post('api/v1/auth', (req, res, next) => {
+        if(req.isAuthenticated()){
             res.status(200).json({
-                success:true,
-                msg:"user is valid"
+                success: true,
+                msg: "Authenticated"
             });
-        else{
-            res.status(200).json({
+        }
+        else {
+            req.status(200).json({
                 success: false,
                 err: 400,
-                msg: "user is invalid"
-            })
+                msg:"Not authenticated"
+            });
         }
-    }
-
-    }
+    });
 }
