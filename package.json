@@ -34,6 +34,7 @@
     "react": "^16.7.0",
     "react-color": "^2.17.0",
     "react-dom": "^16.7.0",
+    "reactcss": "^1.2.3",
     "twilio": "^3.27.1"
   }
 }
