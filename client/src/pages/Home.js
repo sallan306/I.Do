@@ -75,7 +75,7 @@ class Home extends Component {
         return (
             <div>
                <Container>
-                    <h2>{this.state.isUserSignUp ? "sign up with i.Do to get started!" : "login to your account"}</h2>
+                    
                         <Button
                             onClick={this.handleSignUpForm}
                             secondaryColor={this.props.secondaryColor}

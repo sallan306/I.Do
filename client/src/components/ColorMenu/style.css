@@ -14,7 +14,7 @@ body {
 }
 .circle-picker-container {
     position: fixed;
-    left: 5px;
+    left: -195px;
     top: 50px;
 }
 
@@ -83,15 +83,13 @@ body, #title, .bar1, .bar2, .bar3, .circle-picker-container, .panel-default, .fo
     transform: rotate(45deg) translate(-8px, -8px);
 }
 .circleChange {
-    -webkit-transform: translate(-200px, 0px);
-    transform: translate(-200px, 0px);
+    -webkit-transform: translate(200px, 0px);
+    transform: translate(200px, 0px);
 }
 
 .invisible {
     visibility: hidden;
 }
-.clicked {
-    background: grey
-}
+
 
 

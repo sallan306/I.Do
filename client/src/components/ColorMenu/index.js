@@ -1,9 +1,9 @@
 import React from "react";
 import $ from "jquery"
 import '../ColorMenu/style.css';
-import ColorPicker from "../ColorPicker"
-import ColorPicker2 from "../ColorPicker2"
-import ColorPickerFont from "../ColorPickerFont"
+import ColorPicker from "../ColorMenu/ColorPicker"
+import ColorPicker2 from "../ColorMenu/ColorPicker2"
+import ColorPickerFont from "../ColorMenu/ColorPickerFont"
     
 
 function toggleColors() {

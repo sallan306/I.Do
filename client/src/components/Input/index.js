@@ -6,14 +6,9 @@ export function Input(props) {
     <div className="form-group">
       <input style={{
 
-        border: 0, 
-        borderRadius: "10px", 
+        border: 0,  
         background: props.secondaryColor, 
-        color: props.fontColor,
-        '::placeholder': {color: "red", opacity: 1},
-        ':-ms-input-placeholder': {color: "red"},
-        '::-ms-input-placeholder': {color: "red"}
-        
+        color: props.fontColor,   
         }}className="form-control" {...props} />
     </div>
   );
