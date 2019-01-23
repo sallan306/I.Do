@@ -39,7 +39,11 @@ class Dashboard extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        alert("Hey! Submit Button works! That's something to be proud of");
+        API.createUserContact(this.state, result =>
+            result.status === 200
+            ? console.log("Contact Added")
+            : console.log("Sorry that didn't go through")
+            )
     }
 
     handleContactEdit = event => {
