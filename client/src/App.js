@@ -45,7 +45,7 @@ class App extends React.Component {
           <Nav/>
           <Switch>
             <Route exact path="/" render={this.renderDefaultView} />
-            <Route exact path="/:userID" component={Guest} />
+            <Route exact path="/event/:userID" component={Guest} />
             <Route exact path="/Logout" render={this.logOut} />
             <Route component={ErrorPage} />
           </Switch>
