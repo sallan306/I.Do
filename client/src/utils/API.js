@@ -15,6 +15,7 @@ export default {
   getContacts: ( cb ) => {
     axios.get(`/api/v1/contacts/`)
       .then( result => {
+        console.log(result);
         cb(result);
       })
       .catch( err => console.log(err));

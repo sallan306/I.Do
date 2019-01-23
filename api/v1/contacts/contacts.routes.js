@@ -25,5 +25,15 @@ module.exports.initRoutes = (app) => {
     app.post('/api/v1/contacts/:userID', (req, res) => {
         controller.createContactGuest(req, res);
     });
+
+    //edit a contact.
+    app.put('/api/v1/contacts/:contactID', isAuthenticated, (req, res) => {
+        controller.editContact(req, res);
+    })
+
+    //delete a contact
+    app.delete('/api/v1/contacts/:contactID', isAuthenticated, (req, res) => {
+        controller.deleteContact(req, res);
+    })
     
 }
