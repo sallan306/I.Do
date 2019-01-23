@@ -8,6 +8,7 @@ import {PrintText, Test} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import { Input } from "../components/Input";
+import Modal from "../components/Modal";
 
 class Dashboard extends Component {
     state = {
@@ -169,16 +170,17 @@ class Dashboard extends Component {
             <div>
                 <NavLinks/>
                 <Container>
-               
-                    <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
+                    
+            {/* The guest link appears within this modal */}
+                <Modal/>
+                   
+               <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                     <Button
                         onClick={this.handleSendMassMessage}
                     >
                         Send Email
                     </Button>
                     <br/>
-                    <a href="http://localhost:3000/event/5c4768f1b3d09f0d05a59bb2">Click Here</a>
-                    
                     <PanelGroup>
                     {this.state.contacts.map(contact=>
                         <ContactCard {...contact} guestCheckboxes={this.state.guestCheckboxes} handleCheckboxChange={this.handleCheckboxChange} />
