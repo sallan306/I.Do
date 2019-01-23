@@ -39,7 +39,11 @@ class Dashboard extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        alert("Hey! Submit Button works! That's something to be proud of");
+        API.createUserContact(this.state, result =>
+            result.status === 200
+            ? console.log("Contact Added")
+            : console.log("Sorry that didn't go through")
+            )
     }
 
     handleContactEdit = event => {
@@ -101,7 +105,7 @@ class Dashboard extends Component {
         API.getContacts( results => {
             results.data.contacts
             ? this.setState({ contacts: results.data.contacts })
-            : this.setState({ contacts:{firstName: "No Contacts"}})
+            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
 
             // console.log(this.state.contacts);
         });
@@ -118,7 +122,7 @@ class Dashboard extends Component {
                     <PanelGroup>
                     {this.state.contacts.map(contact=>
                         <ContactCard 
-                            key={contact.belongsTo}
+                            key={contact._id}
                             firstName={contact.firstName}
                             lastName={contact.lastName}
                             street={contact.street}
