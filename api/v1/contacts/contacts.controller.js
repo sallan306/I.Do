@@ -30,6 +30,7 @@ controller.createContactUser = (req, res) => {
         })
     });
 }
+
 controller.createContactGuest = (req, res) => {
     const newContact = {
         belongsTo: req.params.userID,

@@ -51,12 +51,8 @@ export default {
   getUser: (userID) => {
     axios.get(`/api/v1/users`, {});
   },
-
-  //DEV PATH ONLY
-  getUsers: () => {
-    axios.get(`/dev/users`, {})
-  },
-
+  //PATHS NOT BEING IMPLEMENTED IN CURRENT BUILD
+  /*
   updateUser: (userID, contact)=>{
     axios.put(`/api/v1/users`, {contact})
   },
@@ -64,7 +60,7 @@ export default {
   deleteUser: (userID) => {
     axios.post(`/api/v1/users/`, {});
   },
-
+  */
   //==========================================================
   //SERVICES
   //==========================================================
