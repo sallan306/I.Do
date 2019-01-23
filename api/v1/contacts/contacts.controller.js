@@ -130,4 +130,38 @@ controller.editContact = (req, res) => {
     });
 }
 
+controller.delteContact = (req, res) => {
+    //locating contact
+    db.findOne({id: req.params.contactID})
+    .then( result => {
+        console.log(result)
+        //contact located. checking ownership of the contact
+        if (result._id == req.user._id){
+            db.findByIdAndDelete({_id: req.params.contactID})
+            .then( result => {
+                console.log(result);
+                res.state(200).json({
+                    success: true,
+                    msg: "Contact Deleted"
+                })
+            })
+            .catch( err=> {
+                console.log(result);
+                res.state(200).json({
+                    success: false, 
+                    err: 500,
+                    msg: "Something went wrong with the DB"    
+                })
+            });
+        }
+    })
+    .catch( err => {
+        console.log(err)
+        res.status(200).json({
+            success: false, 
+            err:500, 
+            msg: "Problem with the DB"})
+    })
+}
+
 module.exports = controller;
