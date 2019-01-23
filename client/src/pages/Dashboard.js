@@ -8,7 +8,6 @@ import {PrintText, Test} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import { Input } from "../components/Input";
-import Modal from "../components/Modal";
 
 class Dashboard extends Component {
     state = {
@@ -50,57 +49,58 @@ class Dashboard extends Component {
     handleContactEdit = event => {
         event.preventDefault();
         alert("Hey! This is where editing code goes!")
-    }
-
-    newItemId = () => {
-        const id = this.lastItemId;
-        this.lastItemId += 1;
-        return id;
-      };
-
-    handleToDoAdd = event => {
-        event.preventDefault();
-        console.log("Hello there Annie!")
-        alert("Added " + this.state.task);
-        const id = this.newItemId();
-        const taskObj = {
-            id,
-            task: this.state.task
-        };
-        const newListObj = this.state.list;
-        newListObj[id] = taskObj;
-
-        this.setState({
-            list: newListObj
-        }, () => console.log(this.state.list));
     };
 
-    handleDelete = id => {
-        const removeItems = this.state.list;
-        delete removeItems[id];
-        this.setState({
-            list: removeItems
-        })
-    };
+    // FUTURE FEATURE -- TO-DO LIST
+    // newItemId = () => {
+    //     const id = this.lastItemId;
+    //     this.lastItemId += 1;
+    //     return id;
+    //   };
 
-    renderToDos = () => {
-        const bigArray = [];
+    // handleToDoAdd = event => {
+    //     event.preventDefault();
+    //     console.log("Hello there Annie!")
+    //     alert("Added " + this.state.task);
+    //     const id = this.newItemId();
+    //     const taskObj = {
+    //         id,
+    //         task: this.state.task
+    //     };
+    //     const newListObj = this.state.list;
+    //     newListObj[id] = taskObj;
 
-        for (let taskNum in this.state.list){
-            bigArray.push(
-                <div>
-                    <PrintText>{this.state.list[taskNum].task}</PrintText>
-                    <Button
-                        onClick={() => this.handleDelete(taskNum)}
-                    >
-                    X
-                    </Button>
-                </div>
-            );
-        }
+    //     this.setState({
+    //         list: newListObj
+    //     }, () => console.log(this.state.list));
+    // };
 
-        return bigArray;
-    }
+    // handleDelete = id => {
+    //     const removeItems = this.state.list;
+    //     delete removeItems[id];
+    //     this.setState({
+    //         list: removeItems
+    //     })
+    // };
+
+    // renderToDos = () => {
+    //     const bigArray = [];
+
+    //     for (let taskNum in this.state.list){
+    //         bigArray.push(
+    //             <div>
+    //                 <PrintText>{this.state.list[taskNum].task}</PrintText>
+    //                 <Button
+    //                     onClick={() => this.handleDelete(taskNum)}
+    //                 >
+    //                 X
+    //                 </Button>
+    //             </div>
+    //         );
+    //     }
+
+    //     return bigArray;
+    // }
 
     handleFormEdit = event => {
         event.preventDefault();
@@ -169,17 +169,16 @@ class Dashboard extends Component {
             <div>
                 <NavLinks/>
                 <Container>
-                    
-            {/* The guest link appears within this modal */}
-                <Modal/>
-                   
-               <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
+               
+                    <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                     <Button
                         onClick={this.handleSendMassMessage}
                     >
                         Send Email
                     </Button>
                     <br/>
+                    <a href="http://localhost:3000/event/5c4768f1b3d09f0d05a59bb2">Click Here</a>
+                    
                     <PanelGroup>
                     {this.state.contacts.map(contact=>
                         <ContactCard {...contact} guestCheckboxes={this.state.guestCheckboxes} handleCheckboxChange={this.handleCheckboxChange} />
@@ -208,8 +207,10 @@ class Dashboard extends Component {
                             
                             </Panel.Body>
                         </Panel>
-                    </PanelGroup>            
-                    <PanelGroup>
+                    </PanelGroup>     
+
+                {/* FUTURE FEATURE -- TO-DO LIST        */}
+                    {/* <PanelGroup>
                         <Panel>
                             <Panel.Heading>
                                 To Do
@@ -232,7 +233,7 @@ class Dashboard extends Component {
                         <Panel>
                             {this.renderToDos()}
                         </Panel>
-                    </PanelGroup>
+                    </PanelGroup> */}
                 </Container>
             </div>
         );
