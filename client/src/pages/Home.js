@@ -14,11 +14,9 @@ class Home extends Component {
         email: "",
         password: "",
         password2: "",
-        isUserSignUp: false,
-        loginemail: "",
-        loginpassword: ""
+        isUserSignUp: false
     };
-    
+
     // TO DO !!!!========================
     // componentDidMount() {
     //   // Check to see if user is authenticated. If authenticated, log in, if not should be good.
