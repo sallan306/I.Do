@@ -14,11 +14,9 @@ class Home extends Component {
         email: "",
         password: "",
         password2: "",
-        isUserSignUp: false,
-        loginemail: "",
-        loginpassword: "",
-        isAuthenticated: false
+        isUserSignUp: false
     };
+
     // TO DO !!!!========================
     // componentDidMount() {
     //   // Check to see if user is authenticated. If authenticated, log in, if not should be good.
@@ -44,52 +42,44 @@ class Home extends Component {
             password: this.state.password
             };
         if (this.state.password === this.state.password2) {
-            // alert("Passwords Match!");
                 console.log(userInfo);
             axios.post(`/api/v1/users`, userInfo, function(results){
                 console.log(results)
             }).then(res =>{
-                // this.handleFormLogin();
-                console.log("res.data on handleformsubmit",res.data);
+                this.handleFormLogin(res);
             })
-            
         } else {
             alert("Please have matching passwords!")
         }
       
     }
 
-    handleFormLogin = event => {
-        event.preventDefault();
-        console.log(this.props)
+    APILogin (){
         API.login(this.state.email, this.state.password, (result) =>{
-            // console.log("result =====",result);
-
-
             result.status === 200
             ? this.props.flipToDash()
             : alert("that username/password combination doesn'tt work")
-
-
-
-            //  if success, change app state
-            // console.log ("custom cb",result);
-            // API.getContacts( (results) => 
-            // this.props.flipToDash()
-            // )
         })
-        // console.log('redirect to dashboard');
-        
-        
     }
 
-    render() {
+    handleFormLogin = event => {
+        if(this.state.isUserSignUp === false){
+            event.preventDefault();
+            this.APILogin();
+        } else {
+            this.APILogin();
+        }
+    }
+
+    render(props) {
         return (
             <div>
                <Container>
-                    <h2>{this.state.isUserSignUp ? "sign up with i.Do to get started!" : "login to your account"}</h2>
+                    
                         <Button
                             onClick={this.handleSignUpForm}
+                            secondaryColor={this.props.secondaryColor}
+                            fontColor={this.props.fontColor}
                         >
                         {this.state.isUserSignUp ? "Login" : "Sign Up"}
                         </Button>   
@@ -101,18 +91,24 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="firstName"
                                         placeholder="First Name (required)"
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
                                     />
                                     <Input
                                         value={this.state.lastName}
                                         onChange={this.handleInputChange}
                                         name="lastName"
                                         placeholder="Last Name (required)"
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
                                     />
                                     <Input
                                         value={this.state.email}
                                         onChange={this.handleInputChange}
                                         name="email"
                                         placeholder="Email (required)"
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
                                     />
                                     <Input
                                         type="password"
@@ -120,6 +116,8 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="password"
                                         placeholder="Password (required)"
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
                                     />
                                     <Input
                                         type="password"
@@ -127,11 +125,15 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="password2"
                                         placeholder="Re-enter Password"
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
                                     />
                                     <Button id="createAccountButton"
                                         disabled={!(this.state.firstName && this.state.email)}
                                         onClick={this.handleNewUserSubmit}
-                                    >
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
+                                    >   
                                         Submit
                                     </Button>
                                 </form>
@@ -143,6 +145,8 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="email"
                                         placeholder="Email (required)"
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
                                     />
                                     <Input
                                         type="password"
@@ -150,10 +154,15 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="password"
                                         placeholder="Password (required)"
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
                                     />
                                     <Button id="loginButton"
                                         disabled={!(this.state.email && this.state.password)}
                                         onClick={this.handleFormLogin}
+                                        secondaryColor={this.props.secondaryColor}
+                                        fontColor={this.props.fontColor}
+                                        floatLeft="left"
                                     >
                                         Login
                                     </Button>
@@ -164,7 +173,5 @@ class Home extends Component {
         )
     }
 };
-
-
 
 export default Home;

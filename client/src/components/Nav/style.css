@@ -1,25 +1,38 @@
 #title {
     text-align: center;
     background-color: rgba(247, 238, 228, .8);
-    width: 85%;
-    margin-top: 3%;
-    margin-left: 7.5%;
-    margin-bottom: 20px;
-    padding: 10px 0 30px 0;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
     border-radius: 10px;
+    height: 40vh;
+    margin-top: 5vh
+}
+
+.container {
+    margin-top: 2vh;
+    margin-bottom: 0vh;
+    width: 40vw;
+    height: 20vh;
+    transition: .4s;
 }
 
 .form-control, #nav-title, .btn-success, #title, .panel-default {
     opacity: .85;
-}
 
+}
+.styleBox {
+    position: relative;
+    top: 25%;
+}
+.btn-success {
+    float: left;
+}
 
 #nav-title {
     font-family: 'Source Code Pro', monospace;
-    font-size: 70px;
+    font-size: 90px;
     letter-spacing: 5px;
-    border-radius: 5px;
-    opacity: 1.5;
 }
 h2 {
     font-family: Arial, Helvetica, sans-serif;
@@ -74,3 +87,26 @@ nav {
     font-size: 20px;
     letter-spacing: 2px;
 }
+
+@media only screen and (max-width: 600px) {
+    .container {
+        position: relative;
+        top:10vh;
+        width: 70vw;
+    }
+    #title {
+        position: relative;
+        top: 10vh;
+        height: 30vh;
+        font-size: 20px;
+    }
+    #nav-title{
+        font-size: 60px;
+    }
+    h2 {
+        margin-bottom: 10%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+  }
