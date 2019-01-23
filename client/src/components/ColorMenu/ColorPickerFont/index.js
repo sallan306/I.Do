@@ -1,6 +1,5 @@
 import React from 'react';
 import { CirclePicker } from 'react-color';
-import $ from "jquery"
 
 class ColorPickerFont extends React.Component {
     state = {

@@ -1,5 +1,4 @@
 import React from "react";
-import { PromiseProvider } from "mongoose";
 
 function Nav(props) {
   return (

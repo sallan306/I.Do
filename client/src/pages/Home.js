@@ -162,6 +162,7 @@ class Home extends Component {
                                         onClick={this.handleFormLogin}
                                         secondaryColor={this.props.secondaryColor}
                                         fontColor={this.props.fontColor}
+                                        floatLeft="left"
                                     >
                                         Login
                                     </Button>
