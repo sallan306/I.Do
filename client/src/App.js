@@ -12,8 +12,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      primaryColor: "green",
-      secondaryColor: "red",
+      primaryColor: "white",
+      secondaryColor: "rgb(247, 238, 228)",
       fontColor: "black"
     }
   }
@@ -27,7 +27,7 @@ class App extends React.Component {
     this.setState({fontColor: newFont});
   }
   componentDidMount(){
-    window.changeBkgColor = this.changeBkgColor;
+    window.changePrimaryColor = this.changePrimaryColor;
   }
   renderDefaultView = (props) => {
     if(this.state.loggedIn){
