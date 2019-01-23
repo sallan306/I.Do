@@ -30,5 +30,10 @@ module.exports.initRoutes = (app) => {
     app.put('/api/v1/contacts/:contactID', isAuthenticated, (req, res) => {
         controller.editContact(req, res);
     })
+
+    //delete a contact
+    app.delete('/api/v1/contacts/:contactID', isAuthenticated, (req, res) => {
+        controller.delteContact(req, res);
+    })
     
 }
