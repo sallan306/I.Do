@@ -45,7 +45,7 @@ class Guests extends Component {
     render() {
         return (
             <div>
-                <Container>
+               <Container>
                 <h3>Let's Get Started!</h3>
                 <GuestForm 
                     handleInputChange={this.handleInputChange}
@@ -59,7 +59,7 @@ class Guests extends Component {
                     state={this.state.state}
                     zipcode={this.state.zipcode}
                 />
-                </Container>
+            </Container>
             </div>
 
         )
