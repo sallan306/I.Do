@@ -11,15 +11,32 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      primaryColor: "green",
+      secondaryColor: "red",
+      fontColor: "black"
     }
   }
-
-  renderDefaultView = () => {
+  changePrimaryColor = newColor => {
+    this.setState({primaryColor: newColor});
+  }
+  changeSecondaryColor = newColor2 => {
+    this.setState({secondaryColor: newColor2});
+  }
+  changeFontColor = newFont => {
+    this.setState({fontColor: newFont});
+  }
+  componentDidMount(){
+    window.changeBkgColor = this.changeBkgColor;
+  }
+  renderDefaultView = (props) => {
     if(this.state.loggedIn){
-      return <Dashboard />
+      return <Dashboard {...props}  secondaryColor={this.state.secondaryColor}
+                                    fontColor={this.state.fontColor}/>
     } else {
-      return <Home flipToDash={this.toggleLoggedIn} />
+      return <Home {...props}       secondaryColor={this.state.secondaryColor} 
+                                    fontColor={this.state.fontColor}
+                                    flipToDash={this.toggleLoggedIn} />
     }
   }
   
@@ -41,10 +58,19 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <ColorMenu/>
-          <Nav/>
+        <ColorMenu    changePrimaryColor={this.changePrimaryColor} 
+                      changeSecondaryColor={this.changeSecondaryColor} 
+                      changeFontColor={this.changeFontColor} 
+                      primaryColor={this.state.primaryColor}
+                      secondaryColor={this.state.secondaryColor}
+                      fontColor={this.state.fontColor}/>
+          <Nav        secondaryColor={this.state.secondaryColor}
+                      fontColor={this.state.fontColor}/>
           <Switch>
-            <Route exact path="/" render={this.renderDefaultView} />
+            <Route exact path="/" render={this.renderDefaultView}
+                                  primaryColor={this.state.primaryColor} 
+                                  secondaryColor={this.state.secondaryColor}
+                                  fontColor={this.state.fontColor}/>
             <Route exact path="/event/:userID" component={Guest} />
             <Route exact path="/Logout" render={this.logOut} />
             <Route component={ErrorPage} />
