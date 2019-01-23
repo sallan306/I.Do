@@ -20,6 +20,7 @@ class Home extends Component {
     // TO DO !!!!========================
     componentDidMount() {
       // Check to see if user is authenticated. If authenticated, log in, if not should be good.
+      
     }
 
     handleInputChange = event => {
@@ -40,18 +41,31 @@ class Home extends Component {
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password
-            };
-        if (this.state.password === this.state.password2) {
-                console.log(userInfo);
-            axios.post(`/api/v1/users`, userInfo, function(results){
+        };
+        if ((this.state.firstName.length < 3) || (this.state.firstName.length) > 20) {
+            alert("Name must be longer than 2 characters and less than 20 characters.")
+            return;
+        } else if ((this.state.lastName.length < 3) || (this.state.lastName.length) > 20) {
+            alert("Name must be longer than 2 characters and less than 20 characters.")
+            return;
+        } else if ((this.state.email.length < 3) || (this.state.email.length) > 30) {
+            alert("Email must be longer than 2 characters and less than 30 characters.")
+            return;
+        } else if ((this.state.password.length < 5) || (this.state.password.length) > 20) {
+            alert("Passwords must be longer than 5 characters and less than 20 characters.")
+            return;
+        } else if (this.state.password === this.state.password2) {
+            console.log(userInfo);
+            axios.post(`/api/v1/users`, userInfo, function (results) {
                 console.log(results)
-            }).then(res =>{
+            }).then(res => {
                 this.handleFormLogin(res);
             })
         } else {
-            alert("Please have matching passwords!")
+            alert("Passwords must match!")
+            return;
         }
-      
+
     }
 
     APILogin (){

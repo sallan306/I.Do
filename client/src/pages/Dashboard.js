@@ -24,7 +24,6 @@ class Dashboard extends Component {
         list: {},
         guestCheckboxes: {}
     }
-    lastItemId = 0;
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -42,7 +41,7 @@ class Dashboard extends Component {
         event.preventDefault();
         API.createUserContact(this.state, result =>
             result.status === 200
-            ? console.log("Contact Added")
+            ? this.componentDidMount()
             : console.log("Sorry that didn't go through")
             )
     }
