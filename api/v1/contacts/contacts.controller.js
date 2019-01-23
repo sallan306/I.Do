@@ -16,8 +16,19 @@ controller.createContactUser = (req, res) => {
         email: req.body.email 
     }
     db.create(newContact)
-    .then( results => console.log(results))
-    .catch( err => console.log(err) );
+    .then( results => {
+        res.status(200).json({
+            success: true,
+            msg:"contact created"
+        })
+    })
+    .catch( err => {
+        res.status(200).json({
+            success:false,
+            err: 500,
+            msg: "problem with the DB"
+        })
+    });
 }
 controller.createContactGuest = (req, res) => {
     const newContact = {
