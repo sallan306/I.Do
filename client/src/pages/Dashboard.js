@@ -24,7 +24,6 @@ class Dashboard extends Component {
         list: {},
         guestCheckboxes: {}
     }
-    lastItemId = 0;
 
     handleInputChange = event => {
         const { name, value } = event.target;
