@@ -27,6 +27,18 @@ export default {
     .catch()
   },
 
+  createUserContact: (contactData) => {
+    axios.post('/api/v1/contacts', {contactData})
+    .then()
+    .catch()
+  },
+
+  createGuestContact: (userID, contactData) => {
+    axios.post('/api/v1/contacts/'+userID, {contactData})
+    .then()
+    .catch()
+  },
+
   // Gets all contacts associated with user
   getContacts: ( cb ) => {
     axios.get(`/api/v1/contacts/`)
@@ -48,7 +60,7 @@ export default {
 
    // Deletes the contact with the given id
    deleteContacts: (contactID) => {
-    axios.delete(`/api/v1/contacts/${contactID}`, {});
+    axios.delete(`/api/v1/contacts/`+contactID, {});
   },
 
   //==========================================================
@@ -67,12 +79,8 @@ export default {
   getUser: (userID) => {
     axios.get(`/api/v1/users`, {});
   },
-
-  //DEV PATH ONLY
-  getUsers: () => {
-    axios.get(`/dev/users`, {})
-  },
-
+  //PATHS NOT BEING IMPLEMENTED IN CURRENT BUILD
+  /*
   updateUser: (userID, contact)=>{
     axios.put(`/api/v1/users`, contact)
   },
@@ -80,7 +88,7 @@ export default {
   deleteUser: (userID) => {
     axios.post(`/api/v1/users/`, {});
   },
-
+  */
   //==========================================================
   //SERVICES
   //==========================================================
