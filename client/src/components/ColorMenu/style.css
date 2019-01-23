@@ -1,8 +1,5 @@
-/* this transition below is the speed in which the app flows */
+/* ---------------------------DEFAULT BACKGROUND COLORS OF PALLETTE */
 
-body, #title, .bar1, .bar2, .bar3, .circle-picker-container {
-    transition: 0.3s;
-}
 body {
     background: #2196f3;
 }
@@ -17,8 +14,38 @@ body {
 }
 .circle-picker-container {
     position: fixed;
-    left: -210px;
+    left: -195px;
     top: 50px;
+}
+
+.circle-picker-primary, .circle-picker-secondary, .circle-picker-font {
+    position: absolute;
+    left: 0px;
+    top: 100px;
+    transition: 0.3s
+}
+
+.buttonBox {
+    position: absolute;
+    left: 5px;
+    top: 10px;
+}
+.buttonPrimary, .buttonSecondary, .buttonFont {
+    position: absolute;
+    transition: 0.3s;
+    width: 80px;
+    border-radius: 25px;
+    border-width: 1px;
+    border-color: black;
+}
+.buttonPrimary {
+    top:0px;
+}
+.buttonSecondary {
+    top: 30px
+}
+.buttonFont {
+    top: 60px
 }
 .MenuContainer {
     display: inline-block;
@@ -34,20 +61,35 @@ body {
     background-color: #333;
     margin: 6px 0;
 }
-  
+.btn-success {
+    font-size: 15px;
+    font-weight: bold;
+}
+/* ------------------------------------------ANIMATIONS AND STATE CHANGES */
+body, #title, .bar1, .bar2, .bar3, .circle-picker-container, .panel-default, .form-control, .buttonBox, .btn-success {
+    transition: 0.3s;
+}
 .bar1change {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-9px, 6px);
 }
 
-.bar2change {opacity: 0;}
+.bar2change {
+    opacity: 0;
+}
 
 .bar3change {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-8px, -8px);
 }
 .circleChange {
-    -webkit-transform: translate(210px, 0px);
-    transform: translate(210px, 0px);
+    -webkit-transform: translate(200px, 0px);
+    transform: translate(200px, 0px);
 }
+
+.invisible {
+    visibility: hidden;
+}
+
+
 

@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-// import API from "../utils/API";
 import GuestForm from '../components/GuestForm';
-
-import {NavLinks} from '../components/NavLinks';
-
-
 
 class Guests extends Component {
     state = {
@@ -18,7 +13,11 @@ class Guests extends Component {
         zipcode: ""
     };
 
-
+    componentDidMount(){
+        const userID = this.props.match.params.userID
+        console.log(userID);
+        // TODO Assign userID to state
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -29,16 +28,12 @@ class Guests extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.password === this.state.password2) {
-            alert("Passwords Match!");
-        }
+        // TODO on submit of the form, send data to userID database
     }
-
 
     render() {
         return (
             <div>
-                <NavLinks/>
                 <h3>Let's Get Started!</h3>
                 <GuestForm 
                     handleInputChange={this.handleInputChange}
@@ -57,7 +52,5 @@ class Guests extends Component {
         )
     }
 };
-
-
 
 export default Guests;
