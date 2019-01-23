@@ -14,7 +14,7 @@ class Home extends Component {
         email: "",
         password: "",
         password2: "",
-        isUserSignUp: false
+        toggleLoginSignup: false
     };
 
     // TO DO !!!!========================
@@ -30,7 +30,7 @@ class Home extends Component {
     };
 
     handleSignUpForm = event => {
-        this.setState({ isUserSignUp: !this.state.isUserSignUp });
+        this.setState({ toggleLoginSignup: !this.state.toggleLoginSignup });
     }
 
     handleNewUserSubmit = event => {
@@ -63,7 +63,7 @@ class Home extends Component {
     }
 
     handleFormLogin = event => {
-        if(this.state.isUserSignUp === false){
+        if(this.state.toggleLoginSignup === false){
             event.preventDefault();
             this.APILogin();
         } else {
@@ -81,10 +81,10 @@ class Home extends Component {
                             secondaryColor={this.props.secondaryColor}
                             fontColor={this.props.fontColor}
                         >
-                        {this.state.isUserSignUp ? "Login" : "Sign Up"}
+                        {this.state.toggleLoginSignup ? "Login" : "Sign Up"}
                         </Button>   
 
-                            {this.state.isUserSignUp ?
+                            {this.state.toggleLoginSignup ?
                                 <form className="formClass" id="createAccountForm">
                                     <Input
                                         value={this.state.firstName}

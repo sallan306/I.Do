@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 
-function handOff(req, res, next) {
+function mail(req, res, next) {
 
 
   for (let i = 0; i < req.body.emailTo.length;i++){
@@ -29,4 +29,4 @@ function handOff(req, res, next) {
               });
     }
 }
-module.exports = handOff;
+module.exports = mail;
