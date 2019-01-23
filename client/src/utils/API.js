@@ -27,18 +27,6 @@ export default {
     .catch()
   },
 
-  createUserContact: (contactData) => {
-    axios.post('/api/v1/contacts', {contactData})
-    .then()
-    .catch()
-  },
-
-  createGuestContact: (userID, contactData) => {
-    axios.post('/api/v1/contacts/'+userID, {contactData})
-    .then()
-    .catch()
-  },
-
   // Gets all contacts associated with user
   getContacts: ( cb ) => {
     axios.get(`/api/v1/contacts/`)
