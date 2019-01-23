@@ -150,19 +150,30 @@ class Dashboard extends Component {
         //     console.log(this.state.contacts);
         });
         
-        const guestCheckboxes = Test.reduce(
-            (checkboxObj, guest) => ({
+        this.setState({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            address: "",
+            city: "",
+            state: "",
+            zipcode: "",
+        })
+
+        const guestCheckboxes = this.state.contacts.reduce(
+            (checkboxObj, contact) => ({
                 ...checkboxObj,
-                [guest.id]: false
+                [contact.id]: false
             }),
             {}
         )
         this.setState({ 
             contacts: Test,
-            guestCheckboxes
+            guestCheckboxes: guestCheckboxes
         });
-    
     }
+
     render() {
         return (
       
