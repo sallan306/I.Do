@@ -1,27 +1,24 @@
 import React from 'react';
 import { CirclePicker } from 'react-color';
+import $ from "jquery"
 
-  
-
-class ColorPicker extends React.Component {
-    
+class ColorPickerFont extends React.Component {
     state = {
-      primaryColor: '#000000',
+      background: '#fff',
       width: "100px"
     };
   
     handleChangeComplete = (color) => {
-        this.setState({ primaryColor: color.hex });
-        this.props.changePrimaryColor(this.state.primaryColor)
-        document.body.style.backgroundColor = this.state.primaryColor
-        
+      this.setState({ background: color.hex });
+      
+      this.props.changeFontColor(this.state.background)
     };
-    
+
     render() {
       return (
         <div>
             <CirclePicker
-                color={ this.state.primaryColor }
+                color={ this.state.background }
                 onChangeComplete={ this.handleChangeComplete }
                 width = {this.state.width}
                 
@@ -31,4 +28,4 @@ class ColorPicker extends React.Component {
       )}
 
   }
-  export default ColorPicker
+  export default ColorPickerFont
