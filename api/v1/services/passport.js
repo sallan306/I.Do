@@ -21,9 +21,15 @@ passport.use(new LocalStrategy(
           console.log(user);
           //if user was returned, need to check the passwords
           if(user){
-              if (user.password == password) return done(null, user);
-              else return done(null, false)
+            bcrypt.compare(password, user.password, function(err, res) {
+              // res == true
+              if (res) return done(null, user);
+              else return (done, null, false);
+            });
           }
+        })
+        .catch( err => {
+          return(done, null, false);
         })
   }
 ))

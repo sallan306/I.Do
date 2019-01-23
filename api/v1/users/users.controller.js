@@ -21,8 +21,10 @@ controller.addUser = (req, res, next) =>{
             }
             else{
 
+
+
                 db.create({
-                    password: data.password,
+                    password: bcrypt.hash(data.password, null, null, function(err, hash) {return hash}),
                     email: data.email
                 }, (err, result) => {
                     console.log (err, result)
