@@ -40,7 +40,11 @@ class Dashboard extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        alert("Hey! Submit Button works! That's something to be proud of");
+        API.createUserContact(this.state, result =>
+            result.status === 200
+            ? console.log("Contact Added")
+            : console.log("Sorry that didn't go through")
+            )
     }
 
     handleContactEdit = event => {
@@ -138,13 +142,12 @@ class Dashboard extends Component {
     // -------------------------------------------
 
     componentDidMount() {
-        // Make the API call and get an array of users
         // API.getContacts( results => {
         //     results.data.contacts
         //     ? this.setState({ contacts: results.data.contacts })
-        //     : this.setState({ contacts:{firstName: "No Contacts"}})
+        //     : this.setState({ contacts: [{ firstName: "No Contacts" }]})
 
-        //     console.log(this.state.contacts);
+        // //     console.log(this.state.contacts);
         // });
         
         const guestCheckboxes = Test.reduce(
@@ -158,8 +161,8 @@ class Dashboard extends Component {
             contacts: Test,
             guestCheckboxes
         });
+    
     }
-
     render() {
         return (
       

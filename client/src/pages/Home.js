@@ -18,9 +18,9 @@ class Home extends Component {
     };
 
     // TO DO !!!!========================
-    // componentDidMount() {
-    //   // Check to see if user is authenticated. If authenticated, log in, if not should be good.
-    // }
+    componentDidMount() {
+      // Check to see if user is authenticated. If authenticated, log in, if not should be good.
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -55,11 +55,11 @@ class Home extends Component {
     }
 
     APILogin (){
-        API.login(this.state.email, this.state.password, (result) =>{
+        API.login(this.state.email, this.state.password, (result) =>
             result.status === 200
             ? this.props.flipToDash()
             : alert("that username/password combination doesn'tt work")
-        })
+        )
     }
 
     handleFormLogin = event => {

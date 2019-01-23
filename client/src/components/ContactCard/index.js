@@ -13,7 +13,6 @@ function ContactCard(props) {
                     <Panel.Title toggle>
                         <PrintText>
                             {props.firstName} {props.lastName}
-
                         </PrintText>
                     </Panel.Title>
                 </Panel.Heading>

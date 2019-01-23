@@ -8,13 +8,42 @@ export default {
   // Saves a Contact to the database
     //requires userID passed. req.user.id cant be assumed to be present.
   createContact: (userID, userData) => {
-    axios.post("/api/v1/contacts/"+{userID}, {userData})
+    axios.post("/api/v1/contacts/"+{userID}, userData)
+  },
+
+  createUserContact: (contactData, cb) => {
+    axios.post('/api/v1/contacts', contactData)
+    .then(result => {
+      cb(result)
+    })
+    .catch()
+  },
+
+  createGuestContact: (userID, contactData, cb) => {
+    axios.post('/api/v1/contacts/'+userID, contactData)
+    .then( result => {
+      cb(result)
+    })
+    .catch()
+  },
+
+  createUserContact: (contactData) => {
+    axios.post('/api/v1/contacts', {contactData})
+    .then()
+    .catch()
+  },
+
+  createGuestContact: (userID, contactData) => {
+    axios.post('/api/v1/contacts/'+userID, {contactData})
+    .then()
+    .catch()
   },
 
   // Gets all contacts associated with user
   getContacts: ( cb ) => {
     axios.get(`/api/v1/contacts/`)
       .then( result => {
+        console.log(result);
         cb(result);
       })
       .catch( err => console.log(err));
@@ -26,12 +55,12 @@ export default {
   },
 
   editContact: (contactID, userData) => {
-    axios.put(`/api/v1/contacts/${contactID}`, {userData});
+    axios.put(`/api/v1/contacts/${contactID}`, userData);
   },
 
    // Deletes the contact with the given id
    deleteContacts: (contactID) => {
-    axios.delete(`/api/v1/contacts/${contactID}`, {});
+    axios.delete(`/api/v1/contacts/`+contactID, {});
   },
 
   //==========================================================
@@ -50,20 +79,16 @@ export default {
   getUser: (userID) => {
     axios.get(`/api/v1/users`, {});
   },
-
-  //DEV PATH ONLY
-  getUsers: () => {
-    axios.get(`/dev/users`, {})
-  },
-
+  //PATHS NOT BEING IMPLEMENTED IN CURRENT BUILD
+  /*
   updateUser: (userID, contact)=>{
-    axios.put(`/api/v1/users`, {contact})
+    axios.put(`/api/v1/users`, contact)
   },
 
   deleteUser: (userID) => {
     axios.post(`/api/v1/users/`, {});
   },
-
+  */
   //==========================================================
   //SERVICES
   //==========================================================

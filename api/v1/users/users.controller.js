@@ -7,8 +7,10 @@ const saltRounds = 10;
 
 //add a new user to the db
 controller.addUser = (req, res, next) =>{
-    const data = req.body;
+    let data = req.body;
     //console.log(data);
+    data.email = data.email.toUpperCase();
+    console.log (data.email);
     db.findOne({email:data.email})
         .then( (result) => {
 
