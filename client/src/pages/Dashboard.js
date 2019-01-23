@@ -101,7 +101,7 @@ class Dashboard extends Component {
         API.getContacts( results => {
             results.data.contacts
             ? this.setState({ contacts: results.data.contacts })
-            : this.setState({ contacts:{firstName: "No Contacts"}})
+            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
 
             // console.log(this.state.contacts);
         });
@@ -118,7 +118,7 @@ class Dashboard extends Component {
                     <PanelGroup>
                     {this.state.contacts.map(contact=>
                         <ContactCard 
-                            key={contact.belongsTo}
+                            key={contact._id}
                             firstName={contact.firstName}
                             lastName={contact.lastName}
                             street={contact.street}

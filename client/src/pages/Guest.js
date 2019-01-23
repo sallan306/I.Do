@@ -28,6 +28,7 @@ class Guests extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        
         // TODO on submit of the form, send data to userID database
     }
 
