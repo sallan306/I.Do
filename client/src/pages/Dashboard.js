@@ -11,7 +11,11 @@ class Dashboard extends Component {
 
     componentDidMount() {
         API.getContacts( results => {
-            this.setState({ contacts: results.data.contacts })
+            results.data.contacts
+            ? this.setState({ contacts: results.data.contacts })
+            : this.setState({ contacts:{firstName: "No Contacts"}})
+
+            // console.log(this.state.contacts);
         });
     }
 
