@@ -21,7 +21,8 @@ class Dashboard extends Component {
         state: "",
         zipcode: "",
         task: "",
-        list: {}
+        list: {},
+        guestCheckboxes: {}
     }
     lastItemId = 0;
 
@@ -101,16 +102,67 @@ class Dashboard extends Component {
         return bigArray;
     }
 
-    componentDidMount() {
-        API.getContacts( results => {
-            results.data.contacts
-            ? this.setState({ contacts: results.data.contacts })
-            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
-
-            // console.log(this.state.contacts);
-        });
+    handleFormEdit = event => {
+        event.preventDefault();
+        //This is where we edit things
     }
 
+    handleSendMassMessage = event => {
+        event.preventDefault();
+        //This is where we call the component for sending messages out to guests
+    }
+
+    // --------- CHECKBOX STUFF ----------
+    handleCheckboxChange = changeEvent => {
+        const { name } = changeEvent.target;
+
+        this.setState(prevState => ({
+            guestCheckboxes: {
+                ...prevState.guestCheckboxes,
+                [name]: !prevState.guestCheckboxes[name]
+            }
+        }));
+    };
+
+    // ----------------- NOT USING YET ------------
+    selectAllCheckboxes = isSelected => {
+        Object.keys(this.state.checkboxes).forEach(checkbox => {
+            this.setState(prevState => ({
+                checkboxes: {
+                    ...prevState.checkboxes,
+                    [checkbox]: isSelected
+                }
+            }));
+        });
+    };
+
+    selectAll = () => this.selectAllCheckboxes(true);
+
+    deselectAll = () => this.selectAllCheckboxes(false);
+    // -------------------------------------------
+
+    componentDidMount() {
+        // API.getContacts( results => {
+        //     results.data.contacts
+        //     ? this.setState({ contacts: results.data.contacts })
+        //     : this.setState({ contacts: [{ firstName: "No Contacts" }]})
+
+        // //     console.log(this.state.contacts);
+        // });
+        
+        const guestCheckboxes = Test.reduce(
+            (checkboxObj, guest) => ({
+                ...checkboxObj,
+                [guest.id]: false
+            }),
+            {}
+        )
+        this.setState({ 
+            contacts: Test,
+            guestCheckboxes
+        });
+    
+    }
     render() {
         return (
       
@@ -119,19 +171,17 @@ class Dashboard extends Component {
                 <Container>
                
                     <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
+                    <Button
+                        onClick={this.handleSendMassMessage}
+                    >
+                        Send Email
+                    </Button>
+                    <br/>
+                    <a href="http://localhost:3000/event/5c4768f1b3d09f0d05a59bb2">Click Here</a>
+                    
                     <PanelGroup>
                     {this.state.contacts.map(contact=>
-                        <ContactCard 
-                            key={contact._id}
-                            firstName={contact.firstName}
-                            lastName={contact.lastName}
-                            street={contact.street}
-                            city={contact.city}
-                            state={contact.state}
-                            zipcode={contact.zipcode}
-                            phone={contact.phone}
-                            email={contact.email}
-                        />
+                        <ContactCard {...contact} guestCheckboxes={this.state.guestCheckboxes} handleCheckboxChange={this.handleCheckboxChange} />
                     )}
                     </PanelGroup>
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
@@ -154,6 +204,7 @@ class Dashboard extends Component {
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
                             />
+                            
                             </Panel.Body>
                         </Panel>
                     </PanelGroup>            
