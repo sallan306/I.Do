@@ -14,9 +14,7 @@ class Home extends Component {
         email: "",
         password: "",
         password2: "",
-        isUserSignUp: false,
-        loginemail: "",
-        loginpassword: ""
+        isUserSignUp: false
     };
     
     // TO DO !!!!========================
