@@ -65,8 +65,12 @@ class Home extends Component {
     }
 
     handleFormLogin = event => {
-        event.preventDefault();
-        this.APILogin();
+        if(this.state.isUserSignUp === false){
+            event.preventDefault();
+            this.APILogin();
+        } else {
+            this.APILogin();
+        }
     }
 
     render() {
