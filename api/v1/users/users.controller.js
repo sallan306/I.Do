@@ -9,7 +9,7 @@ const saltRounds = 10;
 controller.addUser = (req, res, next) =>{
     let data = req.body;
     //console.log(data);
-    data.email = data.email.toUpperCase();
+    data.email = data.email.toLowerCase();
     console.log (data.email);
     db.findOne({email:data.email})
         .then( (result) => {
@@ -21,17 +21,22 @@ controller.addUser = (req, res, next) =>{
             }
             else{
 
-                db.create({
-                    password: data.password,
-                    email: data.email
-                }, (err, result) => {
-                    console.log (err, result)
-                    if (err) {
-                        res.status(200).json({success: false, msg:err});
-                    } else if (result) {
-                        res.status(200).json({success:true, msg: result.email })
-                    }
-                });
+                //hashing the password
+                bcrypt.hash(data.password, null, null, (err, hash) => {
+                    console.log (err, hash);
+                    if (err) throw err
+                    //creating new user with hashed password
+                    db.create({
+                        email: data.email,
+                        password: hash
+                    })
+                    .then( result => {
+                        console.log(result);
+                    })
+                    .catch( err => {
+                        console.log(err);
+                    })
+                })
 
             }//end else
             

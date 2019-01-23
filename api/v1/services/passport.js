@@ -11,7 +11,7 @@ passport.use(new LocalStrategy(
   },
   
   function(email, password, done){
-      email = email.toUpperCase();
+      email = email.toLowerCase();
       console.log("passport use:");
       console.log("User: ", email);
       console.log("password: ", password);
@@ -21,9 +21,20 @@ passport.use(new LocalStrategy(
           console.log(user);
           //if user was returned, need to check the passwords
           if(user){
-              if (user.password == password) return done(null, user);
-              else return done(null, false)
+            bcrypt.compare(password, user.password, function(err, res) {
+              // res == true
+              if (res) return done(null, user);
+              else return (done, null, false);
+            });
           }
+          else{
+            console.log("user not found");
+            return (done, null, false);
+          }
+        })
+        .catch( err => {
+          console.log("found One false");
+          return(done, null, false);
         })
   }
 ))
