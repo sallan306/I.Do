@@ -6,6 +6,7 @@ import Container from "../components/Container";
 import GuestForm from '../components/GuestForm';
 import {NavLinks} from "../components/NavLinks";
 import ContactCard from "../components/ContactCard";
+import { Input } from "../components/Input";
 
 
 class Manage extends Component {
@@ -18,7 +19,11 @@ class Manage extends Component {
         city: "",
         state: "",
         zipcode: "",
+        task: "",
+        list: {}
     }
+
+    lastItemId = 0;
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -40,6 +45,56 @@ class Manage extends Component {
     handleContactEdit = event => {
         event.preventDefault();
         alert("Hey! This is where editing code goes!")
+    }
+
+    newItemId = () => {
+        const id = this.lastItemId;
+        this.lastItemId += 1;
+        return id;
+      };
+
+    handleToDoAdd = event => {
+        event.preventDefault();
+        console.log("Hello there Annie!")
+        alert("Added " + this.state.task);
+        const id = this.newItemId();
+        const taskObj = {
+            id,
+            task: this.state.task
+        };
+        const newListObj = this.state.list;
+        newListObj[id] = taskObj;
+
+        this.setState({
+            list: newListObj
+        }, () => console.log(this.state.list));
+    };
+
+    handleDelete = id => {
+        const removeItems = this.state.list;
+        delete removeItems[id];
+        this.setState({
+            list: removeItems
+        })
+    };
+
+    renderToDos = () => {
+        const bigArray = [];
+
+        for (let taskNum in this.state.list){
+            bigArray.push(
+                <div>
+                    <PrintText>{this.state.list[taskNum].task}</PrintText>
+                    <Button
+                        onClick={() => this.handleDelete(taskNum)}
+                    >
+                    X
+                    </Button>
+                </div>
+            );
+        }
+
+        return bigArray;
     }
 
     render() {
@@ -117,7 +172,33 @@ class Manage extends Component {
                 </Panel>
             </PanelGroup>            
                 </Container>
+                <PanelGroup>
+                <Panel>
+                    <Panel.Heading>
+                        To Do
+                    </Panel.Heading>
+                    <Panel.Body>
+                        <Input
+                            value={this.state.task}
+                            onChange={this.handleInputChange}
+                            name="task"
+                            placeholder="Add an Item"
+                            >
+                        </Input>
+                        <Button
+                            onClick={this.handleToDoAdd}
+                        >
+                            Add
+                        </Button>
+                    </Panel.Body>
+                </Panel>
+                <Panel>
+                    {this.renderToDos()}
+                </Panel>
+            </PanelGroup>
             </div>
+
+            
     );
 };
 
