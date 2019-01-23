@@ -11,6 +11,18 @@ export default {
     axios.post("/api/v1/contacts/"+{userID}, {userData})
   },
 
+  createUserContact: (contactData) => {
+    axios.post('/api/v1/contacts', {contactData})
+    .then()
+    .catch()
+  },
+
+  createGuestContact: (userID, contactData) => {
+    axios.post('/api/v1/contacts/'+userID, {contactData})
+    .then()
+    .catch()
+  },
+
   // Gets all contacts associated with user
   getContacts: ( cb ) => {
     axios.get(`/api/v1/contacts/`)
@@ -32,7 +44,7 @@ export default {
 
    // Deletes the contact with the given id
    deleteContacts: (contactID) => {
-    axios.delete(`/api/v1/contacts/${contactID}`, {});
+    axios.delete(`/api/v1/contacts/`+contactID, {});
   },
 
   //==========================================================
