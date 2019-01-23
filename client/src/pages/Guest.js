@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GuestForm from '../components/GuestForm';
+import Container from "../components/Container";
 import API from "../utils/API";
 
 class Guests extends Component {
@@ -44,6 +45,7 @@ class Guests extends Component {
     render() {
         return (
             <div>
+                <Container>
                 <h3>Let's Get Started!</h3>
                 <GuestForm 
                     handleInputChange={this.handleInputChange}
@@ -57,6 +59,7 @@ class Guests extends Component {
                     state={this.state.state}
                     zipcode={this.state.zipcode}
                 />
+                </Container>
             </div>
 
         )
