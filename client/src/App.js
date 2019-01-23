@@ -10,10 +10,18 @@ import ColorMenu from "./components/ColorMenu"
 
 class App extends React.Component {
   state = {
-    bkgColor: "green"
+    primaryColor: "green",
+    secondaryColor: "red",
+    fontColor: "black"
   }
-  changeBkgColor = newColor => {
-    this.setState({bkgColor: newColor});
+  changePrimaryColor = newColor => {
+    this.setState({primaryColor: newColor});
+  }
+  changeSecondaryColor = newColor2 => {
+    this.setState({secondaryColor: newColor2});
+  }
+  changeFontColor = newFont => {
+    this.setState({fontColor: newFont});
   }
   componentDidMount(){
     window.changeBkgColor = this.changeBkgColor;
@@ -28,14 +36,18 @@ class App extends React.Component {
       <Router>
         <div>
           <div style={myStyle}></div>
-          <ColorMenu changeBkgColor={this.changeBkgColor} bkgColor={this.state.bkgColor}/>
+          <ColorMenu  changePrimaryColor={this.changePrimaryColor} 
+                      changeSecondaryColor={this.changeSecondaryColor} 
+                      changeFontColor={this.changeFontColor} 
+                      primaryColor={this.state.primaryColor}
+                      secondaryColor={this.state.secondaryColor}
+                      fontColor={this.state.fontColor}/>
           <Nav/>
           <Switch>
             <Route exact path="/" render={props => <Home {...props} bkgColor={this.state.bkgColor} />} />
             <Route exact path="/Guest" component={Guest} />
             <Route exact path="/Manage" component={Manage} />
             <Route exact path="/Dashboard"component={Dashboard} />
-            {/* <Route exact path="/books/:id" component={Detail} /> */}
             <Route component={ErrorPage} />
           </Switch>
         </div>

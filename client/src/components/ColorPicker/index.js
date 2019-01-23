@@ -7,13 +7,13 @@ import App from '../../App';
 class ColorPicker extends React.Component {
     
     state = {
-      background: '#000000',
+      primaryColor: '#000000',
       width: "100px"
     };
   
     handleChangeComplete = (color) => {
-        this.setState({ background: color.hex });
-        this.props.changeBkgColor(this.state.background)
+        this.setState({ primaryColor: color.hex });
+        this.props.changePrimaryColor(this.state.primaryColor)
         
     };
     
@@ -21,7 +21,7 @@ class ColorPicker extends React.Component {
       return (
         <div>
             <CirclePicker
-                color={ this.state.background }
+                color={ this.state.primaryColor }
                 onChangeComplete={ this.handleChangeComplete }
                 width = {this.state.width}
                 

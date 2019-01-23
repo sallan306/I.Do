@@ -11,9 +11,7 @@ class ColorPickerFont extends React.Component {
     handleChangeComplete = (color) => {
       this.setState({ background: color.hex });
       
-      $(".form-control").css("color", this.state.background)
-      $("#title").css("color", this.state.background)
-      $(".btn").css("color", this.state.background)
+      this.props.changeFontColor(this.state.background)
     };
 
     render() {

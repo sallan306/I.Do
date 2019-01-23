@@ -4,23 +4,21 @@ import $ from "jquery"
 
 class ColorPicker2 extends React.Component {
     state = {
-      background: '#fff',
+      secondaryColor: '#fff',
       width: "100px"
     };
   
     handleChangeComplete = (color) => {
-      this.setState({ background: color.hex });
+      this.setState({ secondaryColor: color.hex });
+      this.props.changeSecondaryColor(this.state.secondaryColor)
 
-      $(".form-control").css("background", this.state.background)
-      $("#title").css("background", this.state.background)
-      $(".btn").css("background", this.state.background)
     };
 
     render() {
       return (
         <div>
             <CirclePicker
-                color={ this.state.background }
+                color={ this.state.secondaryColor }
                 onChangeComplete={ this.handleChangeComplete }
                 width = {this.state.width}
                 
