@@ -18,29 +18,16 @@ function clickColor1() {
     $(".circle-picker-primary").toggleClass(    "invisible", false)
     $(".circle-picker-secondary").toggleClass(  "invisible", true)
     $(".circle-picker-font").toggleClass(       "invisible", true)
-    
-    $(".buttonPrimary").toggleClass(            "clicked", true)
-    $(".buttonSecondary").toggleClass(          "clicked", false)
-    $(".buttonFont").toggleClass(               "clicked", false)
 }
 function clickColor2() {
     $(".circle-picker-primary").toggleClass(    "invisible", true)
     $(".circle-picker-secondary").toggleClass(  "invisible", false)
     $(".circle-picker-font").toggleClass(       "invisible", true)
-
-    $(".buttonPrimary").toggleClass(            "clicked", false)
-    $(".buttonSecondary").toggleClass(          "clicked", true)
-    $(".buttonFont").toggleClass(               "clicked", false)
 }
 function clickFont() {
     $(".circle-picker-primary").toggleClass(    "invisible", true)
     $(".circle-picker-secondary").toggleClass(  "invisible", true)
     $(".circle-picker-font").toggleClass(       "invisible", false)
-    
-
-    $(".buttonPrimary").toggleClass(            "clicked", false)
-    $(".buttonSecondary").toggleClass(          "clicked", false)
-    $(".buttonFont").toggleClass(               "clicked", true)
 }
 
 export default function Button(props) {
@@ -71,9 +58,9 @@ export default function Button(props) {
             </div>
             <div className="circle-picker-container">
                 <div className="buttonBox" >
-                    <button style={button1Stlye}   onClick={clickColor1} className="buttonPrimary">Primary</button>
-                    <button style={button2Stlye}   onClick={clickColor2} className="buttonSecondary">Secondary</button>
-                    <button onClick={button3Stlye} onClick={clickFont} className="buttonFont">Font</button>
+                    <button style={button1Stlye}    onClick={clickColor1} className="buttonPrimary">Primary</button>
+                    <button style={button2Stlye}    onClick={clickColor2} className="buttonSecondary">Secondary</button>
+                    <button style={button3Stlye}    onClick={clickFont} className="buttonFont">Font</button>
                 </div>
                 <div className="circle-picker-primary">
                     <ColorPicker        primaryColor = {props.primaryColor} 
