@@ -18,7 +18,7 @@ passport.use(new LocalStrategy(
 
       db.findOne({email: email})
         .then(user => {
-          console.log(user);
+          //console.log(user);
           //if user was returned, need to check the passwords
           if(user){
             bcrypt.compare(password, user.password, function(err, res) {
