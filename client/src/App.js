@@ -41,7 +41,7 @@ class App extends React.Component {
   }
   
   toggleLoggedIn = () => {
-    this.setState({loggedIn: !this.state.isLoggedIn})
+    this.setState({loggedIn: true})
   }
 
   logOut = () => {

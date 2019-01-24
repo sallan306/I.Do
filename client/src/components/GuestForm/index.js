@@ -32,7 +32,7 @@ function GuestForm (props) {
                 fontColor={props.fontColor}
             />
             <Input
-                value={props.password}
+                value={props.phone}
                 onChange={props.handleInputChange}
                 name="phone"
                 placeholder="Phone Number (required)"
@@ -40,15 +40,15 @@ function GuestForm (props) {
                 fontColor={props.fontColor}
             />
             <Input
-                value={props.password2}
+                value={props.street}
                 onChange={props.handleInputChange}
-                name="streetAddress"
+                name="street"
                 placeholder="Street Address (required)"
                 secondaryColor={props.secondaryColor}
                 fontColor={props.fontColor}
             />
             <Input
-                value={props.password2}
+                value={props.city}
                 onChange={props.handleInputChange}
                 name="city"
                 placeholder="City (required)"
@@ -56,7 +56,7 @@ function GuestForm (props) {
                 fontColor={props.fontColor}
             />
             <Input
-                value={props.password2}
+                value={props.state}
                 onChange={props.handleInputChange}
                 name="state"
                 placeholder="State(required)"
@@ -64,7 +64,7 @@ function GuestForm (props) {
                 fontColor={props.fontColor}
             />
             <Input
-                value={props.password2}
+                value={props.zipcode}
                 onChange={props.handleInputChange}
                 name="zipcode"
                 placeholder="Zipcode(required)"

@@ -4,7 +4,7 @@ import {NavLinks} from "../components/NavLinks";
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 import { Panel, PanelGroup } from 'react-bootstrap';
-import {PrintText, Test} from '../components/PrintText';
+import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import { Input } from "../components/Input";
@@ -14,12 +14,13 @@ import "../components/Nav/style.css";
 
 class Dashboard extends Component {
     state = {
+        userID: "",
         contacts: [],
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
-        address: "",
+        street: "",
         city: "",
         state: "",
         zipcode: "",
@@ -44,7 +45,7 @@ class Dashboard extends Component {
         event.preventDefault();
         API.createUserContact(this.state, result =>
             result.status === 200
-            ? this.componentDidMount()
+            ? this.clearFormThanks()
             : console.log("Sorry that didn't go through")
             )
     }
@@ -62,7 +63,6 @@ class Dashboard extends Component {
 
     handleToDoAdd = event => {
         event.preventDefault();
-        console.log("Hello there Annie!")
         alert("Added " + this.state.task);
         const id = this.newItemId();
         const taskObj = {
@@ -155,6 +155,7 @@ class Dashboard extends Component {
     deselectAll = () => this.selectAllCheckboxes(false);
     // -------------------------------------------
 
+
     componentDidMount() {
         API.getContacts( results => {
             results.data.contacts
@@ -162,16 +163,29 @@ class Dashboard extends Component {
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
         });
         
+    clearFormThanks() {
+
         this.setState({
             firstName: "",
             lastName: "",
             email: "",
             phone: "",
-            address: "",
+            street: "",
             city: "",
             state: "",
             zipcode: "",
         })
+    }
+
+    componentDidMount() {
+        API.getContacts( results => {
+            results.data
+            ? this.setState({ 
+                contacts: results.data.contacts, 
+                userID: results.data.userID
+            })
+            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
+        });
 
         const guestCheckboxes = this.state.contacts.reduce(
             (checkboxObj, contact) => ({
@@ -181,8 +195,9 @@ class Dashboard extends Component {
             {}
         )
         this.setState({ 
-            contacts: Test,
-            guestCheckboxes: guestCheckboxes
+            contacts: this.state.contacts,
+            guestCheckboxes
+
         });
     }
 
@@ -219,6 +234,7 @@ class Dashboard extends Component {
                                             color: this.props.primaryColor
                                             }}>
                                 <Panel.Title style={{border: 0, borderTop: 0}} toggle>
+
                                     Add New Guest
                                 </Panel.Title>
                             </Panel.Heading >
@@ -230,7 +246,7 @@ class Dashboard extends Component {
                                 lastName={this.state.lastName}
                                 email={this.state.email}
                                 phone={this.state.phone}
-                                address={this.state.address}
+                                street={this.state.street}
                                 city={this.state.city}
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
@@ -240,8 +256,20 @@ class Dashboard extends Component {
                             
                             </Panel.Body>
                         </Panel>
-                    </PanelGroup>            
+                    </PanelGroup>
+                    <br/>
+                    {/* <PanelGroup>
+                    {this.state.contacts.map(contact=>
+                        <ContactCard {...contact} guestCheckboxes={this.state.guestCheckboxes} handleCheckboxChange={this.handleCheckboxChange} />
+                    )}
+                    </PanelGroup> */}
                     <PanelGroup>
+                    {this.state.contacts.map(contact=>
+                        <ContactCard {...contact} />
+                    )}
+                    </PanelGroup>
+                               
+                    {/* <PanelGroup>
                         <Panel>
                             <Panel.Heading style={{border: 0, borderTop: 0, background: this.props.secondaryColor}}>
                                 To Do
@@ -268,7 +296,7 @@ class Dashboard extends Component {
                         <Panel>
                             {this.renderToDos()}
                         </Panel>
-                    </PanelGroup>
+                    </PanelGroup> */}
                 </Container>
             </div>
         );

@@ -97,6 +97,7 @@ controller.getContacts =  (req, res) => {
             res.status(200).json({
                 success: true,
                 msg: "contacts for: mr/mrs/ms: "+req.user._id,
+                userID: req.user._id,
                 contacts: result})
         })
         .catch( (err) => {

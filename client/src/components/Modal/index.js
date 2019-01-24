@@ -1,5 +1,5 @@
 import React from "react";
-import { Popover, Button, Modal} from 'react-bootstrap';
+import { Button, Modal} from 'react-bootstrap';
 
 
 
@@ -15,6 +15,11 @@ class GuestLink extends React.Component {
         show: false
       };
     }
+
+    componentDidMount(){
+      console.log("props ID",this.props.eventID)
+      this.setState({eventID: this.props.eventID})
+    }
   
     handleClose() {
       this.setState({ show: false });
@@ -28,14 +33,16 @@ class GuestLink extends React.Component {
   
       return (
         <div>
-          <p>Hi there! Please fill out your contact information for the bride and groom.</p>
+          <p id="modal-message">Please copy this link and send to your guests.</p>
   
+
           <Button bsStyle="primary" 
                   bsSize="large" 
                   onClick={this.handleShow}
                   secondaryColor={this.props.secondaryColor}
                   fontColor={this.props.fontColor}
                   >
+
             Guest Link
           </Button>
   
@@ -46,7 +53,7 @@ class GuestLink extends React.Component {
             <Modal.Body>
               <h4>Copy the link below</h4>
               <p>
-               http://localhost:3000/event/5c4768f1b3d09f0d05a59bb2
+                https://i-dooo.herokuapp.com/event/{this.props.eventID}
               </p>
               
             </Modal.Body>

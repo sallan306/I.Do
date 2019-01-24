@@ -2,7 +2,7 @@ import React from "react";
 import { Panel } from 'react-bootstrap';
 import { PanelGroup } from 'react-bootstrap';
 import { PrintText } from "../PrintText";
-import Checkbox from '../Checkbox';
+// import Checkbox from '../Checkbox';
 
 function ContactCard(props) {
     return (
@@ -20,13 +20,13 @@ function ContactCard(props) {
                     <PrintText className="infoArea">
                         <PrintText>
                             {props.phone}
+                            <br/>
                             {props.email}
                         </PrintText>
                         <PrintText>
-                            {props.address}
-                            {props.city}
-                            {props.state}
-                            {props.zipcode}
+                            {props.street}
+                            <br/>
+                            {props.city} {props.state}{props.zipcode}
                         </PrintText>
                     </PrintText>
                 </Panel.Body>
