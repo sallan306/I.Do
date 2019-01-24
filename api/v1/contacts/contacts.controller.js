@@ -17,10 +17,19 @@ controller.createContactUser = (req, res) => {
     }
     db.create(newContact)
     .then( results => {
-        res.status(200).json({
-            success: true,
-            msg:"contact created"
-        })
+        if (result) {
+            res.status(200).json({
+                success: true,
+                msg:"contact created"
+            })
+        }
+        else{
+            res.status(200).json({
+                success: false,
+                err: 500,
+                msg: "something went wrong with the db"
+            })
+        }
     })
     .catch( err => {
         res.status(200).json({
@@ -212,14 +221,21 @@ controller.deleteContact = (req, res) => {
                 })
             }
             else {
-                res.status(200).json({success: false, errCode: 400, msg:"Access to change this contact Denied"})
+                res.status(200).json({
+                    success: false, 
+                    errCode: 400, 
+                    msg:"Access to change this contact Denied"
+                })
             }
             
         })
         .catch( err => {
             //printing the error
             console.log(err)
-            res.status(200).json({success: false, errCode: 500, msg: "something went wrong with the DB."})
+            res.status(200).json({
+                success: false, 
+                errCode: 500, 
+                msg: "something went wrong with the DB."})
         });
     }
     else {
