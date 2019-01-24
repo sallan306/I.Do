@@ -64,13 +64,11 @@ class App extends React.Component {
                       primaryColor={this.state.primaryColor}
                       secondaryColor={this.state.secondaryColor}
                       fontColor={this.state.fontColor}/>
+
           <Nav        secondaryColor={this.state.secondaryColor}
                       fontColor={this.state.fontColor}/>
           <Switch>
-            <Route exact path="/" render={this.renderDefaultView}
-                                  primaryColor={this.state.primaryColor} 
-                                  secondaryColor={this.state.secondaryColor}
-                                  fontColor={this.state.fontColor}/>
+            <Route exact path="/" render={this.renderDefaultView}/>
             <Route exact path="/event/:userID" component={Guest} />
             <Route exact path="/Logout" render={this.logOut} />
             <Route component={ErrorPage} />
