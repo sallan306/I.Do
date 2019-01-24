@@ -17,10 +17,19 @@ controller.createContactUser = (req, res) => {
     }
     db.create(newContact)
     .then( results => {
-        res.status(200).json({
-            success: true,
-            msg:"contact created"
-        })
+        if (result) {
+            res.status(200).json({
+                success: true,
+                msg:"contact created"
+            })
+        }
+        else{
+            res.status(200).json({
+                success: false,
+                err: 500,
+                msg: "something went wrong with the db"
+            })
+        }
     })
     .catch( err => {
         res.status(200).json({

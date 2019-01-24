@@ -101,5 +101,16 @@ export default {
         // console.log(err);
         return err;
       });
+  },
+
+  logout: ()=>{
+    axios.get('/api/v1/logout')
+    .then( (result) => {
+      console.log( result)
+    }
+    )
+    .catch( (err) =>
+      console.log(err)
+    )
   }
 };
