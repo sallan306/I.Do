@@ -6,7 +6,8 @@
     margin-right: 10vw;
     border-radius: 10px;
     height: 40vh;
-    margin-top: 5vh
+    margin-top: 5vh;
+    z-index: -10;
 }
 
 .container {
@@ -15,6 +16,7 @@
     width: 40vw;
     height: 20vh;
     transition: .4s;
+    z-index: -10;
 }
 
 .form-control, #nav-title, .btn-success, #title, .panel-default {
@@ -88,11 +90,35 @@ nav {
     letter-spacing: 2px;
 }
 
+
+
+/* ---------------------------------------------------DASHBOARD */
+.panel-heading, .panel-body, .panel-default, .panel-collapse, .panel-group, .panel  {
+    background: transparent;
+    border: 0px;
+    border-radius: 60px;
+    border-top: 0px;
+}
+
+#accordion-example-heading-1 {
+    border-top: 0;
+}
+.form-control {
+    width: 90%;
+    margin-left: 5%;
+}
+.panel-body {
+    width: 90%;
+    margin-left: 5%; 
+}
+/* -----------------------------------------------------MEDIA */
+=======
 #modal-message {
     font-size: 18px;
     text-align: center;
     letter-spacing: 2px;
 }
+
 
 
 @media only screen and (max-width: 600px) {
