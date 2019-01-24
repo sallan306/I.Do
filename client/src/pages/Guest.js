@@ -34,12 +34,23 @@ class Guests extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         API.createGuestContact(this.state.userID, this.state, (result =>
-            // console.log("RESULT",result)
-            result
-            ? this.clearFormThanks()
-            : alert("Sorry that didn't go through")
+            this.clearFormThanks()
             ))
         // TODO on submit of the form, send data to userID database
+    }
+
+    clearFormThanks() {
+        this.setState({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            street: "",
+            city: "",
+            state: "",
+            zipcode: "",
+        })
+        alert("Thank you!")
     }
 
     render() {
