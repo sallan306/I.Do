@@ -65,8 +65,7 @@ class App extends React.Component {
                       secondaryColor={this.state.secondaryColor}
                       fontColor={this.state.fontColor}/>
           <Nav        secondaryColor={this.state.secondaryColor}
-                      fontColor={this.state.fontColor}
-                      style={{zIndex: 100}}/>
+                      fontColor={this.state.fontColor}/>
           <Switch>
             <Route exact path="/" render={this.renderDefaultView}
                                   primaryColor={this.state.primaryColor} 

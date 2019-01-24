@@ -9,8 +9,6 @@ import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import { Input } from "../components/Input";
 import Modal from "../components/Modal";
-import axios from 'axios';
-import "../components/Nav/style.css";
 
 class Dashboard extends Component {
     state = {
@@ -110,20 +108,8 @@ class Dashboard extends Component {
     }
 
     handleSendMassMessage = event => {
-        axios.post(`/api/v1/email`, 
-        {
-            "emailTo" : [
-
-                        ],
-            "emailSubject" : "Wedding App Test Email",
-            "emailBody" : "The dark lord"
-        }
-        , function (results) {
-            console.log(results)
-        }).then(res => {
-            this.handleFormLogin(res);
-        })
-
+        event.preventDefault();
+        //This is where we call the component for sending messages out to guests
     }
 
     // --------- CHECKBOX STUFF ----------
@@ -155,16 +141,7 @@ class Dashboard extends Component {
     deselectAll = () => this.selectAllCheckboxes(false);
     // -------------------------------------------
 
-
-    componentDidMount() {
-        API.getContacts( results => {
-            results.data.contacts
-            ? this.setState({ contacts: results.data.contacts })
-            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
-        });
-        
     clearFormThanks() {
-
         this.setState({
             firstName: "",
             lastName: "",
@@ -201,44 +178,31 @@ class Dashboard extends Component {
         });
     }
 
-    render(props) {
+    render() {
         return (
       
             <div>
                 <NavLinks/>
                 <Container>
-                    
-            {/* The guest link appears within this modal */}
-                <Modal  secondaryColor={this.props.secondaryColor}
-                        fontColor={this.props.fontColor}/>
-                   
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
+                    {/* The guest link appears within this modal */}
+                    <Modal eventID={this.state.userID}/>
                     <br/>
-                    <PanelGroup style={{border: 0, borderTop: 0}}>
-                    {this.state.contacts.map(contact=>
-                        <ContactCard {...contact}   guestCheckboxes={this.state.guestCheckboxes} 
-                                                    handleCheckboxChange={this.handleCheckboxChange}
-                                                    secondaryColor={this.props.secondaryColor}
-                                                    fontColor={this.props.fontColor} 
-                                                    style={{border: 0, borderTop: 0}}/>
-                    )}
-                    </PanelGroup>
-                    <PanelGroup className="manuallyAddUser" 
-                                accordion id="accordion-example"
-                                style={{border: 0, borderTop: 0}}>
-                        <Panel eventKey="1" style={{border: 0, borderTop: 0}}>
-                            <Panel.Heading  style={{
-                                            border: 0, 
-                                            borderTop: 0, 
-                                            background: this.props.secondaryColor,
-                                            color: this.props.primaryColor
-                                            }}>
-                                <Panel.Title style={{border: 0, borderTop: 0}} toggle>
-
+                    {/* <Button
+                        onClick={this.handleSendMassMessage}
+                    >
+                        Send Email
+                    </Button> */}
+                    {/* <br/> */}
+                    {/* <br/> */}
+                    <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
+                        <Panel eventKey="1">
+                            <Panel.Heading>
+                                <Panel.Title toggle>
                                     Add New Guest
                                 </Panel.Title>
-                            </Panel.Heading >
-                            <Panel.Body collapsible style={{border: 0, borderTop: 0}}>
+                            </Panel.Heading>
+                            <Panel.Body collapsible>
                             <GuestForm 
                                 handleInputChange={this.handleInputChange}
                                 handleFormSubmit={this.handleFormSubmit}
@@ -250,8 +214,6 @@ class Dashboard extends Component {
                                 city={this.state.city}
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
-                                secondaryColor={this.props.secondaryColor}
-                                fontColor={this.props.fontColor}
                             />
                             
                             </Panel.Body>
@@ -271,7 +233,7 @@ class Dashboard extends Component {
                                
                     {/* <PanelGroup>
                         <Panel>
-                            <Panel.Heading style={{border: 0, borderTop: 0, background: this.props.secondaryColor}}>
+                            <Panel.Heading>
                                 To Do
                             </Panel.Heading>
                             <Panel.Body>
@@ -280,14 +242,10 @@ class Dashboard extends Component {
                                     onChange={this.handleInputChange}
                                     name="task"
                                     placeholder="Add an Item"
-                                    secondaryColor={this.props.secondaryColor}
-                                    fontColor={this.props.fontColor}
                                     >
                                 </Input>
                                 <Button
                                     onClick={this.handleToDoAdd}
-                                    secondaryColor={this.props.secondaryColor}
-                                    fontColor={this.props.fontColor}
                                 >
                                     Add
                                 </Button>
