@@ -182,20 +182,17 @@ class Dashboard extends Component {
                 <Container>
                     
             {/* The guest link appears within this modal */}
-                <Modal/>
                    
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
-                    <Button
+                    <Modal/>
+                    <br/>
+                    {/* <Button
                         onClick={this.handleSendMassMessage}
                     >
                         Send Email
-                    </Button>
-                    <br/>
-                    <PanelGroup>
-                    {this.state.contacts.map(contact=>
-                        <ContactCard {...contact} guestCheckboxes={this.state.guestCheckboxes} handleCheckboxChange={this.handleCheckboxChange} />
-                    )}
-                    </PanelGroup>
+                    </Button> */}
+                    {/* <br/> */}
+                    {/* <br/> */}
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
                         <Panel eventKey="1">
                             <Panel.Heading>
@@ -219,7 +216,19 @@ class Dashboard extends Component {
                             
                             </Panel.Body>
                         </Panel>
-                    </PanelGroup>            
+                    </PanelGroup>
+                    <br/>
+                    {/* <PanelGroup>
+                    {this.state.contacts.map(contact=>
+                        <ContactCard {...contact} guestCheckboxes={this.state.guestCheckboxes} handleCheckboxChange={this.handleCheckboxChange} />
+                    )}
+                    </PanelGroup> */}
+                    <PanelGroup>
+                    {this.state.contacts.map(contact=>
+                        <ContactCard {...contact} />
+                    )}
+                    </PanelGroup>
+                               
                     <PanelGroup>
                         <Panel>
                             <Panel.Heading>
