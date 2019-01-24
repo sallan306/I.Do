@@ -4,7 +4,7 @@ import {NavLinks} from "../components/NavLinks";
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 import { Panel, PanelGroup } from 'react-bootstrap';
-import {PrintText, Test} from '../components/PrintText';
+import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import { Input } from "../components/Input";
@@ -180,13 +180,9 @@ class Dashboard extends Component {
             <div>
                 <NavLinks/>
                 <Container>
-                    
-            {/* The guest link appears within this modal */}
-                <Modal eventID={this.state.userID}/>
-
-                   
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
-                    <Modal/>
+                    {/* The guest link appears within this modal */}
+                    <Modal eventID={this.state.userID}/>
                     <br/>
                     {/* <Button
                         onClick={this.handleSendMassMessage}

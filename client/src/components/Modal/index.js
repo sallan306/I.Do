@@ -1,5 +1,5 @@
 import React from "react";
-import { Popover, Button, Modal} from 'react-bootstrap';
+import { Button, Modal} from 'react-bootstrap';
 
 
 
@@ -47,7 +47,7 @@ class GuestLink extends React.Component {
             <Modal.Body>
               <h4>Copy the link below</h4>
               <p>
-               {this.state.eventID}
+                https://i-dooo.herokuapp.com/{this.state.eventID}
               </p>
               
             </Modal.Body>
