@@ -31,12 +31,12 @@ function ContactCard(props) {
                     </PrintText>
                 </Panel.Body>
             </Panel>
-            <Checkbox
+            {/* <Checkbox
                 name={props.id}
                 isSelected={props.guestCheckboxes[props.id]}
                 onCheckboxChange={props.handleCheckboxChange}
                 // key="checkbox"
-            />
+            /> */}
         </PanelGroup>
     );
 };
