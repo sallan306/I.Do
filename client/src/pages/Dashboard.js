@@ -12,6 +12,7 @@ import Modal from "../components/Modal";
 
 class Dashboard extends Component {
     state = {
+        userID: "",
         contacts: [],
         firstName: "",
         lastName: "",
@@ -143,26 +144,25 @@ class Dashboard extends Component {
 
     componentDidMount() {
         API.getContacts( results => {
-            results.data.contacts
+            results.data
             ? this.setState({ contacts: results.data.contacts })
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
-
-        //     console.log(this.state.contacts);
         });
-        
-        const guestCheckboxes = Test.reduce(
-            (checkboxObj, guest) => ({
+
+        const guestCheckboxes = this.state.contacts.reduce(
+            (checkboxObj, contact) => ({
                 ...checkboxObj,
-                [guest.id]: false
+                [contact.id]: false
             }),
             {}
         )
         this.setState({ 
-            contacts: Test,
+            contacts: this.state.contacts,
             guestCheckboxes
         });
     
     }
+
     render() {
         return (
       
@@ -171,7 +171,7 @@ class Dashboard extends Component {
                 <Container>
                     
             {/* The guest link appears within this modal */}
-                <Modal/>
+                <Modal eventID={this.state.userID}/>
                    
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                     <Button
