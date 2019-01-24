@@ -8,7 +8,7 @@ function ContactCard(props) {
     return (
         <PanelGroup accordion id="accordion-example">
             <Panel eventKey="1">
-                <Panel.Heading>
+                <Panel.Heading style={{border: 0, borderTop: 0, background: props.secondaryColor}}>
                     <Panel.Title toggle>
                         <PrintText>
                             {props.firstName} {props.lastName}
@@ -31,12 +31,12 @@ function ContactCard(props) {
                     </PrintText>
                 </Panel.Body>
             </Panel>
-            <Checkbox
+            {/* <Checkbox
                 name={props.id}
                 isSelected={props.guestCheckboxes[props.id]}
                 onCheckboxChange={props.handleCheckboxChange}
                 // key="checkbox"
-            />
+            /> */}
         </PanelGroup>
     );
 };

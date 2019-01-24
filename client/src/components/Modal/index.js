@@ -24,13 +24,18 @@ class GuestLink extends React.Component {
       this.setState({ show: true });
     }
   
-    render() {
+    render(props) {
   
       return (
         <div>
           <p>Hi there! Please fill out your contact information for the bride and groom.</p>
   
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
+          <Button bsStyle="primary" 
+                  bsSize="large" 
+                  onClick={this.handleShow}
+                  secondaryColor={this.props.secondaryColor}
+                  fontColor={this.props.fontColor}
+                  >
             Guest Link
           </Button>
   
