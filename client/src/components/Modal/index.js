@@ -12,8 +12,7 @@ class GuestLink extends React.Component {
       this.handleClose = this.handleClose.bind(this);
   
       this.state = {
-        show: false,
-        eventID: "",
+        show: false
       };
     }
 
@@ -47,7 +46,7 @@ class GuestLink extends React.Component {
             <Modal.Body>
               <h4>Copy the link below</h4>
               <p>
-                https://i-dooo.herokuapp.com/{this.state.eventID}
+                https://i-dooo.herokuapp.com/event/{this.props.eventID}
               </p>
               
             </Modal.Body>
