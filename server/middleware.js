@@ -8,7 +8,7 @@ module.exports.initMiddleWare = (app) => {
     //middleware - use initMiddleWare
     app.use(express.urlencoded({extended: false }));
     app.use(express.json());
-    app.use(express.static(path.join(__dirname, '/public')));
+    app.use(express.static(path.join(__dirname, '/client')));
     app.use(expressSession({secret: "bongo Cat",resave: true, saveUninitialized: false }))
     //passport
     app.use(passport.initialize());

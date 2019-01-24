@@ -13,14 +13,12 @@ controller.addUser = (req, res, next) =>{
     console.log (data.email);
     db.findOne({email:data.email})
         .then( (result) => {
-
             //console.log ("FindOne Result" ,result);
-            
-            if (result){ 
+            if (result){
+                console.log ("User already exists");
                 res.status(200).json({success: false, msg:"Email already in use"})
             }
             else{
-
                 //hashing the password
                 bcrypt.hash(data.password, null, null, (err, hash) => {
                     //console.log (err, hash);
@@ -33,6 +31,7 @@ controller.addUser = (req, res, next) =>{
                         lastName: data.lastName
                     })
                     .then( result => {
+                        console.log("created new user: ");
                         console.log(result);
                         res.status(200).json({
                             success: true,
