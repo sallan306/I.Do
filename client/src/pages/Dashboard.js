@@ -18,7 +18,7 @@ class Dashboard extends Component {
         lastName: "",
         email: "",
         phone: "",
-        address: "",
+        street: "",
         city: "",
         state: "",
         zipcode: "",
@@ -43,7 +43,7 @@ class Dashboard extends Component {
         event.preventDefault();
         API.createUserContact(this.state, result =>
             result.status === 200
-            ? this.componentDidMount()
+            ? this.clearFormThanks()
             : console.log("Sorry that didn't go through")
             )
     }
@@ -61,7 +61,6 @@ class Dashboard extends Component {
 
     handleToDoAdd = event => {
         event.preventDefault();
-        console.log("Hello there Annie!")
         alert("Added " + this.state.task);
         const id = this.newItemId();
         const taskObj = {
@@ -142,6 +141,19 @@ class Dashboard extends Component {
     deselectAll = () => this.selectAllCheckboxes(false);
     // -------------------------------------------
 
+    clearFormThanks() {
+        this.setState({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            street: "",
+            city: "",
+            state: "",
+            zipcode: "",
+        })
+    }
+
     componentDidMount() {
         API.getContacts( results => {
             results.data
@@ -149,16 +161,7 @@ class Dashboard extends Component {
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
         });
 
-        this.setState({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            address: "",
-            city: "",
-            state: "",
-            zipcode: "",
-        })
+        
 
         const guestCheckboxes = this.state.contacts.reduce(
             (checkboxObj, contact) => ({
@@ -206,7 +209,7 @@ class Dashboard extends Component {
                                 lastName={this.state.lastName}
                                 email={this.state.email}
                                 phone={this.state.phone}
-                                address={this.state.address}
+                                street={this.state.street}
                                 city={this.state.city}
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
