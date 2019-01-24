@@ -33,9 +33,9 @@ class GuestLink extends React.Component {
   
       return (
         <div>
-          <p>Hi there! Please fill out your contact information for the bride and groom.</p>
+          <p id="modal-message">Please copy this link and send to your guests.</p>
   
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
+          <Button bsStyle="primary" bsSize="medium" onClick={this.handleShow} >
             Guest Link
           </Button>
   
