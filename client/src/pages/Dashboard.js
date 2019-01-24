@@ -12,7 +12,7 @@ import Modal from "../components/Modal";
 
 class Dashboard extends Component {
     state = {
-        userID: "",
+        userID: "TESTING USER ID and SOON LINK",
         contacts: [],
         firstName: "",
         lastName: "",
