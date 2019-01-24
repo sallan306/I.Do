@@ -8,7 +8,7 @@ function ContactCard(props) {
     return (
         <PanelGroup accordion id="accordion-example">
             <Panel eventKey="1">
-                <Panel.Heading style={{border: 0, borderTop: 0, background: props.secondaryColor}}>
+                <Panel.Heading>
                     <Panel.Title toggle>
                         <PrintText>
                             {props.firstName} {props.lastName}
