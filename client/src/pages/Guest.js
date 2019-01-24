@@ -11,7 +11,7 @@ class Guests extends Component {
         lastName: "",
         email: "",
         phone: "",
-        address: "",
+        street: "",
         city: "",
         state: "",
         zipcode: ""
@@ -33,12 +33,12 @@ class Guests extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        API.createGuestContact(this.state.userID, this.state, result =>
+        API.createGuestContact(this.state.userID, this.state, (result =>
             // console.log("RESULT",result)
-            result.status === 200
-            ? alert("Thanks for submitting")
+            result.data.sucess
+            ? this.clearFormThanks()
             : alert("Sorry that didn't go through")
-            )
+            ))
         // TODO on submit of the form, send data to userID database
     }
 
@@ -54,7 +54,7 @@ class Guests extends Component {
                     lastName={this.state.lastName}
                     email={this.state.email}
                     phone={this.state.phone}
-                    address={this.state.address}
+                    street={this.state.street}
                     city={this.state.city}
                     state={this.state.state}
                     zipcode={this.state.zipcode}

@@ -20,13 +20,13 @@ function ContactCard(props) {
                     <PrintText className="infoArea">
                         <PrintText>
                             {props.phone}
+                            <br/>
                             {props.email}
                         </PrintText>
                         <PrintText>
-                            {props.address}
-                            {props.city}
-                            {props.state}
-                            {props.zipcode}
+                            {props.street}
+                            <br/>
+                            {props.city} {props.state}{props.zipcode}
                         </PrintText>
                     </PrintText>
                 </Panel.Body>

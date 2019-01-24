@@ -22,6 +22,7 @@ export default {
   createGuestContact: (userID, contactData, cb) => {
     axios.post('/api/v1/contacts/'+userID, contactData)
     .then( result => {
+      console.log(result);
       cb(result)
     })
     .catch()
