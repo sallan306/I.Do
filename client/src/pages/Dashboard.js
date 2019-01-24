@@ -41,9 +41,19 @@ class Dashboard extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        API.createUserContact(this.state, result =>
-            result.status === 200
-            ? this.clearFormThanks()
+        let guestFormValues = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            phone: this.state.phone,
+            street: this.state.street,
+            city: this.state.city,
+            state: this.state.state,
+            zipcode: this.state.zipcode,
+        }
+        API.createUserContact(guestFormValues, result =>
+            result
+            ? this.componentDidMount()
             : console.log("Sorry that didn't go through")
             )
     }
@@ -154,7 +164,10 @@ class Dashboard extends Component {
         })
     }
 
+
+    
     componentDidMount() {
+        this.clearFormThanks()
         API.getContacts( results => {
             results.data
             ? this.setState({ 
