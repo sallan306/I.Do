@@ -12,6 +12,7 @@ import Modal from "../components/Modal";
 
 class Dashboard extends Component {
     state = {
+        userID: "TESTING USER ID and SOON LINK",
         contacts: [],
         firstName: "",
         lastName: "",
@@ -143,13 +144,11 @@ class Dashboard extends Component {
 
     componentDidMount() {
         API.getContacts( results => {
-            results.data.contacts
+            results.data
             ? this.setState({ contacts: results.data.contacts })
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
-
-        //     console.log(this.state.contacts);
         });
-        
+
         this.setState({
             firstName: "",
             lastName: "",
@@ -169,8 +168,9 @@ class Dashboard extends Component {
             {}
         )
         this.setState({ 
-            contacts: Test,
-            guestCheckboxes: guestCheckboxes
+            contacts: this.state.contacts,
+            guestCheckboxes
+
         });
     }
 
@@ -182,6 +182,8 @@ class Dashboard extends Component {
                 <Container>
                     
             {/* The guest link appears within this modal */}
+                <Modal eventID={this.state.userID}/>
+
                    
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                     <Modal/>
