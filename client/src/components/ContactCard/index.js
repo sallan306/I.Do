@@ -6,24 +6,27 @@ import { PrintText } from "../PrintText";
 
 function ContactCard(props) {
     return (
-        <PanelGroup accordion id="accordion-example">
-            <Panel eventKey="1">
-                <Panel.Heading>
-                    <Panel.Title toggle>
-                        <PrintText>
+        <PanelGroup 
+            accordion id="accordion-example" 
+            style={{background: "transparent"}}
+            >
+            <Panel eventKey="1" style={{border: 0, background: "transparent"}}>
+                <Panel.Heading style={{background: props.secondaryColor}}>
+                    <Panel.Title toggle style={{color: props.fontColor}}>
+                        <PrintText >
                             {props.firstName} {props.lastName}
                         </PrintText>
-                    </Panel.Title>
+                    </Panel.Title >
                 </Panel.Heading>
 
                 <Panel.Body collapsible>
-                    <PrintText className="infoArea">
-                        <PrintText>
+                    <PrintText className="infoArea" >
+                        <PrintText style={{background: props.secondaryColor}}>
                             {props.phone}
                             <br/>
                             {props.email}
                         </PrintText>
-                        <PrintText>
+                        <PrintText style={{background: props.secondaryColor}}>
                             {props.street}
                             <br/>
                             {props.city} {props.state}{props.zipcode}

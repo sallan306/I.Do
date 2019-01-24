@@ -191,15 +191,18 @@ class Dashboard extends Component {
         });
     }
 
-    render() {
+    render(props) {
         return (
       
             <div>
                 <NavLinks/>
                 <Container>
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
+                    {console.log(this.props.secondaryColor)}
                     {/* The guest link appears within this modal */}
-                    <Modal eventID={this.state.userID}/>
+                    <Modal  eventID={this.state.userID}
+                            secondaryColor={this.props.secondaryColor}
+                            fontColor={this.props.fontColor}/>
                     <br/>
                     {/* <Button
                         onClick={this.handleSendMassMessage}
@@ -209,13 +212,18 @@ class Dashboard extends Component {
                     {/* <br/> */}
                     {/* <br/> */}
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
-                        <Panel eventKey="1">
-                            <Panel.Heading>
-                                <Panel.Title toggle>
+                        <Panel eventKey="1" style ={{"border":0}}>
+                            <Panel.Heading style={{ "background": this.props.secondaryColor,
+                                                        "color": this.props.fontColor,
+                                                        }}>
+                                <Panel.Title style={{ "background": "transparent",
+                                                    "border":0,
+                                                     }}
+                                                        toggle>
                                     Add New Guest
                                 </Panel.Title>
                             </Panel.Heading>
-                            <Panel.Body collapsible>
+                            <Panel.Body collapsible style={{"border-top":0}}>
                             <GuestForm 
                                 handleInputChange={this.handleInputChange}
                                 handleFormSubmit={this.handleFormSubmit}
@@ -227,20 +235,18 @@ class Dashboard extends Component {
                                 city={this.state.city}
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
+                                secondaryColor={this.props.secondaryColor}
+                                fontColor={this.props.fontColor}
                             />
                             
                             </Panel.Body>
                         </Panel>
                     </PanelGroup>
                     <br/>
-                    {/* <PanelGroup>
+                    <PanelGroup style={{background: "transparent"}}>
                     {this.state.contacts.map(contact=>
-                        <ContactCard {...contact} guestCheckboxes={this.state.guestCheckboxes} handleCheckboxChange={this.handleCheckboxChange} />
-                    )}
-                    </PanelGroup> */}
-                    <PanelGroup>
-                    {this.state.contacts.map(contact=>
-                        <ContactCard {...contact} />
+                        <ContactCard {...contact} secondaryColor={this.props.secondaryColor}
+                        fontColor={this.props.fontColor}/>
                     )}
                     </PanelGroup>
                                
