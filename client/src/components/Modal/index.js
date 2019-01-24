@@ -47,7 +47,7 @@ class GuestLink extends React.Component {
             <Modal.Body>
               <h4>Copy the link below</h4>
               <p>
-               {this.state.userID}
+               {this.state.eventID}
               </p>
               
             </Modal.Body>
