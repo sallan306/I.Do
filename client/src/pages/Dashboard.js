@@ -4,7 +4,7 @@ import {NavLinks} from "../components/NavLinks";
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 import { Panel, PanelGroup } from 'react-bootstrap';
-import {PrintText, Test} from '../components/PrintText';
+import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import { Input } from "../components/Input";
