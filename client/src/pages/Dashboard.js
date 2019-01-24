@@ -180,13 +180,9 @@ class Dashboard extends Component {
             <div>
                 <NavLinks/>
                 <Container>
-                    
-            {/* The guest link appears within this modal */}
-                <Modal eventID={this.state.userID}/>
-
-                   
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
-                    <Modal/>
+                    {/* The guest link appears within this modal */}
+                    <Modal eventID={this.state.userID}/>
                     <br/>
                     {/* <Button
                         onClick={this.handleSendMassMessage}
