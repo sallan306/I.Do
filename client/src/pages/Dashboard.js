@@ -12,7 +12,7 @@ import Modal from "../components/Modal";
 
 class Dashboard extends Component {
     state = {
-        userID: "TESTING USER ID and SOON LINK",
+        userID: "",
         contacts: [],
         firstName: "",
         lastName: "",
@@ -157,11 +157,12 @@ class Dashboard extends Component {
     componentDidMount() {
         API.getContacts( results => {
             results.data
-            ? this.setState({ contacts: results.data.contacts })
+            ? this.setState({ 
+                contacts: results.data.contacts, 
+                userID: results.data.userID
+            })
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
         });
-
-        
 
         const guestCheckboxes = this.state.contacts.reduce(
             (checkboxObj, contact) => ({

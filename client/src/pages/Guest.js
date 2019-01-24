@@ -35,7 +35,7 @@ class Guests extends Component {
         event.preventDefault();
         API.createGuestContact(this.state.userID, this.state, (result =>
             // console.log("RESULT",result)
-            result.data.sucess
+            result
             ? this.clearFormThanks()
             : alert("Sorry that didn't go through")
             ))
