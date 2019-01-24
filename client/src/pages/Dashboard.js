@@ -230,7 +230,7 @@ class Dashboard extends Component {
                     )}
                     </PanelGroup>
                                
-                    <PanelGroup>
+                    {/* <PanelGroup>
                         <Panel>
                             <Panel.Heading>
                                 To Do
@@ -253,7 +253,7 @@ class Dashboard extends Component {
                         <Panel>
                             {this.renderToDos()}
                         </Panel>
-                    </PanelGroup>
+                    </PanelGroup> */}
                 </Container>
             </div>
         );

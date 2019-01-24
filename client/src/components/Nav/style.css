@@ -88,6 +88,13 @@ nav {
     letter-spacing: 2px;
 }
 
+#modal-message {
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
 @media only screen and (max-width: 600px) {
     .container {
         position: relative;
