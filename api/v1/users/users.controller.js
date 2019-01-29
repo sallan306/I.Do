@@ -28,7 +28,8 @@ controller.addUser = (req, res, next) =>{
                         email: data.email,
                         password: hash,
                         firstName: data.firstName,
-                        lastName: data.lastName
+                        lastName: data.lastName,
+                        color: data.color
                     })
                     .then( result => {
                         console.log("created new user: ");
