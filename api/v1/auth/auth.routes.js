@@ -3,13 +3,16 @@ const passport = require('../services/passport');
 
 
 module.exports.initRoutes = (app) => {
-    app.post('/api/v1/login', passport.authenticate('local'), function(req, res, next) {
+    app.post('/api/v1/login', 
+        passport.authenticate('local'), 
+        function(req, res, next) {
         // console.log ('reqbody HERE: ', req.body)
         res.json({
             success: true,
-            msg: "User Logged in"})
+            msg: "User Logged in"
+        });
     });
-    app.get('api/v1/isAuth', (req, res, next) => {
+    app.post('api/v1/isAuth', (req, res, next) => {
         if(req.isAuthenticated()){
             res.status(200).json({
                 success: true,
