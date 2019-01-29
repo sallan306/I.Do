@@ -9,8 +9,7 @@ module.exports.initRoutes = (app) => {
             success: true,
             msg: "User Logged in"})
     });
-
-    app.post('api/v1/auth', (req, res, next) => {
+    app.get('api/v1/isAuth', (req, res, next) => {
         if(req.isAuthenticated()){
             res.status(200).json({
                 success: true,
@@ -25,7 +24,6 @@ module.exports.initRoutes = (app) => {
             });
         }
     });
-
     app.get('/api/v1/logout', function(req, res){
         req.logout();
       });
