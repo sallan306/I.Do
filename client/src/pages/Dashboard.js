@@ -22,6 +22,7 @@ class Dashboard extends Component {
         city: "",
         state: "",
         zipcode: "",
+        comment: "",
         task: "",
         list: {},
         guestCheckboxes: {}
@@ -50,6 +51,7 @@ class Dashboard extends Component {
             city: this.state.city,
             state: this.state.state,
             zipcode: this.state.zipcode,
+            comment: this.state.comment
         }
         API.createUserContact(guestFormValues, result =>
             result
@@ -161,6 +163,7 @@ class Dashboard extends Component {
             city: "",
             state: "",
             zipcode: "",
+            comment: "",
         })
     }
 
@@ -204,13 +207,13 @@ class Dashboard extends Component {
                             secondaryColor={this.props.secondaryColor}
                             fontColor={this.props.fontColor}/>
                     <br/>
-                    {/* <Button
+                    <Button
                         onClick={this.handleSendMassMessage}
                     >
                         Send Email
-                    </Button> */}
-                    {/* <br/> */}
-                    {/* <br/> */}
+                    </Button>
+                    <br/> 
+                     <br/>
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
                         <Panel eventKey="1" style ={{"border":0}}>
                             <Panel.Heading style={{ "background": this.props.secondaryColor,
@@ -235,6 +238,7 @@ class Dashboard extends Component {
                                 city={this.state.city}
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
+                                comment={this.state.comment}
                                 secondaryColor={this.props.secondaryColor}
                                 fontColor={this.props.fontColor}
                             />

@@ -34,6 +34,7 @@
     font-size: 90px;
     letter-spacing: 5px;
 }
+
 h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -63,8 +64,7 @@ nav {
     background: #faf4ee4d;
     transition: 0.4s;
     text-decoration: none;
-
-  }
+}
 
 #dashboard-title {
     text-align: center;
@@ -94,6 +94,23 @@ nav {
     letter-spacing: 2px;
 }
 
+#infoArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#contactInfoPrinted {
+    display:flex;
+    margin: auto;
+    float: right;
+    background-color: blue;
+}
+
+#editButton {
+    float: right;
+}
 
 @media only screen and (max-width: 600px) {
     .container {
