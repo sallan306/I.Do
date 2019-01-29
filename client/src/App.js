@@ -47,11 +47,7 @@ class App extends React.Component {
   logOut = () => {
     this.setState({loggedIn: false})
     // TODO API Signout call.
-    return <Redirect
-        to={{
-          pathname: "/"
-        }}
-      />
+    return <Redirect to="/" />
   }
 
   render(){

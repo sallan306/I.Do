@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Redirect } from "react";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import "../components/Nav/";
@@ -20,7 +20,12 @@ class Home extends Component {
     // TO DO !!!!========================
     componentDidMount() {
       // Check to see if user is authenticated. If authenticated, log in, if not should be good.
-      
+      API.isAuth(result => 
+        // console.log("RESULT COMPONENT", result)
+        result.data.success
+        ? console.log("THIS TTHING=====")
+        : <Redirect to="/" />
+        )
     }
 
     handleInputChange = event => {
@@ -72,10 +77,11 @@ class Home extends Component {
         API.login(this.state.email, this.state.password, (result) =>
             result.status === 200
             ? this.props.flipToDash()
-            : alert("that username/password combination doesn'tt work")
+            : alert("That username/password combination doesn't work")
         )
     }
 
+    // prevent.default cannot run twice. So this is used to auto login once user signs up.
     handleFormLogin = event => {
         if(this.state.toggleLoginSignup === false){
             event.preventDefault();

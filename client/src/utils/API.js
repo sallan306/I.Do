@@ -82,20 +82,15 @@ export default {
     axios.post('/api/v1/sms', {sendTo: "+16032755557", txtBody: message });
   },
   login: function(email, password, cb) {
-    console.log("REACT TO API: Trying to Log in");
-    console.log("password", password);
-    console.log("email", email);
     axios.post('/api/v1/login', {email: email, password: password})
       .then( (result) => {
-        // console.log("result from axios.post on api.js",result);
-        
         cb(result);
       })
       .catch( (err) => {
-        // console.log(err);
         return err;
       });
   },
+
   logout: ()=>{
     axios.get('/api/v1/logout')
     .then( (result) => {
@@ -106,10 +101,12 @@ export default {
       console.log(err)
     )
   },
-  isAuth: () => {
+
+  isAuth: ()=> {
     axios.post('/api/v1/isAuth')
     .then( (result) => {
-      console.log(result);
+      return(result)
+      // console.log("ISAUTH", result);
     })
     .catch( (err) => {
       console.log(err);
