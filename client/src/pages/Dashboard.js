@@ -22,7 +22,7 @@ class Dashboard extends Component {
         city: "",
         state: "",
         zipcode: "",
-        comment: "Hello! Lorum ipsum! Cupckaes! Geaux Tigers!",
+        comment: "",
         task: "",
         list: {},
         guestCheckboxes: {}
@@ -51,6 +51,7 @@ class Dashboard extends Component {
             city: this.state.city,
             state: this.state.state,
             zipcode: this.state.zipcode,
+            comment: this.state.comment
         }
         API.createUserContact(guestFormValues, result =>
             result
