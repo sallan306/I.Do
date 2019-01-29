@@ -1,6 +1,8 @@
 module.exports.isAuthenticated = (req, res, next) => {
     if(!req.isAuthenticated()){
-        return res.redirect('/login');
+        return false
     }
+    
+    console.log("ISAUTH.JS");
     next();
 }

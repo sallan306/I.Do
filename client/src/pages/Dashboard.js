@@ -7,7 +7,6 @@ import { Panel, PanelGroup } from 'react-bootstrap';
 import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
-import { Input } from "../components/Input";
 import Modal from "../components/Modal";
 
 class Dashboard extends Component {
