@@ -16,7 +16,12 @@ class App extends React.Component {
       secondaryColor: "rgb(247, 238, 228)",
       fontColor: "black"
     }
+    this.renderDefaultView()
   }
+  // componentWillMount(){
+  //   this.renderDefaultView()
+  // }
+
   changePrimaryColor = newColor => {
     this.setState({primaryColor: newColor});
   }
