@@ -58,7 +58,6 @@ controller.addUser = (req, res, next) =>{
             
     });//END FIND ONE
 }//END ADD USER
-
 controller.deleteThisUser = (req, res, next) => {
 
     db.deleteOne({_id: req.user.id})
@@ -75,7 +74,6 @@ controller.deleteThisUser = (req, res, next) => {
         })
     })
 }
-
 controller.findSpecificUser = (req, res, next) => {
     console.log("Read");
     db.findOne({id: req.params.id})
@@ -103,5 +101,4 @@ controller.findSpecificUser = (req, res, next) => {
         })
     })
 }
-
 module.exports = controller;

@@ -13,7 +13,8 @@ controller.createContactUser = (req, res) => {
         state: req.body.state,
         zipcode: req.body.zipcode,
         phone: req.body.phone,
-        email: req.body.email 
+        email: req.body.email,
+        comment: req.body.comment
     }
     db.create(newContact)
     .then( results => {
@@ -39,7 +40,6 @@ controller.createContactUser = (req, res) => {
         })
     });
 }
-
 controller.createContactGuest = (req, res) => {
     const newContact = {
         belongsTo: req.params.userID,
@@ -50,7 +50,8 @@ controller.createContactGuest = (req, res) => {
         state: req.body.state,
         zipcode: req.body.zipcode,
         phone: req.body.phone,
-        email: req.body.email
+        email: req.body.email,
+        comment: req.body.comment
     }
 
     //checking to makesure user exists before instering contact
@@ -98,7 +99,6 @@ controller.createContactGuest = (req, res) => {
     }) 
     
 }
-
 controller.getContacts =  (req, res) => {
     if (req.user) {
         db.find({belongsTo: req.user._id})
@@ -124,7 +124,6 @@ controller.getContacts =  (req, res) => {
     }
 
 }
-
 controller.editContact = (req, res) => {
     //making sure user is logged in
     if (req.user){
@@ -148,7 +147,8 @@ controller.editContact = (req, res) => {
                         state: req.body.state,
                         zipcode: req.body.zipcode,
                         phone: req.body.phone,
-                        email: req.body.email
+                        email: req.body.email,
+                        comment: req.body.comment
                     }
                 })
                 .then ( (result) => {
@@ -186,7 +186,6 @@ controller.editContact = (req, res) => {
         })
     }
 }
-
 controller.deleteContact = (req, res) => {
     //checking to make sure user logged in
     if (req.user){
@@ -246,5 +245,4 @@ controller.deleteContact = (req, res) => {
         })
     }
 }
-
 module.exports = controller;

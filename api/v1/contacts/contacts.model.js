@@ -13,6 +13,7 @@ const Contact = mongoose.model('Contact', {
     zipcode: String,
     phone: String,
     email: String,
+    comment: String
 });
 
 module.exports = Contact;
