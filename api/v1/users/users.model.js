@@ -7,6 +7,7 @@ const User = mongoose.model('User', {
     lastName: String,
     email: String,
     password: String,
+    color: Array,
     contacts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contact'}]
 });
 

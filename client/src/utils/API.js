@@ -10,7 +10,6 @@ export default {
   createContact: (userID, userData) => {
     axios.post("/api/v1/contacts/"+{userID}, userData)
   },
-
   createUserContact: (contactData, cb) => {
     axios.post('/api/v1/contacts', contactData)
     .then(result => {
@@ -18,7 +17,6 @@ export default {
     })
     .catch()
   },
-
   createGuestContact: (userID, contactData, cb) => {
     axios.post('/api/v1/contacts/'+userID, contactData)
     .then( result => {
@@ -26,7 +24,6 @@ export default {
     })
     .catch()
   },
-
   // Gets all contacts associated with user
   getContacts: ( cb ) => {
     axios.get(`/api/v1/contacts/`)
@@ -36,16 +33,13 @@ export default {
       })
       .catch( err => console.log(err));
   },
-
   // Gets the contact with the given id
   getContact: (contactID) => {
     axios.get(`/api/v1/contacts/${contactID}`, {});
   },
-
   editContact: (contactID, userData) => {
     axios.put(`/api/v1/contacts/${contactID}`, userData);
   },
-
    // Deletes the contact with the given id
    deleteContacts: (contactID) => {
     axios.delete(`/api/v1/contacts/`+contactID, {});
@@ -86,7 +80,6 @@ export default {
   sendText: (sendTo, message) => {
     axios.post('/api/v1/sms', {sendTo: "+16032755557", txtBody: message });
   },
-
   login: function(email, password, cb) {
     console.log("REACT TO API: Trying to Log in");
     console.log("password", password);
@@ -102,7 +95,6 @@ export default {
         return err;
       });
   },
-
   logout: ()=>{
     axios.get('/api/v1/logout')
     .then( (result) => {
@@ -112,5 +104,14 @@ export default {
     .catch( (err) =>
       console.log(err)
     )
+  },
+  isAuth: ()=> {
+    axios.get('/api/v1/isAuth')
+    .then( (result) => {
+      console.log(result);
+    })
+    .catch( (err) => {
+      console.log(err);
+    })
   }
 };
