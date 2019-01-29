@@ -12,9 +12,9 @@ passport.use(new LocalStrategy(
   
   function(email, password, done){
       email = email.toLowerCase();
-      console.log("passport use:");
-      console.log("User: ", email);
-      console.log("password: ", password);
+      //console.log("passport use:");
+      //console.log("User: ", email);
+      //console.log("password: ", password);
 
       db.findOne({email: email})
         .then(user => {
@@ -40,11 +40,11 @@ passport.use(new LocalStrategy(
 ))
 
 passport.serializeUser(function(user, cb){
-  console.log("user", user);
+  //console.log("user", user);
   cb(null, user);
 });
 passport.deserializeUser(function(obj, cb){
-  console.log("object", obj);
+  //console.log("object", obj);
   cb(null, obj);
 });
 

@@ -8,7 +8,7 @@ function handOff(req, res, next) {
     //console.log ("inside handOff ",req.body);
     var txtBody = req.body.txtBody
     var sendTo = req.body.sendTo
-    console.log(sendTo, txtBody);
+    //console.log(sendTo, txtBody);
     twilio.messages.create(
 
         {
