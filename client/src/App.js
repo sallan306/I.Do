@@ -6,6 +6,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Guest from "./pages/Guest";
 import Nav from "./components/Nav";
 import ColorMenu from "./components/ColorMenu"
+import API from "./utils/API";
 
 class App extends React.Component {
   constructor(props){
@@ -47,6 +48,7 @@ class App extends React.Component {
   logOut = () => {
     this.setState({loggedIn: false})
     // TODO API Signout call.
+    API.logout();
     return <Redirect
         to={{
           pathname: "/"
@@ -64,7 +66,6 @@ class App extends React.Component {
                       primaryColor={this.state.primaryColor}
                       secondaryColor={this.state.secondaryColor}
                       fontColor={this.state.fontColor}/>
-
           <Nav        secondaryColor={this.state.secondaryColor}
                       fontColor={this.state.fontColor}/>
           <Switch>
