@@ -71,6 +71,14 @@ function GuestForm (props) {
                 secondaryColor={props.secondaryColor}
                 fontColor={props.fontColor}
             />
+            <Input
+                value={props.comment}
+                onChange={props.handleInputChange}
+                name="comment"
+                placeholder="Comments"
+                secondaryColor={props.secondaryColor}
+                fontColor={props.fontColor}
+            />
             <Button id="guestInfoFormButton"
                 disabled={(props.state.firstName && props.state.email)}
                 onClick={props.handleFormSubmit}

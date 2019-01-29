@@ -2,6 +2,7 @@ import React from "react";
 import { Panel } from 'react-bootstrap';
 import { PanelGroup } from 'react-bootstrap';
 import { PrintText } from "../PrintText";
+import {Button} from "../Button";
 // import Checkbox from '../Checkbox';
 
 function ContactCard(props) {
@@ -20,7 +21,9 @@ function ContactCard(props) {
                 </Panel.Heading>
 
                 <Panel.Body collapsible>
-                    <PrintText className="infoArea" >
+                    <div className="infoArea">
+                    <PrintText >
+                        <div className="contactInfoPrinted">
                         <PrintText style={{background: props.secondaryColor}}>
                             {props.phone}
                             <br/>
@@ -31,14 +34,25 @@ function ContactCard(props) {
                             <br/>
                             {props.city} {props.state}{props.zipcode}
                         </PrintText>
+                        </div>
+                        <div className="contactCommentPrinted">
+                        <PrintText>
+                            {props.comment}
+                        </PrintText>
+                        </div>
+                        <Button className="editButton"
+                        >
+                        Edit
+                        </Button>
                     </PrintText>
+                    </div>
                 </Panel.Body>
             </Panel>
             {/* <Checkbox
                 name={props.id}
                 isSelected={props.guestCheckboxes[props.id]}
                 onCheckboxChange={props.handleCheckboxChange}
-                // key="checkbox"
+                key="checkbox"
             /> */}
         </PanelGroup>
     );

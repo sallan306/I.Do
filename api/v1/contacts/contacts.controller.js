@@ -13,7 +13,8 @@ controller.createContactUser = (req, res) => {
         state: req.body.state,
         zipcode: req.body.zipcode,
         phone: req.body.phone,
-        email: req.body.email 
+        email: req.body.email,
+        comment: req.body.comment
     }
     db.create(newContact)
     .then( results => {
