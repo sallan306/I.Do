@@ -199,7 +199,6 @@ class Dashboard extends Component {
             <div>
                 <NavLinks/>
                 <Container>
-               <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                     {console.log(this.props.secondary)}
                     {/* The guest link appears within this modal */}
                     <Modal  eventID={this.state.userID}

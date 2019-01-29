@@ -33,7 +33,6 @@ class GuestLink extends React.Component {
 
       return (
         <div>
-          <p id="modal-message">Please copy this link and send to your guests.</p>
   
           <Button bsStyle="primary" 
                   onClick={this.handleShow} 
@@ -42,7 +41,7 @@ class GuestLink extends React.Component {
                               marginLeft: "25%",
                               "width": "50%",
                               "border": 0}}>
-            Guest Link
+            Click here and send this link to your guests
           </Button>
   
           <Modal show={this.state.show} onHide={this.handleClose}>
