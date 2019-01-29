@@ -36,10 +36,10 @@ class GuestLink extends React.Component {
           <p id="modal-message">Please copy this link and send to your guests.</p>
   
           <Button bsStyle="primary" 
-                  bsSize="medium" onClick={this.handleShow} 
-                  style={   { "background": this.props.secondaryColor,
-                              "color": this.props.fontColor,
-                              "margin-left": "25%",
+                  onClick={this.handleShow} 
+                  style={   { "background": this.props.secondary,
+                              "color": this.props.font,
+                              marginLeft: "25%",
                               "width": "50%",
                               "border": 0}}>
             Guest Link
