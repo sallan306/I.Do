@@ -3,13 +3,13 @@ import { CirclePicker } from 'react-color';
 
 class ColorPicker2 extends React.Component {
     state = {
-      secondaryColor: '#fff',
+      secondary: '#fff',
       width: "100px"
     };
   
     handleChangeComplete = (color) => {
-      this.setState({ secondaryColor: color.hex });
-      this.props.changeSecondaryColor(this.state.secondaryColor)
+      this.setState({ secondary: color.hex });
+      this.props.changeSecondaryColor(this.state.secondary)
 
     };
 
@@ -32,7 +32,7 @@ class ColorPicker2 extends React.Component {
       return (
         <div>
             <CirclePicker
-                color={ this.state.secondaryColor }
+                color={ this.state.secondary }
                 onChangeComplete={ this.handleChangeComplete }
                 width = {this.state.width}
                 colors = {colors}

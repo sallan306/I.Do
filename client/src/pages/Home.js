@@ -98,8 +98,8 @@ class Home extends Component {
                     
                         <Button
                             onClick={this.handleSignUpForm}
-                            secondaryColor={this.props.secondaryColor}
-                            fontColor={this.props.fontColor}
+                            secondary={this.props.secondary}
+                            font={this.props.font}
                         >
                         {this.state.toggleLoginSignup ? "Login" : "Sign Up"}
                         </Button>   
@@ -111,24 +111,24 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="firstName"
                                         placeholder="First Name (required)"
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     />
                                     <Input
                                         value={this.state.lastName}
                                         onChange={this.handleInputChange}
                                         name="lastName"
                                         placeholder="Last Name (required)"
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     />
                                     <Input
                                         value={this.state.email}
                                         onChange={this.handleInputChange}
                                         name="email"
                                         placeholder="Email (required)"
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     />
                                     <Input
                                         type="password"
@@ -136,8 +136,8 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="password"
                                         placeholder="Password (required)"
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     />
                                     <Input
                                         type="password"
@@ -145,14 +145,14 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="password2"
                                         placeholder="Re-enter Password"
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     />
                                     <Button id="createAccountButton"
                                         disabled={!(this.state.firstName && this.state.email)}
                                         onClick={this.handleNewUserSubmit}
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     >   
                                         Submit
                                     </Button>
@@ -165,8 +165,8 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="email"
                                         placeholder="Email (required)"
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     />
                                     <Input
                                         type="password"
@@ -174,15 +174,15 @@ class Home extends Component {
                                         onChange={this.handleInputChange}
                                         name="password"
                                         placeholder="Password (required)"
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
                                     />
                                     <Button id="loginButton"
                                         disabled={!(this.state.email && this.state.password)}
                                         onClick={this.handleFormLogin}
-                                        secondaryColor={this.props.secondaryColor}
-                                        fontColor={this.props.fontColor}
-                                        floatLeft="left"
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}
+                                        float="left"
                                     >
                                         Login
                                     </Button>

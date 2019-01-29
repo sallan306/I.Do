@@ -5,8 +5,8 @@ function Nav(props) {
     <div className="container-title">
       {/* This is where the title is styled. */}
        
-      <div id="title" style={{background: props.secondaryColor,
-                              color: props.fontColor}}>
+      <div id="title" style={{background: props.secondary,
+                              color: props.font}}>
         <div className="styleBox">
           <h1 id="nav-title">i.Do</h1>
           <h2 >the ultimate event planning app</h2>

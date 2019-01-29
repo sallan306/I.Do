@@ -200,11 +200,11 @@ class Dashboard extends Component {
                 <NavLinks/>
                 <Container>
                <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
-                    {console.log(this.props.secondaryColor)}
+                    {console.log(this.props.secondary)}
                     {/* The guest link appears within this modal */}
                     <Modal  eventID={this.state.userID}
-                            secondaryColor={this.props.secondaryColor}
-                            fontColor={this.props.fontColor}/>
+                            secondary={this.props.secondary}
+                            font={this.props.font}/>
                     <br/>
                     <Button
                         onClick={this.handleSendMassMessage}
@@ -215,8 +215,8 @@ class Dashboard extends Component {
                      <br/>
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
                         <Panel eventKey="1" style ={{"border":0}}>
-                            <Panel.Heading style={{ "background": this.props.secondaryColor,
-                                                        "color": this.props.fontColor,
+                            <Panel.Heading style={{ "background": this.props.secondary,
+                                                        "color": this.props.font,
                                                         }}>
                                 <Panel.Title style={{ "background": "transparent",
                                                     "border":0,
@@ -238,8 +238,8 @@ class Dashboard extends Component {
                                 state={this.state.state}
                                 zipcode={this.state.zipcode}
                                 comment={this.state.comment}
-                                secondaryColor={this.props.secondaryColor}
-                                fontColor={this.props.fontColor}
+                                secondary={this.props.secondary}
+                                font={this.props.font}
                             />
                             
                             </Panel.Body>
@@ -248,8 +248,8 @@ class Dashboard extends Component {
                     <br/>
                     <PanelGroup style={{background: "transparent"}}>
                     {this.state.contacts.map(contact=>
-                        <ContactCard {...contact} secondaryColor={this.props.secondaryColor}
-                        fontColor={this.props.fontColor}/>
+                        <ContactCard {...contact} secondary={this.props.secondary}
+                        fontColor={this.props.font}/>
                     )}
                     </PanelGroup>
                                

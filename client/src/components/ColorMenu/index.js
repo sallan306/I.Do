@@ -1,9 +1,9 @@
 import React from "react";
 import $ from "jquery"
-import '../ColorMenu/style.css';
-import ColorPicker from "../ColorMenu/ColorPicker"
-import ColorPicker2 from "../ColorMenu/ColorPicker2"
-import ColorPickerFont from "../ColorMenu/ColorPickerFont"
+import './style.css';
+import ColorPicker from "./ColorPicker";
+import ColorPicker2 from "./ColorPicker2";
+import ColorPickerFont from "./ColorPickerFont";
     
 
 function toggleColors() {
@@ -32,22 +32,22 @@ function clickFont() {
 
 export default function Button(props) {
     var button1Stlye = {
-        background: props.primaryColor
+        background: props.primary
     };
     var button2Stlye = {
-        background: props.secondaryColor
+        background: props.secondary
     };
     var button3Stlye = {
-        background: props.fontColor
+        background: props.font
     };
     if(props.button1Stlye){
-        button1Stlye.background = props.primaryColor;
+        button1Stlye.background = props.primary;
     }
     if(props.button2Stlye){
-        button2Stlye.background = props.secondaryColor;
+        button2Stlye.background = props.secondary;
     }
     if(props.button3Stlye){
-        button3Stlye.background = props.fontColor;
+        button3Stlye.background = props.font;
     }
     return (
         <div>
@@ -63,15 +63,15 @@ export default function Button(props) {
                     <button style={button3Stlye}    onClick={clickFont} className="buttonFont">Font</button>
                 </div>
                 <div className="circle-picker-primary">
-                    <ColorPicker        primaryColor = {props.primaryColor} 
+                    <ColorPicker        primary = {props.primary} 
                                         changePrimaryColor={props.changePrimaryColor} />
                 </div>
                 <div className="circle-picker-secondary">
-                    <ColorPicker2       secondaryColor = {props.secondaryColor} 
+                    <ColorPicker2       secondary = {props.secondary} 
                                         changeSecondaryColor={props.changeSecondaryColor}/>
                 </div>
                 <div className="circle-picker-font">
-                    <ColorPickerFont    fontColor = {props.fontColor} 
+                    <ColorPickerFont    font = {props.font} 
                                         changeFontColor={props.changeFontColor}/>
                 </div>
             </div>
