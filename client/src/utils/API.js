@@ -50,8 +50,9 @@ export default {
   //==========================================================
 
   createUser: (user, cb)=>{
-    console.log("create user api.js")
-    axios.post(`/api/v1/users`, user).then( result =>{
+    //console.log("create user api.js")
+    axios.post(`/api/v1/users`, user)
+    .then( result =>{
       result 
       ? cb(result)
       : console.log(result)
@@ -105,8 +106,8 @@ export default {
       console.log(err)
     )
   },
-  isAuth: ()=> {
-    axios.get('/api/v1/isAuth')
+  isAuth: () => {
+    axios.post('/api/v1/isAuth')
     .then( (result) => {
       console.log(result);
     })

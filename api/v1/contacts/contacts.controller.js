@@ -3,7 +3,7 @@ const db = require ('./contacts.model');
 const user = require('../users/users.model');
 
 controller.createContactUser = (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const newContact = {
         belongsTo: req.user._id,
         firstName: req.body.firstName,
@@ -32,7 +32,7 @@ controller.createContactUser = (req, res) => {
             })
         }
     })
-    .catch( err => {
+    .catch( (err) => {
         res.status(200).json({
             success:false,
             err: 500,

@@ -80,7 +80,7 @@ controller.findSpecificUser = (req, res, next) => {
     db.findOne({id: req.params.id})
     .then( result => {
         if (result){
-            console.log(result);
+            //console.log(result);
             res.status(200).json({
                 success:true,
                 data: result

@@ -17,7 +17,7 @@ module.exports.initRoutes = (app)=>{
     });
     //DELETE A USER
     app.delete('/api/v1/users', (req,res,next) => {
-        console.log(req.user);
+        //console.log(req.user);
         controller.DeleteThisUser(req, res, next);
     });
 }
