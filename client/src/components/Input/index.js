@@ -7,8 +7,8 @@ export function Input(props) {
       <input style=
       {{
         border: 0,  
-        background: props.secondaryColor, 
-        color: props.fontColor,  
+        background: props.secondary, 
+        color: props.font,  
         Placeholder: "red" 
         }}
         className="form-control" {...props} />

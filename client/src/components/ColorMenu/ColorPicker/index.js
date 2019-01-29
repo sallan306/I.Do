@@ -6,14 +6,14 @@ import { CirclePicker } from 'react-color';
 class ColorPicker extends React.Component {
     
     state = {
-      primaryColor: '#000000',
+      primary: '#000000',
       width: "100px"
     };
   
     handleChangeComplete = (color) => {
-        this.setState({ primaryColor: color.hex });
-        this.props.changePrimaryColor(this.state.primaryColor)
-        document.body.style.backgroundColor = this.state.primaryColor
+        this.setState({ primary: color.hex });
+        this.props.changePrimaryColor(this.state.primary)
+        document.body.style.backgroundColor = this.state.primary
         
     };
     
@@ -37,7 +37,7 @@ class ColorPicker extends React.Component {
     return (
         <div>
             <CirclePicker
-                color={ this.state.primaryColor }
+                color={ this.state.primary }
                 onChangeComplete={ this.handleChangeComplete }
                 width = {this.state.width}
                 colors = {colors}

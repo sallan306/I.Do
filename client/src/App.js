@@ -12,30 +12,30 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      primaryColor: "white",
-      secondaryColor: "rgb(247, 238, 228)",
-      fontColor: "black"
+      primary: "white",
+      secondary: "rgb(247, 238, 228)",
+      font: "black"
     }
   }
   changePrimaryColor = newColor => {
-    this.setState({primaryColor: newColor});
+    this.setState({primary: newColor});
   }
   changeSecondaryColor = newColor2 => {
-    this.setState({secondaryColor: newColor2});
+    this.setState({secondary: newColor2});
   }
   changeFontColor = newFont => {
-    this.setState({fontColor: newFont});
+    this.setState({font: newFont});
   }
   componentDidMount(){
     window.changePrimaryColor = this.changePrimaryColor;
   }
   renderDefaultView = (props) => {
     if(this.state.loggedIn){
-      return <Dashboard {...props}  secondaryColor={this.state.secondaryColor}
-                                    fontColor={this.state.fontColor}/>
+      return <Dashboard {...props}  secondary={this.state.secondary}
+                                    font={this.state.font}/>
     } else {
-      return <Home {...props}       secondaryColor={this.state.secondaryColor} 
-                                    fontColor={this.state.fontColor}
+      return <Home {...props}       secondary={this.state.secondary} 
+                                    font={this.state.font}
                                     flipToDash={this.toggleLoggedIn} />
     }
   }
@@ -61,12 +61,12 @@ class App extends React.Component {
         <ColorMenu    changePrimaryColor={this.changePrimaryColor} 
                       changeSecondaryColor={this.changeSecondaryColor} 
                       changeFontColor={this.changeFontColor} 
-                      primaryColor={this.state.primaryColor}
-                      secondaryColor={this.state.secondaryColor}
-                      fontColor={this.state.fontColor}/>
+                      primary={this.state.primary}
+                      secondary={this.state.secondary}
+                      font={this.state.font}/>
 
-          <Nav        secondaryColor={this.state.secondaryColor}
-                      fontColor={this.state.fontColor}/>
+          <Nav        secondary={this.state.secondary}
+                      font={this.state.font}/>
           <Switch>
             <Route exact path="/" render={this.renderDefaultView}/>
             <Route exact path="/event/:userID" component={Guest} />

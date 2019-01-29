@@ -17,8 +17,8 @@ export function Button(props) {
 
     return (
       <button {...props} style={{ float: {shouldFloatLeft}, 
-                                  background: props.secondaryColor, 
-                                  color: props.fontColor, 
+                                  background: props.secondary, 
+                                  color: props.font, 
                                   marginBottom: 10,
                                   border: 0}
                                 } 

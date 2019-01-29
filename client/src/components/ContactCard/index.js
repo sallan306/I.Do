@@ -13,8 +13,8 @@ function ContactCard(props) {
             style={{background: "transparent"}}
             >
             <Panel eventKey="1" style={{border: 0, background: "transparent"}}>
-                <Panel.Heading style={{background: props.secondaryColor}}>
-                    <Panel.Title toggle style={{color: props.fontColor}}>
+                <Panel.Heading style={{background: props.secondary}}>
+                    <Panel.Title toggle style={{color: props.font}}>
                         <PrintText >
                             {props.firstName} {props.lastName}
                         </PrintText>
@@ -23,12 +23,12 @@ function ContactCard(props) {
 
                 <Panel.Body collapsible>
                     <PrintText className="infoArea" >
-                        <PrintText style={{background: props.secondaryColor}}>
+                        <PrintText style={{background: props.secondary}}>
                             {props.phone}
                             <br/>
                             {props.email}
                         </PrintText>
-                        <PrintText style={{background: props.secondaryColor}}>
+                        <PrintText style={{background: props.secondary}}>
                             {props.street}
                             <br/>
                             {props.city} {props.state}{props.zipcode}

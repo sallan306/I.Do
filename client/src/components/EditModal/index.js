@@ -30,8 +30,8 @@ class EditModal extends React.Component {
             <div>
                  <Button bsStyle="primary" 
                   bsSize="small" onClick={this.handleShow} 
-                  style={   { "background": this.props.secondaryColor,
-                              "color": this.props.fontColor,
+                  style={   { "background": this.props.secondary,
+                              "color": this.props.font,
                               "margin-left": "80%",
                               "width": "20%",
                               "border": 0}}>
