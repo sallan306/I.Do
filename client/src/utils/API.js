@@ -102,10 +102,10 @@ export default {
     )
   },
 
-  isAuth: ()=> {
+  isAuth: (cb)=> {
     axios.post('/api/v1/isAuth')
     .then( (result) => {
-      return(result)
+      cb(result)
       // console.log("ISAUTH", result);
     })
     .catch( (err) => {

@@ -18,12 +18,12 @@ class Home extends Component {
     };
 
     // TO DO !!!!========================
-    componentDidMount() {
+    componentWillMount() {
       // Check to see if user is authenticated. If authenticated, log in, if not should be good.
       API.isAuth(result => 
         // console.log("RESULT COMPONENT", result)
         result.data.success
-        ? console.log("THIS TTHING=====")
+        ? this.props.flipToDash()
         : <Redirect to="/" />
         )
     }
