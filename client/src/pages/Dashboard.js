@@ -125,32 +125,32 @@ class Dashboard extends Component {
     }
 
     // --------- CHECKBOX STUFF ----------
-    handleCheckboxChange = changeEvent => {
-        const { name } = changeEvent.target;
+    // handleCheckboxChange = changeEvent => {
+    //     const { name } = changeEvent.target;
 
-        this.setState(prevState => ({
-            guestCheckboxes: {
-                ...prevState.guestCheckboxes,
-                [name]: !prevState.guestCheckboxes[name]
-            }
-        }));
-    };
+    //     this.setState(prevState => ({
+    //         guestCheckboxes: {
+    //             ...prevState.guestCheckboxes,
+    //             [name]: !prevState.guestCheckboxes[name]
+    //         }
+    //     }));
+    // };
 
     // ----------------- NOT USING YET ------------
-    selectAllCheckboxes = isSelected => {
-        Object.keys(this.state.checkboxes).forEach(checkbox => {
-            this.setState(prevState => ({
-                checkboxes: {
-                    ...prevState.checkboxes,
-                    [checkbox]: isSelected
-                }
-            }));
-        });
-    };
+    // selectAllCheckboxes = isSelected => {
+    //     Object.keys(this.state.checkboxes).forEach(checkbox => {
+    //         this.setState(prevState => ({
+    //             checkboxes: {
+    //                 ...prevState.checkboxes,
+    //                 [checkbox]: isSelected
+    //             }
+    //         }));
+    //     });
+    // };
 
-    selectAll = () => this.selectAllCheckboxes(true);
+    // selectAll = () => this.selectAllCheckboxes(true);
 
-    deselectAll = () => this.selectAllCheckboxes(false);
+    // deselectAll = () => this.selectAllCheckboxes(false);
     // -------------------------------------------
 
     clearFormThanks() {
@@ -169,30 +169,30 @@ class Dashboard extends Component {
 
 
     
-    componentDidMount() {
-        this.clearFormThanks()
-        API.getContacts( results => {
-            results.data
-            ? this.setState({ 
-                contacts: results.data.contacts, 
-                userID: results.data.userID
-            })
-            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
-        });
+    // componentDidMount() {
+    //     this.clearFormThanks()
+    //     API.getContacts( results => {
+    //         results.data
+    //         ? this.setState({ 
+    //             contacts: results.data.contacts, 
+    //             userID: results.data.userID
+    //         })
+    //         : this.setState({ contacts: [{ firstName: "No Contacts" }]})
+    //     });
 
-        const guestCheckboxes = this.state.contacts.reduce(
-            (checkboxObj, contact) => ({
-                ...checkboxObj,
-                [contact.id]: false
-            }),
-            {}
-        )
-        this.setState({ 
-            contacts: this.state.contacts,
-            guestCheckboxes
+    //     const guestCheckboxes = this.state.contacts.reduce(
+    //         (checkboxObj, contact) => ({
+    //             ...checkboxObj,
+    //             [contact.id]: false
+    //         }),
+    //         {}
+    //     )
+    //     this.setState({ 
+    //         contacts: this.state.contacts,
+    //         guestCheckboxes
 
-        });
-    }
+    //     });
+    // }
 
     render(props) {
         return (
