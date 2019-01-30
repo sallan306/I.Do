@@ -174,14 +174,17 @@ class Dashboard extends Component {
     componentDidMount() {
         this.clearFormThanks()
         API.getContacts( results => {
+            console.log("RESULTS.DATA", results.data)
             results.data
             ? this.setState({ 
                 contacts: results.data.contacts, 
-                userID: results.data.userID
-                // name: results.data.firstName + results.data.lastName
+                userID: results.data.userID,
+                userFirstName: results.data.userFirstName,
+                userLastName: results.data.userLastName
             })
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
         });
+
 
         const guestCheckboxes = this.state.contacts.reduce(
             (checkboxObj, contact) => ({
@@ -191,7 +194,6 @@ class Dashboard extends Component {
             {}
         )
         this.setState({ 
-            contacts: this.state.contacts,
             guestCheckboxes
 
         });
@@ -211,6 +213,7 @@ class Dashboard extends Component {
                             font={this.props.font}/>
                     <br/>
                     <MessageModal 
+                            name={this.state.userFirstName + this.state.userLastName}
                             contacts={this.state.contacts}
                             secondary={this.props.secondary}
                             font={this.props.font} 

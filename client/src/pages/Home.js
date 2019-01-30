@@ -24,7 +24,7 @@ class Home extends Component {
         // console.log("RESULT COMPONENT", result)
         result.data.success
         ? this.props.flipToDash()
-        : <Redirect to="/" />
+        : alert("Please log in.")
         )
     }
 

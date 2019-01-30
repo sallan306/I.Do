@@ -34,5 +34,9 @@ module.exports.initRoutes = (app) => {
     
     app.get('/api/v1/logout', function(req, res){
         req.logout();
+        res.status(200).json({
+            success: true,
+            msg: "Logged Out"
+        })
       });
 }

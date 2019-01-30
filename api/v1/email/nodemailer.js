@@ -4,6 +4,7 @@ function mail(req, res, next) {
 
 
   for (let i = 0; i < req.body.emailArray.length;i++){
+    console.log("sending email to: ", req.body.emailArray[i]);
 
               var transporter = nodemailer.createTransport({
                 service: 'gmail',

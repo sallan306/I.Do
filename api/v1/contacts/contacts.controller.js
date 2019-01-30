@@ -100,12 +100,6 @@ controller.createContactGuest = (req, res) => {
     
 }
 controller.getContacts =  (req, res) => {
-    let userData = "";
-    user.findOne({_id: req.user_id})
-    .then( result => {
-        console.log(result);
-    })
-    .catch (err => {console.log(err)});
     if (req.user) {
         db.find({belongsTo: req.user._id})
         .then( (result) => {
@@ -113,6 +107,8 @@ controller.getContacts =  (req, res) => {
             res.status(200).json({
                 success: true,
                 msg: "contacts for: mr/mrs/ms: "+req.user._id,
+                userFirstName: req.user.firstName,
+                userLastName: req.user.lastName,
                 userID: req.user._id,
                 contacts: result})
         })

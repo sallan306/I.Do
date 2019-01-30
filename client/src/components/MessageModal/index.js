@@ -22,7 +22,17 @@ class MessageModal extends Component {
    
 
     componentDidMount(){
-        
+        let name = this.props.userFirstName + this.props.userLastName
+        let subject = 
+        `
+        ${name} has a message for you.
+        `
+        console.log("NAME", name)
+        console.log("subject", subject)
+
+        this.setState({
+            subject
+        })
     }
     
     handleClose() {
@@ -37,13 +47,13 @@ class MessageModal extends Component {
         event.preventDefault();
         let messageObject = {
             emailArray: this.state.emailArray,
-            textArray: this.state.textArray,
+            // textArray: this.state.textArray,
             subject: this.state.subject,
             message: this.state.message
         };
 
         API.message(messageObject, result => {
-            console.log(result)
+            console.log("send message button API result:", result)
         });
     }
 
