@@ -24,7 +24,7 @@ class Home extends Component {
         // console.log("RESULT COMPONENT", result)
         result.data.success
         ? this.props.flipToDash()
-        : alert("Please log in.")
+        : console.log("Please log in.")
         )
     }
 
