@@ -169,30 +169,30 @@ class Dashboard extends Component {
 
 
     
-    // componentDidMount() {
-    //     this.clearFormThanks()
-    //     API.getContacts( results => {
-    //         results.data
-    //         ? this.setState({ 
-    //             contacts: results.data.contacts, 
-    //             userID: results.data.userID
-    //         })
-    //         : this.setState({ contacts: [{ firstName: "No Contacts" }]})
-    //     });
+    componentDidMount() {
+        this.clearFormThanks()
+        API.getContacts( results => {
+            results.data
+            ? this.setState({ 
+                contacts: results.data.contacts, 
+                userID: results.data.userID
+            })
+            : this.setState({ contacts: [{ firstName: "No Contacts" }]})
+        });
 
-    //     const guestCheckboxes = this.state.contacts.reduce(
-    //         (checkboxObj, contact) => ({
-    //             ...checkboxObj,
-    //             [contact.id]: false
-    //         }),
-    //         {}
-    //     )
-    //     this.setState({ 
-    //         contacts: this.state.contacts,
-    //         guestCheckboxes
+        const guestCheckboxes = this.state.contacts.reduce(
+            (checkboxObj, contact) => ({
+                ...checkboxObj,
+                [contact.id]: false
+            }),
+            {}
+        )
+        this.setState({ 
+            contacts: this.state.contacts,
+            guestCheckboxes
 
-    //     });
-    // }
+        });
+    }
 
     render(props) {
         return (
