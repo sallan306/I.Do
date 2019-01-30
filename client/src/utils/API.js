@@ -113,16 +113,27 @@ export default {
     })
   },
   message: (data, cb) => {
-    console.log("API TRANSLATOR: message");
-    console.log(data);
+    //console.log("API TRANSLATOR: message");
+    //console.log(data);
+    /*
     for (let i=0; i<data.textArray.length; i++){
       data.textArray[i] = ("+1"+data.textArray[i])
       console.log(data.textArray[i]);
     }
+    */
     console.log("TODO: SEND TO TEXTING BACKEND ROUTE")
     for(let i=0; i< data.emailArray.length; i++){
       console.log(data.emailArray[i]);
     }
+    axios.post('/api/v1/email', {
+      emailArray: data.emailArray,
+      emailSubject: data.emailSubject,
+      emailBody: data.emailBody      
+    })
     console.log("TODO: SEND TO EMAILING BACK END ROUTE");
   }
 };
+// data...
+//         emailArray: ["kbauertx@gmail.com", "kylecom2000@me.com"],
+//         textArray: ["4099397554"],
+//         message: "THIS IS A TEST MESSAGE"

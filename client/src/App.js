@@ -6,11 +6,13 @@ import ErrorPage from "./pages/ErrorPage";
 import Guest from "./pages/Guest";
 import Nav from "./components/Nav";
 import ColorMenu from "./components/ColorMenu"
+import API from "./utils/API"
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      userData: "",
       isLoggedIn: false,
       primary: "white",
       secondary: "rgb(247, 238, 228)",
@@ -45,13 +47,17 @@ class App extends React.Component {
     }
   }
   
-  toggleLoggedIn = () => {
-    this.setState({loggedIn: true})
+  toggleLoggedIn = (userData) => {
+    //console.log("toggleLoggedIn function USER DATA ON APP.JS", userData)
+    this.setState({
+      loggedIn: true
+    })
   }
 
   logOut = () => {
     this.setState({loggedIn: false})
     // TODO API Signout call.
+    API.logout();
     return <Redirect to="/" />
   }
 

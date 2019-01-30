@@ -1,9 +1,9 @@
-import React from "react";
+import React, {Component} from "react";
 import { Button, Modal} from 'react-bootstrap';
 import MessageContact from '../MessageContact'
 import API from '../../utils/API.js'
 
-class MessageModal extends React.Component {
+class MessageModal extends Component {
     constructor(props, context) {
         super(props, context);
     
@@ -12,22 +12,27 @@ class MessageModal extends React.Component {
     
         this.state = {
             show: false,
+            emailArray: ["kbauertx@gmail.com", "kylecom2000@me.com"],
+            textArray: ["4099397554"],
+            subject: "",
+            message: "THIS IS A TEST MESSAGE"
         };       
     }
 
-    state = {
-        emailArray: ["kbauertx@gmail.com"],
-        textArray: ["4099397554"],
-        message: "THIS IS A TEST MESSAGE",
-        contacts: [{
-            name: "kyle",
-            phone: "4099397554",
-            email: "kbauertx@gmail.com"
-        }]
-    }
+   
 
     componentDidMount(){
-        
+        let name = this.props.userFirstName + this.props.userLastName
+        let subject = 
+        `
+        ${name} has a message for you.
+        `
+        console.log("NAME", name)
+        console.log("subject", subject)
+
+        this.setState({
+            subject
+        })
     }
     
     handleClose() {
@@ -38,15 +43,18 @@ class MessageModal extends React.Component {
         this.setState({ show: true });
     }
 
-    sendMessageButton() {
+    sendMessageButton= (event) => {
+        event.preventDefault();
         let messageObject = {
             emailArray: this.state.emailArray,
-            textArray: this.state.textArray,
+            // textArray: this.state.textArray,
+            subject: this.state.subject,
             message: this.state.message
         };
+
         API.message(messageObject, result => {
-            console.log(result)
-        })
+            console.log("send message button API result:", result)
+        });
     }
 
     render(props) {
@@ -67,17 +75,13 @@ class MessageModal extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <ul>
-                        {/* {this.state.contacts.map(contact=> */}
-                            <MessageContact 
-                                name="Kyle"
-                                phone="4099397554"
-                                email="kbauertx@gmail.com"
+                        {this.props.contacts.map(contact=>
+                            <MessageContact {...contact}
                                 secondary={this.props.secondary}
                                 font={this.props.font}
-                                // key={contact._id}
-
+                                key={contact._id}
                                 />
-                        {/* )} */}
+                        )}
                     </ul>
                 
                 </Modal.Body>

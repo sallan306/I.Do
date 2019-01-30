@@ -103,9 +103,12 @@ controller.getContacts =  (req, res) => {
     if (req.user) {
         db.find({belongsTo: req.user._id})
         .then( (result) => {
+            console.log(req.user);
             res.status(200).json({
                 success: true,
                 msg: "contacts for: mr/mrs/ms: "+req.user._id,
+                userFirstName: req.user.firstName,
+                userLastName: req.user.lastName,
                 userID: req.user._id,
                 contacts: result})
         })

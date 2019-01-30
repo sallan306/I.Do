@@ -24,7 +24,7 @@ class Home extends Component {
         // console.log("RESULT COMPONENT", result)
         result.data.success
         ? this.props.flipToDash()
-        : <Redirect to="/" />
+        : console.log("Please log in.")
         )
     }
 
@@ -76,7 +76,7 @@ class Home extends Component {
     APILogin (){
         API.login(this.state.email, this.state.password, (result) =>
             result.status === 200
-            ? this.props.flipToDash()
+            ? this.props.flipToDash(result.data)
             : alert("That username/password combination doesn't work")
         )
     }

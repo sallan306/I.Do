@@ -13,8 +13,6 @@ class EditModal extends React.Component {
         }       
     }
     componentDidMount(){
-        console.log("props ID",this.props.eventID)
-        this.setState({eventID: this.props.eventID})
       }
     
       handleClose() {

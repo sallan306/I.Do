@@ -7,6 +7,7 @@ module.exports.initRoutes = (app) => {
         passport.authenticate('local'), 
         function(req, res, next) {
         // console.log ('reqbody HERE: ', req.body)
+        console.log()
         res.json({
             success: true,
             msg: "User Logged in"
@@ -33,5 +34,9 @@ module.exports.initRoutes = (app) => {
     
     app.get('/api/v1/logout', function(req, res){
         req.logout();
+        res.status(200).json({
+            success: true,
+            msg: "Logged Out"
+        })
       });
 }
