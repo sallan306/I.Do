@@ -8,6 +8,7 @@ import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import Modal from "../components/Modal";
+import MessageModal from "../components/MessageModal";
 
 class Dashboard extends Component {
     state = {
@@ -205,13 +206,17 @@ class Dashboard extends Component {
                             secondary={this.props.secondary}
                             font={this.props.font}/>
                     <br/>
-                    <Button
+                    <MessageModal 
+                            contacts={this.state.contacts}
+                            secondary={this.props.secondary}
+                            font={this.props.font} >Message</MessageModal>
+                    {/* <Button
                         onClick={this.handleSendMassMessage}
                         secondary={this.props.secondary} 
                         font={this.props.font}
                     >
-                        Send Email
-                    </Button>
+                        
+                    </Button> */}
                     <br/> 
                      <br/>
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">

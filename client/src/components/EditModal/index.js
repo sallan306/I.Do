@@ -10,7 +10,7 @@ class EditModal extends React.Component {
     
         this.state = {
           show: false
-        };       
+        }       
     }
     componentDidMount(){
         console.log("props ID",this.props.eventID)
