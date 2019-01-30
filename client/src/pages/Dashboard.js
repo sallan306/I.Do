@@ -13,6 +13,8 @@ import MessageModal from "../components/MessageModal";
 class Dashboard extends Component {
     state = {
         userID: "",
+        userFirstName: "",
+        userLastName: "",
         contacts: [],
         firstName: "",
         lastName: "",
@@ -163,7 +165,7 @@ class Dashboard extends Component {
             city: "",
             state: "",
             zipcode: "",
-            comment: "",
+            comment: ""
         })
     }
 
@@ -176,6 +178,7 @@ class Dashboard extends Component {
             ? this.setState({ 
                 contacts: results.data.contacts, 
                 userID: results.data.userID
+                // name: results.data.firstName + results.data.lastName
             })
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
         });
@@ -194,6 +197,7 @@ class Dashboard extends Component {
         });
     }
 
+
     render(props) {
         return (
       
@@ -209,7 +213,12 @@ class Dashboard extends Component {
                     <MessageModal 
                             contacts={this.state.contacts}
                             secondary={this.props.secondary}
-                            font={this.props.font} >Message</MessageModal>
+                            font={this.props.font} 
+                            sendMessageButton={this.sendMessageButton}
+                            >
+                            Message
+                    </MessageModal>
+
                     {/* <Button
                         onClick={this.handleSendMassMessage}
                         secondary={this.props.secondary} 

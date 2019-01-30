@@ -3,7 +3,7 @@ var nodemailer = require('nodemailer');
 function mail(req, res, next) {
 
 
-  for (let i = 0; i < req.body.emailTo.length;i++){
+  for (let i = 0; i < req.body.emailArray.length;i++){
 
               var transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -15,7 +15,7 @@ function mail(req, res, next) {
               
               var mailOptions = {
                 from: 'eggplant.hail.satan.eggplant@gmail.com',
-                to: req.body.emailTo[i],
+                to: req.body.emailArray[i],
                 subject: req.body.emailSubject,
                 text: req.body.emailBody
               };

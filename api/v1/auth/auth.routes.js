@@ -7,6 +7,7 @@ module.exports.initRoutes = (app) => {
         passport.authenticate('local'), 
         function(req, res, next) {
         // console.log ('reqbody HERE: ', req.body)
+        console.log()
         res.json({
             success: true,
             msg: "User Logged in"

@@ -2,7 +2,7 @@ import React from "react";
 
 function MessageContact (props) {
     return (
-        <li> {props.name}, {props.phone}, {props.email} </li>
+        <li> {props.firstName} {props.lastName} {props.phone}, {props.email} </li>
     )
 }
 
