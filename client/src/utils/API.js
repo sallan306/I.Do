@@ -113,8 +113,8 @@ export default {
     })
   },
   message: (data, cb) => {
-    console.log("API TRANSLATOR: message");
-    console.log(data);
+    //console.log("API TRANSLATOR: message");
+    //console.log(data);
     /*
     for (let i=0; i<data.textArray.length; i++){
       data.textArray[i] = ("+1"+data.textArray[i])
