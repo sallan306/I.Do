@@ -8,7 +8,7 @@ import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import Modal from "../components/Modal";
-
+import ExcelDownload from "../components/ExcelDownload"
 class Dashboard extends Component {
     state = {
         userID: "",
@@ -26,7 +26,9 @@ class Dashboard extends Component {
         list: {},
         guestCheckboxes: {}
     }
-
+    testState = () => {
+        console.log(this.state.contacts)
+    }
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -170,6 +172,7 @@ class Dashboard extends Component {
     
     componentDidMount() {
         this.clearFormThanks()
+
         API.getContacts( results => {
             results.data
             ? this.setState({ 
@@ -191,12 +194,17 @@ class Dashboard extends Component {
             guestCheckboxes
 
         });
+
+        
     }
 
     render(props) {
         return (
       
             <div>
+                <Button
+                        onClick={this.testState()}/>
+                <ExcelDownload contacts={this.state.contacts}/>
                 <NavLinks/>
                 <Container>
                     {console.log(this.props.secondary)}
@@ -212,6 +220,7 @@ class Dashboard extends Component {
                     >
                         Send Email
                     </Button>
+
                     <br/> 
                      <br/>
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
@@ -256,31 +265,6 @@ class Dashboard extends Component {
                                                     key={contact._id}/>
                     )}
                     </PanelGroup>
-                               
-                    {/* <PanelGroup>
-                        <Panel>
-                            <Panel.Heading>
-                                To Do
-                            </Panel.Heading>
-                            <Panel.Body>
-                                <Input
-                                    value={this.state.task}
-                                    onChange={this.handleInputChange}
-                                    name="task"
-                                    placeholder="Add an Item"
-                                    >
-                                </Input>
-                                <Button
-                                    onClick={this.handleToDoAdd}
-                                >
-                                    Add
-                                </Button>
-                            </Panel.Body>
-                        </Panel>
-                        <Panel>
-                            {this.renderToDos()}
-                        </Panel>
-                    </PanelGroup> */}
                 </Container>
             </div>
         );
@@ -288,3 +272,15 @@ class Dashboard extends Component {
 };
 
 export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
