@@ -115,12 +115,12 @@ export default {
   message: (data, cb) => {
     console.log("API TRANSLATOR: message");
     console.log(data);
-    for (i=0; i<data.textArray.length; i++){
+    for (let i=0; i<data.textArray.length; i++){
       data.textArray[i] = ("+1"+data.textArray[i])
       console.log(data.textArray[i]);
     }
     console.log("TODO: SEND TO TEXTING BACKEND ROUTE")
-    for(i=0; i< data.emailArray.length; i++){
+    for(let i=0; i< data.emailArray.length; i++){
       console.log(data.emailArray[i]);
     }
     console.log("TODO: SEND TO EMAILING BACK END ROUTE");
