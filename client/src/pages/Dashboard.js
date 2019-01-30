@@ -202,21 +202,16 @@ class Dashboard extends Component {
                 <Container>
                     {console.log(this.props.secondary)}
                     {/* The guest link appears within this modal */}
+                    
                     <Modal  eventID={this.state.userID}
                             secondary={this.props.secondary}
-                            font={this.props.font}/>
-                    <br/>
+                            font={this.props.font}
+                            />
                     <MessageModal 
                             contacts={this.state.contacts}
                             secondary={this.props.secondary}
-                            font={this.props.font} >Message</MessageModal>
-                    {/* <Button
-                        onClick={this.handleSendMassMessage}
-                        secondary={this.props.secondary} 
-                        font={this.props.font}
-                    >
-                        
-                    </Button> */}
+                            font={this.props.font}>Message </MessageModal>
+                    
                     <br/> 
                      <br/>
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">

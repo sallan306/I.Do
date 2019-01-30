@@ -29,12 +29,15 @@ class EditModal extends React.Component {
         return (
             <div>
                  <Button bsStyle="primary" 
-                  bsSize="small" onClick={this.handleShow} 
-                  style={   { "background": this.props.secondary,
-                              "color": this.props.font,
-                              marginLeft: "80%",
-                              "width": "20%",
-                              "border": 0}}>
+                  bsSize="small" 
+                  onClick={this.handleShow} 
+                  style={   { background: this.props.secondary,
+                    color: this.props.font,
+                    marginLeft: "70%",
+                    width: "30%",
+                    border: 0,
+                    borderRadius: "25px",
+                    outline: "none"}}>
             Edit
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
@@ -44,7 +47,7 @@ class EditModal extends React.Component {
                 <Modal.Body>
                 <h4>Edit Contact Information</h4>
                 <p className="Edit-Contact-Info-Modal">
-                    blah blah blah 
+                    Edit Contact Information Here
                 </p>
                 
                 </Modal.Body>

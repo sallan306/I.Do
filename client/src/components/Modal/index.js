@@ -4,6 +4,7 @@ import { Button, Modal} from 'react-bootstrap';
 
 
 
+
 class GuestLink extends React.Component {
     constructor(props, context) {
       super(props, context);
@@ -42,8 +43,9 @@ class GuestLink extends React.Component {
                               width: "50%",
                               border: 0,
                               borderRadius: "25px",
-                              outline: "none"}}>
-            Click here and send this link to your guests
+                              outline: "none"}
+                                }>
+            Display Guest Link
           </Button>
   
           <Modal show={this.state.show} onHide={this.handleClose}>
@@ -51,7 +53,7 @@ class GuestLink extends React.Component {
               <Modal.Title>Guest Link</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <h4>Copy the link below</h4>
+              <h4>Copy the link below & send to your guest</h4>
               <p>
                 https://i-dooo.herokuapp.com/event/{this.props.eventID}
               </p>
