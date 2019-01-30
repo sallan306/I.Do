@@ -32,7 +32,7 @@ class EditModal extends React.Component {
                   bsSize="small" onClick={this.handleShow} 
                   style={   { "background": this.props.secondary,
                               "color": this.props.font,
-                              "margin-left": "80%",
+                              marginLeft: "80%",
                               "width": "20%",
                               "border": 0}}>
             Edit

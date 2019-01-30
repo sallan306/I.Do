@@ -11,7 +11,7 @@ function GuestForm (props) {
                 value={props.firstName}
                 onChange={props.handleInputChange}
                 name="firstName"
-                placeholder="First Name (required)"
+                title="First Name"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -19,7 +19,7 @@ function GuestForm (props) {
                 value={props.lastName}
                 onChange={props.handleInputChange}
                 name="lastName"
-                placeholder="Last Name (required)"
+                title="Last Name"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -27,7 +27,7 @@ function GuestForm (props) {
                 value={props.email}
                 onChange={props.handleInputChange}
                 name="email"
-                placeholder="Email (required)"
+                title="Email"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -35,7 +35,7 @@ function GuestForm (props) {
                 value={props.phone}
                 onChange={props.handleInputChange}
                 name="phone"
-                placeholder="Phone Number (required)"
+                title="Phone Number"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -43,7 +43,7 @@ function GuestForm (props) {
                 value={props.street}
                 onChange={props.handleInputChange}
                 name="street"
-                placeholder="Street Address (required)"
+                title="Street Address"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -51,7 +51,7 @@ function GuestForm (props) {
                 value={props.city}
                 onChange={props.handleInputChange}
                 name="city"
-                placeholder="City (required)"
+                title="City"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -59,7 +59,7 @@ function GuestForm (props) {
                 value={props.state}
                 onChange={props.handleInputChange}
                 name="state"
-                placeholder="State(required)"
+                title="State"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -67,7 +67,7 @@ function GuestForm (props) {
                 value={props.zipcode}
                 onChange={props.handleInputChange}
                 name="zipcode"
-                placeholder="Zipcode(required)"
+                title="Zip Code"
                 secondary={props.secondary}
                 font={props.font}
             />
@@ -75,15 +75,17 @@ function GuestForm (props) {
                 value={props.comment}
                 onChange={props.handleInputChange}
                 name="comment"
-                placeholder="Comments"
+                title="Comments"
                 secondary={props.secondary}
                 font={props.font}
             />
-            <Button id="guestInfoFormButton"
-                disabled={(props.state.firstName && props.state.email)}
+            <Button 
+                id="guestInfoFormButton"
+                disabled={!(props.firstName && props.email)}
                 onClick={props.handleFormSubmit}
                 secondary={props.secondary}
                 font={props.font}
+                topmargin="20px"
             >
                 Submit
             </Button>

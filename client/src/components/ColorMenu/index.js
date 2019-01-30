@@ -32,13 +32,16 @@ function clickFont() {
 
 export default function Button(props) {
     var button1Stlye = {
-        background: props.primary
+        background: props.primary,
+        outline: "none"
     };
     var button2Stlye = {
-        background: props.secondary
+        background: props.secondary,
+        outline: "none"
     };
     var button3Stlye = {
-        background: props.font
+        background: props.font,
+        outline: "none"
     };
     if(props.button1Stlye){
         button1Stlye.background = props.primary;
@@ -58,9 +61,9 @@ export default function Button(props) {
             </div>
             <div className="circle-picker-container">
                 <div className="buttonBox" >
-                    <button style={button1Stlye}    onClick={clickColor1} className="buttonPrimary">Primary</button>
-                    <button style={button2Stlye}    onClick={clickColor2} className="buttonSecondary">Secondary</button>
-                    <button style={button3Stlye}    onClick={clickFont} className="buttonFont">Font</button>
+                    <button style={button1Stlye}    onClick={clickColor1}   className="buttonPrimary">Primary</button>
+                    <button style={button2Stlye}    onClick={clickColor2}   className="buttonSecondary">Secondary</button>
+                    <button style={button3Stlye}    onClick={clickFont}     className="buttonFont">Font</button>
                 </div>
                 <div className="circle-picker-primary">
                     <ColorPicker        primary = {props.primary} 

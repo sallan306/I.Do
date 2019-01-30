@@ -199,7 +199,6 @@ class Dashboard extends Component {
             <div>
                 <NavLinks/>
                 <Container>
-               <h1 className="dashboard" id="dashboard-title">Dashboard</h1>
                     {console.log(this.props.secondary)}
                     {/* The guest link appears within this modal */}
                     <Modal  eventID={this.state.userID}
@@ -208,24 +207,28 @@ class Dashboard extends Component {
                     <br/>
                     <Button
                         onClick={this.handleSendMassMessage}
+                        secondary={this.props.secondary} 
+                        font={this.props.font}
                     >
                         Send Email
                     </Button>
                     <br/> 
                      <br/>
                     <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
-                        <Panel eventKey="1" style ={{"border":0}}>
+                        <Panel eventKey="1" style ={{"border":0, "background": "transparent",
+                                                        "color": this.props.font}}>
                             <Panel.Heading style={{ "background": this.props.secondary,
                                                         "color": this.props.font,
                                                         }}>
-                                <Panel.Title style={{ "background": "transparent",
-                                                    "border":0,
+                                <Panel.Title style={{
+                                                        "border":0,
+                                                        "color": this.props.font
                                                      }}
                                                         toggle>
                                     Add New Guest
                                 </Panel.Title>
                             </Panel.Heading>
-                            <Panel.Body collapsible style={{"border-top":0}}>
+                            <Panel.Body collapsible style={{borderTop:0}}>
                             <GuestForm 
                                 handleInputChange={this.handleInputChange}
                                 handleFormSubmit={this.handleFormSubmit}
@@ -246,10 +249,11 @@ class Dashboard extends Component {
                         </Panel>
                     </PanelGroup>
                     <br/>
-                    <PanelGroup style={{background: "transparent"}}>
+                    <PanelGroup id="panelId" style={{background: "transparent"}}>
                     {this.state.contacts.map(contact=>
-                        <ContactCard {...contact} secondary={this.props.secondary}
-                        fontColor={this.props.font}/>
+                        <ContactCard {...contact}   secondary={this.props.secondary}
+                                                    font={this.props.font}
+                                                    key={contact._id}/>
                     )}
                     </PanelGroup>
                                

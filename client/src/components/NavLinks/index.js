@@ -5,8 +5,7 @@ export function NavLinks() {
 
     return(
         <nav>
-            <Link className="linkHome" to="/">i.Do  |</Link>
-            <Link className="linkLogOut" to="/Logout">|  Log Out</Link>
+            <Link className="linkLogOut" to="/Logout">Log Out</Link>
         </nav>
     )
     
