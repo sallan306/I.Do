@@ -48,7 +48,7 @@ class App extends React.Component {
   }
   
   toggleLoggedIn = (userData) => {
-    console.log("toggleLoggedIn function USER DATA ON APP.JS", userData)
+    //console.log("toggleLoggedIn function USER DATA ON APP.JS", userData)
     this.setState({
       loggedIn: true
     })
