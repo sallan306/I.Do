@@ -127,8 +127,8 @@ export default {
     }
     axios.post('/api/v1/email', {
       emailArray: data.emailArray,
-      emailSubject: data.emailSubject,
-      emailBody: data.emailBody      
+      emailSubject: data.subject,
+      emailBody: data.message      
     })
     console.log("TODO: SEND TO EMAILING BACK END ROUTE");
   }

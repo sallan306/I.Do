@@ -1,4 +1,4 @@
-import React, { Component, Redirect } from "react";
+import React, { Component } from "react";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import "../components/Nav/";
