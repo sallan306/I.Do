@@ -38,6 +38,14 @@ body {
     border-width: 1px;
     border-color: black;
 }
+.buttonPrimary:hover, .buttonSecondary:hover, .buttonFont:hover {
+    opacity: .5;
+}
+.buttonPrimary:active, .buttonSecondary:active, .buttonFont:active {
+    opacity: 1;
+}
+
+
 .buttonPrimary {
     top:0px;
 }

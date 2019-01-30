@@ -36,11 +36,13 @@ class GuestLink extends React.Component {
   
           <Button bsStyle="primary" 
                   onClick={this.handleShow} 
-                  style={   { "background": this.props.secondary,
-                              "color": this.props.font,
+                  style={   { background: this.props.secondary,
+                              color: this.props.font,
                               marginLeft: "25%",
-                              "width": "50%",
-                              "border": 0}}>
+                              width: "50%",
+                              border: 0,
+                              borderRadius: "25px",
+                              outline: "none"}}>
             Click here and send this link to your guests
           </Button>
   

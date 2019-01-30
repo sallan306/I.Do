@@ -34,7 +34,8 @@ export function Input(props) {
       {{
         border: 0,  
         background: props.secondary, 
-        color: props.font
+        color: props.font,
+        borderRadius: "20px"
         }}
  />
     </div>
