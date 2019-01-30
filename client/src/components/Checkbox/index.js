@@ -1,16 +1,27 @@
 import React from "react";
 
 const Checkbox = ({ name, isSelected, onCheckboxChange }) => (
-  <div className="form-check">
-    <label>
+  <div className="MessageContact-Checkbox">
+    <label style={{marginRight:10}}>
       <input
         type="checkbox"
         name={name}
         checked={isSelected}
         onChange={onCheckboxChange}
-        className="form-check-input"
+        className="text-checkbox"
       />
-      Selected
+      Text
+    </label>
+  
+    <label>
+      <input 
+        type="checkbox"
+        name={name}
+        checked={isSelected}
+        onChange={onCheckboxChange}
+        className="email-checkbox"
+      />
+      Email
     </label>
   </div>
 );
