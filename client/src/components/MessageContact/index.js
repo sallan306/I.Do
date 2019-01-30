@@ -1,9 +1,14 @@
 import React from "react";
+import Checkbox from "../Checkbox";
+
 
 function MessageContact (props) {
     return (
-        <li> {props.firstName} {props.lastName} {props.phone}, {props.email} </li>
-    )
-}
+
+        <div>
+          <li> {props.firstName} {props.lastName} {props.phone}, {props.email} </li>
+          <Checkbox/>
+        </div>
+    );
 
 export default MessageContact; 

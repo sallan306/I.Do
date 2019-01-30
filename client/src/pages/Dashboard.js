@@ -127,32 +127,32 @@ class Dashboard extends Component {
     }
 
     // --------- CHECKBOX STUFF ----------
-    handleCheckboxChange = changeEvent => {
-        const { name } = changeEvent.target;
+    // handleCheckboxChange = changeEvent => {
+    //     const { name } = changeEvent.target;
 
-        this.setState(prevState => ({
-            guestCheckboxes: {
-                ...prevState.guestCheckboxes,
-                [name]: !prevState.guestCheckboxes[name]
-            }
-        }));
-    };
+    //     this.setState(prevState => ({
+    //         guestCheckboxes: {
+    //             ...prevState.guestCheckboxes,
+    //             [name]: !prevState.guestCheckboxes[name]
+    //         }
+    //     }));
+    // };
 
     // ----------------- NOT USING YET ------------
-    selectAllCheckboxes = isSelected => {
-        Object.keys(this.state.checkboxes).forEach(checkbox => {
-            this.setState(prevState => ({
-                checkboxes: {
-                    ...prevState.checkboxes,
-                    [checkbox]: isSelected
-                }
-            }));
-        });
-    };
+    // selectAllCheckboxes = isSelected => {
+    //     Object.keys(this.state.checkboxes).forEach(checkbox => {
+    //         this.setState(prevState => ({
+    //             checkboxes: {
+    //                 ...prevState.checkboxes,
+    //                 [checkbox]: isSelected
+    //             }
+    //         }));
+    //     });
+    // };
 
-    selectAll = () => this.selectAllCheckboxes(true);
+    // selectAll = () => this.selectAllCheckboxes(true);
 
-    deselectAll = () => this.selectAllCheckboxes(false);
+    // deselectAll = () => this.selectAllCheckboxes(false);
     // -------------------------------------------
 
     clearFormThanks() {
