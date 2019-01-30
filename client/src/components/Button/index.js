@@ -9,9 +9,12 @@ export function Button(props) {
       <button {...props} style={{ 
                                   background: props.secondary, 
                                   color: props.font, 
-                                  marginBottom: 10,
-                                  border: 0}
-                                } 
+                                  marginTop: props.topmargin,
+                                  border: 0,
+                                  float: props.float,
+                                  width: props.width,
+                                  marginLeft: props.marginleft
+                                }} 
                                   className="btn btn-success">
         {props.children}
       </button>

@@ -94,6 +94,10 @@ class Home extends Component {
                             onClick={this.handleSignUpForm}
                             secondary={this.props.secondary}
                             font={this.props.font}
+                            float="none"
+                            width="50%"
+                            marginleft="25%"
+                            topmargin="10px"
                         >
                         {this.state.toggleLoginSignup ? "Login" : "Sign Up"}
                         </Button>   
@@ -104,7 +108,7 @@ class Home extends Component {
                                         value={this.state.firstName}
                                         onChange={this.handleInputChange}
                                         name="firstName"
-                                        placeholder="First Name (required)"
+                                        title="First Name"
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                     />
@@ -112,7 +116,7 @@ class Home extends Component {
                                         value={this.state.lastName}
                                         onChange={this.handleInputChange}
                                         name="lastName"
-                                        placeholder="Last Name (required)"
+                                        title="Last Name"
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                     />
@@ -120,7 +124,7 @@ class Home extends Component {
                                         value={this.state.email}
                                         onChange={this.handleInputChange}
                                         name="email"
-                                        placeholder="Email (required)"
+                                        title="Email Address"
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                     />
@@ -129,7 +133,7 @@ class Home extends Component {
                                         value={this.state.password}
                                         onChange={this.handleInputChange}
                                         name="password"
-                                        placeholder="Password (required)"
+                                        title="Password"
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                     />
@@ -138,7 +142,7 @@ class Home extends Component {
                                         value={this.state.password2}
                                         onChange={this.handleInputChange}
                                         name="password2"
-                                        placeholder="Re-enter Password"
+                                        title="Re-enter Password"
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                     />
@@ -147,6 +151,7 @@ class Home extends Component {
                                         onClick={this.handleNewUserSubmit}
                                         secondary={this.props.secondary}
                                         font={this.props.font}
+                                        topmargin="20px"
                                     >   
                                         Submit
                                     </Button>
@@ -158,7 +163,7 @@ class Home extends Component {
                                         value={this.state.email}
                                         onChange={this.handleInputChange}
                                         name="email"
-                                        placeholder="Email (required)"
+                                        title="Email Address"
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                     />
@@ -167,16 +172,18 @@ class Home extends Component {
                                         value={this.state.password}
                                         onChange={this.handleInputChange}
                                         name="password"
-                                        placeholder="Password (required)"
+                                        title="Password"
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                     />
-                                    <Button id="loginButton"
+                                    <Button 
+                                        id="loginButton"
                                         disabled={!(this.state.email && this.state.password)}
                                         onClick={this.handleFormLogin}
                                         secondary={this.props.secondary}
                                         font={this.props.font}
                                         float="left"
+                                        topmargin="20px"
                                     >
                                         Login
                                     </Button>

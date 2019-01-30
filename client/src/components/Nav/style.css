@@ -111,6 +111,9 @@ nav {
 #editButton {
     float: right;
 }
+.form-group {
+    margin-bottom: 0px
+}
 
 @media only screen and (max-width: 600px) {
     .container {
