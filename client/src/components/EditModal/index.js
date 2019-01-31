@@ -42,7 +42,7 @@ class EditModal extends React.Component {
                 <Modal.Body>
                 <h4>Edit Contact Information</h4>
                 <p className="Edit-Contact-Info-Modal">
-                    blah blah blah 
+                    Edit Contact Info Here 
                 </p>
                 
                 </Modal.Body>
