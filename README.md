@@ -3,7 +3,7 @@
 ### Problem:
 Getting address' from multiple sources and combining them into a single address book can be time consuming.
 ### Solution:
-Allow people to create themselves inside someone else's contacts. By allowing indivuduals to submit their own data, some of the burden of event planning to be automated. 
+Allow people to create themselves inside someone else's contacts. By allowing individuals to submit their own data, some of the burden of event planning to be automated. 
 
 ### Links:
 - [Deployed on Heroku - i.Do](https://i-dooo.herokuapp.com/)
