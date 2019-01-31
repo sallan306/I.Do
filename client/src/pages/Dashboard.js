@@ -26,8 +26,7 @@ class Dashboard extends Component {
         zipcode: "",
         comment: "",
         task: "",
-        list: {},
-        guestCheckboxes: {}
+        list: {}
     }
 
     handleInputChange = event => {
@@ -126,17 +125,7 @@ class Dashboard extends Component {
         //This is where we call the component for sending messages out to guests
     }
 
-    // --------- CHECKBOX STUFF ----------
-    // handleCheckboxChange = changeEvent => {
-    //     const { name } = changeEvent.target;
 
-    //     this.setState(prevState => ({
-    //         guestCheckboxes: {
-    //             ...prevState.guestCheckboxes,
-    //             [name]: !prevState.guestCheckboxes[name]
-    //         }
-    //     }));
-    // };
 
     // ----------------- NOT USING YET ------------
     // selectAllCheckboxes = isSelected => {
@@ -185,18 +174,6 @@ class Dashboard extends Component {
             : this.setState({ contacts: [{ firstName: "No Contacts" }]})
         });
 
-
-        const guestCheckboxes = this.state.contacts.reduce(
-            (checkboxObj, contact) => ({
-                ...checkboxObj,
-                [contact.id]: false
-            }),
-            {}
-        )
-        this.setState({ 
-            guestCheckboxes
-
-        });
     }
 
 
@@ -213,7 +190,7 @@ class Dashboard extends Component {
                             font={this.props.font}/>
                     <br/>
                     <MessageModal 
-                            name={this.state.userFirstName + this.state.userLastName}
+                            name={this.state.userFirstName + " " + this.state.userLastName}
                             contacts={this.state.contacts}
                             secondary={this.props.secondary}
                             font={this.props.font} 

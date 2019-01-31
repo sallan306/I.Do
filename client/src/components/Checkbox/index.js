@@ -1,14 +1,14 @@
 import React from "react";
 
-const Checkbox = ({ name, isSelected, onCheckboxChange }) => (
+const Checkbox = ({ phone, email, isSelected, onCheckboxChange }) => (
   <div className="MessageContact-Checkbox">
     <label style={{marginRight:10}}>
       <input
         type="checkbox"
-        name={name}
+        name={phone}
         checked={isSelected}
         onChange={onCheckboxChange}
-        className="text-checkbox"
+        className="phone-checkbox"
       />
       Text
     </label>
@@ -16,7 +16,7 @@ const Checkbox = ({ name, isSelected, onCheckboxChange }) => (
     <label>
       <input 
         type="checkbox"
-        name={name}
+        name={email}
         checked={isSelected}
         onChange={onCheckboxChange}
         className="email-checkbox"

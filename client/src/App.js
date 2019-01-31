@@ -20,9 +20,6 @@ class App extends React.Component {
     }
     this.renderDefaultView()
   }
-  // componentWillMount(){
-  //   this.renderDefaultView()
-  // }
 
   changePrimaryColor = newColor => {
     this.setState({primary: newColor});
@@ -48,7 +45,6 @@ class App extends React.Component {
   }
   
   toggleLoggedIn = (userData) => {
-    //console.log("toggleLoggedIn function USER DATA ON APP.JS", userData)
     this.setState({
       loggedIn: true
     })
@@ -56,7 +52,6 @@ class App extends React.Component {
 
   logOut = () => {
     this.setState({loggedIn: false})
-    // TODO API Signout call.
     API.logout();
     return <Redirect to="/" />
   }
