@@ -75,12 +75,14 @@ class MessageModal extends Component {
         return (
             <div>
                  <Button bsStyle="primary" 
-                  bsSize="small" onClick={this.handleShow} 
-                  style={   { "background": this.props.secondary,
-                              "color": this.props.font,
-                              marginLeft: "80%",
-                              "width": "20%",
-                              "border": 0}}>
+                   onClick={this.handleShow} 
+                  style={   {   background: this.props.secondary,
+                                color: this.props.font,
+                                marginLeft: "25%",
+                                width: "50%",
+                                border: 0,
+                                borderRadius: "25px",
+                                outline: "none"}}>
             Message
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
