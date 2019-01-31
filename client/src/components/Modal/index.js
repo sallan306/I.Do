@@ -43,7 +43,7 @@ class GuestLink extends React.Component {
                               border: 0,
                               borderRadius: "25px",
                               outline: "none"}}>
-            Click here and send this link to your guests
+            Guest Form Link
           </Button>
   
           <Modal show={this.state.show} onHide={this.handleClose}>
