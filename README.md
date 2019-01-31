@@ -1,9 +1,9 @@
 # I.Do: An Event App
 
 ### Problem:
-I don’t know anyone’s number or address or stuff, and I need to mail them something.
+Getting address' from multiple sources and combining them into a single address book can be time consuming.
 ### Solution:
-Rolodex with a Rolodex. Rolodex-ception. I no longer have to contact everyone and input their data individually; I can send them a link and make them fill out my address book for me!
+Allow people to create themselves inside someone else's contacts. By allowing indivuduals to submit their own data, some of the burden of event planning to be automated. 
 
 ### Links:
 - [Deployed on Heroku - i.Do](https://i-dooo.herokuapp.com/)
@@ -15,13 +15,23 @@ Rolodex with a Rolodex. Rolodex-ception. I no longer have to contact everyone an
     - Web Layout and User Interface Designer
     - Mobile Compatibility
 * [Cody R. Davis](https://github.com/codyrdavis) - #theRealBrains
-    - Database Builder
+    - Node.js Server
+    - Restful API Routing
+    - Mongo DB communication
+    - Front End Axios calls to DB
+    - PassPort Authentication
+    - Front Ends Data support
+    - Front end to backend translation
 * [Elena Henry](https://github.com/laene) - #teamMom
     - Form Validation
     - Data Representation
     - Algolia Places Library
 * [Kyle Bauer](https://github.com/kylecom2000) - #teamDad 
     - Passport/Facebook Authentication
+    - Front end to back end translation
+    - API Support
+    - Node.js Support
+    - React data
 * [Scott Allan](https://github.com/sallan306) 
     - #gitMaster&Commander (great movie)
     - Email and Text Communications
@@ -29,7 +39,7 @@ Rolodex with a Rolodex. Rolodex-ception. I no longer have to contact everyone an
 
 #### Technologies:
 * [Passport](http://www.passportjs.org/packages/passport-facebook/) -- Sign-In and Facebook function
-* [Mongoose](https://mongoosejs.com/) -- data management
+* [Mongoose](https://mongoosejs.com/) -- database
 * [Twilio](https://www.twilio.com/) -- Text messaging and chat-room functionality
 * [React](https://reactjs.org/) -- front-end responsive reactive design
 * [JavaScript](https://www.javascript.com/) -- EVERYTHING 
