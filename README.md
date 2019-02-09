@@ -1,7 +1,7 @@
 # I.Do: An Event App
 
 ### Problem:
-Getting address' from multiple sources and combining them into a single address book can be time consuming.
+Getting addresses from multiple sources and combining them into a single address book can be time consuming.
 ### Solution:
 Allow people to create themselves inside someone else's contacts. By allowing individuals to submit their own data, some of the burden of event planning to be automated. 
 
