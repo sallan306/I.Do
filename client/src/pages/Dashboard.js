@@ -202,8 +202,6 @@ class Dashboard extends Component {
         return (
       
             <div>
-                <Button
-                        onClick={this.testState()}/>
                 <ExcelDownload contacts={this.state.contacts}/>
                 <NavLinks/>
                 <Container>

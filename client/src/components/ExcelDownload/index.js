@@ -11,10 +11,10 @@ class Download extends React.Component {
    
     dataSet1 = this.props.contacts
     render() {
-        { console.log(this.props.contacts[0])}
+        { console.log(this.props.contacts)}
         return (
             <ExcelFile element={<button>Download Data</button>}>
-                <ExcelSheet data={this.dataSet1} name="Employees">
+                <ExcelSheet data={this.props.contacts} name="Employees">
                     <ExcelColumn label="First Name" value="firstName"/>
                     <ExcelColumn label="Last Name" value="lastName"/>
                     <ExcelColumn label="Street" value="street"/>
