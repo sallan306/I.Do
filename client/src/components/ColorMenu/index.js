@@ -53,7 +53,7 @@ export default function Button(props) {
         button3Stlye.background = props.font;
     }
     return (
-        <div>
+        <div className="colorMenu">
             <div className="MenuContainer" onClick={toggleColors}>
                 <div className="bar1"></div>
                 <div className="bar2"></div>

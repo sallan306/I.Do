@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import API from '../utils/API'
-import {NavLinks} from "../components/NavLinks";
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 import { Panel, PanelGroup } from 'react-bootstrap';
@@ -9,6 +8,8 @@ import {Button} from "../components/Button";
 import GuestForm from '../components/GuestForm';
 import Modal from "../components/Modal";
 import MessageModal from "../components/MessageModal";
+import ExcelDownload from "../components/ExcelDownload"
+import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
     state = {
@@ -127,23 +128,6 @@ class Dashboard extends Component {
 
 
 
-    // ----------------- NOT USING YET ------------
-    // selectAllCheckboxes = isSelected => {
-    //     Object.keys(this.state.checkboxes).forEach(checkbox => {
-    //         this.setState(prevState => ({
-    //             checkboxes: {
-    //                 ...prevState.checkboxes,
-    //                 [checkbox]: isSelected
-    //             }
-    //         }));
-    //     });
-    // };
-
-    // selectAll = () => this.selectAllCheckboxes(true);
-
-    // deselectAll = () => this.selectAllCheckboxes(false);
-    // -------------------------------------------
-
     clearFormThanks() {
         this.setState({
             firstName: "",
@@ -180,101 +164,91 @@ class Dashboard extends Component {
     render(props) {
         return (
       
-            <div>
-                <NavLinks/>
-                <Container>
-                    {console.log(this.props.secondary)}
-                    {/* The guest link appears within this modal */}
-                    <Modal  eventID={this.state.userID}
-                            secondary={this.props.secondary}
-                            font={this.props.font}/>
-                    <br/>
-                    <MessageModal 
-                            name={this.state.userFirstName + " " + this.state.userLastName}
-                            contacts={this.state.contacts}
-                            secondary={this.props.secondary}
-                            font={this.props.font} 
-                            sendMessageButton={this.sendMessageButton}
-                            >
-                            Message
-                    </MessageModal>
+            <div className="dashboard">
+                <Container  marginLeft="0" 
+                            width="90vw" 
+                            marginLeft="5vw"
+                            marginTop="5vh">
 
-                    {/* <Button
-                        onClick={this.handleSendMassMessage}
-                        secondary={this.props.secondary} 
-                        font={this.props.font}
-                    >
+                    <Container  float="left" 
+                                marginLeft="0" 
+                                marginTop="2vh">
+                        <ExcelDownload  contacts={this.state.contacts}
+                                        secondary={this.props.secondary}
+                                        font={this.props.font}/>
                         
-                    </Button> */}
-                    <br/> 
-                     <br/>
-                    <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
-                        <Panel eventKey="1" style ={{"border":0, "background": "transparent",
-                                                        "color": this.props.font}}>
-                            <Panel.Heading style={{ "background": this.props.secondary,
-                                                        "color": this.props.font,
-                                                        }}>
-                                <Panel.Title style={{
-                                                        "border":0,
-                                                        "color": this.props.font
-                                                     }}
-                                                        toggle>
-                                    Add New Guest
-                                </Panel.Title>
-                            </Panel.Heading>
-                            <Panel.Body collapsible style={{borderTop:0}}>
-                            <GuestForm 
-                                handleInputChange={this.handleInputChange}
-                                handleFormSubmit={this.handleFormSubmit}
-                                firstName={this.state.firstName}
-                                lastName={this.state.lastName}
-                                email={this.state.email}
-                                phone={this.state.phone}
-                                street={this.state.street}
-                                city={this.state.city}
-                                state={this.state.state}
-                                zipcode={this.state.zipcode}
-                                comment={this.state.comment}
+                        <br/>
+                        <br/>
+                        <Modal  eventID={this.state.userID}
                                 secondary={this.props.secondary}
-                                font={this.props.font}
-                            />
-                            
-                            </Panel.Body>
-                        </Panel>
-                    </PanelGroup>
-                    <br/>
-                    <PanelGroup id="panelId" style={{background: "transparent"}}>
-                    {this.state.contacts.map(contact=>
-                        <ContactCard {...contact}   secondary={this.props.secondary}
-                                                    font={this.props.font}
-                                                    key={contact._id}/>
-                    )}
-                    </PanelGroup>
-                               
-                    {/* <PanelGroup>
-                        <Panel>
-                            <Panel.Heading>
-                                To Do
-                            </Panel.Heading>
-                            <Panel.Body>
-                                <Input
-                                    value={this.state.task}
-                                    onChange={this.handleInputChange}
-                                    name="task"
-                                    placeholder="Add an Item"
-                                    >
-                                </Input>
-                                <Button
-                                    onClick={this.handleToDoAdd}
+                                font={this.props.font}/>
+                        <br/>
+                        <MessageModal 
+                                name={this.state.userFirstName + " " + this.state.userLastName}
+                                contacts={this.state.contacts}
+                                secondary={this.props.secondary}
+                                font={this.props.font} 
+                                sendMessageButton={this.sendMessageButton}
                                 >
-                                    Add
-                                </Button>
-                            </Panel.Body>
-                        </Panel>
-                        <Panel>
-                            {this.renderToDos()}
-                        </Panel>
-                    </PanelGroup> */}
+                                Message
+                        </MessageModal>
+                        <br/> 
+                        <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
+                            <Panel eventKey="1" style ={{"border":0, "background": "transparent",
+                                                            "color": this.props.font,
+                                                            "text-align" : "center"}}>
+                                <Panel.Heading style={{ "background": this.props.secondary,
+                                                            "color": this.props.font,
+                                                            "width": "50%",
+                                                            "margin-left": "25%",
+                                                            "text-align" : "center"
+                                                            }}>
+                                    <Panel.Title style={{
+                                                            "border":0,
+                                                            "color": this.props.font,
+                                                            "display" : "inline-block",
+                                                            "fontWeight" : "normal"
+                                                        }}
+                                                            toggle>
+                                        Add New Guest
+                                    </Panel.Title>
+                                </Panel.Heading>
+                                <Panel.Body collapsible style={{borderTop:0}}>
+                                <GuestForm 
+                                    handleInputChange={this.handleInputChange}
+                                    handleFormSubmit={this.handleFormSubmit}
+                                    firstName={this.state.firstName}
+                                    lastName={this.state.lastName}
+                                    email={this.state.email}
+                                    phone={this.state.phone}
+                                    street={this.state.street}
+                                    city={this.state.city}
+                                    state={this.state.state}
+                                    zipcode={this.state.zipcode}
+                                    comment={this.state.comment}
+                                    secondary={this.props.secondary}
+                                    font={this.props.font}
+                                />
+                                
+                                </Panel.Body>
+                            </Panel>
+                        </PanelGroup>
+                        <Button secondary={this.props.secondary}
+                                width="50%" 
+                                marginleft="25%">
+                            <Link style={{color: this.props.font}} className="linkLogOut" to="/Logout">Log Out</Link>
+                        </Button>
+                    </Container>
+                    <Container  float="right" marginRight="5vw" marginLeft="0" overflow="auto" height="40vh">
+                        <PanelGroup id="panelId" style={{background: "transparent"}}>
+                        {this.state.contacts.map(contact=>
+                            <ContactCard {...contact}   secondary={this.props.secondary}
+                                                        font={this.props.font}
+                                                        key={contact._id}/>
+                        )}
+                        </PanelGroup>
+                    </Container>
+                               
                 </Container>
             </div>
         );

@@ -55,7 +55,7 @@ class Guests extends Component {
 
     render() {
         return (
-            <div>
+            <div className="guest">
                <Container>
                 <h3>Let's Get Started!</h3>
                 <GuestForm 

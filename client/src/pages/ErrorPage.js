@@ -2,7 +2,7 @@ import React from "react";
 
 function ErrorPage() {
     return (
-        <div>
+        <div className="errorpage">
             <a href="/">
                 i.Do  |
             </a>
