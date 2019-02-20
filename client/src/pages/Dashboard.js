@@ -166,12 +166,13 @@ class Dashboard extends Component {
         return (
       
             <div className="dashboard">
-                <Container  
+                <Container  className="allContentContainer"
                             width="90vw" 
                             marginLeft="5vw"
                             marginTop="5vh">
 
-                    <Container  float="left" 
+                    <Container  className="buttonsContainer"
+                                float="left" 
                                 marginLeft="0vw" 
                                 marginTop="2vh">
                         <ExcelDownload  contacts={this.state.contacts}
@@ -221,7 +222,8 @@ class Dashboard extends Component {
                                 textDecoration: 'none'}} className="linkLogOut" to="/Logout">Log Out</Link>
                         </Button>
                     </Container>
-                    <Container  float="right" 
+                    <Container  className="dataContainer"
+                                float="right" 
                                 marginRight="7vw" 
                                 marginLeft="0" 
                                 overflow="auto" 

@@ -94,7 +94,7 @@ class Home extends Component {
     render(props) {
         return (
             <div className="home">
-               <Container>
+               <Container className="loginContainer">
                     
                         <Button
                             onClick={this.handleSignUpForm}

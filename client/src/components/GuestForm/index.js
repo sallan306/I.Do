@@ -81,7 +81,7 @@ function GuestForm (props) {
             />
             <Button 
                 id="guestInfoFormButton"
-                // disabled={!(props.firstName && props.email)}
+                // disabled={!(props.firstName)}
                 onClick={props.handleFormSubmit}
                 secondary={props.secondary}
                 font={props.font}

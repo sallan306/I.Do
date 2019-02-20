@@ -101,6 +101,7 @@ class MessageModal extends Component {
                                     comment={this.state.comment}
                                     secondary={this.props.secondary}
                                     font={this.props.font}
+                                    handleClose={this.props.handleClose}
                                 />
                                 
                                 </Panel.Body>
