@@ -1,5 +1,14 @@
 /* ---------------------------DEFAULT BACKGROUND COLORS OF PALLETTE */
-
+.linkHome:hover, .linkDash:hover, .linkMng:hover, 
+.container,.linkHome, .linkDash, .linkMng,
+.btn,.btn-success,.btn-primary,.panel-heading,a,
+.circle-picker-primary, .circle-picker-secondary, .circle-picker-font,
+.buttonPrimary, .buttonSecondary, .buttonFont,
+body, #title, .bar1, .bar2, .bar3, .circle-picker-container, 
+.panel-default, .form-control, .buttonBox
+  { 
+    transition: 1s ease-out;
+}
 body {
     background: white;
 }
@@ -22,7 +31,6 @@ body {
     position: absolute;
     left: 0px;
     top: 100px;
-    transition: 0.3s
 }
 
 .buttonBox {
@@ -32,14 +40,13 @@ body {
 }
 .buttonPrimary, .buttonSecondary, .buttonFont {
     position: absolute;
-    transition: 0.3s;
     width: 80px;
     border-radius: 25px;
     border-width: 1px;
     border-color: black;
 }
 .buttonPrimary:hover, .buttonSecondary:hover, .buttonFont:hover {
-    opacity: .5;
+    opacity: .3;
 }
 .buttonPrimary:active, .buttonSecondary:active, .buttonFont:active {
     opacity: 1;
@@ -74,9 +81,7 @@ body {
     font-weight: bold;
 }
 /* ------------------------------------------ANIMATIONS AND STATE CHANGES */
-body, #title, .bar1, .bar2, .bar3, .circle-picker-container, .panel-default, .form-control, .buttonBox, .btn-success {
-    transition: 0.3s;
-}
+
 .bar1change {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-9px, 6px);

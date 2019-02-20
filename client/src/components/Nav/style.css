@@ -1,3 +1,5 @@
+
+
 #title {
     text-align: center;
     background-color: rgba(247, 238, 228, .8);
@@ -7,27 +9,23 @@
     border-radius: 50px;
     height: 40vh;
     margin-top: 5vh;
-    z-index: -1;
 }
 .allContentContainer {
     margin-top: 5vh;
     width: 90vw;
     margin-left: 5vw;
-    z-index: -1;
 }
 .buttonsContainer {
     height: 35vh;
     width: 40vw;
     float: left;
     margin-top: 3vh;
-    z-index: -1;
 }
 .dataContainer {
     width: 40vw;
     float: left;
     height: 40vh;
     overflow-y: scroll;
-    z-index: -1;
 }
 .dataContainer::-webkit-scrollbar { 
     display: none;  
@@ -37,13 +35,10 @@
     margin-bottom: 0vh;
     width: 40vw;
     height: 20vh;
-    transition: .4s;
-    z-index: -1;
 }
 
-.form-control, #nav-title, .btn-success, #title, .panel-default {
-    opacity: .85;
-    z-index: -1;
+#title {
+    opacity: .99;
 
 }
 
@@ -63,35 +58,29 @@
     font-family: 'Source Code Pro', monospace;
     font-size: 90px;
     letter-spacing: 5px;
-    z-index: -1;
 }
 .loginContainer {
     width: 60vw;
     margin-left: 20vw;
     margin-top: 5vh;
-    z-index: -1;
 }
 h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
-    z-index: -1;
 }
 
 nav {
     text-align: center;
     margin-top: 10px;
     letter-spacing: 2px;
-    z-index: -1;
 }
 
 .linkHome, .linkDash, .linkMng {
     color: black;
-    transition: 0.4s;
     margin-right: 5px;
     border-radius: 2px;
     text-decoration: none;
-    z-index: -1;
 }
 .linkHome:link, .linkDash:link, .linkMng:link { 
     text-decoration: none;
@@ -101,7 +90,6 @@ nav {
 }
 .linkHome:hover, .linkDash:hover, .linkMng:hover { 
     background: #faf4ee4d;
-    transition: 0.4s;
     text-decoration: none;
 }
 
@@ -111,7 +99,6 @@ nav {
     font-weight: bold;
     font-size: 20px;
     letter-spacing: 3px;
-    z-index: -1;
 }
 
 #manage-title {
@@ -120,21 +107,18 @@ nav {
     font-weight: bold;
     font-size: 20px;
     letter-spacing: 3px;
-    z-index: -1;
 }
 
 #guest-title {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
-    z-index: -1;
 }
 
 #modal-message {
     font-size: 18px;
     text-align: center;
     letter-spacing: 2px;
-    z-index: -1;
 }
 
 #infoArea {
@@ -149,7 +133,6 @@ nav {
     margin: auto;
     float: right;
     background-color: blue;
-    z-index: -1;
 }
 
 #editButton {
