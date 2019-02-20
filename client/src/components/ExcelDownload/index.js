@@ -22,7 +22,9 @@ class Download extends React.Component {
                                                     borderRadius: 25,
                                                     outline: "none",
                                                     border: 0}}
-                                >Download Data</button>}>
+                                >
+                                Download as Excel
+                                </button>}>
                 <ExcelSheet data={this.props.contacts} name="Employees">
                     <ExcelColumn label="First Name" value="firstName"/>
                     <ExcelColumn label="Last Name" value="lastName"/>

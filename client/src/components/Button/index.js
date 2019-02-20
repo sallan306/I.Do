@@ -15,7 +15,7 @@ export function Button(props) {
                                   width: props.width,
                                   marginLeft: props.marginleft,
                                   borderRadius: 20,
-                                  outline: "none"
+                                  outline: "none",
                                 }} 
                                   className="btn btn-success">
         {props.children}
