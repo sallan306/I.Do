@@ -26,8 +26,11 @@
     width: 40vw;
     float: left;
     height: 40vh;
-    overflow: scroll;
+    overflow-y: scroll;
     z-index: -1;
+}
+.dataContainer::-webkit-scrollbar { 
+    display: none;  
 }
 .container {
     margin-top: 2vh;
@@ -42,6 +45,10 @@
     opacity: .85;
     z-index: -1;
 
+}
+
+.panel-body {
+    border-top: 0;
 }
 .styleBox {
     position: relative;
@@ -197,6 +204,6 @@ nav {
         width: 90vw;
         float: none;
         height: 40vh;
-        overflow: scroll;
+        overflow-y: scroll;
     }
   }
