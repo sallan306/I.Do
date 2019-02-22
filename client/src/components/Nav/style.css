@@ -15,6 +15,15 @@
     width: 90vw;
     margin-left: 5vw;
 }
+
+.colorMenu {
+    position: relative;
+    z-index: 10;
+}
+.container-title, .home {
+    position: relative;
+    z-index: 1;
+}
 .buttonsContainer {
     height: 35vh;
     width: 40vw;

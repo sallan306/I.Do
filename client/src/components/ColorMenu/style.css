@@ -17,7 +17,7 @@ body {
     width:100px;
     position: fixed;
     margin-right: 0px;
-    padding-left: 12px;
+    padding-left: 6px;
     padding-top: 12px;
     
 }
@@ -35,13 +35,12 @@ body {
 
 .buttonBox {
     position: absolute;
-    left: 5px;
-    top: 10px;
 }
 .buttonPrimary, .buttonSecondary, .buttonFont {
+    height: 35px;
     position: absolute;
     width: 80px;
-    border-radius: 25px;
+    border-radius: 10px;
     border-width: 1px;
     border-color: black;
 }
@@ -54,13 +53,21 @@ body {
 
 
 .buttonPrimary {
-    top:0px;
+    top: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .buttonSecondary {
-    top: 30px
+    top: 35px;
+    border-radius: 0;
+    border-bottom: 0;
+    border-top: 0;
 }
 .buttonFont {
-    top: 60px
+    top: 70px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    color: white;
 }
 .MenuContainer {
     display: inline-block;
