@@ -190,7 +190,8 @@ nav {
         height: 35vh;
         width: 90vw;
         float: none;
-        margin-top: 15vh;
+        margin-top: 13vh;
+        margin-bottom: 10vh;
     }
     .dataContainer {
         width: 90vw;
