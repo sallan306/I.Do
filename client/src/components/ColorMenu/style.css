@@ -7,7 +7,7 @@
 body, #title, .bar1, .bar2, .bar3, .circle-picker-container, 
 .panel-default, .form-control, .buttonBox
   { 
-    transition: 1s ease-out;
+    transition: 0.5s ease-out;
 }
 body {
     background: white;
