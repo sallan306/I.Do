@@ -1,16 +1,16 @@
 import React, {Component} from "react";
-import API from '../utils/API'
+import API from '../utils/API';
 import Container from "../components/Container";
 import ContactCard from "../components/ContactCard";
 import { PanelGroup } from 'react-bootstrap';
 import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Button";
 
-import Modal from "../components/Modal";
+import CopyLinkModal from "../components/CopyLinkModal";
 import MessageModal from "../components/MessageModal";
-import ExcelDownload from "../components/ExcelDownload"
+import ExcelDownload from "../components/ExcelDownload";
 import { Link } from 'react-router-dom';
-import NewContactModal from "../components/NewContactModal"
+import NewContactModal from "../components/NewContactModal";
 
 class Dashboard extends Component {
     state = {
@@ -181,7 +181,7 @@ class Dashboard extends Component {
                         
                         <br/>
                         <br/>
-                        <Modal  eventID={this.state.userID}
+                        <CopyLinkModal  eventID={this.state.userID}
                                 secondary={this.props.secondary}
                                 font={this.props.font}/>
                         <br/>

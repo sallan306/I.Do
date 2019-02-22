@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Modal} from 'react-bootstrap';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 
-
-class GuestLink extends React.Component {
+class CopyLinkModal extends React.Component {
     constructor(props, context) {
       super(props, context);
   
@@ -53,8 +53,12 @@ class GuestLink extends React.Component {
             <Modal.Body>
               <h4>Copy the link below</h4>
               <p>
-                https://i-dooo.herokuapp.com/event/{this.props.eventID}
+                Press the button to copy your personal link to the clipboard, then send that link to your guests!
               </p>
+              <CopyToClipboard text={"https://i-dooo.herokuapp.com/event/"+this.props.eventID}
+                onCopy={() => this.setState({copied: true})}>
+                <button>Copy to clipboard with button</button>
+              </CopyToClipboard>
               
             </Modal.Body>
             <Modal.Footer>
@@ -67,4 +71,4 @@ class GuestLink extends React.Component {
   }
   
 //   render (<GuestLink />);
-export default GuestLink;
+export default CopyLinkModal;

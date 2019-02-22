@@ -90,15 +90,15 @@ class MessageModal extends Component {
                                 <GuestForm 
                                     handleInputChange={this.props.handleInputChange}
                                     handleFormSubmit={this.props.handleFormSubmit}
-                                    firstName={this.state.firstName}
-                                    lastName={this.state.lastName}
-                                    email={this.state.email}
-                                    phone={this.state.phone}
-                                    street={this.state.street}
-                                    city={this.state.city}
-                                    state={this.state.state}
-                                    zipcode={this.state.zipcode}
-                                    comment={this.state.comment}
+                                    firstName={this.props.firstName}
+                                    lastName={this.props.lastName}
+                                    email={this.props.email}
+                                    phone={this.props.phone}
+                                    street={this.props.street}
+                                    city={this.props.city}
+                                    state={this.props.state}
+                                    zipcode={this.props.zipcode}
+                                    comment={this.props.comment}
                                     secondary={this.props.secondary}
                                     font={this.props.font}
                                     handleClose={this.props.handleClose}
@@ -111,7 +111,6 @@ class MessageModal extends Component {
                 </Modal.Body>
                 <Modal.Footer>
                     
-                {/* Handle Send Button */}
                 <Button onClick={this.handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
