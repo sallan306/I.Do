@@ -14,10 +14,10 @@ export function Button(props) {
                                   float: props.float,
                                   width: props.width,
                                   marginLeft: props.marginleft,
-                                  borderRadius: 20,
+                                  borderRadius: (props.borderRadius || 20),
                                   outline: "none",
                                 }} 
-                                  className="btn btn-success">
+                                  className={props.className || "btn-success"}>
         {props.children}
       </button>
     );

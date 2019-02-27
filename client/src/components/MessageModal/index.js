@@ -12,7 +12,7 @@ class MessageModal extends Component {
     
         this.state = {
             show: false,
-            emailArray: ["kbauertx@gmail.com", "kylecom2000@me.com"],
+            emailArray: ["sallan306@gmail.com"],
             textArray: ["4099397554"],
             subject: "",
             message: "THIS IS A TEST MESSAGE",
@@ -78,12 +78,8 @@ class MessageModal extends Component {
                    onClick={this.handleShow} 
                   style={   {   background: this.props.secondary,
                                 color: this.props.font,
-                                marginLeft: "25%",
-                                width: "50%",
                                 border: 0,
-                                borderRadius: "25px",
                                 outline: "none"}}>
-            Message
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>

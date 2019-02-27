@@ -16,7 +16,8 @@ class App extends React.Component {
       isLoggedIn: false,
       primary: "white",
       secondary: "rgb(247, 238, 228)",
-      font: "black"
+      font: "black",
+      savedColors: {}
     }
     this.renderDefaultView()
   }
@@ -65,7 +66,8 @@ class App extends React.Component {
                       changeFontColor={this.changeFontColor} 
                       primary={this.state.primary}
                       secondary={this.state.secondary}
-                      font={this.state.font}/>
+                      font={this.state.font}
+                      savedColors={this.state.savedColors}/>
 
           <Nav        secondary={this.state.secondary}
                       font={this.state.font}/>

@@ -11,7 +11,10 @@ import MessageModal from "../components/MessageModal";
 import ExcelDownload from "../components/ExcelDownload";
 import { Link } from 'react-router-dom';
 import NewContactModal from "../components/NewContactModal";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCopy, faFileExport, faEnvelope, faAddressCard, faSignOutAlt, faPalette } from '@fortawesome/free-solid-svg-icons'
+import $ from "jquery"
+import { Z_BLOCK } from "zlib";
 class Dashboard extends Component {
     state = {
         userID: "",
@@ -28,7 +31,9 @@ class Dashboard extends Component {
         zipcode: "",
         comment: "",
         task: "",
-        list: {}
+        list: {},
+        savedColors: {},
+        menuOpen: false
     }
 
     handleInputChange = event => {
@@ -127,7 +132,9 @@ class Dashboard extends Component {
         //This is where we call the component for sending messages out to guests
     }
 
-
+    toggleColors() {
+        $(".circle-picker-container").toggleClass("circleChange")
+    }
 
     clearFormThanks() {
         this.setState({
@@ -163,28 +170,51 @@ class Dashboard extends Component {
 
 
     render(props) {
+
+        const iconStlye= {
+            width: "10%"}
         return (
       
             <div className="dashboard">
                 <Container  className="allContentContainer"
                             width="90vw" 
                             marginLeft="5vw"
-                            marginTop="5vh">
-
+                            marginTop="5vh"
+                            menuOpen={this.state.menuOpen}>
+                    <Container className="buttonsAndIcons">
+                    <Container className="iconsContainer"
+                                float="left">
+                        <FontAwesomeIcon    className="fontAwesome"
+                                            icon={faFileExport} 
+                                            style={iconStlye}/>
+                        <FontAwesomeIcon    className="fontAwesome"
+                                            icon={faCopy} 
+                                            style={iconStlye}/>
+                        <FontAwesomeIcon    className="fontAwesome"
+                                            icon={faEnvelope} 
+                                            style={iconStlye}/>
+                        <FontAwesomeIcon    icon={faAddressCard} 
+                                            className="fontAwesome"
+                                            style={iconStlye}/>
+                        <FontAwesomeIcon    icon={faPalette} 
+                                            className="fontAwesome" 
+                                            style={iconStlye}/>
+                        <FontAwesomeIcon    icon={faSignOutAlt} 
+                                            className="fontAwesome" 
+                                            style={iconStlye}/>
+                    </Container>
                     <Container  className="buttonsContainer"
                                 float="left" 
                                 marginLeft="0vw" 
                                 marginTop="2vh">
+
                         <ExcelDownload  contacts={this.state.contacts}
                                         secondary={this.props.secondary}
                                         font={this.props.font}/>
                         
-                        <br/>
-                        <br/>
                         <CopyLinkModal  eventID={this.state.userID}
                                 secondary={this.props.secondary}
                                 font={this.props.font}/>
-                        <br/>
                         <MessageModal 
                                 name={this.state.userFirstName + " " + this.state.userLastName}
                                 contacts={this.state.contacts}
@@ -192,9 +222,7 @@ class Dashboard extends Component {
                                 font={this.props.font} 
                                 sendMessageButton={this.sendMessageButton}
                                 >
-                                Email/Text Contacts
                         </MessageModal>
-                        <br/> 
                         <NewContactModal    
                                 name={this.state.userFirstName + " " + this.state.userLastName}
                                 contacts={this.state.contacts}
@@ -213,15 +241,28 @@ class Dashboard extends Component {
                                 secondary={this.props.secondary}
                                 font={this.props.font}/>
 
-                        <Button secondary={this.props.secondary}
-                                width="50%" 
-                                marginleft="25%">
+                        <Button className="btn btn-primary" 
+                                secondary={this.props.secondary}
+                                borderRadius="0"
+                                onClick={this.toggleColors}
+                                >
+                        </Button>
+                        <Button className="btn btn-primary" 
+                                secondary={this.props.secondary}
+                                borderRadius="0">
                             <Link style={{
                                 color: this.props.font,
+                                display: "block",
+                                width: "100%",
+                                height: "100%",
                                 fontWeight: 100,
-                                textDecoration: 'none'}} className="linkLogOut" to="/Logout">Log Out</Link>
+                                textDecoration: 'none'}} className="linkLogOut" to="/Logout"></Link>
                         </Button>
                     </Container>
+                    
+                    
+                    </Container>
+                    Your contacts are displayed below
                     <Container  className="dataContainer"
                                 float="right" 
                                 marginRight="7vw" 

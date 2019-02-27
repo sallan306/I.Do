@@ -33,17 +33,12 @@ class CopyLinkModal extends React.Component {
 
       return (
         <div>
-  
           <Button bsStyle="primary" 
                   onClick={this.handleShow} 
                   style={   { background: this.props.secondary,
                               color: this.props.font,
-                              marginLeft: "25%",
-                              width: "50%",
                               border: 0,
-                              borderRadius: "25px",
                               outline: "none"}}>
-            Guest Link
           </Button>
   
           <Modal show={this.state.show} onHide={this.handleClose}>

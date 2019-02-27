@@ -14,26 +14,24 @@ class Download extends React.Component {
     render(props) {
         { console.log(this.props.contacts)}
         return (
-            <ExcelFile element={<button className="btn btn-primary" 
-                                        style={ {   background: this.props.secondary, 
-                                                    color: this.props.font,
-                                                    width: "50%",
-                                                    marginLeft: "25%",
-                                                    borderRadius: 25,
-                                                    outline: "none",
-                                                    border: 0}}
-                                >
-                                Download as Excel
-                                </button>}>
-                <ExcelSheet data={this.props.contacts} name="Employees">
-                    <ExcelColumn label="First Name" value="firstName"/>
-                    <ExcelColumn label="Last Name" value="lastName"/>
-                    <ExcelColumn label="Street" value="street"/>
-                    <ExcelColumn label="City" value="city"/>
-                    <ExcelColumn label="State" value="state"/>
-                    <ExcelColumn label="Zipcode" value="zipcode"/>
-                </ExcelSheet>
-            </ExcelFile>
+                <ExcelFile element={<button className="btn btn-primary" 
+                                            style={ {   background: this.props.secondary, 
+                                                        color: this.props.font,
+                                                        borderRadius: 0,
+                                                        outline: "none",
+                                                        border: 0}}
+                                    >
+                                    {/* Download as Excel */}
+                                    </button>}>
+                    <ExcelSheet data={this.props.contacts} name="Employees">
+                        <ExcelColumn label="First Name" value="firstName"/>
+                        <ExcelColumn label="Last Name" value="lastName"/>
+                        <ExcelColumn label="Street" value="street"/>
+                        <ExcelColumn label="City" value="city"/>
+                        <ExcelColumn label="State" value="state"/>
+                        <ExcelColumn label="Zipcode" value="zipcode"/>
+                    </ExcelSheet>
+                </ExcelFile>
         );
     }
 }

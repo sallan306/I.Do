@@ -161,20 +161,23 @@ nav {
         width: 70vw;
     }
     #title {
-        position: relative;
-        top: 10vh;
-        height: 30vh;
+
+        height: 12vh;
         font-size: 20px;
-        margin-top: -5vh;
+        margin-top: -4vh;
+        width: 100vw;
+        margin-left: 0;
+        border-radius: 0;
     }
     #nav-title{
-        font-size: 60px;
+        font-size: 35px;
     }
     h2 {
         margin-bottom: 10%;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 12px;
         letter-spacing: 2px;
+        visibility: hidden;
     }
     .loginContainer {
         width: 60vw;
@@ -186,12 +189,48 @@ nav {
         width: 90vw;
         margin-left: 5vw;
     }
-    .buttonsContainer {
-        height: 35vh;
+    .buttonsAndIcons {
+        height: 0vh;
         width: 90vw;
         float: none;
-        margin-top: 13vh;
         margin-bottom: 10vh;
+        /* display: none; */
+        transition: 0.5s;
+        overflow: hidden;
+        position: relative;
+
+    }
+    .buttonsContainer, .iconsContainer {
+        height: 10vh;
+        width: 100%;
+        float: left;
+        margin-top: 0vh;
+        position: absolute;
+    }
+    .iconsContainer {
+        /* padding-top: 0.5vh; */
+        pointer-events: none;
+        z-index: 9;
+        /* left: 1vw; */
+    }
+    .openMenu {
+        /* display: block; */
+        height: 10vh;
+        transition: 0.5s
+    }
+    .btn-primary {
+        width: 15%;
+        margin-left: 1%;
+        height: 10vh;
+        float: left;
+        position: relative;;
+    }
+    .fontAwesome {
+        overflow: visible;
+        margin-left:  5%;
+        margin-right: 0.83%;
+        height:10vh;
+        position: relative
     }
     .dataContainer {
         width: 90vw;

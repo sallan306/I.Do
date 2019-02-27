@@ -4,14 +4,16 @@ import './style.css';
 import ColorPicker from "./ColorPicker";
 import ColorPicker2 from "./ColorPicker2";
 import ColorPickerFont from "./ColorPickerFont";
+// import API from '../utils/API';
     
 
 function toggleColors() {
 
-    $(".circle-picker-container").toggleClass("circleChange")
+    $(".circle-picker-container").removeClass("circleChange")
     $(".bar1").toggleClass("bar1change")
     $(".bar2").toggleClass("bar2change")
     $(".bar3").toggleClass("bar3change")
+    $(".buttonsAndIcons").toggleClass("openMenu")
 }
 
 function clickColor1() {
@@ -30,6 +32,9 @@ function clickFont() {
     $(".circle-picker-font").toggleClass(       "invisible", false)
 }
 
+// function saveColors() {
+//     API.
+// }
 export default function Button(props) {
     var button1Stlye = {
         background: props.primary,
@@ -77,6 +82,7 @@ export default function Button(props) {
                     <ColorPickerFont    font = {props.font} 
                                         changeFontColor={props.changeFontColor}/>
                 </div>
+                {/* <button style={button1Stlye} className="saveColors" onClick={saveColors}>Save</button> */}
             </div>
         </div>
     );
