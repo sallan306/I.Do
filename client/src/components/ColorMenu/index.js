@@ -59,7 +59,7 @@ export default function Button(props) {
     }
     return (
         <div className="colorMenu">
-            <div className="MenuContainer" onClick={toggleColors}>
+            <div className="MenuContainer invisible" onClick={toggleColors}>
                 <div className="bar1"></div>
                 <div className="bar2"></div>
                 <div className="bar3"></div>

@@ -6,7 +6,8 @@ export function Button(props) {
 
 
     return (
-      <button {...props} style={{ 
+      <button {...props}
+                          style={{ 
                                   background: props.secondary, 
                                   color: props.font, 
                                   marginTop: props.topmargin,

@@ -10,10 +10,40 @@
     height: 40vh;
     margin-top: 5vh;
 }
+.buttonsContainer, .iconsContainer {
+    height: 10vh;
+    width: 100%;
+    float: left;
+    margin-top: 0vh;
+    position: absolute;
+    margin-left: 15vw
+}
+.iconsContainer {
+    pointer-events: none
+}
+.buttonsAndIcons {
+    margin-left: 8vw;
+    width: 100vw;
+
+}
+.btn-primary, .fontAwesome {
+    width: 5%;
+    float: left;
+    height: 6vh;
+    margin-right: 5%;
+    float: left;
+}
+.btn-primary {
+    width: 5%;
+}
+.fontAwesome {
+    pointer-events: none;
+    margin-right: 0%;
+    float: left;
+}
 .allContentContainer {
     margin-top: 5vh;
-    width: 90vw;
-    margin-left: 5vw;
+    width: 70vw;
 }
 
 .colorMenu {
@@ -24,17 +54,18 @@
     position: relative;
     z-index: 1;
 }
-.buttonsContainer {
-    height: 35vh;
-    width: 40vw;
-    float: left;
-    margin-top: 3vh;
-}
 .dataContainer {
-    width: 40vw;
+    width: 80%;
     float: left;
     height: 40vh;
     overflow-y: scroll;
+    margin-top: 8vh;
+    position: relative;
+    left: 22.5vw;
+
+}
+.iconsContainer {
+    z-index: 9;
 }
 .dataContainer::-webkit-scrollbar { 
     display: none;  
@@ -154,7 +185,10 @@ nav {
     border-radius: 25px
 }
 
+
+
 @media only screen and (max-width: 600px) {
+
     .container {
         position: relative;
         top:10vh;
@@ -182,7 +216,7 @@ nav {
     .loginContainer {
         width: 60vw;
         margin-left: 20vw;
-        margin-top: 10vh;
+        margin-top: 20vh;
     }
     .allContentContainer {
         margin-top: 5vh;
@@ -191,14 +225,14 @@ nav {
     }
     .buttonsAndIcons {
         height: 0vh;
-        width: 90vw;
+        width: 100vw;
         float: none;
         margin-bottom: 10vh;
         /* display: none; */
         transition: 0.5s;
         overflow: hidden;
         position: relative;
-
+        margin-left: -5vw;
     }
     .buttonsContainer, .iconsContainer {
         height: 10vh;
@@ -206,6 +240,7 @@ nav {
         float: left;
         margin-top: 0vh;
         position: absolute;
+        margin-left: 0;
     }
     .iconsContainer {
         /* padding-top: 0.5vh; */
@@ -219,23 +254,33 @@ nav {
         transition: 0.5s
     }
     .btn-primary {
-        width: 15%;
-        margin-left: 1%;
-        height: 10vh;
+        width: 14.5%;
+        margin-left: -4%;
+        height: 9vh;
         float: left;
-        position: relative;;
+        position: relative;
+        left: 8vw;
     }
     .fontAwesome {
         overflow: visible;
-        margin-left:  5%;
-        margin-right: 0.83%;
-        height:10vh;
-        position: relative
+        margin-left: 5%;
+        margin-right: -23%;
+        height: 10vh;
+        position: relative;
+    
     }
     .dataContainer {
         width: 90vw;
         float: none;
         height: 40vh;
         overflow-y: scroll;
+        left: 0;
     }
+    .invisible {
+        visibility: hidden;
+    }
+    .MenuContainer {
+        visibility: visible;
+    }
+
   }

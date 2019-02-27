@@ -14,7 +14,7 @@ class Download extends React.Component {
     render(props) {
         { console.log(this.props.contacts)}
         return (
-                <ExcelFile element={<button className="btn btn-primary" 
+                <ExcelFile element={<button className="btn btn-primary excelButton" 
                                             style={ {   background: this.props.secondary, 
                                                         color: this.props.font,
                                                         borderRadius: 0,

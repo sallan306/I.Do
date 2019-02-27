@@ -33,7 +33,8 @@ class CopyLinkModal extends React.Component {
 
       return (
         <div>
-          <Button bsStyle="primary" 
+          <Button className="btn btn-primary copyLinkButton"
+                  bsStyle="primary" 
                   onClick={this.handleShow} 
                   style={   { background: this.props.secondary,
                               color: this.props.font,

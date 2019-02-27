@@ -74,12 +74,13 @@ class MessageModal extends Component {
     render(props) {
         return (
             <div>
-                 <Button bsStyle="primary" 
-                   onClick={this.handleShow} 
-                  style={   {   background: this.props.secondary,
-                                color: this.props.font,
-                                border: 0,
-                                outline: "none"}}>
+                 <Button    className="btn btn-primary messageButton"
+                            bsStyle="primary" 
+                            onClick={this.handleShow} 
+                            style={{    background: this.props.secondary,
+                                        color: this.props.font,
+                                        border: 0,
+                                        outline: "none"}}>
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>

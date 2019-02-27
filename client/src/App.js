@@ -7,6 +7,7 @@ import Guest from "./pages/Guest";
 import Nav from "./components/Nav";
 import ColorMenu from "./components/ColorMenu"
 import API from "./utils/API"
+import $ from "jquery"
 
 class App extends React.Component {
   constructor(props){
@@ -36,9 +37,11 @@ class App extends React.Component {
   }
   renderDefaultView = (props) => {
     if(this.state.loggedIn){
+      $(".MenuContainer").removeClass("invisible")
       return <Dashboard {...props}  secondary={this.state.secondary}
                                     font={this.state.font}/>
     } else {
+      $(".MenuContainer").addClass("invisible")
       return <Home {...props}       secondary={this.state.secondary} 
                                     font={this.state.font}
                                     flipToDash={this.toggleLoggedIn} />

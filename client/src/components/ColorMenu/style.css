@@ -80,6 +80,7 @@ body {
     position: fixed;
     left: 10px;
     top: 10px;
+    display: none
 }
   
 .bar1, .bar2, .bar3 {
@@ -116,5 +117,14 @@ body {
     visibility: hidden;
 }
 
-
+@media only screen and (max-width: 600px) {
+    .MenuContainer { 
+        display: block;
+    }
+    .circle-picker-container {
+        /* width: 26vw;
+        height: 139vw;
+        overflow-y: scroll; */
+    }
+}
 
