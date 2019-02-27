@@ -15,9 +15,12 @@
     float: none;
     margin-left: 25%;
     margin-top: 1vh;
+    height: 5vh;
 }
 .buttonsContainer {
-    width: 100%;
+    width: 120%;
+    height: 20vh;
+    margin-left: 16vw;
 }
 
 .btn-primary {
@@ -26,10 +29,13 @@
     margin-right: 50px;
     padding: 0;
     margin-bottom: 50px;
+    /* color: black; */
 
 }
-.fontAwesome {
 
+.fontAwesome {
+pointer-events: none;
+color: black;
 }
 .allContentContainer {
     margin-top: 5vh;
@@ -49,7 +55,6 @@
     float: left;
     height: 40vh;
     overflow-y: scroll;
-    margin-top: 8vh;
     position: relative;
     left: 22.5vw;
 
@@ -225,9 +230,12 @@ nav {
         margin-left: -5vw;
     }
     .buttonsContainer {
-        height: 5vh;
+        height: 0vh;
         width: 100%;
+        margin-left: 0;
         margin-top: 0vh;
+        overflow: hidden;
+        transition: 0.5s;
     }
     .iconsContainer {
         /* padding-top: 0.5vh; */
@@ -237,8 +245,11 @@ nav {
     }
     .openMenu {
         /* display: block; */
-        height: 10vh;
+        height: 35vh;
         transition: 0.5s
+    }
+    .openMenu2 {
+        height: 45vh;
     }
     .btn-primary {
         width: 105px;
@@ -257,9 +268,10 @@ nav {
     .dataContainer {
         width: 90vw;
         float: none;
-        height: 58vh;
+        height: 75vh;
         overflow-y: scroll;
         left: 0;
+        margin-top: 2vh;
     }
     .invisible {
         visibility: hidden;

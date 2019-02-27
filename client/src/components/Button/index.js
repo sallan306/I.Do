@@ -13,7 +13,7 @@ export function Button(props) {
                                   marginTop: props.topmargin,
                                   border: 0,
                                   float: props.float,
-                                  width: props.width,
+                                  width: props.width || "default",
                                   marginLeft: props.marginleft,
                                   borderRadius: (props.borderRadius || 20),
                                   outline: "none",

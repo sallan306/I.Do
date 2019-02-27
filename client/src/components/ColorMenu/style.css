@@ -122,9 +122,9 @@ body {
         display: block;
     }
     .circle-picker-container {
-        /* width: 26vw;
-        height: 139vw;
-        overflow-y: scroll; */
+        overflow-y: scroll;
+        width: 91px;
+        height: 93vh;
     }
 }
 

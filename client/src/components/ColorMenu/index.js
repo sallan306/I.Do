@@ -14,6 +14,7 @@ function toggleColors() {
     $(".bar2").toggleClass("bar2change")
     $(".bar3").toggleClass("bar3change")
     $(".buttonsContainer").toggleClass("openMenu")
+    $(".dataContainer").toggleClass("openMenu2")
 }
 
 function clickColor1() {
