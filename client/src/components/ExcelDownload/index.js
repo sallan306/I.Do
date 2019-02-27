@@ -1,5 +1,8 @@
 import React from "react";
 import ReactExport from "react-export-excel";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faFileExport} from '@fortawesome/free-solid-svg-icons'
+
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -22,6 +25,12 @@ class Download extends React.Component {
                                                         border: 0}}
                                     >
                                     {/* Download as Excel */}
+                                    <FontAwesomeIcon    className="fontAwesome"
+                                        icon={faFileExport} 
+                                        size="6x"
+                                        fixedWidth 
+                                        transform="shrink-6"
+                                    />
                                     </button>}>
                     <ExcelSheet data={this.props.contacts} name="Employees">
                         <ExcelColumn label="First Name" value="firstName"/>

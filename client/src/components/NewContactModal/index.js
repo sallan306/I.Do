@@ -3,6 +3,9 @@ import { Button, Modal} from 'react-bootstrap';
 import API from '../../utils/API.js'
 import { Panel, PanelGroup } from 'react-bootstrap';
 import GuestForm from "../GuestForm"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons'
+
 
 class MessageModal extends Component {
     constructor(props, context) {
@@ -71,6 +74,12 @@ class MessageModal extends Component {
                                             color: this.props.font,
                                             outline: "none",
                                             border: 0}}>
+
+                    <FontAwesomeIcon    icon={faAddressCard} 
+                                        className="fontAwesome"
+                                        size="6x"
+                                        fixedWidth 
+                                        transform="shrink-6"/>
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>

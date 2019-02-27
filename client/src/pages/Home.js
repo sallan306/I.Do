@@ -97,12 +97,13 @@ class Home extends Component {
                <Container className="loginContainer">
                     
                         <Button
+                        className="btn-success loginSignupButton"
                             onClick={this.handleSignUpForm}
                             secondary={this.props.secondary}
                             font={this.props.font}
                             float="none"
-                            width="50%"
-                            marginleft="25%"
+                            width="22vw"
+                            marginleft="20vw"
                             topmargin="10px"
                         >
                         {this.state.toggleLoginSignup ? "Login" : "Sign Up"}

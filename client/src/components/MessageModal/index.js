@@ -2,6 +2,9 @@ import React, {Component} from "react";
 import { Button, Modal} from 'react-bootstrap';
 import MessageContact from '../MessageContact'
 import API from '../../utils/API.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
+
 
 class MessageModal extends Component {
     constructor(props, context) {
@@ -81,6 +84,12 @@ class MessageModal extends Component {
                                         color: this.props.font,
                                         border: 0,
                                         outline: "none"}}>
+
+                    <FontAwesomeIcon    className="fontAwesome"
+                                        icon={faEnvelope} 
+                                        size="6x"
+                                        fixedWidth 
+                                        transform="shrink-6"/>
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>

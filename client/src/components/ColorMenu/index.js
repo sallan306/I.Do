@@ -13,7 +13,7 @@ function toggleColors() {
     $(".bar1").toggleClass("bar1change")
     $(".bar2").toggleClass("bar2change")
     $(".bar3").toggleClass("bar3change")
-    $(".buttonsAndIcons").toggleClass("openMenu")
+    $(".buttonsContainer").toggleClass("openMenu")
 }
 
 function clickColor1() {

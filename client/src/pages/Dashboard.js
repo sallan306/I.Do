@@ -12,7 +12,7 @@ import ExcelDownload from "../components/ExcelDownload";
 import { Link } from 'react-router-dom';
 import NewContactModal from "../components/NewContactModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopy, faFileExport, faEnvelope, faAddressCard, faSignOutAlt, faPalette } from '@fortawesome/free-solid-svg-icons'
+import {faSignOutAlt, faPalette } from '@fortawesome/free-solid-svg-icons'
 import $ from "jquery"
 class Dashboard extends Component {
     state = {
@@ -170,9 +170,6 @@ class Dashboard extends Component {
 
     render(props) {
 
-        const iconStlye= {
-            // width: "5%"
-        }
         return (
       
             <div className="dashboard">
@@ -181,41 +178,6 @@ class Dashboard extends Component {
                             marginLeft="5vw"
                             marginTop="5vh"
                             menuOpen={this.state.menuOpen}>
-                    <Container className="buttonsAndIcons">
-                    <Container className="iconsContainer"
-                                float="left">
-                        <FontAwesomeIcon    className="fontAwesome"
-                                            icon={faFileExport} 
-                                            size="6x"
-                                            fixedWidth 
-                                            transform="shrink-6 left-7"
-                                            />
-                        <FontAwesomeIcon    className="fontAwesome"
-                                            icon={faCopy} 
-                                            size="6x"
-                                            fixedWidth 
-                                            transform="shrink-6 left-7"/>
-                        <FontAwesomeIcon    className="fontAwesome"
-                                            icon={faEnvelope} 
-                                            size="6x"
-                                            fixedWidth 
-                                            transform="shrink-6 left-7"/>
-                        <FontAwesomeIcon    icon={faAddressCard} 
-                                            className="fontAwesome"
-                                            size="6x"
-                                            fixedWidth 
-                                            transform="shrink-6 left-7"/>
-                        <FontAwesomeIcon    icon={faPalette} 
-                                            className="fontAwesome" 
-                                            size="6x"
-                                            fixedWidth 
-                                            transform="shrink-6 left-7"/>
-                        <FontAwesomeIcon    icon={faSignOutAlt} 
-                                            className="fontAwesome" 
-                                            size="6x"
-                                            fixedWidth
-                                            transform="shrink-6 left-7"/>
-                    </Container>
                     <Container  className="buttonsContainer"
                                 float="left" 
                                 marginLeft="0vw" 
@@ -224,19 +186,20 @@ class Dashboard extends Component {
                         <ExcelDownload  contacts={this.state.contacts}
                                         secondary={this.props.secondary}
                                         font={this.props.font}/>
+
                         
                         <CopyLinkModal  eventID={this.state.userID}
                                 secondary={this.props.secondary}
                                 font={this.props.font}
-                                />
+                        />
+
                         <MessageModal 
                                 name={this.state.userFirstName + " " + this.state.userLastName}
                                 contacts={this.state.contacts}
                                 secondary={this.props.secondary}
                                 font={this.props.font} 
                                 sendMessageButton={this.sendMessageButton}
-                                >
-                        </MessageModal>
+                        />
                         <NewContactModal    
                                 name={this.state.userFirstName + " " + this.state.userLastName}
                                 contacts={this.state.contacts}
@@ -253,31 +216,47 @@ class Dashboard extends Component {
                                 zipcode={this.state.zipcode}
                                 comment={this.state.comment}
                                 secondary={this.props.secondary}
-                                font={this.props.font}/>
-
-                        <Button className="btn btn-primary colorMenuButton" 
-                                secondary={this.props.secondary}
-                                borderRadius="0"
-                                onClick={this.toggleColors}
-                                >
-                        </Button>
+                                font={this.props.font}
+                            />
+                        <div>
+                            <Button className="btn btn-primary colorMenuButton" 
+                                    secondary={this.props.secondary}
+                                    borderRadius="0"
+                                    onClick={this.toggleColors}
+                                    >
+                                    <FontAwesomeIcon    icon={faPalette} 
+                                        className="fontAwesome" 
+                                        size="6x"
+                                        fixedWidth 
+                                        transform="shrink-6"/>
+                            </Button>
+                        </div>
                         <div>
                             <Button className="btn btn-primary logoutButton" 
                                     secondary={this.props.secondary}
-                                    borderRadius="0">
+                                    borderRadius="0"
+                                    width="105px">
                                 <Link style={{
                                     color: this.props.font,
                                     display: "block",
                                     width: "100%",
                                     height: "100%",
                                     fontWeight: 100,
-                                    textDecoration: 'none'}} className="linkLogOut" to="/Logout"></Link>
+                                    textDecoration: 'none'}} className="linkLogOut" to="/Logout">
+
+                                        <FontAwesomeIcon    icon={faSignOutAlt} 
+                                            className="fontAwesome" 
+                                            size="6x"
+                                            transform="shrink-6"
+                                            fixedWidth
+                                            />
+                                    
+                                    </Link>
                             </Button>
                         </div>
                     </Container>
                     
                     
-                    </Container>
                     <Container  className="dataContainer"
                                 float="right" 
                                 marginRight="7vw" 

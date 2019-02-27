@@ -1,6 +1,9 @@
 import React from "react";
 import { Button, Modal} from 'react-bootstrap';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
+
 
 
 
@@ -40,6 +43,12 @@ class CopyLinkModal extends React.Component {
                               color: this.props.font,
                               border: 0,
                               outline: "none"}}>
+          
+          <FontAwesomeIcon    className="fontAwesome"
+                                    icon={faCopy} 
+                                    size="6x"
+                                    fixedWidth 
+                                    transform="shrink-6"/>
           </Button>
   
           <Modal show={this.state.show} onHide={this.handleClose}>

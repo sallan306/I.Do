@@ -10,36 +10,26 @@
     height: 40vh;
     margin-top: 5vh;
 }
-.buttonsContainer, .iconsContainer {
-    height: 10vh;
+.loginSignupButton {
+    width: 8vw;
+    float: none;
+    margin-left: 25%;
+    margin-top: 1vh;
+}
+.buttonsContainer {
     width: 100%;
+}
+
+.btn-primary {
+    height: 84px;
     float: left;
-    margin-top: 0vh;
-    position: absolute;
-    margin-left: 15vw
-}
-.iconsContainer {
-    pointer-events: none
-}
-.buttonsAndIcons {
-    margin-left: 8vw;
-    width: 100vw;
+    margin-right: 50px;
+    padding: 0;
+    margin-bottom: 50px;
 
 }
-.btn-primary, .fontAwesome {
-    width: 5%;
-    float: left;
-    height: 6vh;
-    margin-right: 5%;
-    float: left;
-}
-.btn-primary {
-    width: 5%;
-}
 .fontAwesome {
-    pointer-events: none;
-    margin-right: 0%;
-    float: left;
+
 }
 .allContentContainer {
     margin-top: 5vh;
@@ -234,13 +224,10 @@ nav {
         position: relative;
         margin-left: -5vw;
     }
-    .buttonsContainer, .iconsContainer {
-        height: 10vh;
+    .buttonsContainer {
+        height: 5vh;
         width: 100%;
-        float: left;
         margin-top: 0vh;
-        position: absolute;
-        margin-left: 0;
     }
     .iconsContainer {
         /* padding-top: 0.5vh; */
@@ -254,17 +241,15 @@ nav {
         transition: 0.5s
     }
     .btn-primary {
-        width: 14.5%;
+        width: 105px;
         margin-left: -4%;
-        height: 9vh;
+        height: 58px;
         float: left;
         position: relative;
         left: 8vw;
+        margin-bottom: 10px;
     }
     .fontAwesome {
-        overflow: visible;
-        margin-left: 5%;
-        margin-right: -23%;
         height: 10vh;
         position: relative;
     
@@ -272,7 +257,7 @@ nav {
     .dataContainer {
         width: 90vw;
         float: none;
-        height: 40vh;
+        height: 58vh;
         overflow-y: scroll;
         left: 0;
     }
