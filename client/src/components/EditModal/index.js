@@ -12,8 +12,6 @@ class EditModal extends React.Component {
           show: false
         }       
     }
-    componentDidMount(){
-      }
     
       handleClose() {
         this.setState({ show: false });

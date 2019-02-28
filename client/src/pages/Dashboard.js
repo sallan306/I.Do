@@ -8,12 +8,12 @@ import {Button} from "../components/Button";
 
 import CopyLinkModal from "../components/CopyLinkModal";
 import MessageModal from "../components/MessageModal";
-import ExcelDownload from "../components/ExcelDownload";
-import { Link } from 'react-router-dom';
+import ExcelModal from "../components/ExcelModal";
 import NewContactModal from "../components/NewContactModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSignOutAlt, faPalette } from '@fortawesome/free-solid-svg-icons'
+import { faPalette } from '@fortawesome/free-solid-svg-icons'
 import $ from "jquery"
+import LogoutModal from "../components/LogoutModal";
 class Dashboard extends Component {
     state = {
         userID: "",
@@ -182,12 +182,12 @@ class Dashboard extends Component {
                                 float="left" 
                                 marginLeft="0vw" 
                                 marginTop="2vh">
-
-                        <ExcelDownload  contacts={this.state.contacts}
-                                        secondary={this.props.secondary}
-                                        font={this.props.font}/>
-
+                        <ExcelModal     secondary={this.props.secondary}
+                                        font={this.props.font}
+                                        contacts={this.state.contacts}
                         
+                        />
+  
                         <CopyLinkModal  eventID={this.state.userID}
                                 secondary={this.props.secondary}
                                 font={this.props.font}
@@ -231,29 +231,10 @@ class Dashboard extends Component {
                                         transform="shrink-6"/>
                             </Button>
                         </div>
-                        <div>
-                            <Button className="btn btn-primary logoutButton" 
-                                    secondary={this.props.secondary}
-                                    borderRadius="0"
-                                    width="105px">
-                                <Link style={{
-                                    color: this.props.font,
-                                    display: "block",
-                                    width: "100%",
-                                    height: "100%",
-                                    fontWeight: 100,
-                                    textDecoration: 'none'}} className="linkLogOut" to="/Logout">
 
-                                        <FontAwesomeIcon    icon={faSignOutAlt} 
-                                            className="fontAwesome" 
-                                            size="6x"
-                                            transform="shrink-6"
-                                            fixedWidth
-                                            />
-                                    
-                                    </Link>
-                            </Button>
-                        </div>
+                            <LogoutModal    secondary={this.props.secondary}
+                                            font={this.props.font}/>
+
                     </Container>
                     
                     

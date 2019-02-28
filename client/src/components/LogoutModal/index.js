@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import { Button, Modal} from 'react-bootstrap';
 import API from '../../utils/API.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileExport } from '@fortawesome/free-solid-svg-icons'
-import ExcelDownload from "../ExcelDownload"
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 
-class ExcelModal extends Component {
+class LogoutModal extends Component {
     constructor(props, context) {
         super(props, context);
     
@@ -37,17 +37,7 @@ class ExcelModal extends Component {
     };
 
     componentDidMount(){
-        const guestCheckboxes = this.props.contacts.reduce(
-            (checkboxObj, contact) => ({
-                ...checkboxObj,
-                [contact.id]: false
-            }),
-            {}
-        )
-        this.setState({ 
-            guestCheckboxes
 
-        });
     }
     
     handleClose() {
@@ -77,29 +67,38 @@ class ExcelModal extends Component {
     render(props) {
         return (
             <div>
-                 <Button    className="btn btn-primary excelButton"
-                            bsStyle="primary" 
+                 <Button    bsStyle="primary" 
                             onClick={this.handleShow} 
-                            style={{    background: this.props.secondary,
-                                        color: this.props.font,
-                                        border: 0,
-                                        outline: "none"}}>
+                            className="btn btn-primary logoutButton" 
+                            style={   {     background: this.props.secondary,
+                                            color: this.props.font,
+                                            outline: "none",
+                                            border: 0}}>
 
-                    <FontAwesomeIcon    className="fontAwesome"
-                                        icon={faFileExport} 
-                                        size="6x"
-                                        fixedWidth 
-                                        transform="shrink-6"/>
-          </Button>
+                                        <FontAwesomeIcon    icon={faSignOutAlt} 
+                                            className="fontAwesome" 
+                                            size="6x"
+                                            transform="shrink-6"
+                                            fixedWidth
+                                            />
+                                    
+                            </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Download Excel File</Modal.Title>
+                <Modal.Title>Are you sure you want to leave?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ExcelDownload      secondary={this.props.secondary}
-                                        font={this.props.font}
-                                        contacts={this.props.contacts}/>
-                
+
+                        <Link style={{
+                            color: this.props.font,
+                            display: "block",
+                            width: "10vw",
+                            height: "10vh",
+                            fontWeight: 100,
+                            textDecoration: 'none'}} className="linkLogOut" to="/Logout">
+                            <Button>Log Out</Button>
+                        </Link>
+
                 </Modal.Body>
                 <Modal.Footer>
                     
@@ -113,4 +112,4 @@ class ExcelModal extends Component {
     }
 }
 
-export default ExcelModal;
+export default LogoutModal;
