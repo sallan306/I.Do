@@ -1,7 +1,7 @@
 import React from "react";
 // import API from "../utils/API";
 import { Input } from "../Input";
-import { Button } from "../Button";
+import { Button } from "../Elements/Button";
 
 
 function GuestForm (props) {

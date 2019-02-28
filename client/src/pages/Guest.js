@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import GuestForm from '../components/GuestForm';
-import Container from "../components/Container";
+import Container from "../components/Elements/Container";
 import API from "../utils/API";
 
 class Guests extends Component {

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import API from '../utils/API';
-import Container from "../components/Container";
+import Container from "../components/Elements/Container";
 import ContactCard from "../components/ContactCard";
 import { PanelGroup } from 'react-bootstrap';
 import {PrintText} from '../components/PrintText';
-import {Button} from "../components/Button";
+import {Button} from "../components/Elements/Button";
 
 import CopyLinkModal from "../components/CopyLinkModal";
 import MessageModal from "../components/MessageModal";
