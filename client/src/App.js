@@ -8,10 +8,17 @@ import Nav from "./components/Nav";
 import ColorMenu from "./components/ColorMenu"
 import API from "./utils/API"
 import $ from "jquery"
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import Particles from "../src/components/Particles";
 
 class App extends React.Component {
   constructor(props){
     super(props);
+    this.addNotification = this.addNotification.bind(this);
+    this.notificationDOMRef = React.createRef();
+
+
     this.state = {
       userData: "",
       loggedIn: false,
@@ -21,6 +28,20 @@ class App extends React.Component {
       savedColors: {}
     }
     this.renderDefaultView()
+  }
+
+  addNotification() {
+    this.notificationDOMRef.current.addNotification({
+      title: "Copied To Clipboard",
+      message: "Send this link to your guests!",
+      type: "success",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: { duration: 3000 },
+      dismissable: { click: true }
+    });
   }
 
   changePrimaryColor = newColor => {
@@ -41,7 +62,8 @@ class App extends React.Component {
       return <Dashboard {...props}  secondary={this.state.secondary}
                                     font={this.state.font}
                                     loggedIn={this.state.loggedIn}
-                                    logOut={this.logOut}/>
+                                    logOut={this.logOut}
+                                    addNotification={this.addNotification}/>
     } else {
       $(".MenuContainer").addClass("invisible")
       return <Home {...props}       secondary={this.state.secondary} 
@@ -67,23 +89,25 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-        <ColorMenu    changePrimaryColor={this.changePrimaryColor} 
-                      changeSecondaryColor={this.changeSecondaryColor} 
-                      changeFontColor={this.changeFontColor} 
-                      primary={this.state.primary}
-                      secondary={this.state.secondary}
-                      font={this.state.font}
-                      savedColors={this.state.savedColors}/>
-
-          <Nav        secondary={this.state.secondary}
-                      font={this.state.font}/>
-          <Switch>
-            <Route exact path="/" render={this.renderDefaultView}/>
-            <Route exact path="/event/:userID" component={Guest} />
-            <Route exact path="/Logout" render={this.logOut} />
-            <Route component={ErrorPage} />
-          </Switch>
-        </div>
+          <Particles/>
+          <ColorMenu    changePrimaryColor={this.changePrimaryColor} 
+                        changeSecondaryColor={this.changeSecondaryColor} 
+                        changeFontColor={this.changeFontColor} 
+                        primary={this.state.primary}
+                        secondary={this.state.secondary}
+                        font={this.state.font}
+                        savedColors={this.state.savedColors}/>
+            
+            <ReactNotification ref={this.notificationDOMRef} />
+            <Nav        secondary={this.state.secondary}
+                        font={this.state.font}/>
+            <Switch>
+              <Route exact path="/" render={this.renderDefaultView}/>
+              <Route exact path="/event/:userID" component={Guest} />
+              <Route exact path="/Logout" render={this.logOut} />
+              <Route component={ErrorPage} />
+            </Switch>
+          </div>
       </Router>
     );
   }

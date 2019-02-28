@@ -76,6 +76,7 @@ class NewContactModal extends Component {
                                             border: 0}}>
 
                     <FontAwesomeIcon    icon={faAddressCard} 
+                                        style={{color: this.props.font}}
                                         className="fontAwesome"
                                         size="6x"
                                         fixedWidth 
@@ -87,9 +88,10 @@ class NewContactModal extends Component {
                 </Modal.Header>
                 <Modal.Body>
                 <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
-                            <Panel eventKey="1" style ={{"border":0, "background": "transparent",
-                                                            "color": this.props.font,
-                                                            "text-align" : "center"}}>
+                            <Panel eventKey="1" style ={{   border:0, 
+                                                            background: "transparent",
+                                                            color: this.props.font,
+                                                            textAlign : "center"}}>
 
                                 <Panel.Body style={{borderTop:0}}>
                                 <GuestForm 

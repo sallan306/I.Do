@@ -14,14 +14,10 @@ class Download extends React.Component {
     //                 color: this.props.font} 
     render(props) {
         return (
-                <ExcelFile element={<button className="btn btn-primary excelModalButton" 
-                                            style={ {   background: this.props.secondary, 
-                                                        color: this.props.font,
-                                                        borderRadius: 0,
-                                                        outline: "none",
-                                                        border: 0}}
+                <ExcelFile element={<button className="btn btn-default excelModalButton" 
+                                            
                                     >
-                                    Download as Excel
+                                    Save Excel Spreadsheet
                                     </button>}>
                     <ExcelSheet data={this.props.contacts} name="Employees">
                         <ExcelColumn label="First Name" value="firstName"/>

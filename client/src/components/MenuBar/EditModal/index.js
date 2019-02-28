@@ -24,13 +24,12 @@ class EditModal extends React.Component {
     render(props) {
         return (
             <div>
-                 <Button bsStyle="primary" 
-                  bsSize="small" onClick={this.handleShow} 
-                  style={   { "background": this.props.secondary,
-                              "color": this.props.font,
-                              marginLeft: "80%",
-                              "width": "20%",
-                              "border": 0}}>
+                 <Button  bsStyle="primary" 
+                          bsSize="small" 
+                          className="editButtonModal"
+                          onClick={this.handleShow} 
+                          style={   { background: this.props.secondary,
+                                      color: this.props.font}}>
             Edit
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>

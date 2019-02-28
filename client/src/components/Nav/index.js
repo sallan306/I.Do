@@ -9,7 +9,7 @@ function Nav(props) {
                               color: props.font}}>
         <div className="styleBox">
           <h1 id="nav-title">i.Do</h1>
-          <h2 >the ultimate event planning app</h2>
+          <h2 className="titleDescription">the ultimate event planning app</h2>
         </div>
       </div>
 

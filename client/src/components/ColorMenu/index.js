@@ -4,8 +4,31 @@ import './style.css';
 import ColorPicker from "./ColorPicker";
 import ColorPicker2 from "./ColorPicker2";
 import ColorPickerFont from "./ColorPickerFont";
+import { interval } from "rxjs";
 // import API from '../utils/API';
-    
+
+
+var colorInterval = setInterval(randomColor,2000)
+const colors = [
+    "#f06292", "#f8bbd0", 
+    "#ba68c8", "#e1bee7", 
+    "#9575cd", "#d1c4e9", 
+    "#7986cb", "#c5cae9", 
+    "#64b5f6", "#bbdefb", 
+    "#4dd0e1", "#b3e5fc", 
+    "#4db6ac", "#b2ebf2", 
+    "#fff176", "#c8e6c9", 
+    "#ffb74d", "#ffecb3", 
+    "#ff8a65", "#ffe0b2", 
+    "#90a4ae", "#d9d9d9",
+    "#000000", "#ffffff" ]  
+
+function randomColor() {
+ 
+    var index = 0
+    index = Math.floor(Math.random()*12)
+    document.body.style.backgroundColor = colors[index]
+}
 
 function toggleColors() {
 
@@ -18,6 +41,7 @@ function toggleColors() {
 }
 
 function clickColor1() {
+    clearInterval(colorInterval)
     $(".circle-picker-primary").toggleClass(    "invisible", false)
     $(".circle-picker-secondary").toggleClass(  "invisible", true)
     $(".circle-picker-font").toggleClass(       "invisible", true)

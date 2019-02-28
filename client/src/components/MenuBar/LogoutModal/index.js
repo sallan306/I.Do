@@ -76,10 +76,11 @@ class LogoutModal extends Component {
                                             border: 0}}>
 
                                         <FontAwesomeIcon    icon={faSignOutAlt} 
-                                            className="fontAwesome" 
-                                            size="6x"
-                                            transform="shrink-6"
-                                            fixedWidth
+                                                            className="fontAwesome" 
+                                                            size="6x"
+                                                            transform="shrink-6"
+                                                            style={{color: this.props.font}}
+                                                            fixedWidth
                                             />
                                     
                             </Button>
@@ -91,7 +92,6 @@ class LogoutModal extends Component {
 
                         <Link style={{
                             color: this.props.font,
-                            display: "block",
                             width: "10vw",
                             height: "10vh",
                             fontWeight: 100,
@@ -100,7 +100,7 @@ class LogoutModal extends Component {
                             to="/Logout"
                             onClick={this.props.logOut}
                             >
-                            <Button>Log Out</Button>
+                            <Button className="btn logoutModalButton">Log Out</Button>
                         </Link>
 
                 </Modal.Body>

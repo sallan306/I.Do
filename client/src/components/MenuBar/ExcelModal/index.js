@@ -86,6 +86,7 @@ class ExcelModal extends Component {
                                         outline: "none"}}>
 
                     <FontAwesomeIcon    className="fontAwesome"
+                                        style={{color: this.props.font}}
                                         icon={faFileExport} 
                                         size="6x"
                                         fixedWidth 

@@ -2,7 +2,7 @@ import React from "react";
 import { Panel } from 'react-bootstrap';
 import { PanelGroup } from 'react-bootstrap';
 import { PrintText } from "../../PrintText";
-import EditModal from "../../EditModal";
+import EditModal from "../../MenuBar/EditModal";
 
 // import Checkbox from '../Checkbox';
 
@@ -37,12 +37,6 @@ function ContactCard(props) {
                     <EditModal guestID={props._id}/>
                 </Panel.Body>
             </Panel>
-            {/* <Checkbox
-                name={props.id}
-                isSelected={props.guestCheckboxes[props.id]}
-                onCheckboxChange={props.handleCheckboxChange}
-                // key="checkbox"
-            /> */}
         </PanelGroup>
     );
 };

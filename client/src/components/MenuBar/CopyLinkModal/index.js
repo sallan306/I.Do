@@ -3,7 +3,7 @@ import { Button, Modal} from 'react-bootstrap';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+
 
 
 
@@ -11,21 +11,29 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 class CopyLinkModal extends React.Component {
 
-  createNotification = () => {
-    return () => {
-          NotificationManager.success('Copied to Clipboard', 'Title here', 400, null, true);
-          // (message, title, timeOut, callback, priority);
-      }
-    }
     constructor(props, context) {
       super(props, context);
   
       this.handleShow = this.handleShow.bind(this);
       this.handleClose = this.handleClose.bind(this);
+
+      this.addNotification = this.addNotification.bind(this);
+      this.notificationDOMRef = React.createRef();
   
       this.state = {
         show: false
       };
+    }
+
+    addNotification() {
+      
+      this.notificationDOMRef.current.addNotification({
+        // other properties have been omitted for brevity
+        type: "awesome",
+        title: "Custom",
+        message: "Notifications can be customized to suit your needs",
+        container: "top-right"
+      });
     }
 
     componentDidMount(){
@@ -54,10 +62,11 @@ class CopyLinkModal extends React.Component {
                               outline: "none"}}>
           
           <FontAwesomeIcon    className="fontAwesome"
-                                    icon={faCopy} 
-                                    size="6x"
-                                    fixedWidth 
-                                    transform="shrink-6"/>
+                              style={{color: this.props.font}}
+                              icon={faCopy} 
+                              size="6x"
+                              fixedWidth 
+                              transform="shrink-6"/>
           </Button>
   
           <Modal show={this.state.show} onHide={this.handleClose}>
@@ -70,8 +79,8 @@ class CopyLinkModal extends React.Component {
                 Press the button to copy your personal link to the clipboard, then send that link to your guests!
               </p>
               <CopyToClipboard text={"https://i-dooo.herokuapp.com/event/"+this.props.eventID}
-                onCopy={() => {this.setState({copied: true});console.log("yee");this.createNotification('success')}}>
-                <button>Copy to clipboard with button</button>
+                onCopy={()=>{this.setState({copied: true});this.props.addNotification()}}>
+                <Button className="btn copyModalButton">Copy to clipboard with button</Button>
               </CopyToClipboard>
               
             </Modal.Body>

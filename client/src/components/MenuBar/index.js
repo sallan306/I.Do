@@ -21,7 +21,7 @@ class MenuBar extends React.Component {
     render() {
 
       return (
-        <Container  className="buttonsContainer col-md-6 col-md-offset-3"
+        <Container  className="openMenu buttonsContainer col-md-6 col-md-offset-3"
                     >
             <ExcelModal     secondary={this.props.secondary}
                             font={this.props.font}
@@ -31,6 +31,7 @@ class MenuBar extends React.Component {
             <CopyLinkModal  eventID={this.props.eventID}
                             secondary={this.props.secondary}
                             font={this.props.font}
+                            addNotification={this.props.addNotification}
             />
 
             <MessageModal 
@@ -43,9 +44,9 @@ class MenuBar extends React.Component {
             <NewContactModal    
                     name={this.props.userFirstName + " " + this.props.userLastName}
                     contacts={this.props.contacts}
-                    sendMessageButton={this.sendMessageButton}
-                    handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
+                    sendMessageButton={this.props.sendMessageButton}
+                    handleInputChange={this.props.handleInputChange}
+                    handleFormSubmit={this.props.handleFormSubmit}
                     firstName={this.props.firstName}
                     lastName={this.props.lastName}
                     email={this.props.email}
@@ -69,6 +70,7 @@ class MenuBar extends React.Component {
                         >
                         <FontAwesomeIcon    icon={faPalette} 
                                             className="fontAwesome" 
+                                            style={{color: this.props.font}}
                                             size="6x"
                                             fixedWidth 
                                             transform="shrink-6"/>

@@ -44,8 +44,11 @@
     "react-export-excel": "^0.5.3",
     "react-fontawesome": "^1.6.1",
     "react-notifications": "^1.4.3",
+    "react-notifications-component": "^1.0.1",
+    "react-particles-js": "^2.4.2",
     "react-transition-group": "^2.6.0",
     "reactcss": "^1.2.3",
+    "reactstrap": "^7.1.0",
     "twilio": "^3.27.1"
   }
 }

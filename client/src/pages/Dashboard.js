@@ -31,6 +31,7 @@ class Dashboard extends Component {
         this.setState({
             [name]: value
         });
+        console.log("update")
     };
     
     handleGuestEdit = event => {
@@ -184,9 +185,10 @@ class Dashboard extends Component {
                                 font={this.props.font}
                                 loggedIn={this.props.loggedIn}
                                 logOut={this.props.logOut}
+                                addNotification={this.props.addNotification}
                                 />                  
                     
-                    <Container  className="dataContainer"
+                    <Container  className="dataContainer openMenu2"
                                 >
                         <PanelGroup id="panelId" style={{background: "transparent"}}>
                         {this.state.contacts.map(contact=>

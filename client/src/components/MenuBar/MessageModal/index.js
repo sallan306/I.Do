@@ -86,6 +86,7 @@ class MessageModal extends Component {
                                         outline: "none"}}>
 
                     <FontAwesomeIcon    className="fontAwesome"
+                                        style={{color: this.props.font}}
                                         icon={faEnvelope} 
                                         size="6x"
                                         fixedWidth 
