@@ -3,11 +3,20 @@ import { Button, Modal} from 'react-bootstrap';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+
 
 
 
 
 class CopyLinkModal extends React.Component {
+
+  createNotification = () => {
+    return () => {
+          NotificationManager.success('Copied to Clipboard', 'Title here', 400, null, true);
+          // (message, title, timeOut, callback, priority);
+      }
+    }
     constructor(props, context) {
       super(props, context);
   
@@ -32,7 +41,7 @@ class CopyLinkModal extends React.Component {
       this.setState({ show: true });
     }
   
-    render(props) {
+    render() {
 
       return (
         <div>
@@ -61,7 +70,7 @@ class CopyLinkModal extends React.Component {
                 Press the button to copy your personal link to the clipboard, then send that link to your guests!
               </p>
               <CopyToClipboard text={"https://i-dooo.herokuapp.com/event/"+this.props.eventID}
-                onCopy={() => this.setState({copied: true})}>
+                onCopy={() => {this.setState({copied: true});console.log("yee");this.createNotification('success')}}>
                 <button>Copy to clipboard with button</button>
               </CopyToClipboard>
               
@@ -70,6 +79,7 @@ class CopyLinkModal extends React.Component {
               <Button onClick={this.handleClose}>Close</Button>
             </Modal.Footer>
           </Modal>
+          
         </div>
       );
     }

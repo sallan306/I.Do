@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { Button, Modal} from 'react-bootstrap';
 import API from '../../utils/API.js'
 import { Panel, PanelGroup } from 'react-bootstrap';
-import GuestForm from "../GuestForm"
+import GuestForm from "../Elements/GuestForm"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons'
 
@@ -89,7 +89,7 @@ class MessageModal extends Component {
                 <PanelGroup className="manuallyAddUser" accordion id="accordion-example">
                             <Panel eventKey="1" style ={{"border":0, "background": "transparent",
                                                             "color": this.props.font,
-                                                            "text-align" : "center"}}>
+                                                            textAlign : "center"}}>
 
                                 <Panel.Body style={{borderTop:0}}>
                                 <GuestForm 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GuestForm from '../components/GuestForm';
+import GuestForm from '../components/Elements/GuestForm';
 import Container from "../components/Elements/Container";
 import API from "../utils/API";
 

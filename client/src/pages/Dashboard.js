@@ -1,19 +1,11 @@
 import React, {Component} from "react";
 import API from '../utils/API';
 import Container from "../components/Elements/Container";
-import ContactCard from "../components/ContactCard";
+import ContactCard from "../components/Elements/ContactCard";
 import { PanelGroup } from 'react-bootstrap';
 import {PrintText} from '../components/PrintText';
 import {Button} from "../components/Elements/Button";
-
-import CopyLinkModal from "../components/CopyLinkModal";
-import MessageModal from "../components/MessageModal";
-import ExcelModal from "../components/ExcelModal";
-import NewContactModal from "../components/NewContactModal";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPalette } from '@fortawesome/free-solid-svg-icons'
-import $ from "jquery"
-import LogoutModal from "../components/LogoutModal";
+import MenuBar from "../components/MenuBar";
 class Dashboard extends Component {
     state = {
         userID: "",
@@ -31,8 +23,7 @@ class Dashboard extends Component {
         comment: "",
         task: "",
         list: {},
-        savedColors: {},
-        menuOpen: false
+        savedColors: {}
     }
 
     handleInputChange = event => {
@@ -131,9 +122,7 @@ class Dashboard extends Component {
         //This is where we call the component for sending messages out to guests
     }
 
-    toggleColors() {
-        $(".circle-picker-container").toggleClass("circleChange")
-    }
+
 
     clearFormThanks() {
         this.setState({
@@ -152,6 +141,7 @@ class Dashboard extends Component {
 
     
     componentDidMount() {
+        console.log(this.props.loggedIn)
         this.clearFormThanks()
         API.getContacts( results => {
             console.log("RESULTS.DATA", results.data)
@@ -172,35 +162,10 @@ class Dashboard extends Component {
 
         return (
       
-            <div className="dashboard">
                 <Container  className="allContentContainer"
-                            width="90vw" 
-                            marginLeft="5vw"
-                            marginTop="5vh"
-                            menuOpen={this.state.menuOpen}>
-                    <Container  className="buttonsContainer"
-                                float="left" 
-                                marginLeft="0vw" 
-                                marginTop="2vh">
-                        <ExcelModal     secondary={this.props.secondary}
-                                        font={this.props.font}
-                                        contacts={this.state.contacts}
-                        
-                        />
-  
-                        <CopyLinkModal  eventID={this.state.userID}
-                                secondary={this.props.secondary}
-                                font={this.props.font}
-                        />
-
-                        <MessageModal 
-                                name={this.state.userFirstName + " " + this.state.userLastName}
-                                contacts={this.state.contacts}
-                                secondary={this.props.secondary}
-                                font={this.props.font} 
-                                sendMessageButton={this.sendMessageButton}
-                        />
-                        <NewContactModal    
+                            >
+                    <MenuBar    
+                                eventID={this.state.userID}
                                 name={this.state.userFirstName + " " + this.state.userLastName}
                                 contacts={this.state.contacts}
                                 sendMessageButton={this.sendMessageButton}
@@ -217,33 +182,12 @@ class Dashboard extends Component {
                                 comment={this.state.comment}
                                 secondary={this.props.secondary}
                                 font={this.props.font}
-                            />
-                        <div>
-                            <Button className="btn btn-primary colorMenuButton" 
-                                    secondary={this.props.secondary}
-                                    borderRadius="0"
-                                    onClick={this.toggleColors}
-                                    >
-                                    <FontAwesomeIcon    icon={faPalette} 
-                                        className="fontAwesome" 
-                                        size="6x"
-                                        fixedWidth 
-                                        transform="shrink-6"/>
-                            </Button>
-                        </div>
-
-                            <LogoutModal    secondary={this.props.secondary}
-                                            font={this.props.font}/>
-
-                    </Container>
-                    
+                                loggedIn={this.props.loggedIn}
+                                logOut={this.props.logOut}
+                                />                  
                     
                     <Container  className="dataContainer"
-                                float="right" 
-                                marginRight="7vw" 
-                                marginLeft="0" 
-                                overflow="auto" 
-                                height="40vh">
+                                >
                         <PanelGroup id="panelId" style={{background: "transparent"}}>
                         {this.state.contacts.map(contact=>
                             <ContactCard {...contact}   secondary={this.props.secondary}
@@ -254,7 +198,6 @@ class Dashboard extends Component {
                     </Container>
                                
                 </Container>
-            </div>
         );
     };
 };

@@ -84,10 +84,11 @@ export default {
   login: function(email, password, cb) {
     axios.post('/api/v1/login', {email: email, password: password})
       .then( (result) => {
+        console.log(result)
         cb(result);
       })
-      .catch( (err) => {
-        return err;
+      .catch( (error) => {
+        cb(error)
       });
   },
 

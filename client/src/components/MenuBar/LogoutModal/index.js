@@ -95,7 +95,11 @@ class LogoutModal extends Component {
                             width: "10vw",
                             height: "10vh",
                             fontWeight: 100,
-                            textDecoration: 'none'}} className="linkLogOut" to="/Logout">
+                            textDecoration: 'none'}} 
+                            className="linkLogOut" 
+                            to="/Logout"
+                            onClick={this.props.logOut}
+                            >
                             <Button>Log Out</Button>
                         </Link>
 

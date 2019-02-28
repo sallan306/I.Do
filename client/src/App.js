@@ -14,7 +14,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       userData: "",
-      isLoggedIn: false,
+      loggedIn: false,
       primary: "white",
       secondary: "rgb(247, 238, 228)",
       font: "black",
@@ -39,12 +39,15 @@ class App extends React.Component {
     if(this.state.loggedIn){
       $(".MenuContainer").removeClass("invisible")
       return <Dashboard {...props}  secondary={this.state.secondary}
-                                    font={this.state.font}/>
+                                    font={this.state.font}
+                                    loggedIn={this.state.loggedIn}
+                                    logOut={this.logOut}/>
     } else {
       $(".MenuContainer").addClass("invisible")
       return <Home {...props}       secondary={this.state.secondary} 
                                     font={this.state.font}
-                                    flipToDash={this.toggleLoggedIn} />
+                                    flipToDash={this.toggleLoggedIn}
+                                    loggedIn={this.state.loggedIn} />
     }
   }
   

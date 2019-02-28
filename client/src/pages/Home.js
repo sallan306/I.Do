@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Input } from "../components/Input";
+import { Input } from "../components/Elements/Input";
 import { Button } from "../components/Elements/Button";
 import "../components/Nav/";
 import "../components/Nav/style.css";
 import Container from "../components/Elements/Container";
 import axios from 'axios';
 import API from "../utils/API";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 class Home extends Component {
     state = {
@@ -27,7 +28,9 @@ class Home extends Component {
         : console.log("Please log in.")
         )
     }
-
+    componentDidMount() {
+        console.log(this.props.loggedIn)
+    }
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -75,9 +78,11 @@ class Home extends Component {
 
     APILogin (){
         API.login(this.state.email, this.state.password, (result) =>
+
+        {   console.log(result)
             result.status === 200
             ? this.props.flipToDash(result.data)
-            : alert("That username/password combination doesn't work")
+            : NotificationManager.info('Info message')}
         )
     }
 
@@ -90,10 +95,17 @@ class Home extends Component {
             this.APILogin();
         }
     }
+    createNotification = () => {
+        return () => {
+              ;
+              // (message, title, timeOut, callback, priority);
+          }
+        }
 
     render(props) {
         return (
             <div className="home">
+            <NotificationContainer/>
                <Container className="loginContainer">
                     
                         <Button

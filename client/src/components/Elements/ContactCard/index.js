@@ -1,8 +1,8 @@
 import React from "react";
 import { Panel } from 'react-bootstrap';
 import { PanelGroup } from 'react-bootstrap';
-import { PrintText } from "../PrintText";
-import EditModal from "../EditModal";
+import { PrintText } from "../../PrintText";
+import EditModal from "../../EditModal";
 
 // import Checkbox from '../Checkbox';
 

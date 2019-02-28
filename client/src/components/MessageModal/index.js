@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Button, Modal} from 'react-bootstrap';
-import MessageContact from '../MessageContact'
+import MessageContact from '../Elements/MessageContact'
 import API from '../../utils/API.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons'

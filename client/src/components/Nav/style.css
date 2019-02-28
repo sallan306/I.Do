@@ -17,29 +17,13 @@
     margin-top: 1vh;
     height: 5vh;
 }
-.buttonsContainer {
-    width: 120%;
-    height: 20vh;
-    margin-left: 16vw;
-}
 
-.btn-primary {
-    height: 84px;
-    float: left;
-    margin-right: 50px;
-    padding: 0;
-    margin-bottom: 50px;
-    /* color: black; */
-
-}
-
-.fontAwesome {
-pointer-events: none;
-color: black;
-}
 .allContentContainer {
-    margin-top: 5vh;
+    margin-top: 3vh;
     width: 70vw;
+    width:"90vw" ;
+    margin-left:"5vw";
+    margin-top:"5vh"
 }
 
 .colorMenu {
@@ -53,10 +37,13 @@ color: black;
 .dataContainer {
     width: 80%;
     float: left;
-    height: 40vh;
+    height: 35vh;
     overflow-y: scroll;
     position: relative;
     left: 22.5vw;
+    float:"right" ;
+    margin-right:"7vw";
+    margin-left:"0" ;
 
 }
 .iconsContainer {
@@ -187,7 +174,61 @@ nav {
     border-radius: 25px
 }
 
+.fontAwesome {
+    pointer-events: none;
+    color: black;
+}
+.buttonsContainer {
+    width: 100vw;
+    height: 15vh;
+    margin-left: 15px;
+}
 
+.btn-primary {
+    width: 15.5vw;
+    height: 84px;
+    float: left;
+    margin-right: 5px;
+    padding: 0;
+    margin-bottom: 5px;
+
+}
+
+@media only screen and (max-width: 1200px) {
+    .buttonsContainer {
+        margin-left: 25px;
+    }
+    .btn-primary {
+        width: 15.2vw;
+    }
+}
+ @media only screen and (max-width: 960px) {
+    .buttonsContainer {
+        margin-left: 15px;
+    }
+    .btn-primary {
+        width: 15.1vw;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .btn-primary {
+        width: 15.1vw;
+    }
+    .buttonsContainer {
+        margin-left: 5px;
+    }
+}
+
+/* @media only screen and (max-width: 660px) {
+    .btn-primary {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .buttonsContainer {
+        width: 90%;
+    }
+}  */
 
 @media only screen and (max-width: 600px) {
 
@@ -259,9 +300,9 @@ nav {
         height: 45vh;
     }
     .btn-primary {
-        width: 105px;
+        width: 100px;
         margin-left: -4%;
-        height: 58px;
+        height: 50px;
         float: left;
         position: relative;
         left: 8vw;
@@ -278,7 +319,7 @@ nav {
         height: 75vh;
         overflow-y: scroll;
         left: 0;
-        margin-top: 2vh;
+        margin-top: -1vh;
     }
     .invisible {
         visibility: hidden;

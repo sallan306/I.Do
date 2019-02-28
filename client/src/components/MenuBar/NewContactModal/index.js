@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { Button, Modal} from 'react-bootstrap';
 import API from '../../../utils/API.js'
 import { Panel, PanelGroup } from 'react-bootstrap';
-import GuestForm from "../../GuestForm"
+import GuestForm from "../../Elements/GuestForm"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons'
 
