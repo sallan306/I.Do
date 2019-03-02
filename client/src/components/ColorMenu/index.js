@@ -4,8 +4,6 @@ import './style.css';
 import ColorPicker from "./ColorPicker";
 import ColorPicker2 from "./ColorPicker2";
 import ColorPickerFont from "./ColorPickerFont";
-import { interval } from "rxjs";
-// import API from '../utils/API';
 
 
 var colorInterval = setInterval(randomColor,2000)
