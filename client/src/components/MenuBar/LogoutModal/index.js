@@ -12,6 +12,8 @@ class LogoutModal extends Component {
     
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.showText = this.showText.bind(this);
+        this.hideText = this.hideText.bind(this);
     
         this.state = {
             show: false,
@@ -19,7 +21,8 @@ class LogoutModal extends Component {
             textArray: ["4099397554"],
             subject: "",
             message: "THIS IS A TEST MESSAGE",
-            guestCheckboxes: {}
+            guestCheckboxes: {},
+            paragraphClass: "hoverButtonText"
         };       
     }
 
@@ -63,12 +66,24 @@ class LogoutModal extends Component {
         });
         this.handleClose();
     }
+    showText() {
+        this.setState({
+            paragraphClass: "hoverButtonText showText"
+        })
+    }
+    hideText() {
+        this.setState({
+            paragraphClass: "hoverButtonText"
+        })
+    }
 
     render(props) {
         return (
             <div>
                  <Button    bsStyle="primary" 
                             onClick={this.handleShow} 
+                            onMouseEnter={this.showText}
+                            onMouseLeave={this.hideText}
                             className="btn btn-primary logoutButton" 
                             style={   {     background: this.props.secondary,
                                             color: this.props.font,
@@ -82,8 +97,12 @@ class LogoutModal extends Component {
                                                             style={{color: this.props.font}}
                                                             fixedWidth
                                             />
+                            <h3 className={this.state.paragraphClass} id="logoutButtonText">
+                                LOG OUT
+                            </h3>
                                     
                             </Button>
+
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>Are you sure you want to leave?</Modal.Title>

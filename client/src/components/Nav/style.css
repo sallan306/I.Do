@@ -9,8 +9,8 @@
     margin-left: 0;
     margin-right: 0;
     border-radius: 0;
-    height: 20vh;
-    margin-top: 3vh;
+    height: 25vh;
+    margin-top: -3vh;
     opacity: .99;
 }
 
@@ -36,7 +36,7 @@
     overflow-y: scroll;
 }
 .allContentContainer {
-    margin-top: 3vh;
+    margin-top: 2vh;
     width: 70vw;
     width:"90vw" ;
     margin-left:"5vw";
@@ -54,15 +54,20 @@
 .dataContainer {
     width: 80%;
     float: left;
-    height: 47vh;
+    height: 55vh;
     overflow-y: scroll;
     position: relative;
     left: 22.5vw;
-    float:"right" ;
-    margin-right:"7vw";
-    margin-left:"0" ;
+    top: 2vh;
 
 }
+.hoverButtonText {
+    font-size: 20px;
+    margin-top: 0;
+    opacity: 0;
+    transition: 0.5s
+}
+
 .iconsContainer {
     z-index: 9;
 }
@@ -87,6 +92,7 @@
 
 .panel-body {
     border-top: 0;
+    padding: 0;
 }
 
 .logoutModalButton {
@@ -102,7 +108,7 @@ p {
 }
 .styleBox {
     position: relative;
-    top: 25%;
+    top: 30%;
     z-index: -1;
 }
 .btn-success {
@@ -125,7 +131,7 @@ h4 {
 .loginContainer {
     width: 60vw;
     margin-left: 20vw;
-    margin-top: 13vh;
+    margin-top: 15vh;
 }
 
 nav {
@@ -133,7 +139,9 @@ nav {
     margin-top: 10px;
     letter-spacing: 2px;
 }
-
+.showText {
+    opacity: 1;
+}
 .linkHome, .linkDash, .linkMng {
     color: black;
     margin-right: 5px;
@@ -200,7 +208,7 @@ nav {
     margin-bottom: -10px
 }
 .panel-heading {
-    border-radius: 25px
+    border-radius: 5px
 }
 
 .fontAwesome {
@@ -227,6 +235,7 @@ nav {
 .editButtonModal {
     margin-left: 80%;
     width: 20%;
+    height: 5vh;
     border: 0;
 }
 
@@ -276,6 +285,7 @@ nav {
         margin-top: 0vh;
         overflow: hidden;
         transition: 0.5s;
+        padding-top: 1vh;
     }
     .iconsContainer {
         /* padding-top: 0.5vh; */
@@ -286,7 +296,7 @@ nav {
     .openMenu {
         /* display: block; */
         height: 35vh;
-        transition: 0.5s
+        transition: 0.5s;
     }
     .dataContainer.openMenu2 {
         height: 45vh;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal} from 'react-bootstrap';
+import GuestForm from "../../Elements/GuestForm";
 
 class EditModal extends React.Component {
     constructor(props, context) {
@@ -37,10 +38,9 @@ class EditModal extends React.Component {
                 <Modal.Title>Edit Contact Information</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <h4>Edit Contact Information</h4>
-                <p className="Edit-Contact-Info-Modal">
-                    Edit Contact Info Here 
-                </p>
+                
+                <GuestForm    secondary={this.props.secondary}
+                              font={this.props.font}/>
                 
                 </Modal.Body>
                 <Modal.Footer>

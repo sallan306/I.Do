@@ -1,8 +1,11 @@
 import React from "react";
-import Particles from "react-particles-js";
+import ParticlesReact from "react-particles-js";
 
-export default () => (
-  <div
+export function Particles(props) {
+
+  return (
+
+<div
     style={{
       position: "absolute",
       top: 0,
@@ -12,11 +15,11 @@ export default () => (
       overflow: "hidden"
     }}
   >
-    <Particles
+    <ParticlesReact
       params={{
         particles: {
           number: {
-            value: 1000,
+            value: 100,
             density: {
               enable: true,
               value_area: 1803.4120608655228
@@ -28,8 +31,8 @@ export default () => (
           shape: {
             type: "circle",
             stroke: {
-              width: 2,
-              color: "#000000"
+              width: 3,
+              color: props.secondary
             },
             polygon: {
               nb_sides: 4
@@ -50,7 +53,7 @@ export default () => (
         },
           opacity: {
             value: 0.4008530152163807,
-            random: false,
+            random: true,
             anim: {
               enable: false,
               speed: 1,
@@ -94,7 +97,7 @@ export default () => (
           detect_on: "window",
           events: {
             onhover: {
-              enable: true,
+              enable: false,
               mode: "repulse"
             },
             onclick: {
@@ -133,4 +136,7 @@ export default () => (
       }}
     />
   </div>
-);
+
+  )
+  
+}

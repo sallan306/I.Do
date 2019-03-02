@@ -13,6 +13,8 @@ class NewContactModal extends Component {
     
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.showText = this.showText.bind(this);
+        this.hideText = this.hideText.bind(this);
     
         this.state = {
             show: false,
@@ -21,6 +23,7 @@ class NewContactModal extends Component {
             subject: "",
             message: "THIS IS A TEST MESSAGE",
             guestCheckboxes: {},
+            paragraphClass: "hoverButtonText"
         };       
     }
 
@@ -64,12 +67,24 @@ class NewContactModal extends Component {
         this.handleClose();
     }
 
+    showText() {
+        this.setState({
+            paragraphClass: "hoverButtonText showText"
+        })
+    }
+    hideText() {
+        this.setState({
+            paragraphClass: "hoverButtonText"
+        })
+    }
     render(props) {
         return (
             <div>
                  <Button    bsStyle="primary" 
                             onClick={this.handleShow} 
                             className="btn btn-primary newContactButton" 
+                            onMouseEnter={this.showText}
+                            onMouseLeave={this.hideText}
                             style={   {     background: this.props.secondary,
                                             color: this.props.font,
                                             outline: "none",
@@ -81,6 +96,9 @@ class NewContactModal extends Component {
                                         size="6x"
                                         fixedWidth 
                                         transform="shrink-6"/>
+                    <h3 className={this.state.paragraphClass} id="messageButtonText">
+                        NEW CONTACT
+                    </h3>
           </Button>
             <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>

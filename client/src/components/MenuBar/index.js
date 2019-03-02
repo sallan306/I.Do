@@ -14,9 +14,23 @@ import $ from "jquery"
 
 
 class MenuBar extends React.Component {
-  
+  constructor(props) {
+    super(props)
+    this.showText = this.showText.bind(this)
+    this.hideText = this.hideText.bind(this)
+
+    this.state = {
+      paragraphClass: "hoverButtonText"
+    }
+  }
   toggleColors() {
     $(".circle-picker-container").toggleClass("circleChange")
+  }
+  showText() {
+    this.setState({paragraphClass: "hoverButtonText showText"})
+  }
+  hideText() {
+    this.setState({paragraphClass: "hoverButtonText"})
   }
     render() {
 
@@ -59,23 +73,29 @@ class MenuBar extends React.Component {
                     secondary={this.props.secondary}
                     font={this.props.font}
                 />
-                <Button className="btn btn-primary colorMenuButton" 
-                        bsStyle="primary" 
-                        secondary={this.props.secondary}
-                        onClick={this.toggleColors}
-                        style={{  background: this.props.secondary,
-                                  color: this.props.font,
-                                  border: 0,
-                                  outline: "none"}}
-                        >
-                        <FontAwesomeIcon    icon={faPalette} 
-                                            className="fontAwesome" 
-                                            style={{color: this.props.font}}
-                                            size="6x"
-                                            fixedWidth 
-                                            transform="shrink-6"/>
-                </Button>
-
+                <div>
+                  <Button className="btn btn-primary colorMenuButton" 
+                          bsStyle="primary" 
+                          onMouseEnter={this.showText}
+                          onMouseLeave={this.hideText}
+                          secondary={this.props.secondary}
+                          onClick={this.toggleColors}
+                          style={{  background: this.props.secondary,
+                                    color: this.props.font,
+                                    border: 0,
+                                    outline: "none"}}
+                          >
+                          <FontAwesomeIcon    icon={faPalette} 
+                                              className="fontAwesome" 
+                                              style={{color: this.props.font}}
+                                              size="6x"
+                                              fixedWidth 
+                                              transform="shrink-6"/>
+                          <h3 className={this.state.paragraphClass} id="messageButtonText">
+                            CHANGE COLOR
+                          </h3>
+                  </Button>
+                </div>
                 <LogoutModal    secondary={this.props.secondary}
                                 font={this.props.font}
                                 loggedIn={this.props.loggedIn}

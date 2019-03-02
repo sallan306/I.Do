@@ -10,7 +10,7 @@ import API from "./utils/API"
 import $ from "jquery"
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
-import Particles from "../src/components/Particles";
+import {Particles} from "../src/components/Particles";
 
 class App extends React.Component {
   constructor(props){
@@ -89,7 +89,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Particles/>
+          <Particles    secondary={this.state.secondary}/>
           <ColorMenu    changePrimaryColor={this.changePrimaryColor} 
                         changeSecondaryColor={this.changeSecondaryColor} 
                         changeFontColor={this.changeFontColor} 

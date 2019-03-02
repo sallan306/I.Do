@@ -9,6 +9,7 @@ import { interval } from "rxjs";
 
 
 var colorInterval = setInterval(randomColor,2000)
+
 const colors = [
     "#f06292", "#f8bbd0", 
     "#ba68c8", "#e1bee7", 
@@ -25,9 +26,9 @@ const colors = [
 
 function randomColor() {
  
-    var index = 0
-    index = Math.floor(Math.random()*12)
-    document.body.style.backgroundColor = colors[index]
+    // var index = 0
+    // index = Math.floor(Math.random()*12)
+    // document.body.style.backgroundColor = colors[index]
 }
 
 function toggleColors() {

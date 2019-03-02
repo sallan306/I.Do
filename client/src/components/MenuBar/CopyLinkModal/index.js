@@ -16,12 +16,14 @@ class CopyLinkModal extends React.Component {
   
       this.handleShow = this.handleShow.bind(this);
       this.handleClose = this.handleClose.bind(this);
-
+      this.showText = this.showText.bind(this)
+      this.hideText = this.hideText.bind(this)
       this.addNotification = this.addNotification.bind(this);
       this.notificationDOMRef = React.createRef();
   
       this.state = {
-        show: false
+        show: false,
+        paragraphClass: "hoverButtonText"
       };
     }
 
@@ -32,8 +34,9 @@ class CopyLinkModal extends React.Component {
         type: "awesome",
         title: "Custom",
         message: "Notifications can be customized to suit your needs",
-        container: "top-right"
-      });
+        container: "top-right",
+        paragraphClass: "hoverButtonText"
+      })
     }
 
     componentDidMount(){
@@ -48,6 +51,12 @@ class CopyLinkModal extends React.Component {
     handleShow() {
       this.setState({ show: true });
     }
+    showText() {
+      this.setState({paragraphClass: "hoverButtonText showText"})
+    }
+    hideText() {
+      this.setState({paragraphClass: "hoverButtonText"})
+    }
   
     render() {
 
@@ -56,6 +65,8 @@ class CopyLinkModal extends React.Component {
           <Button className="btn btn-primary copyLinkButton"
                   bsStyle="primary" 
                   onClick={this.handleShow} 
+                  onMouseEnter={this.showText}
+                  onMouseLeave={this.hideText}
                   style={   { background: this.props.secondary,
                               color: this.props.font,
                               border: 0,
@@ -67,6 +78,9 @@ class CopyLinkModal extends React.Component {
                               size="6x"
                               fixedWidth 
                               transform="shrink-6"/>
+          <h3 className={this.state.paragraphClass} id="messageButtonText">
+            YOUR LINK                 
+          </h3>
           </Button>
   
           <Modal show={this.state.show} onHide={this.handleClose}>
