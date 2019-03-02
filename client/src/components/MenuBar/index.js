@@ -24,7 +24,8 @@ class MenuBar extends React.Component {
     }
   }
   toggleColors() {
-    $(".circle-picker-container").toggleClass("circleChange")
+    this.setState({colorMenuClass: "circle-picker-container circleChange"})
+    // $(".circle-picker-container").toggleClass("circleChange")
   }
   showText() {
     this.setState({paragraphClass: "hoverButtonText showText"})
@@ -79,7 +80,7 @@ class MenuBar extends React.Component {
                           onMouseEnter={this.showText}
                           onMouseLeave={this.hideText}
                           secondary={this.props.secondary}
-                          onClick={this.toggleColors}
+                          onClick={this.props.toggleColorMenu}
                           style={{  background: this.props.secondary,
                                     color: this.props.font,
                                     border: 0,

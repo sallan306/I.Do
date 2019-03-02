@@ -16,6 +16,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.addNotification = this.addNotification.bind(this);
+    this.toggleColorMenu = this.toggleColorMenu.bind(this)
     this.notificationDOMRef = React.createRef();
 
 
@@ -25,7 +26,8 @@ class App extends React.Component {
       primary: "white",
       secondary: "rgb(247, 238, 228)",
       font: "black",
-      savedColors: {}
+      savedColors: {},
+      colorMenuClass: "circle-picker-container"
     }
     this.renderDefaultView()
   }
@@ -63,7 +65,9 @@ class App extends React.Component {
                                     font={this.state.font}
                                     loggedIn={this.state.loggedIn}
                                     logOut={this.logOut}
-                                    addNotification={this.addNotification}/>
+                                    addNotification={this.addNotification}
+                                    toggleColorMenu={this.toggleColorMenu}
+                                    />
     } else {
       $(".MenuContainer").addClass("invisible")
       return <Home {...props}       secondary={this.state.secondary} 
@@ -84,6 +88,15 @@ class App extends React.Component {
     API.logout();
     return <Redirect to="/" />
   }
+  toggleColorMenu() {
+    if (this.state.colorMenuClass === "circle-picker-container") {
+      this.setState({colorMenuClass: "circle-picker-container circleChange"})
+    }
+    else {
+      this.setState({colorMenuClass: "circle-picker-container"})
+    }
+
+  }
 
   render(){
     return (
@@ -96,7 +109,9 @@ class App extends React.Component {
                         primary={this.state.primary}
                         secondary={this.state.secondary}
                         font={this.state.font}
-                        savedColors={this.state.savedColors}/>
+                        savedColors={this.state.savedColors}
+                        colorMenuClass={this.state.colorMenuClass}
+                        />
             
             <ReactNotification ref={this.notificationDOMRef} />
             <Nav        secondary={this.state.secondary}

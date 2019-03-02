@@ -186,6 +186,7 @@ class Dashboard extends Component {
                                 loggedIn={this.props.loggedIn}
                                 logOut={this.props.logOut}
                                 addNotification={this.props.addNotification}
+                                toggleColorMenu={this.props.toggleColorMenu}
                                 />                  
                     
                     <Container  className="dataContainer openMenu2"

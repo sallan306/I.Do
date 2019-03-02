@@ -90,7 +90,7 @@ export default function Button(props) {
                 <div className="bar2"></div>
                 <div className="bar3"></div>
             </div>
-            <div className="circle-picker-container">
+            <div className={props.colorMenuClass}>
                 <div className="buttonBox" >
                     <button style={button1Stlye}    onClick={clickColor1}   className="buttonPrimary">Primary</button>
                     <button style={button2Stlye}    onClick={clickColor2}   className="buttonSecondary">Secondary</button>
