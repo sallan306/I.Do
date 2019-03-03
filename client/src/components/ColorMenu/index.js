@@ -6,108 +6,136 @@ import ColorPicker2 from "./ColorPicker2";
 import ColorPickerFont from "./ColorPickerFont";
 
 
-var colorInterval = setInterval(randomColor,2000)
+// var colorInterval = setInterval(this.randomColor,2000)
 
-const colors = [
-    "#f06292", "#f8bbd0", 
-    "#ba68c8", "#e1bee7", 
-    "#9575cd", "#d1c4e9", 
-    "#7986cb", "#c5cae9", 
-    "#64b5f6", "#bbdefb", 
-    "#4dd0e1", "#b3e5fc", 
-    "#4db6ac", "#b2ebf2", 
-    "#fff176", "#c8e6c9", 
-    "#ffb74d", "#ffecb3", 
-    "#ff8a65", "#ffe0b2", 
-    "#90a4ae", "#d9d9d9",
-    "#000000", "#ffffff" ]  
+class ColorMenu extends React.Component {
+    constructor(props) {
+        super(props)
 
-function randomColor() {
- 
-    // var index = 0
-    // index = Math.floor(Math.random()*12)
-    // document.body.style.backgroundColor = colors[index]
-}
+        this.state = {
+            paragraphClass: "hoverButtonText",
+            primaryClass: "circle-picker-primary",
+            secondaryClass: "circle-picker-secondary",
+            fontClass: "circle-picker-font",
+            bar1Class: "bar1",
+            bar2Class: "bar2",
+            bar3Class: "bar3",
+            buttonsContainerClass: "",
+            dataContainerClass: "",
+            circlePickerContainerClass: ""
+        }
+    } 
 
-function toggleColors() {
-
-    $(".circle-picker-container").removeClass("circleChange")
-    $(".bar1").toggleClass("bar1change")
-    $(".bar2").toggleClass("bar2change")
-    $(".bar3").toggleClass("bar3change")
-    $(".buttonsContainer").toggleClass("openMenu")
-    $(".dataContainer").toggleClass("openMenu2")
-}
-
-function clickColor1() {
-    clearInterval(colorInterval)
-    $(".circle-picker-primary").toggleClass(    "invisible", false)
-    $(".circle-picker-secondary").toggleClass(  "invisible", true)
-    $(".circle-picker-font").toggleClass(       "invisible", true)
-}
-function clickColor2() {
-    $(".circle-picker-primary").toggleClass(    "invisible", true)
-    $(".circle-picker-secondary").toggleClass(  "invisible", false)
-    $(".circle-picker-font").toggleClass(       "invisible", true)
-}
-function clickFont() {
-    $(".circle-picker-primary").toggleClass(    "invisible", true)
-    $(".circle-picker-secondary").toggleClass(  "invisible", true)
-    $(".circle-picker-font").toggleClass(       "invisible", false)
-}
-
-// function saveColors() {
-//     API.
-// }
-export default function Button(props) {
-    var button1Stlye = {
-        background: props.primary,
-        outline: "none"
-    };
-    var button2Stlye = {
-        background: props.secondary,
-        outline: "none"
-    };
-    var button3Stlye = {
-        background: props.font,
-        outline: "none"
-    };
-    if(props.button1Stlye){
-        button1Stlye.background = props.primary;
+    randomColor() {
+        // const colors = [
+        //     "#f06292", "#f8bbd0", 
+        //     "#ba68c8", "#e1bee7", 
+        //     "#9575cd", "#d1c4e9", 
+        //     "#7986cb", "#c5cae9", 
+        //     "#64b5f6", "#bbdefb", 
+        //     "#4dd0e1", "#b3e5fc", 
+        //     "#4db6ac", "#b2ebf2", 
+        //     "#fff176", "#c8e6c9", 
+        //     "#ffb74d", "#ffecb3", 
+        //     "#ff8a65", "#ffe0b2", 
+        //     "#90a4ae", "#d9d9d9",
+        //     "#000000", "#ffffff" ]  
+        // var index = 0
+        // index = Math.floor(Math.random()*12)
+        // document.body.style.backgroundColor = colors[index]
     }
-    if(props.button2Stlye){
-        button2Stlye.background = props.secondary;
+
+    toggleColors = () => {
+
+        if (this.state.bar1Class === "bar1") {
+            
+            this.setState({
+                bar1Class: "bar1 bar1change",
+                bar2Class: "bar2 bar2change",
+                bar3Class: "bar3 bar3change"
+            })
+
+        }
+        else {
+            
+            this.setState({
+                bar1Class: "bar1",
+                bar2Class: "bar2",
+                bar3Class: "bar3"
+            })
+
+        }
+
+        $(".circle-picker-container").removeClass("circleChange")
+        $(".buttonsContainer").toggleClass("openMenu")
+        $(".dataContainer").toggleClass("openMenu2")
+
     }
-    if(props.button3Stlye){
-        button3Stlye.background = props.font;
+
+    clickColor1 = () => {
+        this.setState({
+            primaryClass: "circle-picker-primary",
+            secondaryClass: "circle-picker-secondary invisible",
+            fontClass: "circle-picker-font invisible"
+        })
     }
-    return (
-        <div className="colorMenu">
-            <div className="MenuContainer invisible" onClick={toggleColors}>
-                <div className="bar1"></div>
-                <div className="bar2"></div>
-                <div className="bar3"></div>
+    clickColor2 = () => {
+        this.setState({
+            primaryClass: "circle-picker-primary invisible",
+            secondaryClass: "circle-picker-secondary",
+            fontClass: "circle-picker-font invisible"
+        })
+    }
+    clickFont = () => {
+        this.setState({
+            primaryClass: "circle-picker-primary invisible",
+            secondaryClass: "circle-picker-secondary invisible",
+            fontClass: "circle-picker-font"
+        })
+    }
+
+    render() {
+        return (
+            <div className="colorMenu">
+                <div className="MenuContainer invisible" onClick={this.toggleColors}>
+                    <div className={this.state.bar1Class}></div>
+                    <div className={this.state.bar2Class}></div>
+                    <div className={this.state.bar3Class}></div>
+                </div>
+                <div className={this.props.colorMenuClass}>
+                    <div className="buttonBox" >
+                        <button style={{
+                                    background: this.props.primary
+                                }}    
+                                onClick={this.clickColor1}   
+                                className="buttonPrimary">Primary</button>
+                        <button style={{
+                                    background: this.props.secondary
+                                }}      
+                                onClick={this.clickColor2}   
+                                className="buttonSecondary">Secondary</button>
+                        <button style={{
+                                    background: this.props.font
+                                }}    
+                                onClick={this.clickFont}     
+                                className="buttonFont">Font</button>
+                    </div>
+                    <div className={this.state.primaryClass}>
+                        <ColorPicker        primary = {this.props.primary} 
+                                            changePrimaryColor={this.props.changePrimaryColor} />
+                    </div>
+                    <div className={this.state.secondaryClass}>
+                        <ColorPicker2       secondary = {this.props.secondary} 
+                                            changeSecondaryColor={this.props.changeSecondaryColor}/>
+                    </div>
+                    <div className={this.state.fontClass}>
+                        <ColorPickerFont    font = {this.props.font} 
+                                            changeFontColor={this.props.changeFontColor}/>
+                    </div>
+                </div>
             </div>
-            <div className={props.colorMenuClass}>
-                <div className="buttonBox" >
-                    <button style={button1Stlye}    onClick={clickColor1}   className="buttonPrimary">Primary</button>
-                    <button style={button2Stlye}    onClick={clickColor2}   className="buttonSecondary">Secondary</button>
-                    <button style={button3Stlye}    onClick={clickFont}     className="buttonFont">Font</button>
-                </div>
-                <div className="circle-picker-primary">
-                    <ColorPicker        primary = {props.primary} 
-                                        changePrimaryColor={props.changePrimaryColor} />
-                </div>
-                <div className="circle-picker-secondary">
-                    <ColorPicker2       secondary = {props.secondary} 
-                                        changeSecondaryColor={props.changeSecondaryColor}/>
-                </div>
-                <div className="circle-picker-font">
-                    <ColorPickerFont    font = {props.font} 
-                                        changeFontColor={props.changeFontColor}/>
-                </div>
-                {/* <button style={button1Stlye} className="saveColors" onClick={saveColors}>Save</button> */}
-            </div>
-        </div>
-    );
+        );
+    }
+    
   };
+  export default ColorMenu;
