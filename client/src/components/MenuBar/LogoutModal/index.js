@@ -67,9 +67,13 @@ class LogoutModal extends Component {
         this.handleClose();
     }
     showText() {
-        this.setState({
-            paragraphClass: "hoverButtonText showText"
-        })
+        if (window.innerWidth > 600) { 
+            
+            this.setState({
+                paragraphClass: "hoverButtonText showText"
+            })
+            
+        }
     }
     hideText() {
         this.setState({

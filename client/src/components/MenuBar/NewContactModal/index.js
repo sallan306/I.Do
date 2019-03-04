@@ -68,9 +68,12 @@ class NewContactModal extends Component {
     }
 
     showText() {
-        this.setState({
-            paragraphClass: "hoverButtonText showText"
-        })
+        if (window.innerWidth > 600) {
+            
+            this.setState({
+                paragraphClass: "hoverButtonText showText"
+            })
+        }
     }
     hideText() {
         this.setState({

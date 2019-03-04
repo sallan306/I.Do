@@ -27,7 +27,8 @@ class App extends React.Component {
       secondary: "rgb(247, 238, 228)",
       font: "black",
       savedColors: {},
-      colorMenuClass: "circle-picker-container"
+      colorMenuClass: "circle-picker-container",
+      dataContainerClass: "dataContainer openMenu2"
     }
     this.renderDefaultView()
   }
@@ -67,6 +68,7 @@ class App extends React.Component {
                                     logOut={this.logOut}
                                     addNotification={this.addNotification}
                                     toggleColorMenu={this.toggleColorMenu}
+                                    dataContainerClass={this.state.dataContainerClass}
                                     />
     } else {
       $(".MenuContainer").addClass("invisible")
@@ -88,6 +90,15 @@ class App extends React.Component {
     API.logout();
     return <Redirect to="/" />
   }
+  toggleDataContainer() {
+    if (this.state.dataContainerClass === "dataContainer") {
+      this.setState({dataContainerClass: "dataContainer openMenu2"})
+    }
+    else {
+      this.setState({dataContainerClass: "dataContainer"})
+    }
+
+  }
   toggleColorMenu() {
     if (this.state.colorMenuClass === "circle-picker-container") {
       this.setState({colorMenuClass: "circle-picker-container circleChange"})
@@ -95,7 +106,6 @@ class App extends React.Component {
     else {
       this.setState({colorMenuClass: "circle-picker-container"})
     }
-
   }
 
   render(){
@@ -111,6 +121,8 @@ class App extends React.Component {
                         font={this.state.font}
                         savedColors={this.state.savedColors}
                         colorMenuClass={this.state.colorMenuClass}
+                        toggleColorMenu={this.state.toggleColorMenu}
+                        dataContainerClass={this.toggleDataContainer}
                         />
             
             <ReactNotification ref={this.notificationDOMRef} />

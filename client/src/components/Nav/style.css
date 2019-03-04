@@ -38,9 +38,9 @@
 .allContentContainer {
     margin-top: 2vh;
     width: 70vw;
-    width:"90vw" ;
-    margin-left:"5vw";
-    margin-top:"5vh"
+    width:90vw ;
+    margin-left:5vw;
+    margin-top:5vh
 }
 
 .colorMenu {
@@ -57,7 +57,7 @@
     height: 55vh;
     overflow-y: scroll;
     position: relative;
-    left: 22.5vw;
+    left: 10vw;
     top: 2vh;
 
 }
@@ -113,6 +113,7 @@ p {
 }
 .btn-success {
     float: left;
+    font-weight: 100;
 }
 h4 {
     text-align: center;
@@ -218,7 +219,8 @@ nav {
 .buttonsContainer {
     width: 100vw;
     height: 15vh;
-    margin-left: 0;
+    margin-left: 1vw;
+    margin-top: 2vh;
 }
 
 .btn-primary {
@@ -282,7 +284,8 @@ nav {
         height: 0vh;
         width: 100%;
         margin-left: 0;
-        margin-top: 0vh;
+        margin-top: 3vh;
+        margin-bottom: 0vh;
         overflow: hidden;
         transition: 0.5s;
         padding-top: 1vh;
@@ -295,7 +298,7 @@ nav {
     }
     .openMenu {
         /* display: block; */
-        height: 35vh;
+        height: 26vh;
         transition: 0.5s;
     }
     .dataContainer.openMenu2 {
@@ -303,14 +306,14 @@ nav {
         transition: 0.5s
     }
     .btn-primary {
-        width: 100px;
-        margin-left: -4%;
-        height: 50px;
+        margin: 1%;
+        width: 31%;
+        height: 10vh;
         float: left;
         position: relative;
-        left: 8vw;
-        margin-bottom: 10px;
-        margin-right: 20px
+        left: 0;
+        padding-top: 0;
+        border: 5px;
     }
     .fontAwesome {
         height: 10vh;
@@ -322,8 +325,8 @@ nav {
         float: none;
         height: 75vh;
         overflow-y: scroll;
-        left: 0;
         margin-top: -1vh;
+        left: 5vw;
     }
     .invisible {
         visibility: hidden;

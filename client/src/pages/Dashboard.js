@@ -24,6 +24,7 @@ class Dashboard extends Component {
         task: "",
         list: {},
         savedColors: {}
+        
     }
 
     handleInputChange = event => {
@@ -162,45 +163,46 @@ class Dashboard extends Component {
     render(props) {
 
         return (
-      
-                <Container  className="allContentContainer"
-                            >
-                    <MenuBar    
-                                eventID={this.state.userID}
-                                name={this.state.userFirstName + " " + this.state.userLastName}
-                                contacts={this.state.contacts}
-                                sendMessageButton={this.sendMessageButton}
-                                handleInputChange={this.handleInputChange}
-                                handleFormSubmit={this.handleFormSubmit}
-                                firstName={this.state.firstName}
-                                lastName={this.state.lastName}
-                                email={this.state.email}
-                                phone={this.state.phone}
-                                street={this.state.street}
-                                city={this.state.city}
-                                state={this.state.state}
-                                zipcode={this.state.zipcode}
-                                comment={this.state.comment}
-                                secondary={this.props.secondary}
-                                font={this.props.font}
-                                loggedIn={this.props.loggedIn}
-                                logOut={this.props.logOut}
-                                addNotification={this.props.addNotification}
-                                toggleColorMenu={this.props.toggleColorMenu}
-                                />                  
+            <div>
+            <MenuBar    
+                eventID={this.state.userID}
+                name={this.state.userFirstName + " " + this.state.userLastName}
+                contacts={this.state.contacts}
+                sendMessageButton={this.sendMessageButton}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                email={this.state.email}
+                phone={this.state.phone}
+                street={this.state.street}
+                city={this.state.city}
+                state={this.state.state}
+                zipcode={this.state.zipcode}
+                comment={this.state.comment}
+                secondary={this.props.secondary}
+                font={this.props.font}
+                loggedIn={this.props.loggedIn}
+                logOut={this.props.logOut}
+                addNotification={this.props.addNotification}
+                toggleColorMenu={this.props.toggleColorMenu}
+            />   
+                            
+                                   
                     
-                    <Container  className="dataContainer openMenu2"
-                                >
-                        <PanelGroup id="panelId" style={{background: "transparent"}}>
-                        {this.state.contacts.map(contact=>
-                            <ContactCard {...contact}   secondary={this.props.secondary}
-                                                        font={this.props.font}
-                                                        key={contact._id}/>
-                        )}
-                        </PanelGroup>
-                    </Container>
+            <Container  className={this.props.dataContainerClass}
+                        >
+                <PanelGroup id="panelId" style={{background: "transparent"}}>
+                {this.state.contacts.map(contact=>
+                    <ContactCard {...contact}   secondary={this.props.secondary}
+                                                font={this.props.font}
+                                                key={contact._id}/>
+                )}
+                </PanelGroup>
+            </Container>
                                
-                </Container>
+
+            </div>
         );
     };
 };

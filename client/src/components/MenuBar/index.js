@@ -28,7 +28,9 @@ class MenuBar extends React.Component {
     // $(".circle-picker-container").toggleClass("circleChange")
   }
   showText() {
-    this.setState({paragraphClass: "hoverButtonText showText"})
+    if (window.innerWidth > 600) {
+      this.setState({paragraphClass: "hoverButtonText showText"})
+    }
   }
   hideText() {
     this.setState({paragraphClass: "hoverButtonText"})

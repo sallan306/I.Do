@@ -52,7 +52,11 @@ class CopyLinkModal extends React.Component {
       this.setState({ show: true });
     }
     showText() {
-      this.setState({paragraphClass: "hoverButtonText showText"})
+      if (window.innerWidth > 600) { 
+
+        this.setState({paragraphClass: "hoverButtonText showText"})
+
+      }
     }
     hideText() {
       this.setState({paragraphClass: "hoverButtonText"})

@@ -77,9 +77,9 @@ body {
 .MenuContainer {
     display: inline-block;
     cursor: pointer;
-    position: fixed;
+    position: absolute;
     left: 10px;
-    top: 10px;
+    top: 4vh;
     display: none
 }
   
@@ -91,7 +91,7 @@ body {
 }
 .btn-success {
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 100;
 }
 /* ------------------------------------------ANIMATIONS AND STATE CHANGES */
 
