@@ -8,7 +8,6 @@ import CopyLinkModal from "../MenuBar/CopyLinkModal"
 import MessageModal from "../MenuBar/MessageModal"
 import NewContactModal from "../MenuBar/NewContactModal"
 import LogoutModal from "../MenuBar/LogoutModal"
-import $ from "jquery"
 
 
 
@@ -40,15 +39,17 @@ class MenuBar extends React.Component {
       return (
         <Container  className="openMenu buttonsContainer col-md-6 col-md-offset-3"
                     >
-            <ExcelModal     secondary={this.props.secondary}
-                            font={this.props.font}
-                            contacts={this.props.contacts}
+            <ExcelModal     
+                    secondary={this.props.secondary}
+                    font={this.props.font}
+                    contacts={this.props.contacts}
 
             />
-            <CopyLinkModal  eventID={this.props.eventID}
-                            secondary={this.props.secondary}
-                            font={this.props.font}
-                            addNotification={this.props.addNotification}
+            <CopyLinkModal  
+                    eventID={this.props.eventID}
+                    secondary={this.props.secondary}
+                    font={this.props.font}
+                    addNotification={this.props.addNotification}
             />
 
             <MessageModal 

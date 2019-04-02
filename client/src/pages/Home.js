@@ -6,7 +6,6 @@ import "../components/Nav/style.css";
 import Container from "../components/Elements/Container";
 import axios from 'axios';
 import API from "../utils/API";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 class Home extends Component {
     state = {
@@ -44,6 +43,7 @@ class Home extends Component {
 
     handleNewUserSubmit = event => {
         event.preventDefault();
+        let infoValidated = true
         let userInfo = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -51,27 +51,47 @@ class Home extends Component {
             password: this.state.password
         };
         if ((this.state.firstName.length < 3) || (this.state.firstName.length) > 20) {
-            alert("Name must be longer than 2 characters and less than 20 characters.")
-            return;
-        } else if ((this.state.lastName.length < 3) || (this.state.lastName.length) > 20) {
-            alert("Name must be longer than 2 characters and less than 20 characters.")
-            return;
-        } else if ((this.state.email.length < 3) || (this.state.email.length) > 30) {
-            alert("Email must be longer than 2 characters and less than 30 characters.")
-            return;
-        } else if ((this.state.password.length < 5) || (this.state.password.length) > 20) {
-            alert("Passwords must be longer than 5 characters and less than 20 characters.")
-            return;
-        } else if (this.state.password === this.state.password2) {
+            this.props.addNotification( 
+                "Login error",
+                "First name must be longer than 2 characters and less than 20 characters.",
+                "warning")
+            infoValidated = false
+        }
+        if ((this.state.lastName.length < 3) || (this.state.lastName.length) > 20) {
+            this.props.addNotification( 
+                "Login error",
+                "Last name must be longer than 2 characters and less than 20 characters.",
+                "warning")
+            infoValidated = false
+        }
+        if ((this.state.email.length < 3) || (this.state.email.length) > 30) {
+            this.props.addNotification( 
+                "Login error",
+                "Email must be longer than 3 characters and less than 30 characters.",
+                "warning")
+            infoValidated = false
+        }
+        if ((this.state.password.length < 5) || (this.state.password.length) > 20) {
+            this.props.addNotification( 
+                "Login error",
+                "Password must be longer than 5 characters and less than 20 characters.",
+                "warning")
+            infoValidated = false
+        } 
+        if (this.state.password !== this.state.password2) {
+            this.props.addNotification( 
+                "Login error",
+                "Passwords must match",
+                "warning")
+            infoValidated = false
+        } 
+        if (infoValidated) {
             console.log(userInfo);
             axios.post(`/api/v1/users`, userInfo, function (results) {
                 console.log(results)
             }).then(res => {
                 this.handleFormLogin(res);
             })
-        } else {
-            alert("Passwords must match!")
-            return;
         }
 
     }
@@ -79,10 +99,13 @@ class Home extends Component {
     APILogin (){
         API.login(this.state.email, this.state.password, (result) =>
 
-        {   console.log(result)
+        {   console.log("result from API Home: ",result)
             result.status === 200
             ? this.props.flipToDash(result.data)
-            : NotificationManager.info('Info message')}
+            : this.props.addNotification( 
+                "Login error",
+                "Bad username or password",
+                "warning")}
         )
     }
 
@@ -105,7 +128,6 @@ class Home extends Component {
     render(props) {
         return (
             <div className="home">
-            <NotificationContainer/>
                <Container className="loginContainer">
                     
                         <Button

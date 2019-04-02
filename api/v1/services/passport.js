@@ -24,17 +24,17 @@ passport.use(new LocalStrategy(
             bcrypt.compare(password, user.password, function(err, res) {
               // res == true
               if (res) return done(null, user);
-              else return (done, null, false);
+              else return done("badPassword");
             });
           }
           else{
             console.log("user not found");
-            return (done, null, false);
+            return done("noUser");
           }
         })
         .catch( err => {
           console.log("found One false");
-          return(done, null, false);
+          return done(null, false);
         })
   }
 ))

@@ -33,11 +33,11 @@ class App extends React.Component {
     this.renderDefaultView()
   }
 
-  addNotification() {
+  addNotification(inputTitle,inputMessage, notificationType) {
     this.notificationDOMRef.current.addNotification({
-      title: "Copied To Clipboard",
-      message: "Send this link to your guests!",
-      type: "success",
+      title: inputTitle,
+      message: inputMessage,
+      type: notificationType,
       insert: "top",
       container: "top-right",
       animationIn: ["animated", "fadeIn"],
@@ -75,7 +75,9 @@ class App extends React.Component {
       return <Home {...props}       secondary={this.state.secondary} 
                                     font={this.state.font}
                                     flipToDash={this.toggleLoggedIn}
-                                    loggedIn={this.state.loggedIn} />
+                                    loggedIn={this.state.loggedIn} 
+                                    addNotification={this.addNotification}
+                                    />
     }
   }
   

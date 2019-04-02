@@ -18,25 +18,12 @@ class CopyLinkModal extends React.Component {
       this.handleClose = this.handleClose.bind(this);
       this.showText = this.showText.bind(this)
       this.hideText = this.hideText.bind(this)
-      this.addNotification = this.addNotification.bind(this);
       this.notificationDOMRef = React.createRef();
   
       this.state = {
         show: false,
         paragraphClass: "hoverButtonText"
       };
-    }
-
-    addNotification() {
-      
-      this.notificationDOMRef.current.addNotification({
-        // other properties have been omitted for brevity
-        type: "awesome",
-        title: "Custom",
-        message: "Notifications can be customized to suit your needs",
-        container: "top-right",
-        paragraphClass: "hoverButtonText"
-      })
     }
 
     componentDidMount(){
@@ -97,7 +84,8 @@ class CopyLinkModal extends React.Component {
                 Press the button to copy your personal link to the clipboard, then send that link to your guests!
               </p>
               <CopyToClipboard text={"https://i-dooo.herokuapp.com/event/"+this.props.eventID}
-                onCopy={()=>{this.setState({copied: true});this.props.addNotification()}}>
+                onCopy={()=>{this.setState({copied: true});
+                this.props.addNotification("Copied to clipboard","Send this link to your guests!", "success")}}>
                 <Button className="btn copyModalButton">Copy to clipboard with button</Button>
               </CopyToClipboard>
               
