@@ -11,6 +11,7 @@ import $ from "jquery"
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import {Particles} from "../src/components/Particles";
+import "../src/components/Nav/style.css"
 
 class App extends React.Component {
   constructor(props){
@@ -126,7 +127,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Particles    secondary={this.state.secondary}/>
+
           <ColorMenu    changePrimaryColor={this.changePrimaryColor} 
                         changeSecondaryColor={this.changeSecondaryColor} 
                         changeFontColor={this.changeFontColor} 
@@ -148,6 +149,7 @@ class App extends React.Component {
               <Route exact path="/Logout" render={this.logOut} />
               <Route component={ErrorPage} />
             </Switch>
+            <Particles    secondary={this.state.secondary}/>
           </div>
       </Router>
     );

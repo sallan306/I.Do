@@ -5,14 +5,16 @@ export function Particles(props) {
 
   return (
 
-<div
+<div className="canvasWrapper"
     style={{
       position: "absolute",
       top: 0,
       left: 0,
       width: "100%",
       height: "100%",
-      overflow: "hidden"
+      overflow: "hidden",
+      zIndex: -100,
+      pointerEvents: "none"
     }}
   >
     <ParticlesReact

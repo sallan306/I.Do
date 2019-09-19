@@ -91,6 +91,13 @@ class MenuBar extends React.Component {
       }
     );
   };
+  skipDemo = () => {
+    this.setState({demoZIndex: ""})
+    var messageTitle = "Tutorial Complete"
+    var messageBody = "Have fun planning your special event!"
+    this.props.toggleDemo()
+    this.props.addNotification(messageTitle, messageBody, "success") 
+  }
   render() {
     return (
       <Container className="openMenu buttonsContainer col-md-6 col-md-offset-3">
@@ -113,12 +120,24 @@ class MenuBar extends React.Component {
               position: "fixed",
               zIndex: 999999,
               width: "20vw",
-              left: "40vw",
+              left: "30vw",
               bottom: "50vh"
             }}
             onClick={this.nextDemo}
           >
             Next
+          </button>
+          <button
+            style={{
+              position: "fixed",
+              zIndex: 999999,
+              width: "20vw",
+              left: "50vw",
+              bottom: "50vh"
+            }}
+            onClick={this.skipDemo}
+          >
+            Skip Demo
           </button>
         </div>
         <CopyLinkModal

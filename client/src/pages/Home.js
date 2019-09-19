@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Input } from "../components/Elements/Input";
 import { Button } from "../components/Elements/Button";
-import "../components/Nav/";
-import "../components/Nav/style.css";
 import Container from "../components/Elements/Container";
 import axios from "axios";
 import API from "../utils/API";
