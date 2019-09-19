@@ -20,8 +20,6 @@ module.exports.initRoutes = (app) => {
     );
 
     app.post('/api/v1/isAuth', (req, res, next) => {
-        // console.log("req within POSTT", req)
-        // console.log("==============")
         if(req.isAuthenticated()){
             console.log("user is logged in")
             res.status(200).json({

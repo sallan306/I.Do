@@ -28,22 +28,24 @@ class App extends React.Component {
       font: "black",
       savedColors: {},
       colorMenuClass: "circle-picker-container",
-      dataContainerClass: "dataContainer openMenu2"
+      dataContainerClass: "dataContainer openMenu2",
+      isDemo: false
     }
     this.renderDefaultView()
   }
 
-  addNotification(inputTitle,inputMessage, notificationType) {
+  addNotification(inputTitle,inputMessage, notificationType, location = "top-center") {
     this.notificationDOMRef.current.addNotification({
       title: inputTitle,
       message: inputMessage,
       type: notificationType,
-      insert: "top",
-      container: "top-right",
+      insert: "bottom",
+      container: location,
       animationIn: ["animated", "fadeIn"],
       animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 3000 },
+      dismiss: { duration: 3002 },
       dismissable: { click: true }
+      
     });
   }
 
@@ -69,6 +71,8 @@ class App extends React.Component {
                                     addNotification={this.addNotification}
                                     toggleColorMenu={this.toggleColorMenu}
                                     dataContainerClass={this.state.dataContainerClass}
+                                    isDemo={this.state.isDemo}
+                                    toggleDemo={this.toggleDemo}
                                     />
     } else {
       $(".MenuContainer").addClass("invisible")
@@ -77,6 +81,8 @@ class App extends React.Component {
                                     flipToDash={this.toggleLoggedIn}
                                     loggedIn={this.state.loggedIn} 
                                     addNotification={this.addNotification}
+                                    isDemo={this.state.isDemo}
+                                    toggleDemo={this.toggleDemo}
                                     />
     }
   }
@@ -85,6 +91,12 @@ class App extends React.Component {
     this.setState({
       loggedIn: true
     })
+  }
+  toggleDemo = () => {
+    this.setState({
+      isDemo: !this.state.isDemo
+    })
+    // console.log("demo activated")
   }
 
   logOut = () => {

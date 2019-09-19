@@ -13,7 +13,10 @@
     margin-top: -3vh;
     opacity: .99;
 }
-
+.react-notification-root {
+    z-index: 9999999;
+    position: relative;
+}
 .titleDescription {
     position: relative;
     bottom: 4vh;
@@ -45,7 +48,7 @@
 
 .colorMenu {
     position: relative;
-    z-index: 10;
+    z-index: 1000;
 }
 .container-title, .home {
     position: relative;
@@ -59,6 +62,7 @@
     position: relative;
     left: 10vw;
     top: 2vh;
+    margin-top: 5vh;
 
 }
 .hoverButtonText {
@@ -108,7 +112,7 @@ p {
 }
 .styleBox {
     position: relative;
-    top: 30%;
+    top: 7.5%;
     z-index: -1;
 }
 .btn-success {
