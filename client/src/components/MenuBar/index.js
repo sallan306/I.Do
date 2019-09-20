@@ -116,24 +116,38 @@ class MenuBar extends React.Component {
           }}
         >
           <button
+          className="demoButton nextButton"
             style={{
               position: "fixed",
               zIndex: 999999,
               width: "20vw",
-              left: "30vw",
-              bottom: "50vh"
+              left: this.state.demoCount > 5 ? "40vw": "30vw" ,
+              bottom: "30vh",
+              borderRadius: this.state.demoCount > 5 ? 10 : 0,
+              borderTopLeftRadius: 10,
+              borderBottomLeftRadius: 10,
+              border: 0,
+              borderRightStyle: "solid",
+              borderLeftWidth: 2
             }}
             onClick={this.nextDemo}
           >
-            Next
+            {this.state.demoCount > 5 ? "Start Partying!": "Next" }
           </button>
           <button
+          className="demoButton skipButton"
             style={{
               position: "fixed",
               zIndex: 999999,
               width: "20vw",
               left: "50vw",
-              bottom: "50vh"
+              bottom: "30vh",
+              visibility: this.state.demoCount > 5 ? "hidden": "visible",
+              borderTopRightRadius: 10,
+              borderBottomRightRadius: 10,
+              border: 0,
+              borderLeftStyle: "solid",
+              borderLeftWidth: 2
             }}
             onClick={this.skipDemo}
           >

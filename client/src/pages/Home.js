@@ -25,9 +25,6 @@ class Home extends Component {
         : console.log("Please log in.")
     );
   }
-  componentDidMount() {
-    console.log(this.props.loggedIn);
-  }
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -112,9 +109,9 @@ class Home extends Component {
           );
     });
   }
-  DEMOLogin = (event) => {
-    event.preventDefault()
-    this.props.toggleDemo()
+  DEMOLogin = event => {
+    event.preventDefault();
+    this.props.toggleDemo();
     API.login("demo", "demodemo", result => {
       console.log("result from API Home: ", result);
       result.status === 200
@@ -125,7 +122,7 @@ class Home extends Component {
             "warning"
           );
     });
-  }
+  };
 
   // prevent.default cannot run twice. So this is used to auto login once user signs up.
   handleFormLogin = event => {
@@ -136,11 +133,7 @@ class Home extends Component {
       this.APILogin();
     }
   };
-  createNotification = () => {
-    return () => {
-      // (message, title, timeOut, callback, priority);
-    };
-  };
+
 
   render(props) {
     return (
