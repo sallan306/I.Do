@@ -10,17 +10,12 @@ import NewContactModal from "../MenuBar/NewContactModal";
 import LogoutModal from "../MenuBar/LogoutModal";
 
 class MenuBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.showText = this.showText.bind(this);
-    this.hideText = this.hideText.bind(this);
-
-    this.state = {
-      paragraphClass: "hoverButtonText",
-      demoZIndex: "copy",
-      demoCount: 1
-    };
-  }
+  state = {
+    paragraphClass: "hoverButtonText",
+    demoZIndex: "copy",
+    demoCount: 1,
+    hovered: false
+  };
   componentDidMount() {
     if (this.props.isDemo) {
       this.props.addNotification(
@@ -28,76 +23,77 @@ class MenuBar extends React.Component {
         "This is your personal link to send to your guests",
         "success"
       );
+    } else {
+      this.setState({
+        demoCount: 8,
+        demoZIndex: ""
+      });
     }
   }
-  toggleColors() {
-    this.setState({ colorMenuClass: "circle-picker-container circleChange" });
-    // $(".circle-picker-container").toggleClass("circleChange")
-  }
-  showText() {
-    if (window.innerWidth > 600) {
-      this.setState({ paragraphClass: "hoverButtonText showText" });
+  showText = () => {
+    if (window.innerWidth > 600 && !this.props.isDemo) {
+      this.setState({
+        paragraphClass: "hoverButtonText showText",
+        hovered: true
+      });
     }
-  }
-  hideText() {
-    this.setState({ paragraphClass: "hoverButtonText" });
-  }
+  };
+  hideText = () => {
+    this.setState({ paragraphClass: "hoverButtonText", hovered: false });
+  };
   nextDemo = () => {
     this.setState(
       {
         demoCount: this.state.demoCount + 1
       },
       () => {
-        console.log(this.state.demoCount)
-        let tempZIndex = ""
-        let messageTitle = ""
-        let messageBody = ""
+        console.log(this.state.demoCount);
+        let tempZIndex = "";
+        let messageTitle = "";
+        let messageBody = "";
         if (this.state.demoCount === 2) {
-          tempZIndex = "newContact" 
-          messageTitle = "New Contact"
-          messageBody = "If you would like to enter contacts yourself."
-        }
-        else if (this.state.demoCount === 3) {
-          tempZIndex = "excel" 
-          messageTitle = "Download as Excel"
-          messageBody = "You can also export your contacts as an Excel doc!"
-        }
-        else if (this.state.demoCount === 4) {
-          tempZIndex = "message" 
-          messageTitle = "Message a Contact"
-          messageBody = "Send an Email or a Text to your contacts!"
-        }
-        else if (this.state.demoCount === 5) {
-          tempZIndex = "color" 
-          messageTitle = "Color Settings"
-          messageBody = "Match your event's color scheme so your guests can see it!"
-        }
-        else if (this.state.demoCount === 6) {
-          tempZIndex = "logout" 
-          messageTitle = "Log Out"
-          messageBody = "Leaving so soon? Don't worry, all of your info is saved!"
-        }
-        else if (this.state.demoCount === 7) {
-          tempZIndex = "" 
-          messageTitle = "Tutorial Complete"
-          messageBody = "Have fun planning your special event!"
-          this.props.toggleDemo()
+          tempZIndex = "newContact";
+          messageTitle = "New Contact";
+          messageBody = "If you would like to enter contacts yourself.";
+        } else if (this.state.demoCount === 3) {
+          tempZIndex = "excel";
+          messageTitle = "Download as Excel";
+          messageBody = "You can also export your contacts as an Excel doc!";
+        } else if (this.state.demoCount === 4) {
+          tempZIndex = "message";
+          messageTitle = "Message a Contact";
+          messageBody = "Send an Email or a Text to your contacts!";
+        } else if (this.state.demoCount === 5) {
+          tempZIndex = "color";
+          messageTitle = "Color Settings";
+          messageBody =
+            "Match your event's color scheme so your guests can see it!";
+        } else if (this.state.demoCount === 6) {
+          tempZIndex = "logout";
+          messageTitle = "Log Out";
+          messageBody =
+            "Leaving so soon? Don't worry, all of your info is saved!";
+        } else if (this.state.demoCount === 7) {
+          tempZIndex = "";
+          messageTitle = "Tutorial Complete";
+          messageBody = "Have fun planning your special event!";
+          this.props.toggleDemo();
         }
         this.setState({
           demoZIndex: tempZIndex
-        })
-        console.log(messageTitle)
-        this.props.addNotification(messageTitle, messageBody, "success")
+        });
+        console.log(messageTitle);
+        this.props.addNotification(messageTitle, messageBody, "success");
       }
     );
   };
   skipDemo = () => {
-    this.setState({demoZIndex: ""})
-    var messageTitle = "Tutorial Complete"
-    var messageBody = "Have fun planning your special event!"
-    this.props.toggleDemo()
-    this.props.addNotification(messageTitle, messageBody, "success") 
-  }
+    this.setState({ demoZIndex: "", demoCount: 8 });
+    var messageTitle = "Tutorial Complete";
+    var messageBody = "Have fun planning your special event!";
+    this.props.toggleDemo();
+    this.props.addNotification(messageTitle, messageBody, "success");
+  };
   render() {
     return (
       <Container className="openMenu buttonsContainer col-md-6 col-md-offset-3">
@@ -115,15 +111,17 @@ class MenuBar extends React.Component {
             zIndex: 9999
           }}
         >
+          {this.state.demoCount}
           <button
-          className="demoButton nextButton"
+            className="demoButton nextButton"
             style={{
               position: "fixed",
               zIndex: 999999,
               width: "20vw",
-              left: this.state.demoCount > 5 ? "40vw": "30vw" ,
+              left:
+                this.state.demoCount > this.state.demoDone ? "40vw" : "30vw",
               bottom: "30vh",
-              borderRadius: this.state.demoCount > 5 ? 10 : 0,
+              borderRadius: this.state.demoCount > this.state.demoDone ? 10 : 0,
               borderTopLeftRadius: 10,
               borderBottomLeftRadius: 10,
               border: 0,
@@ -132,17 +130,20 @@ class MenuBar extends React.Component {
             }}
             onClick={this.nextDemo}
           >
-            {this.state.demoCount > 5 ? "Start Partying!": "Next" }
+            {this.state.demoCount > 5 ? "Start Partying!" : "Next"}
           </button>
           <button
-          className="demoButton skipButton"
+            className="demoButton skipButton"
             style={{
               position: "fixed",
               zIndex: 999999,
               width: "20vw",
               left: "50vw",
               bottom: "30vh",
-              visibility: this.state.demoCount > 5 ? "hidden": "visible",
+              visibility:
+                this.state.demoCount > this.state.demoDone
+                  ? "hidden"
+                  : "visible",
               borderTopRightRadius: 10,
               borderBottomRightRadius: 10,
               border: 0,
@@ -160,31 +161,26 @@ class MenuBar extends React.Component {
           font={this.props.font}
           addNotification={this.props.addNotification}
           demoZIndex={this.state.demoZIndex}
+          demoCount={this.state.demoCount}
+          isDemo={this.props.isDemo}
         />
         <NewContactModal
           name={this.props.userFirstName + " " + this.props.userLastName}
-          contacts={this.props.contacts}
+          {...this.props}
           sendMessageButton={this.props.sendMessageButton}
           handleInputChange={this.props.handleInputChange}
           handleFormSubmit={this.props.handleFormSubmit}
-          firstName={this.props.firstName}
-          lastName={this.props.lastName}
-          email={this.props.email}
-          phone={this.props.phone}
-          street={this.props.street}
-          city={this.props.city}
-          state={this.props.state}
-          zipcode={this.props.zipcode}
-          comment={this.props.comment}
-          secondary={this.props.secondary}
-          font={this.props.font}
           demoZIndex={this.state.demoZIndex}
+          demoCount={this.state.demoCount}
+          isDemo={this.props.isDemo}
         />
         <ExcelModal
           secondary={this.props.secondary}
           font={this.props.font}
           contacts={this.props.contacts}
           demoZIndex={this.state.demoZIndex}
+          demoCount={this.state.demoCount}
+          isDemo={this.props.isDemo}
         />
 
         <MessageModal
@@ -194,6 +190,8 @@ class MenuBar extends React.Component {
           font={this.props.font}
           sendMessageButton={this.sendMessageButton}
           demoZIndex={this.state.demoZIndex}
+          demoCount={this.state.demoCount}
+          isDemo={this.props.isDemo}
         />
         <div>
           <Button
@@ -203,14 +201,18 @@ class MenuBar extends React.Component {
             onMouseLeave={this.hideText}
             secondary={this.props.secondary}
             onClick={this.props.toggleColorMenu}
-            disabled={this.props.demoZIndex === "color"} 
+            disabled={this.props.isDemo}
             style={{
               background: this.props.secondary,
               color: this.props.font,
               border: 0,
               outline: "none",
               position: "relative",
-              zIndex: this.state.demoZIndex === "color" ? 99999 : 10
+              zIndex: this.props.isDemo ? 99999 : 10,
+              opacity:
+                this.state.demoZIndex === "color" || this.state.hovered
+                  ? 1
+                  : 0.2
             }}
           >
             <FontAwesomeIcon
@@ -232,6 +234,8 @@ class MenuBar extends React.Component {
           loggedIn={this.props.loggedIn}
           logOut={this.props.logOut}
           demoZIndex={this.state.demoZIndex}
+          demoCount={this.state.demoCount}
+          isDemo={this.props.isDemo}
         />
       </Container>
     );

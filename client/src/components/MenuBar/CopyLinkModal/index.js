@@ -8,15 +8,12 @@ class CopyLinkModal extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.showText = this.showText.bind(this);
-    this.hideText = this.hideText.bind(this);
     this.notificationDOMRef = React.createRef();
 
     this.state = {
       show: false,
-      paragraphClass: "hoverButtonText"
+      paragraphClass: "hoverButtonText",
+      hovered: false
     };
   }
 
@@ -25,21 +22,24 @@ class CopyLinkModal extends React.Component {
     this.setState({ eventID: this.props.eventID });
   }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({ show: false });
-  }
+  };
 
-  handleShow() {
+  handleShow = () => {
     this.setState({ show: true });
-  }
-  showText() {
-    if (window.innerWidth > 600) {
-      this.setState({ paragraphClass: "hoverButtonText showText" });
+  };
+  showText = () => {
+    if (window.innerWidth > 600 && !this.props.isDemo) {
+      this.setState({
+        paragraphClass: "hoverButtonText showText",
+        hovered: true
+      });
     }
-  }
-  hideText() {
-    this.setState({ paragraphClass: "hoverButtonText" });
-  }
+  };
+  hideText = () => {
+    this.setState({ paragraphClass: "hoverButtonText", hovered: false });
+  };
 
   render() {
     return (
@@ -50,16 +50,19 @@ class CopyLinkModal extends React.Component {
           onClick={this.handleShow}
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}
-          disabled={this.props.demoZIndex === "copy"}
+          disabled={this.props.isDemo}
           style={{
             background: this.props.secondary,
             color: this.props.font,
             border: 0,
             outline: "none",
             position: "relative",
-            zIndex: this.props.demoZIndex === "copy" ? 99999 : 10
+            zIndex: this.props.isDemo ? 99999 : 10,
+            opacity:
+              this.props.demoZIndex === "copy" || this.state.hovered ? 1 : 0.2
           }}
         >
+          {this.state.demoCount}
           <FontAwesomeIcon
             className="fontAwesome"
             style={{ color: this.props.font }}

@@ -6,24 +6,16 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 class LogoutModal extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.showText = this.showText.bind(this);
-    this.hideText = this.hideText.bind(this);
-
-    this.state = {
-      show: false,
-      emailArray: ["sallan306@gmail.com"],
-      textArray: ["4099397554"],
-      subject: "",
-      message: "THIS IS A TEST MESSAGE",
-      guestCheckboxes: {},
-      paragraphClass: "hoverButtonText"
-    };
-  }
+  state = {
+    show: false,
+    emailArray: ["sallan306@gmail.com"],
+    textArray: ["4099397554"],
+    subject: "",
+    message: "THIS IS A TEST MESSAGE",
+    guestCheckboxes: {},
+    paragraphClass: "hoverButtonText",
+    hovered: false
+  };
 
   // --------- CHECKBOX STUFF ----------
   handleCheckboxChange = changeEvent => {
@@ -37,16 +29,13 @@ class LogoutModal extends Component {
       }
     }));
   };
-
-  componentDidMount() {}
-
-  handleClose() {
+  handleClose = () => {
     this.setState({ show: false });
-  }
+  };
 
-  handleShow() {
+  handleShow = () => {
     this.setState({ show: true });
-  }
+  };
 
   sendMessageButton = event => {
     event.preventDefault();
@@ -63,18 +52,18 @@ class LogoutModal extends Component {
     });
     this.handleClose();
   };
-  showText() {
-    if (window.innerWidth > 600) {
+  showText = () => {
+    if (window.innerWidth > 600 && !this.props.isDemo) {
       this.setState({
-        paragraphClass: "hoverButtonText showText"
+        paragraphClass: "hoverButtonText showText", hovered: true
       });
     }
-  }
-  hideText() {
+  };
+  hideText = () => {
     this.setState({
-      paragraphClass: "hoverButtonText"
+      paragraphClass: "hoverButtonText", hovered: false
     });
-  }
+  };
 
   render(props) {
     return (
@@ -84,7 +73,7 @@ class LogoutModal extends Component {
           onClick={this.handleShow}
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}
-          disabled={this.props.demoZIndex === "logout"}
+          disabled={this.props.isDemo}
           className="btn btn-primary logoutButton"
           style={{
             background: this.props.secondary,
@@ -92,7 +81,8 @@ class LogoutModal extends Component {
             outline: "none",
             border: 0,
             position: "relative",
-            zIndex: this.props.demoZIndex === "logout" ? 99999 : 10
+            zIndex: this.props.isDemo ? 99999 : 10,
+            opacity: this.props.demoZIndex === "logout" || this.state.hovered ? 1 : 0.2
           }}
         >
           <FontAwesomeIcon

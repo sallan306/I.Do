@@ -6,24 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 class MessageModal extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.showText = this.showText.bind(this);
-    this.hideText = this.hideText.bind(this);
-
-    this.state = {
-      show: false,
-      emailArray: ["sallan306@gmail.com"],
-      textArray: ["4099397554"],
-      subject: "",
-      message: "THIS IS A TEST MESSAGE",
-      guestCheckboxes: {},
-      paragraphClass: "hoverButtonText"
-    };
-  }
+  state = {
+    show: false,
+    emailArray: ["sallan306@gmail.com"],
+    textArray: ["4099397554"],
+    subject: "",
+    message: "THIS IS A TEST MESSAGE",
+    guestCheckboxes: {},
+    paragraphClass: "hoverButtonText",
+    hovered: false
+  };
 
   // --------- CHECKBOX STUFF ----------
   handleCheckboxChange = changeEvent => {
@@ -51,11 +43,11 @@ class MessageModal extends Component {
     });
   }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({ show: false });
   }
 
-  handleShow() {
+  handleShow = () => {
     this.setState({ show: true });
   }
 
@@ -74,13 +66,13 @@ class MessageModal extends Component {
     });
     this.handleClose();
   };
-  showText() {
-    if (window.innerWidth > 600) {
-      this.setState({ paragraphClass: "hoverButtonText showText" });
+  showText = () => {
+    if (window.innerWidth > 600 && !this.props.isDemo) {
+      this.setState({ paragraphClass: "hoverButtonText showText", hovered: true });
     }
   }
-  hideText() {
-    this.setState({ paragraphClass: "hoverButtonText" });
+  hideText = () => {
+    this.setState({ paragraphClass: "hoverButtonText", hovered: false });
   }
 
   render(props) {
@@ -92,14 +84,18 @@ class MessageModal extends Component {
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}
           onClick={this.handleShow}
-          disabled={this.props.demoZIndex === "message"}
+          disabled={this.props.isDemo}
           style={{
             background: this.props.secondary,
             color: this.props.font,
             border: 0,
             outline: "none",
             position: "relative",
-            zIndex: this.props.demoZIndex === "message" ? 99999 : 10
+            zIndex: this.props.isDemo ? 99999 : 10,
+            opacity:
+              this.props.demoZIndex === "message" || this.state.hovered
+                ? 1
+                : 0.2
           }}
         >
           <FontAwesomeIcon

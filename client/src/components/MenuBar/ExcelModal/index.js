@@ -6,24 +6,16 @@ import { faFileExport } from "@fortawesome/free-solid-svg-icons";
 import ExcelDownload from "./ExcelDownload";
 
 class ExcelModal extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.showText = this.showText.bind(this);
-    this.hideText = this.hideText.bind(this);
-
-    this.state = {
-      show: false,
-      emailArray: ["sallan306@gmail.com"],
-      textArray: ["4099397554"],
-      subject: "",
-      message: "THIS IS A TEST MESSAGE",
-      guestCheckboxes: {},
-      paragraphClass: "hoverButtonText"
-    };
-  }
+  state = {
+    show: false,
+    emailArray: ["sallan306@gmail.com"],
+    textArray: ["4099397554"],
+    subject: "",
+    message: "THIS IS A TEST MESSAGE",
+    guestCheckboxes: {},
+    paragraphClass: "hoverButtonText",
+    hovered: false
+  };
 
   // --------- CHECKBOX STUFF ----------
   handleCheckboxChange = changeEvent => {
@@ -51,13 +43,21 @@ class ExcelModal extends Component {
     });
   }
 
-  handleClose() {
-    this.setState({ show: false });
-  }
-
-  handleShow() {
+  handleShow = () => {
     this.setState({ show: true });
-  }
+  };
+  handleClose = () => {
+    this.setState({ show: false });
+  };
+
+  showText = () => {
+    if (window.innerWidth > 600 && !this.props.isDemo) {
+      this.setState({ paragraphClass: "hoverButtonText showText", hovered: true });
+    }
+  };
+  hideText = () => {
+    this.setState({ paragraphClass: "hoverButtonText", hovered: false });
+  };
 
   sendMessageButton = event => {
     event.preventDefault();
@@ -74,14 +74,6 @@ class ExcelModal extends Component {
     });
     this.handleClose();
   };
-  showText() {
-    if (window.innerWidth > 600) {
-      this.setState({ paragraphClass: "hoverButtonText showText" });
-    }
-  }
-  hideText() {
-    this.setState({ paragraphClass: "hoverButtonText" });
-  }
 
   render(props) {
     return (
@@ -92,14 +84,15 @@ class ExcelModal extends Component {
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}
           onClick={this.handleShow}
-          disabled={this.props.demoZIndex === "excel"}
+          disabled={this.props.isDemo}
           style={{
             background: this.props.secondary,
             color: this.props.font,
             border: 0,
             outline: "none",
             position: "relative",
-            zIndex: this.props.demoZIndex === "excel" ? 9999 : 10
+            zIndex: this.props.isDemo ? 99999 : 10,
+            opacity: this.props.demoZIndex === "excel" || this.state.hovered ? 1 : 0.2
           }}
         >
           <FontAwesomeIcon

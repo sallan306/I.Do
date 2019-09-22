@@ -1,354 +1,354 @@
-
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+  display: none;
 }
 #title {
-    text-align: center;
-    background-color: rgba(247, 238, 228, .8);
-    width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
-    border-radius: 0;
-    height: 25vh;
-    margin-top: -3vh;
-    opacity: .99;
+  text-align: center;
+  background-color: rgba(247, 238, 228, 0.8);
+  width: 100vw;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  height: 25vh;
+  margin-top: -3vh;
+  opacity: 0.99;
 }
 .guest {
-    position: relative;
-    z-index: 999;
-    width: 70%;
-    margin-left: 15%
+  position: relative;
+  z-index: 999;
+  width: 70%;
+  margin-left: 15%;
 }
 .react-notification-root {
-    z-index: 9999999;
-    position: relative;
+  z-index: 9999999;
+  position: relative;
 }
 .titleDescription {
-    position: relative;
-    bottom: 4vh;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    letter-spacing: 2px;
+  position: relative;
+  bottom: 4vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 .loginSignupButton {
-    width: 8vw;
-    float: none;
-    margin-left: 25%;
-    margin-top: 1vh;
-    height: 5vh;
+  width: 8vw;
+  float: none;
+  margin-left: 25%;
+  margin-top: 1vh;
+  height: 5vh;
 }
 .modal-content {
-    max-height: 95vh;
+  max-height: 95vh;
 }
 .modal-body {
-    max-height: 75vh;
-    overflow-y: scroll;
+  max-height: 75vh;
+  overflow-y: scroll;
 }
 .allContentContainer {
-    margin-top: 2vh;
-    width: 70vw;
-    margin-left:5vw;
-    margin-top:5vh
+  margin-top: 2vh;
+  width: 70vw;
+  margin-left: 5vw;
+  margin-top: 5vh;
 }
 
 .colorMenu {
-    position: relative;
-    z-index: 1000;
+  position: relative;
+  z-index: 1000;
 }
-.container-title, .home {
-    position: relative;
-    z-index: 1
+.container-title,
+.home {
+  position: relative;
+  z-index: 1;
 }
 .dataContainer {
-    width: 80%;
-    float: left;
-    height: 45vh;
-    overflow-y: scroll;
-    position: relative;
-    left: 10vw;
-    top: 2vh;
-    margin-top: 5vh;
-
+  width: 80%;
+  float: left;
+  height: 45vh;
+  overflow-y: scroll;
+  position: relative;
+  left: 10vw;
+  margin-top: 10vh;
 }
 .hoverButtonText {
-    font-size: 20px;
-    margin-top: 0;
-    opacity: 0;
-    transition: 0.5s
+  font-size: 20px;
+  margin-top: 0;
+  opacity: 0;
+  transition: 0.5s;
 }
 
 .iconsContainer {
-    z-index: 9;
+  z-index: 9;
 }
-.dataContainer::-webkit-scrollbar { 
-    display: none;  
+.dataContainer::-webkit-scrollbar {
+  display: none;
 }
 .container {
-    margin-top: 2vh;
-    margin-bottom: 0vh;
-    width: 40vw;
-    height: 20vh;
+  margin-top: 2vh;
+  margin-bottom: 0vh;
+  width: 40vw;
+  height: 20vh;
 }
 
-
 .excelModalButton {
-    margin-right: 0;
-    margin-top: 5vh;
-    margin-bottom: 0;
-    width: 70%;
-    margin-left: 15%;
+  margin-right: 0;
+  margin-top: 5vh;
+  margin-bottom: 0;
+  width: 70%;
+  margin-left: 15%;
 }
 
 .panel-body {
-    border-top: 0;
-    padding: 0;
+  border-top: 0;
+  padding: 0;
 }
 
 .logoutModalButton {
-    margin-left: 35%;
-    width: 30%;
+  margin-left: 35%;
+  width: 30%;
 }
 .copyModalButton {
-    margin-left: 5%;
-    width: 90%;
+  margin-left: 5%;
+  width: 90%;
 }
 p {
-    text-align: center
+  text-align: center;
 }
 .styleBox {
-    position: relative;
-    top: 7.5%;
-    z-index: -1;
+  position: relative;
+  top: 7.5%;
+  z-index: -1;
 }
 .btn-success {
-    float: left;
-    font-weight: 100;
+  float: left;
+  font-weight: 100;
 }
 h4 {
-    text-align: center;
+  text-align: center;
 }
 #nav-title {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 90px;
-    letter-spacing: 5px;
-    position: relative;
-    bottom: 5vh;
+  font-family: "Source Code Pro", monospace;
+  font-size: 90px;
+  letter-spacing: 5px;
+  position: relative;
+  bottom: 5vh;
 }
 .titleDescription {
-    bottom: 7vh;
-    position: relative;
+  bottom: 7vh;
+  position: relative;
 }
 .loginContainer {
-    width: 60vw;
-    margin-left: 20vw;
-    margin-top: 15vh;
+  width: 60vw;
+  margin-left: 20vw;
+  margin-top: 15vh;
 }
 
 nav {
-    text-align: center;
-    margin-top: 10px;
-    letter-spacing: 2px;
+  text-align: center;
+  margin-top: 10px;
+  letter-spacing: 2px;
 }
 .showText {
-    opacity: 1;
+  opacity: 1;
 }
-.linkHome, .linkDash, .linkMng {
-    color: black;
-    margin-right: 5px;
-    border-radius: 2px;
-    text-decoration: none;
+.linkHome,
+.linkDash,
+.linkMng {
+  color: black;
+  margin-right: 5px;
+  border-radius: 2px;
+  text-decoration: none;
 }
-.linkHome:link, .linkDash:link, .linkMng:link { 
-    text-decoration: none;
+.linkHome:link,
+.linkDash:link,
+.linkMng:link {
+  text-decoration: none;
 }
-.linkHome:visited, .linkDash:visited, .linkMng:visited { 
-    text-decoration: none;
+.linkHome:visited,
+.linkDash:visited,
+.linkMng:visited {
+  text-decoration: none;
 }
-.linkHome:hover, .linkDash:hover, .linkMng:hover { 
-    background: #faf4ee4d;
-    text-decoration: none;
+.linkHome:hover,
+.linkDash:hover,
+.linkMng:hover {
+  background: #faf4ee4d;
+  text-decoration: none;
 }
 
 #dashboard-title {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    letter-spacing: 3px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 
 #manage-title {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    letter-spacing: 3px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 
 #guest-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    letter-spacing: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 
 #modal-message {
-    font-size: 18px;
-    text-align: center;
-    letter-spacing: 2px;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 2px;
 }
 
 #infoArea {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 #contactInfoPrinted {
-    display:flex;
-    margin: auto;
-    float: right;
-    background-color: blue;
+  display: flex;
+  margin: auto;
+  float: right;
+  background-color: blue;
 }
 
 #editButton {
-    float: right;
+  float: right;
 }
 .form-group {
-    margin-bottom: -10px
+  margin-bottom: -10px;
 }
 .panel-heading {
-    border-radius: 5px
+  border-radius: 5px;
 }
 
 .fontAwesome {
-    pointer-events: none;
-    color: black;
+  pointer-events: none;
+  color: black;
 }
 .buttonsContainer {
-    width: 99vw;
-    height: 15vh;
-    margin-left: 1vw;
-    margin-top: 2vh;
+  width: 99vw;
+  height: 15vh;
+  margin-left: 1vw;
+  margin-top: 2vh;
 }
 
 .btn-primary {
-    width: 15.1vw;
-    height: 84px;
-    float: left;
-    margin-right: 1vw;
-    padding: 0;
-    margin-bottom: 5px;
+  width: 15.1vw;
+  height: 84px;
+  float: left;
+  margin-right: 1vw;
+  padding: 0;
+  margin-bottom: 5px;
 }
 .logoutButton {
-    margin-right: 0;
+  margin-right: 0;
 }
 .editButtonModal {
-    margin-left: 80%;
-    width: 20%;
-    height: 5vh;
-    border: 0;
+  margin-left: 80%;
+  width: 20%;
+  height: 5vh;
+  border: 0;
 }
 
-
-
 @media only screen and (max-width: 600px) {
-
-    .container {
-        position: relative;
-        top:10vh;
-        width: 70vw;
-    }
-    #title {
-
-        height: 12vh;
-        font-size: 20px;
-        margin-top: -4vh;
-        width: 100vw;
-        margin-left: 0;
-        border-radius: 0;
-    }
-    #nav-title{
-        font-size: 35px;
-        bottom: 0
-    }
-    h2 {
-        margin-bottom: 10%;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;
-        letter-spacing: 2px;
-        visibility: hidden;
-    }
-    .loginContainer {
-        width: 60vw;
-        margin-left: 20vw;
-        margin-top: 20vh;
-    }
-    .allContentContainer {
-        margin-top: 5vh;
-        width: 90vw;
-        margin-left: 5vw;
-    }
-    .buttonsContainer {
-        height: 0vh;
-        width: 100%;
-        margin-left: 0;
-        margin-top: 3vh;
-        margin-bottom: 0vh;
-        overflow: hidden;
-        transition: 0.5s;
-        padding-top: 1vh;
-    }
-    .iconsContainer {
-        /* padding-top: 0.5vh; */
-        pointer-events: none;
-        z-index: 9;
-        /* left: 1vw; */
-    }
-    .openMenu {
-        /* display: block; */
-        height: 26vh;
-        transition: 0.5s;
-    }
-    .dataContainer.openMenu2 {
-        height: 45vh;
-        transition: 0.5s
-    }
-    .btn-primary {
-        margin: 1%;
-        width: 31%;
-        height: 10vh;
-        float: left;
-        position: relative;
-        left: 0;
-        padding-top: 0;
-        border: 5px;
-    }
-    .fontAwesome {
-        height: 10vh;
-        position: relative;
-    
-    }
-    .dataContainer {
-        width: 90vw;
-        float: none;
-        height: 75vh;
-        overflow-y: scroll;
-        margin-top: -1vh;
-        left: 5vw;
-    }
-    .invisible {
-        visibility: hidden;
-    }
-    .MenuContainer {
-        visibility: visible;
-    }
-    .panel-body {
-        padding: 0;
-    }
-    .editButtonModal {
-        margin-left: 50%;
-        width: 40%;
-    }
-
+  .container {
+    position: relative;
+    top: 10vh;
+    width: 70vw;
   }
+  #title {
+    height: 12vh;
+    font-size: 20px;
+    margin-top: -4vh;
+    width: 100vw;
+    margin-left: 0;
+    border-radius: 0;
+  }
+  #nav-title {
+    font-size: 35px;
+    bottom: 0;
+  }
+  h2 {
+    margin-bottom: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    visibility: hidden;
+  }
+  .loginContainer {
+    width: 60vw;
+    margin-left: 20vw;
+    margin-top: 20vh;
+  }
+  .allContentContainer {
+    margin-top: 5vh;
+    width: 90vw;
+    margin-left: 5vw;
+  }
+  .buttonsContainer {
+    height: 0vh;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 3vh;
+    margin-bottom: 0vh;
+    overflow: hidden;
+    transition: 0.5s;
+    padding-top: 1vh;
+  }
+  .iconsContainer {
+    /* padding-top: 0.5vh; */
+    pointer-events: none;
+    z-index: 9;
+    /* left: 1vw; */
+  }
+  .openMenu {
+    /* display: block; */
+    height: 26vh;
+    transition: 0.5s;
+  }
+  .dataContainer.openMenu2 {
+    height: 45vh;
+    transition: 0.5s;
+  }
+  .btn-primary {
+    margin: 1%;
+    width: 31%;
+    height: 10vh;
+    float: left;
+    position: relative;
+    left: 0;
+    padding-top: 0;
+    border: 5px;
+  }
+  .fontAwesome {
+    height: 10vh;
+    position: relative;
+  }
+  .dataContainer {
+    width: 90vw;
+    float: none;
+    height: 75vh;
+    overflow-y: scroll;
+    margin-top: 2vh;
+    left: 5vw;
+  }
+  .invisible {
+    visibility: hidden;
+  }
+  .MenuContainer {
+    visibility: visible;
+  }
+  .panel-body {
+    margin-left: 20px;
+    border-style: none;
+  }
+  .editButtonModal {
+    margin-left: 50%;
+    width: 40%;
+  }
+}
