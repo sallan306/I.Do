@@ -28,7 +28,7 @@ module.exports.initRoutes = (app) => {
             });
         } else {
             console.log("user is not logged in")
-            res.status(400).json({
+            res.status(200).json({
                             success: false,
                             err: 400,
                             msg:"Not authenticated"

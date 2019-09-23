@@ -9,7 +9,7 @@
   margin-right: 0;
   border-radius: 0;
   height: 25vh;
-  margin-top: -3vh;
+  margin-top: -20px;
   opacity: 0.99;
 }
 .guest {
@@ -43,6 +43,19 @@
   max-height: 75vh;
   overflow-y: scroll;
 }
+.colorButton {
+  outline: none
+}
+.colorButtonSelected {
+  animation-name: selectedColor;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@keyframes selectedColor {
+  from {opacity: 1;}
+  to {opacity: 0.2;}
+}
 .allContentContainer {
   margin-top: 2vh;
   width: 70vw;
@@ -62,7 +75,7 @@
 .dataContainer {
   width: 80%;
   float: left;
-  height: 45vh;
+  height: 47vh;
   overflow-y: scroll;
   position: relative;
   left: 10vw;
@@ -97,8 +110,10 @@
 }
 
 .panel-body {
-  border-top: 0;
-  padding: 0;
+  margin-left: 20px;
+  border-style: none;
+  border: none;
+  border-top-color: none;
 }
 
 .logoutModalButton {
@@ -138,7 +153,7 @@ h4 {
 .loginContainer {
   width: 60vw;
   margin-left: 20vw;
-  margin-top: 15vh;
+  margin-top: 5vh;
 }
 
 nav {
@@ -225,6 +240,9 @@ nav {
 .panel-heading {
   border-radius: 5px;
 }
+.panel-group {
+  box-shadow: none
+}
 
 .fontAwesome {
   pointer-events: none;
@@ -248,13 +266,26 @@ nav {
 .logoutButton {
   margin-right: 0;
 }
-.editButtonModal {
-  margin-left: 80%;
+.APIContactButtons {
+  margin-left: 0%;
   width: 20%;
   height: 5vh;
   border: 0;
+  float: right;
 }
-
+@media only screen and (max-width: 900px) {
+  .btn-primary {
+    width: 14.5vw
+  }
+  .hoverButtonText {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .hoverButtonText {
+    font-size: 12px;
+  }
+}
 @media only screen and (max-width: 600px) {
   .container {
     position: relative;
@@ -346,6 +377,7 @@ nav {
   .panel-body {
     margin-left: 20px;
     border-style: none;
+    border: none;
   }
   .editButtonModal {
     margin-left: 50%;

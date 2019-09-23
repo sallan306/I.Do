@@ -67,14 +67,14 @@ class LogoutModal extends Component {
 
   render(props) {
     return (
-      <div>
+      <div className="logoutModal">
         <Button
           bsStyle="primary"
           onClick={this.handleShow}
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}
           disabled={this.props.isDemo}
-          className="btn btn-primary logoutButton"
+          className="btn btn-primary logoutButton menuBarbutton"
           style={{
             background: this.props.secondary,
             color: this.props.font,

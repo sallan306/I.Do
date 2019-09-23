@@ -43,9 +43,9 @@ class CopyLinkModal extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="copyLinkModal">
         <Button
-          className="btn btn-primary copyLinkButton"
+          className="btn btn-primary copyLinkButton menuBarButton"
           bsStyle="primary"
           onClick={this.handleShow}
           onMouseEnter={this.showText}

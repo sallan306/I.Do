@@ -13,8 +13,8 @@ function handOff(req, res, next) {
 
         {
             body: txtBody,
-            to: sendTo,  // Text this number
-            from: serverNumber // From a valid Twilio number
+            from: serverNumber, // From a valid Twilio number
+            to: "+1"+sendTo  // Text this number
         }
 
     )

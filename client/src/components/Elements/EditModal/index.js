@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import API from "../../../utils/API";
-import EditContactForm from "../../Elements/EditContactForm";
+import EditContactForm from "../EditContactForm";
 class EditModal extends React.Component {
     state = {
       show: false,
@@ -23,9 +23,6 @@ class EditModal extends React.Component {
 
   componentDidMount() {
     this.setState({
-      belongsTo: this.props.userID,
-      contactID: this.props.contactID,
-      userFirstName: this.props.userFirstName,
       userLastName: this.props.userLastName,
       firstName: this.props.firstName,
       lastName: this.props.lastName,
@@ -48,10 +45,8 @@ class EditModal extends React.Component {
 
   submitEditedContact = (event) => {
     event.preventDefault()
+    var contactID = this.props._id
     var contact = {
-      belongsTo: this.state.belongsTo,
-      userFirstName: this.state.userFirstName,
-      userLastName: this.state.userLastName,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -61,16 +56,16 @@ class EditModal extends React.Component {
       state: this.state.state,
       zipcode: this.state.zipcode,
       comment: this.state.comment,
-      contactID: this.state.contactID
     }
-    console.log(contact.contactID)
-    console.log(contact.belongsTo)
-    API.editContact(contact, res => {
+    API.editContact(contactID, contact, res  => {
       console.log(res)
     })
+    this.props.reloadContacts()
+    this.handleClose()
   }
-  deleteContact = () => {
-// API.deleteContact()
+  deleteContact = event => {
+    event.preventDefault()
+    API.deleteContacts(this.props._id)
   }
   handleClose = () => {
     this.setState({ show: false });
@@ -82,24 +77,24 @@ class EditModal extends React.Component {
 
   render(props) {
     return (
-      <div>
+      <div className="editModal">
         <Button
           bsStyle="primary"
           bsSize="small"
-          className="editButtonModal"
-          onClick={this.handleShow}
-          style={{ background: this.props.secondary, color: this.props.font }}
-        >
-          Edit
-        </Button>
-        <Button
-          bsStyle="primary"
-          bsSize="small"
-          className="editButtonModal"
+          className="btn btn-primary deleteButtonModal APIContactButtons"
           onClick={this.deleteContact}
           style={{ background: this.props.secondary, color: this.props.font }}
         >
           Delete
+        </Button>
+        <Button
+          bsStyle="primary"
+          bsSize="small"
+          className="btn btn-primary editButtonModal APIContactButtons"
+          onClick={this.handleShow}
+          style={{ background: this.props.secondary, color: this.props.font }}
+        >
+          Edit
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>

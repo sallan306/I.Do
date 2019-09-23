@@ -24,7 +24,7 @@ body {
 .circle-picker-container {
     position: fixed;
     left: -195px;
-    top: 50px;
+    top: 10px;
 }
 
 .circle-picker-primary, .circle-picker-secondary, .circle-picker-font {

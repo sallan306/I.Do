@@ -21,7 +21,8 @@ class Dashboard extends Component {
     comment: "",
     task: "",
     list: {},
-    savedColors: {}
+    savedColors: {},
+    updatedContacts: false
   };
 
   handleInputChange = event => {
@@ -65,7 +66,38 @@ class Dashboard extends Component {
       comment: ""
     });
   }
-
+  reloadContacts = () => {
+    API.getContacts(results => {
+      console.log("RESULTS.DATA", results.data);
+      this.setState({
+        contacts: results.data.contacts
+      });
+    });
+    this.setState(
+      {
+        contactsGotUpdated: true
+      },
+      () => {
+        setTimeout(() => {
+          this.setState({
+            contactsGotUpdated: false
+          });
+        }, 200);
+      }
+    );
+  };
+  mapContacts = () => {
+    return this.state.contacts.map(contact => (
+      <ContactCard
+        {...contact}
+        secondary={this.props.secondary}
+        font={this.props.font}
+        key={contact._id}
+        contactsGotUpdated={this.state.contactsGotUpdated}
+        reloadContacts={this.reloadContacts}
+      />
+    ));
+  };
   componentDidMount() {
     console.log(this.props.loggedIn);
     this.clearForm();
@@ -87,30 +119,16 @@ class Dashboard extends Component {
       <div>
         <MenuBar
           {...this.state}
+          {...this.props}
           name={this.state.userFirstName + " " + this.state.userLastName}
           sendMessageButton={this.sendMessageButton}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
-          secondary={this.props.secondary}
-          font={this.props.font}
-          loggedIn={this.props.loggedIn}
-          logOut={this.props.logOut}
-          addNotification={this.props.addNotification}
-          toggleColorMenu={this.props.toggleColorMenu}
-          isDemo={this.props.isDemo}
-          toggleDemo={this.props.toggleDemo}
         />
 
         <Container className={this.props.dataContainerClass}>
           <PanelGroup id="panelId" style={{ background: "transparent" }}>
-            {this.state.contacts.map(contact => (
-              <ContactCard
-                {...contact}
-                secondary={this.props.secondary}
-                font={this.props.font}
-                key={contact._id}
-              />
-            ))}
+            {this.state.contactsGotUpdated ? "" : this.mapContacts()}
           </PanelGroup>
         </Container>
       </div>

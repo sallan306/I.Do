@@ -9,19 +9,20 @@ class MessageModal extends Component {
   state = {
     show: false,
     emailArray: ["sallan306@gmail.com"],
-    textArray: ["4099397554"],
+    phoneNumberArray: ["16032755557"],
     subject: "",
     message: "THIS IS A TEST MESSAGE",
     guestCheckboxes: {},
     paragraphClass: "hoverButtonText",
-    hovered: false
+    hovered: false,
+    messageType: "Text"
   };
 
   // --------- CHECKBOX STUFF ----------
   handleCheckboxChange = changeEvent => {
     console.log("handleCheckboxChange");
     const { name } = changeEvent.target;
-
+    console.log(name);
     this.setState(prevState => ({
       guestCheckboxes: {
         ...prevState.guestCheckboxes,
@@ -45,41 +46,104 @@ class MessageModal extends Component {
 
   handleClose = () => {
     this.setState({ show: false });
-  }
+  };
 
   handleShow = () => {
     this.setState({ show: true });
-  }
+  };
 
-  sendMessageButton = event => {
+  sendMessage = (event, type) => {
     event.preventDefault();
+    if (type === "Text") {
+      let messageObject = {
+        phoneNumberArray: this.state.phoneNumberArray,
+        message: this.state.message
+      };
+      API.sendText(messageObject.phoneNumberArray, messageObject.message);
+      console.log(messageObject.phoneNumberArray);
+      console.log("text a contact");
+    } else if (type === "Email") {
+      console.log(this.state.emailArray);
+      let messageObject = {
+        emailArray: this.state.emailArray,
+        subject: `You have a message from ${this.props.name}`,
+        message: this.state.message
+      };
 
-    let messageObject = {
-      emailArray: this.state.emailArray,
-      // textArray: this.state.textArray,
-      subject: `You have a message from ${this.props.name}`,
-      message: this.state.message
-    };
-
-    API.message(messageObject, result => {
-      console.log("send message button API result:", result);
-    });
+      API.sendEmail(messageObject, result => {
+        console.log("send message button API result:", result);
+      });
+    }
     this.handleClose();
   };
   showText = () => {
     if (window.innerWidth > 600 && !this.props.isDemo) {
-      this.setState({ paragraphClass: "hoverButtonText showText", hovered: true });
+      this.setState({
+        paragraphClass: "hoverButtonText showText",
+        hovered: true
+      });
     }
-  }
+  };
   hideText = () => {
     this.setState({ paragraphClass: "hoverButtonText", hovered: false });
-  }
-
+  };
+  changeMessage = event => {
+    this.setState(
+      {
+        message: event.target.value
+      },
+      () => {
+        console.log(this.state.message);
+      }
+    );
+  };
+  textContact = () => {
+    return (
+      <ul>
+        {this.props.contacts.map(contact => (
+          <MessageContact
+            {...contact}
+            onCheckboxChange={this.handleCheckboxChange}
+            secondary={this.props.secondary}
+            font={this.props.font}
+            key={contact._id}
+            messageType={this.state.messageType}
+          />
+        ))}
+      </ul>
+    );
+  };
+  emailContact = () => {
+    return (
+      <ul>
+        {this.props.contacts.map(contact => (
+          <MessageContact
+            {...contact}
+            onCheckboxChange={this.handleCheckboxChange}
+            secondary={this.props.secondary}
+            font={this.props.font}
+            key={contact._id}
+            messageType={this.state.messageType}
+          />
+        ))}
+      </ul>
+    );
+  };
+  setToText = () => {
+    this.setState({
+      messageType: "Text"
+    });
+  };
+  setToEmail = () => {
+    this.setState({
+      messageType: "Email"
+    });
+  };
   render(props) {
     return (
-      <div>
+      <div className="messageModal">
         <Button
-          className="btn btn-primary messageButton"
+          className="btn btn-primary messageButton menuBarButton"
           bsStyle="primary"
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}
@@ -113,24 +177,27 @@ class MessageModal extends Component {
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Message a Contact</Modal.Title>
+            <Modal.Title>{this.state.messageType} a Contact</Modal.Title>
+            <button onClick={this.setToText}>Text a Contact</button>
+            <button onClick={this.setToEmail}>Email a Contact</button>
           </Modal.Header>
           <Modal.Body>
-            <ul>
-              {this.props.contacts.map(contact => (
-                <MessageContact
-                  {...contact}
-                  onCheckboxChange={this.handleCheckboxChange}
-                  secondary={this.props.secondary}
-                  font={this.props.font}
-                  key={contact._id}
-                />
-              ))}
-            </ul>
+            {this.state.messageType === "Text"
+              ? this.textContact()
+              : this.emailContact()}
+            Your Message:{" "}
+            <input
+              onChange={this.changeMessage}
+              value={this.state.message}
+            ></input>
           </Modal.Body>
           <Modal.Footer>
             {/* Handle Send Button */}
-            <Button onClick={this.sendMessageButton}>Send</Button>
+            <Button
+              onClick={event => this.sendMessage(event, this.state.messageType)}
+            >
+              Send
+            </Button>
             <Button onClick={this.handleClose}>Close</Button>
           </Modal.Footer>
         </Modal>

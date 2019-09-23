@@ -71,11 +71,11 @@ class NewContactModal extends Component {
   };
   render(props) {
     return (
-      <div>
+      <div className="newContactModal">
         <Button
           bsStyle="primary"
           onClick={this.handleShow}
-          className="btn btn-primary newContactButton"
+          className="btn btn-primary newContactButton menuBarButton"
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}
           disabled={this.props.isDemo}

@@ -77,9 +77,9 @@ class ExcelModal extends Component {
 
   render(props) {
     return (
-      <div>
+      <div className="excelModal">
         <Button
-          className="btn btn-primary excelButton"
+          className="btn btn-primary excelButton menuBarButton"
           bsStyle="primary"
           onMouseEnter={this.showText}
           onMouseLeave={this.hideText}

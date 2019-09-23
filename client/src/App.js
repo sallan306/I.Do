@@ -2,8 +2,7 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -14,8 +13,10 @@ import ColorMenu from "./components/ColorMenu";
 import API from "./utils/API";
 import $ from "jquery";
 import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
 import { Particles } from "../src/components/Particles";
+
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import "react-notifications-component/dist/theme.css";
 import "../src/components/Nav/style.css";
 
 class App extends React.Component {
@@ -116,10 +117,11 @@ class App extends React.Component {
     // console.log("demo activated")
   };
 
-  logOut = () => {
+  logOut = event => {
     this.setState({ loggedIn: false });
+    event.preventDefault();
     API.logout();
-    return <Redirect to="/" />;
+    window.location.reload();
   };
   toggleDataContainer() {
     if (this.state.dataContainerClass === "dataContainer") {
@@ -147,7 +149,6 @@ class App extends React.Component {
             changeFontColor={this.changeFontColor}
             dataContainerClass={this.toggleDataContainer}
           />
-
           <ReactNotification ref={this.notificationDOMRef} />
           <Nav secondary={this.state.secondary} font={this.state.font} />
           <Switch>

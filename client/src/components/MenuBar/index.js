@@ -3,11 +3,11 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPalette } from "@fortawesome/free-solid-svg-icons";
 import Container from "../Elements/Container";
-import ExcelModal from "../MenuBar/ExcelModal";
-import CopyLinkModal from "../MenuBar/CopyLinkModal";
-import MessageModal from "../MenuBar/MessageModal";
-import NewContactModal from "../MenuBar/NewContactModal";
-import LogoutModal from "../MenuBar/LogoutModal";
+import CopyLinkModal from "./1CopyLinkModal/index.js";
+import NewContactModal from "./2NewContactModal/index.js";
+import ExcelModal from "./3ExcelModal/index.js";
+import MessageModal from "./4MessageModal/index.js";
+import LogoutModal from "./6LogoutModal/index.js";
 
 class MenuBar extends React.Component {
   state = {
@@ -105,7 +105,7 @@ class MenuBar extends React.Component {
             left: 0,
             top: 0,
             opacity: this.props.isDemo ? 0.7 : 0,
-            visibility: this.props.isDemo ? "visible" : "hidden",
+            display: this.props.isDemo ? "initial" : "none",
             position: "fixed",
             backgroundColor: "gray",
             zIndex: 9999
@@ -126,7 +126,9 @@ class MenuBar extends React.Component {
               borderBottomLeftRadius: 10,
               border: 0,
               borderRightStyle: "solid",
-              borderLeftWidth: 2
+              borderLeftWidth: 2,
+              display:
+                this.state.demoCount > this.state.demoDone ? "none" : "initial"
             }}
             onClick={this.nextDemo}
           >
@@ -140,10 +142,8 @@ class MenuBar extends React.Component {
               width: "20vw",
               left: "50vw",
               bottom: "30vh",
-              visibility:
-                this.state.demoCount > this.state.demoDone
-                  ? "hidden"
-                  : "visible",
+              display:
+                this.state.demoCount > this.state.demoDone ? "none" : "initial",
               borderTopRightRadius: 10,
               borderBottomRightRadius: 10,
               border: 0,

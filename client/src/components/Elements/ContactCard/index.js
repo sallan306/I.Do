@@ -2,7 +2,7 @@ import React from "react";
 import { Panel } from 'react-bootstrap';
 import { PanelGroup } from 'react-bootstrap';
 import { PrintText } from "../../PrintText";
-import EditModal from "../../MenuBar/EditModal";
+import EditModal from "../../Elements/EditModal/index.js";
 
 // import Checkbox from '../Checkbox';
 
@@ -31,10 +31,10 @@ function ContactCard(props) {
                         <PrintText style={{background: props.secondary}}>
                             {props.street}
                             <br/>
-                            {props.city} {props.state}{props.zipcode}
+                            {props.city} {props.state} {props.zipcode}
                         </PrintText>
                     </PrintText>
-                    <EditModal guestID={props._id}/>
+                    <EditModal {...props}/>
                 </Panel.Body>
             </Panel>
         </PanelGroup>

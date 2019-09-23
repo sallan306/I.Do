@@ -42,6 +42,7 @@ export default {
   },
    // Deletes the contact with the given id
    deleteContacts: (contactID) => {
+     console.log("thisiscontactid: "+contactID)
     axios.delete(`/api/v1/contacts/`+contactID, {});
   },
 
@@ -62,16 +63,6 @@ export default {
   getUser: (userID) => {
     axios.get(`/api/v1/users`, {});
   },
-  //PATHS NOT BEING IMPLEMENTED IN CURRENT BUILD
-  /*
-  updateUser: (userID, contact)=>{
-    axios.put(`/api/v1/users`, contact)
-  },
-
-  deleteUser: (userID) => {
-    axios.post(`/api/v1/users/`, {});
-  },
-  */
   //==========================================================
   //SERVICES
   //==========================================================
@@ -79,7 +70,7 @@ export default {
   //sentTO must be "+16032755557" to use twilio.
     //any other number isnt supported due to twilio free account.
   sendText: (sendTo, message) => {
-    axios.post('/api/v1/sms', {sendTo: "+16032755557", txtBody: message });
+    axios.post('/api/v1/sms', {sendTo: sendTo, txtBody: message });
   },
   login: function(email, password, cb) {
     axios.post('/api/v1/login', {email: email, password: password})
@@ -114,7 +105,7 @@ export default {
       console.log(err);
     })
   },
-  message: (data, cb) => {
+  sendEmail: (data, cb) => {
     //console.log("API TRANSLATOR: message");
     //console.log(data);
     /*
