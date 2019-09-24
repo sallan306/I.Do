@@ -8,10 +8,10 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 class MessageModal extends Component {
   state = {
     show: false,
-    emailArray: ["sallan306@gmail.com"],
-    phoneNumberArray: ["16032755557"],
+    emailArray: [],
+    phoneNumberArray: [],
     subject: "",
-    message: "THIS IS A TEST MESSAGE",
+    message: "Enter your message here!",
     guestCheckboxes: {},
     paragraphClass: "hoverButtonText",
     hovered: false,
@@ -19,18 +19,60 @@ class MessageModal extends Component {
   };
 
   // --------- CHECKBOX STUFF ----------
-  handleCheckboxChange = changeEvent => {
-    console.log("handleCheckboxChange");
+  handleTextCheckboxChange = changeEvent => {
+    console.log("handleTextCheckboxChange");
     const { name } = changeEvent.target;
-    console.log(name);
-    this.setState(prevState => ({
-      guestCheckboxes: {
-        ...prevState.guestCheckboxes,
-        [name]: !prevState.guestCheckboxes[name]
+    var tempArray = this.state.phoneNumberArray;
+    // tempArray.push(name)
+    this.setState(
+      prevState => ({
+        guestCheckboxes: {
+          ...prevState.guestCheckboxes,
+          [name]: !prevState.guestCheckboxes[name]
+        }
+      }),
+      () => {
+        if (this.state.guestCheckboxes[name]) {
+          tempArray.push(name);
+          this.setState({ phoneNumberArray: tempArray }, () =>
+            console.log(this.state.phoneNumberArray)
+          );
+        } else if (!this.state.guestCheckboxes[name]) {
+          tempArray.pop(name);
+          this.setState({ phoneNumberArray: tempArray }, () =>
+            console.log(this.state.phoneNumberArray)
+          );
+        }
       }
-    }));
+    );
   };
-
+  handleEmailCheckboxChange = changeEvent => {
+    console.log("handleEmailCheckboxChange");
+    const { name } = changeEvent.target;
+    var tempArray = this.state.emailArray;
+    // tempArray.push(name)
+    this.setState(
+      prevState => ({
+        guestCheckboxes: {
+          ...prevState.guestCheckboxes,
+          [name]: !prevState.guestCheckboxes[name]
+        }
+      }),
+      () => {
+        if (this.state.guestCheckboxes[name]) {
+          tempArray.push(name);
+          this.setState({ emailArray: tempArray }, () =>
+            console.log(this.state.emailArray)
+          );
+        } else if (!this.state.guestCheckboxes[name]) {
+          tempArray.pop(name);
+          this.setState({ emailArray: tempArray }, () =>
+            console.log(this.state.emailArray)
+          );
+        }
+      }
+    );
+  };
   componentDidMount() {
     const guestCheckboxes = this.props.contacts.reduce(
       (checkboxObj, contact) => ({
@@ -103,7 +145,7 @@ class MessageModal extends Component {
         {this.props.contacts.map(contact => (
           <MessageContact
             {...contact}
-            onCheckboxChange={this.handleCheckboxChange}
+            onCheckboxChange={this.handleTextCheckboxChange}
             secondary={this.props.secondary}
             font={this.props.font}
             key={contact._id}
@@ -119,7 +161,7 @@ class MessageModal extends Component {
         {this.props.contacts.map(contact => (
           <MessageContact
             {...contact}
-            onCheckboxChange={this.handleCheckboxChange}
+            onCheckboxChange={this.handleEmailCheckboxChange}
             secondary={this.props.secondary}
             font={this.props.font}
             key={contact._id}

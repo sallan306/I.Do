@@ -12,8 +12,6 @@ const isAuthenticated = (req, res, next) =>{
 
 module.exports.initRoutes = (app) => {
 
-    // read ALL contacts belonging to user
-        // inorder to see contacts belonging to user, checking auth.
     app.get('/api/v1/contacts/',  isAuth , controller.getContacts);
 
     //create a contact
@@ -30,7 +28,9 @@ module.exports.initRoutes = (app) => {
     app.put('/api/v1/contacts/:contactID', isAuthenticated, (req, res) => {
         controller.editContact(req, res);
     })
-
+    app.delete(`/api/v1/contacts/`, isAuthenticated, (req,res) => {
+        controller.deleteAllContacts(req,res)
+    })
     //delete a contact
     app.delete('/api/v1/contacts/:contactID', isAuthenticated, (req, res) => {
         controller.deleteContact(req, res);

@@ -6,127 +6,121 @@ export default {
   //==========================================================
 
   // Saves a Contact to the database
-    //requires userID passed. req.user.id cant be assumed to be present.
+  //requires userID passed. req.user.id cant be assumed to be present.
   createContact: (userID, userData) => {
-    axios.post("/api/v1/contacts/"+{userID}, userData)
+    axios.post("/api/v1/contacts/" + { userID }, userData);
   },
   createUserContact: (contactData, cb) => {
-    axios.post('/api/v1/contacts', contactData)
-    .then(result => {
-      cb(result)
-    })
-    .catch()
+    axios
+      .post("/api/v1/contacts", contactData)
+      .then(result => {
+        cb(result);
+      })
+      .catch();
   },
   createGuestContact: (userID, contactData, cb) => {
-    axios.post('/api/v1/contacts/'+userID, contactData)
-    .then( result => {
-      cb(result)
-    })
-    .catch()
+    axios
+      .post("/api/v1/contacts/" + userID, contactData)
+      .then(result => {
+        cb(result);
+      })
+      .catch();
   },
   // Gets all contacts associated with user
-  getContacts: ( cb ) => {
-    axios.get(`/api/v1/contacts/`)
-      .then( result => {
+  getContacts: cb => {
+    axios
+      .get(`/api/v1/contacts/`)
+      .then(result => {
         // console.log(result);
         cb(result);
       })
-      .catch( err => console.log(err));
+      .catch(err => console.log(err));
   },
   // Gets the contact with the given id
-  getContact: (contactID) => {
+  getContact: contactID => {
     axios.get(`/api/v1/contacts/${contactID}`, {});
   },
   editContact: (contactID, userData) => {
     axios.put(`/api/v1/contacts/${contactID}`, userData);
   },
-   // Deletes the contact with the given id
-   deleteContacts: (contactID) => {
-     console.log("thisiscontactid: "+contactID)
-    axios.delete(`/api/v1/contacts/`+contactID, {});
+  // Deletes the contact with the given id
+  deleteContacts: contactID => {
+    // console.log("thisiscontactid: " + contactID);
+    axios.delete(`/api/v1/contacts/` + contactID, {});
+  },
+  deleteAllContacts: () => {
+    axios.delete(`/api/v1/contacts/`)
   },
 
   //==========================================================
   //USER CRUD
   //==========================================================
 
-  createUser: (user, cb)=>{
+  createUser: (user, cb) => {
     //console.log("create user api.js")
-    axios.post(`/api/v1/users`, user)
-    .then( result =>{
-      result 
-      ? cb(result)
-      : console.log(result)
-    })
+    axios.post(`/api/v1/users`, user).then(result => {
+      result ? cb(result) : console.log(result);
+    });
   },
 
-  getUser: (userID) => {
-    axios.get(`/api/v1/users`, {});
+  getUser: (userID, cb) => {
+    axios.get(`/api/v1/users/${userID}`).then(result => {
+      cb(result)
+    });
+  },
+  editUserColor: (userID, userData) => {
+    axios.put(`/api/v1/users/${userID}`, userData);
   },
   //==========================================================
   //SERVICES
   //==========================================================
 
   //sentTO must be "+16032755557" to use twilio.
-    //any other number isnt supported due to twilio free account.
-  sendText: (sendTo, message) => {
-    axios.post('/api/v1/sms', {sendTo: sendTo, txtBody: message });
-  },
+  //any other number isnt supported due to twilio free account.
   login: function(email, password, cb) {
-    axios.post('/api/v1/login', {email: email, password: password})
-      .then( (result) => {
-        console.log("result from loginAPI",result)
+    axios
+      .post("/api/v1/login", { email: email, password: password })
+      .then(result => {
+        // console.log("result from loginAPI", result);
         cb(result);
       })
-      .catch( (error) => {
-        cb(error)
-        console.log("error from loginAPI",error)
+      .catch(error => {
+        cb(error);
+        console.log("error from loginAPI", error);
       });
   },
 
-  logout: ()=>{
-    axios.get('/api/v1/logout')
-    .then( (result) => {
-      console.log( result)
-    }
-    )
-    .catch( (err) =>
-      console.log(err)
-    )
+  logout: () => {
+    axios
+      .get("/api/v1/logout")
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => console.log(err));
   },
 
-  isAuth: (cb)=> {
-    axios.post('/api/v1/isAuth')
-    .then( (result) => {
-      cb(result)
-      // console.log("ISAUTH", result);
-    })
-    .catch( (err) => {
-      console.log(err);
-    })
+  isAuth: cb => {
+    axios
+      .post("/api/v1/isAuth")
+      .then(result => {
+        cb(result);
+        // console.log("ISAUTH", result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  sendText: (sendTo, message) => {
+    axios.post("/api/v1/sms", { sendTo: sendTo, txtBody: message });
   },
   sendEmail: (data, cb) => {
-    //console.log("API TRANSLATOR: message");
-    //console.log(data);
-    /*
-    for (let i=0; i<data.textArray.length; i++){
-      data.textArray[i] = ("+1"+data.textArray[i])
-      console.log(data.textArray[i]);
-    }
-    */
-    console.log("TODO: SEND TO TEXTING BACKEND ROUTE")
-    for(let i=0; i< data.emailArray.length; i++){
+    for (let i = 0; i < data.emailArray.length; i++) {
       console.log(data.emailArray[i]);
     }
-    axios.post('/api/v1/email', {
+    axios.post("/api/v1/email", {
       emailArray: data.emailArray,
       emailSubject: data.subject,
-      emailBody: data.message      
-    })
-    console.log("TODO: SEND TO EMAILING BACK END ROUTE");
+      emailBody: data.message
+    });
   }
 };
-// data...
-//         emailArray: ["kbauertx@gmail.com", "kylecom2000@me.com"],
-//         textArray: ["4099397554"],
-//         message: "THIS IS A TEST MESSAGE"

@@ -5,7 +5,6 @@ import API from "../utils/API";
 
 class Guests extends Component {
   state = {
-    userID: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -17,10 +16,10 @@ class Guests extends Component {
   };
 
   componentDidMount() {
-    const userID = this.props.match.params.userID;
-    console.log(userID);
-    // TODO Assign userID to state
-    this.setState({ userID: userID });
+    var pathname = window.location.pathname;
+    pathname = pathname.substring(7);
+    // this.props.updateColorsFromGuest(pathname);
+    this.props.setUserID(pathname)
   }
 
   handleInputChange = event => {
@@ -32,9 +31,10 @@ class Guests extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.createGuestContact(this.state.userID, this.state, result =>
-      this.clearFormThanks()
-    );
+    API.createGuestContact(this.props.userID, this.state, (result)=> {
+      
+    });
+    this.clearFormThanks()
     // TODO on submit of the form, send data to userID database
   };
 
@@ -49,16 +49,15 @@ class Guests extends Component {
       state: "",
       zipcode: ""
     });
-    alert("Thank you!");
+    // alert("Thank you!");
   }
 
   render() {
     return (
       <div className="guest">
         <Container>
-          <h3>Let's Get Started!</h3>
           <GuestForm
-            {...this.state}
+            {...this.props}
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}
           />

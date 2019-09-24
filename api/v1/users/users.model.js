@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt-nodejs");
-
+mongoose.set('useFindAndModify', false)
 const User = mongoose.model("User", {
   firstName: String,
   lastName: String,

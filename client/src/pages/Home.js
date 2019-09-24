@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input } from "../components/Elements/Input";
+import Input from "../components/Elements/Input";
 import { Button } from "../components/Elements/Button";
 import Container from "../components/Elements/Container";
 import axios from "axios";
@@ -86,10 +86,10 @@ class Home extends Component {
       infoValidated = false;
     }
     if (infoValidated) {
-      console.log(userInfo);
+      // console.log(userInfo);
       axios
         .post(`/api/v1/users`, userInfo, function(results) {
-          console.log(results);
+          // console.log(results);
         })
         .then(res => {
           this.handleFormLogin(res);
@@ -99,7 +99,7 @@ class Home extends Component {
 
   APILogin() {
     API.login(this.state.email, this.state.password, result => {
-      console.log("result from API Home: ", result);
+      // console.log("result from API Home: ", result);
       result.status === 200
         ? this.props.flipToDash(result.data)
         : this.props.addNotification(
@@ -113,7 +113,7 @@ class Home extends Component {
     event.preventDefault();
     this.props.toggleDemo();
     API.login("demo", "demodemo", result => {
-      console.log("result from API Home: ", result);
+      // console.log("result from API Home: ", result);
       result.status === 200
         ? this.props.flipToDash(result.data)
         : this.props.addNotification(

@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
@@ -22,11 +18,10 @@ import "../src/components/Nav/style.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.addNotification = this.addNotification.bind(this);
-    this.toggleColorMenu = this.toggleColorMenu.bind(this);
     this.notificationDOMRef = React.createRef();
 
     this.state = {
+      userID: "",
       userData: "",
       loggedIn: false,
       primary: "white",
@@ -35,17 +30,18 @@ class App extends React.Component {
       savedColors: {},
       colorMenuClass: "circle-picker-container",
       dataContainerClass: "dataContainer openMenu2",
-      isDemo: false
+      isDemo: false,
+      eventID: ""
     };
     this.renderDefaultView();
   }
 
-  addNotification(
+  addNotification = (
     inputTitle,
     inputMessage,
     notificationType,
     location = "top-center"
-  ) {
+  ) => {
     this.notificationDOMRef.current.addNotification({
       title: inputTitle,
       message: inputMessage,
@@ -58,7 +54,25 @@ class App extends React.Component {
       dismissable: { click: true }
     });
   }
+  updateColors = () => {
+    var colorArray = [];
 
+    // console.log("updateColors function");
+    API.getUser(this.state.userID, result => {
+      colorArray = result.data.data.color;
+      console.log("colors: " + colorArray);
+      this.setState(
+        {
+          primary: colorArray[0],
+          secondary: colorArray[1],
+          font: colorArray[2]
+        },
+        () => {
+          document.body.style.backgroundColor = this.state.primary;
+        }
+      );
+    });
+  };
   changePrimaryColor = newColor => {
     this.setState({ primary: newColor });
   };
@@ -70,35 +84,44 @@ class App extends React.Component {
   };
   componentDidMount() {
     window.changePrimaryColor = this.changePrimaryColor;
+    if (this.state.userID !== "") {
+      this.updateColors();
+    }
   }
+  setUserID = value => {
+    this.setState(
+      {
+        userID: value,
+        eventID: value
+      },
+      () => {
+        this.updateColors();
+      }
+    );
+  };
   renderDefaultView = props => {
     if (this.state.loggedIn) {
       $(".MenuContainer").removeClass("invisible");
       return (
         <Dashboard
-          {...props}
-          secondary={this.state.secondary}
-          font={this.state.font}
-          loggedIn={this.state.loggedIn}
+          {...this.props}
+          {...this.state}
           logOut={this.logOut}
           addNotification={this.addNotification}
           toggleColorMenu={this.toggleColorMenu}
-          dataContainerClass={this.state.dataContainerClass}
-          isDemo={this.state.isDemo}
           toggleDemo={this.toggleDemo}
+          setUserID={this.setUserID}
+          updateColors={this.updateColors}
         />
       );
     } else {
       $(".MenuContainer").addClass("invisible");
       return (
         <Home
-          {...props}
-          secondary={this.state.secondary}
-          font={this.state.font}
+          {...this.props}
+          {...this.state}
           flipToDash={this.toggleLoggedIn}
-          loggedIn={this.state.loggedIn}
           addNotification={this.addNotification}
-          isDemo={this.state.isDemo}
           toggleDemo={this.toggleDemo}
         />
       );
@@ -123,14 +146,14 @@ class App extends React.Component {
     API.logout();
     window.location.reload();
   };
-  toggleDataContainer() {
+  toggleDataContainer = () => {
     if (this.state.dataContainerClass === "dataContainer") {
       this.setState({ dataContainerClass: "dataContainer openMenu2" });
     } else {
       this.setState({ dataContainerClass: "dataContainer" });
     }
   }
-  toggleColorMenu() {
+  toggleColorMenu = () => {
     if (this.state.colorMenuClass === "circle-picker-container") {
       this.setState({ colorMenuClass: "circle-picker-container circleChange" });
     } else {
@@ -153,7 +176,13 @@ class App extends React.Component {
           <Nav secondary={this.state.secondary} font={this.state.font} />
           <Switch>
             <Route exact path="/" render={this.renderDefaultView} />
-            <Route exact path="/event/:userID" component={Guest} />
+            <Route
+              exact
+              path="/event/:userID"
+              render={() => (
+                <Guest {...this.state} setUserID={this.setUserID} />
+              )}
+            />
             <Route exact path="/Logout" render={this.logOut} />
             <Route component={ErrorPage} />
           </Switch>

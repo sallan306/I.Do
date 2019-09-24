@@ -8,12 +8,14 @@ module.exports.initRoutes = (app)=>{
         controller.addUser(req,res,next);
     });
     //GET A USER
-    app.get('/api/v1/users', (req,res,next) => {
+    app.get('/api/v1/users/:userID', (req,res,next) => {
         controller.findSpecificUser(req,res,next);
+        // console.log("getuserRoute Res:")
+        // console.log(res)
     });
-    //UPDATE A USER
-    app.put('/api/v1/users', (req, res, next) => {
-        res.status(200).json({data: `I want to update user: ${req.user._id}`});
+    //UPDATE USER COLORS
+    app.put('/api/v1/users/:userID', (req, res, next) => {
+        controller.editUserColor(req,res,next)
     });
     //DELETE A USER
     app.delete('/api/v1/users', (req,res,next) => {

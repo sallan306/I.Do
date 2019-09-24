@@ -1,16 +1,35 @@
-import React from "react";
-import TextCheckbox from '../TextCheckbox'
-import EmailCheckbox from '../EmailCheckbox'
+import React, { Component } from "react";
+import TextCheckbox from "../TextCheckbox";
+import EmailCheckbox from "../EmailCheckbox";
 
-
-function MessageContact (props) {
+class MessageContact extends Component {
+  render() {
     return (
-        <div>
-          <li> {props.firstName} {props.lastName}</li>
-          {props.messageType === "Text" ? <TextCheckbox {...props}/> : ""}
-          {props.messageType === "Email" ? <EmailCheckbox {...props}/> : ""}
-        </div>
+      <div>
+        {/* {props.onCheckBoxChange("checkbox activated")} */}
+        <li>
+          {" "}
+          {this.props.firstName} {this.props.lastName}
+        </li>
+        {this.props.messageType === "Text" ? (
+          <TextCheckbox
+            {...this.props}
+            onCheckBoxChange={this.props.onCheckBoxChange}
+          />
+        ) : (
+          ""
+        )}
+        {this.props.messageType === "Email" ? (
+          <EmailCheckbox
+            {...this.props}
+            onCheckBoxChange={this.props.onCheckBoxChange}
+          />
+        ) : (
+          ""
+        )}
+      </div>
     );
+  }
 }
 
-export default MessageContact; 
+export default MessageContact;

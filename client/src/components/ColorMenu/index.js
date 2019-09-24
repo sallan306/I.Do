@@ -4,6 +4,7 @@ import "./style.css";
 import ColorPicker from "./ColorPicker";
 import ColorPicker2 from "./ColorPicker2";
 import ColorPickerFont from "./ColorPickerFont";
+import API from "../../utils/API";
 
 // var colorInterval = setInterval(this.randomColor,2000)
 
@@ -41,13 +42,12 @@ class ColorMenu extends React.Component {
         "#13ad23",
         "#90a4ae",
         "#ffffff",
-        "#000000",
+        "#000000"
       ]
     };
   }
 
-  randomColor() {
-  }
+  randomColor() {}
 
   toggleColors = () => {
     if (this.state.bar1Class === "bar1") {
@@ -99,7 +99,15 @@ class ColorMenu extends React.Component {
       button3Selected: true
     });
   };
-
+  saveColors = () => {
+    var colorArray = {
+      color1: this.props.primary,
+      color2: this.props.secondary,
+      color3: this.props.font
+    }
+    console.log(this.props.userID)
+    API.editUserColor(this.props.userID, colorArray)
+  };
   render() {
     return (
       <div className="colorMenu">
@@ -115,7 +123,11 @@ class ColorMenu extends React.Component {
                 background: this.props.primary
               }}
               onClick={this.clickColor1}
-              className={this.state.button1Selected ? "colorButton buttonPrimary colorButtonSelected" : "colorButton buttonPrimary colorButtonUnselected"}
+              className={
+                this.state.button1Selected
+                  ? "colorButton buttonPrimary colorButtonSelected"
+                  : "colorButton buttonPrimary colorButtonUnselected"
+              }
             >
               Primary
             </button>
@@ -124,7 +136,11 @@ class ColorMenu extends React.Component {
                 background: this.props.secondary
               }}
               onClick={this.clickColor2}
-              className={this.state.button2Selected ? "colorButton buttonSecondary colorButtonSelected" : "colorButton buttonSecondary colorButtonUnselected"}
+              className={
+                this.state.button2Selected
+                  ? "colorButton buttonSecondary colorButtonSelected"
+                  : "colorButton buttonSecondary colorButtonUnselected"
+              }
             >
               Secondary
             </button>
@@ -133,9 +149,22 @@ class ColorMenu extends React.Component {
                 background: this.props.font
               }}
               onClick={this.clickFont}
-              className={this.state.button3Selected ? "colorButton buttonFont colorButtonSelected" : "colorButton buttonFont colorButtonUnselected"}
+              className={
+                this.state.button3Selected
+                  ? "colorButton buttonFont colorButtonSelected"
+                  : "colorButton buttonFont colorButtonUnselected"
+              }
             >
               Font
+            </button>
+            <button
+              style={{
+                background: this.props.font
+              }}
+              onClick={this.saveColors}
+              className={"colorButton buttonSave"}
+            >
+              Save Colors
             </button>
           </div>
           <div className={this.state.primaryClass}>

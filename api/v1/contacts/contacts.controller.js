@@ -62,7 +62,7 @@ controller.createContactGuest = (req, res) => {
             //creating new contact in the db for user
             db.create(newContact)
             .then( result => {
-                console.log(result)
+                // console.log(result)
                 if(result){
                     //sending a response back to user
                     res.status(200).json({
@@ -103,7 +103,7 @@ controller.getContacts =  (req, res) => {
     if (req.user) {
         db.find({belongsTo: req.user._id})
         .then( (result) => {
-            console.log(req.user);
+            // console.log(req.user);
             res.status(200).json({
                 success: true,
                 msg: "contacts for: mr/mrs/ms: "+req.user._id,
@@ -133,10 +133,10 @@ controller.editContact = (req, res) => {
         //finding the contact in the DB.
         db.findOne({_id: req.params.contactID})
         .then( result => {
-            console.log("INSIDE EDIT CONTACT");
+            // console.log("INSIDE EDIT CONTACT");
             //checking the result to make sure it belongs to current user
-            console.log(result.belongsTo);
-            console.log(req.user._id);
+            // console.log(result.belongsTo);
+            // console.log(req.user._id);
             if (result.belongsTo == req.user._id){
                 console.log ("Permission to change contact granted");
                 //update contact.
@@ -155,7 +155,7 @@ controller.editContact = (req, res) => {
                     }
                 })
                 .then ( (result) => {
-                    console.log (result)
+                    // console.log (result)
                     res.status(200).json({
                         success: true,
                         msg: "Contact has been edited",
@@ -189,6 +189,9 @@ controller.editContact = (req, res) => {
         })
     }
 }
+controller.deleteAllContacts = (req,res) => {
+    db.deleteMany()
+}
 controller.deleteContact = (req, res) => {
     //checking to make sure user logged in
     if (req.user){
@@ -196,17 +199,17 @@ controller.deleteContact = (req, res) => {
         //finding the contact in the DB.
         db.findOne({_id: req.params.contactID})
         .then( result => {
-            console.log("INSIDE EDIT CONTACT");
+            // console.log("INSIDE EDIT CONTACT");
             //checking the result to make sure it belongs to current user
-            console.log(result.belongsTo);
-            console.log(req.user._id);
+            // console.log(result.belongsTo);
+            // console.log(req.user._id);
             if (result.belongsTo == req.user._id){
                 console.log ("Permission to change contact granted");
                 //update contact.
 
                 db.findOneAndDelete({_id:req.params.contactID})
                 .then( (result) => {
-                    console.log (result)
+                    // console.log (result)
                     res.status(200).json({
                         success: true,
                         msg: "Contact has been deleted",

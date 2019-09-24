@@ -1,44 +1,45 @@
-import React from "react";
-import { Panel } from 'react-bootstrap';
-import { PanelGroup } from 'react-bootstrap';
+import React, { Component } from "react";
+import { Panel } from "react-bootstrap";
+import { PanelGroup } from "react-bootstrap";
 import { PrintText } from "../../PrintText";
 import EditModal from "../../Elements/EditModal/index.js";
 
-// import Checkbox from '../Checkbox';
-
-function ContactCard(props) {
+class ContactCard extends Component {
+  render() {
     return (
-        <PanelGroup 
-            accordion id="accordion-example" 
-            style={{background: "transparent"}}
-            >
-            <Panel eventKey="1" style={{border: 0, background: "transparent"}}>
-                <Panel.Heading style={{background: props.secondary}}>
-                    <Panel.Title toggle style={{color: props.font}}>
-                        <PrintText >
-                            {props.firstName} {props.lastName}
-                        </PrintText>
-                    </Panel.Title >
-                </Panel.Heading>
+      <PanelGroup
+        accordion
+        id="accordion-example"
+        style={{ background: "transparent" }}
+      >
+        <Panel eventKey="1" style={{ border: 0, background: "transparent" }}>
+          <Panel.Heading style={{ background: this.props.secondary }}>
+            <Panel.Title toggle style={{ color: this.props.font }}>
+              <PrintText>
+                {this.props.firstName} {this.props.lastName}
+              </PrintText>
+            </Panel.Title>
+          </Panel.Heading>
 
-                <Panel.Body collapsible>
-                    <PrintText className="infoArea" >
-                        <PrintText style={{background: props.secondary}}>
-                            {props.phone}
-                            <br/>
-                            {props.email}
-                        </PrintText>
-                        <PrintText style={{background: props.secondary}}>
-                            {props.street}
-                            <br/>
-                            {props.city} {props.state} {props.zipcode}
-                        </PrintText>
-                    </PrintText>
-                    <EditModal {...props}/>
-                </Panel.Body>
-            </Panel>
-        </PanelGroup>
+          <Panel.Body collapsible>
+            <PrintText className="infoArea">
+              <PrintText style={{ background: this.props.secondary }}>
+                {this.props.phone}
+                <br />
+                {this.props.email}
+              </PrintText>
+              <PrintText style={{ background: this.props.secondary }}>
+                {this.props.street}
+                <br />
+                {this.props.city} {this.props.state} {this.props.zipcode}
+              </PrintText>
+            </PrintText>
+            <EditModal {...this.props} />
+          </Panel.Body>
+        </Panel>
+      </PanelGroup>
     );
-};
+  }
+}
 
 export default ContactCard;

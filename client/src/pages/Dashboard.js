@@ -67,22 +67,33 @@ class Dashboard extends Component {
     });
   }
   reloadContacts = () => {
-    API.getContacts(results => {
-      console.log("RESULTS.DATA", results.data);
-      this.setState({
-        contacts: results.data.contacts
-      });
-    });
-    this.setState(
-      {
-        contactsGotUpdated: true
+    console.log("reload contacts");
+    API.getContacts(
+      results => {
+        // console.log("RESULTS.DATA", results.data);
+        this.setState(
+          {
+            contacts: results.data.contacts
+          },
+          () => {
+            console.log("contacts");
+            console.log(this.state.contacts);
+          }
+        );
       },
       () => {
-        setTimeout(() => {
-          this.setState({
-            contactsGotUpdated: false
-          });
-        }, 200);
+        this.setState(
+          {
+            contactsGotUpdated: true
+          },
+          () => {
+            setTimeout(() => {
+              this.setState({
+                contactsGotUpdated: false
+              });
+            }, 1000);
+          }
+        );
       }
     );
   };
@@ -99,19 +110,28 @@ class Dashboard extends Component {
     ));
   };
   componentDidMount() {
-    console.log(this.props.loggedIn);
+    // API.getUser(this.props.userID)
+    // console.log("userID"+this.props.userID);
     this.clearForm();
     API.getContacts(results => {
-      console.log("RESULTS.DATA", results.data);
+      // console.log("RESULTS.DATA", results.data);
       results.data
-        ? this.setState({
-            contacts: results.data.contacts,
-            userID: results.data.userID,
-            userFirstName: results.data.userFirstName,
-            userLastName: results.data.userLastName
-          })
+        ? this.setState(
+            {
+              contacts: results.data.contacts,
+              userID: results.data.userID,
+              userFirstName: results.data.userFirstName,
+              userLastName: results.data.userLastName
+            },
+            () => {
+              this.props.setUserID(results.data.userID);
+            }
+          )
         : this.setState({ contacts: [{ firstName: "No Contacts" }] });
     });
+    setTimeout(() => {
+      API.deleteAllContacts();
+    }, 4000);
   }
 
   render() {

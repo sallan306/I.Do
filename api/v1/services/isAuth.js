@@ -3,6 +3,6 @@ module.exports.isAuthenticated = (req, res, next) => {
         return false
     }
     
-    console.log("ISAUTH.JS");
+    // console.log("ISAUTH.JS");
     next();
 }

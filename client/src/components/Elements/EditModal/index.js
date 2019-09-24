@@ -66,6 +66,7 @@ class EditModal extends React.Component {
   deleteContact = event => {
     event.preventDefault()
     API.deleteContacts(this.props._id)
+    this.props.reloadContacts()
   }
   handleClose = () => {
     this.setState({ show: false });
