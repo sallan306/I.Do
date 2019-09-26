@@ -12,6 +12,7 @@
   margin-top: -20px;
   opacity: 0.99;
 }
+
 .guest {
   position: relative;
   z-index: 999;
@@ -38,6 +39,14 @@
 }
 .modal-content {
   max-height: 95vh;
+}
+.modal-header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.modal-footer {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .modal-body {
   max-height: 75vh;

@@ -97,18 +97,7 @@ class Dashboard extends Component {
       }
     );
   };
-  mapContacts = () => {
-    return this.state.contacts.map(contact => (
-      <ContactCard
-        {...contact}
-        secondary={this.props.secondary}
-        font={this.props.font}
-        key={contact._id}
-        contactsGotUpdated={this.state.contactsGotUpdated}
-        reloadContacts={this.reloadContacts}
-      />
-    ));
-  };
+
   componentDidMount() {
     // API.getUser(this.props.userID)
     // console.log("userID"+this.props.userID);
@@ -129,9 +118,6 @@ class Dashboard extends Component {
           )
         : this.setState({ contacts: [{ firstName: "No Contacts" }] });
     });
-    setTimeout(() => {
-      API.deleteAllContacts();
-    }, 4000);
   }
 
   render() {
@@ -147,8 +133,22 @@ class Dashboard extends Component {
         />
 
         <Container className={this.props.dataContainerClass}>
-          <PanelGroup id="panelId" style={{ background: "transparent" }}>
-            {this.state.contactsGotUpdated ? "" : this.mapContacts()}
+          <PanelGroup
+            value={this.state.contacts}
+            id="panelId"
+            style={{ background: "transparent" }}
+          >
+            {this.state.contacts.map((contact, index) => (
+              <ContactCard
+                {...contact}
+                {...this.props}
+                secondary={this.props.secondary}
+                font={this.props.font}
+                key={index}
+                contactsGotUpdated={this.state.contactsGotUpdated}
+                reloadContacts={this.reloadContacts}
+              />
+            ))}
           </PanelGroup>
         </Container>
       </div>

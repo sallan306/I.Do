@@ -109,17 +109,17 @@ class ExcelModal extends Component {
           </h3>
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Download Excel File</Modal.Title>
+          <Modal.Header closeButton style={{backgroundColor: this.props.primary}}>
+            <Modal.Title style={{color: this.props.font}}>Download Excel File</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{backgroundColor: this.props.primary}}>
             <ExcelDownload
               secondary={this.props.secondary}
               font={this.props.font}
               contacts={this.props.contacts}
             />
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer style={{backgroundColor: this.props.primary}}>
             {/* Handle Send Button */}
             <Button onClick={this.handleClose}>Close</Button>
           </Modal.Footer>

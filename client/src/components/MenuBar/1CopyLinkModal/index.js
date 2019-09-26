@@ -77,12 +77,12 @@ class CopyLinkModal extends React.Component {
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Guest Link</Modal.Title>
+          <Modal.Header closeButton style={{backgroundColor: this.props.primary}}>
+            <Modal.Title style={{color: this.props.font}}>Guest Link</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <h4>Copy the link below</h4>
-            <p>
+          <Modal.Body style={{backgroundColor: this.props.primary}}>
+            <h4 style={{color: this.props.font}}>Copy the link below</h4>
+            <p style={{color: this.props.font}}>
               Press the button to copy your personal link to the clipboard, then
               send that link to your guests!
             </p>
@@ -97,13 +97,13 @@ class CopyLinkModal extends React.Component {
                 );
               }}
             >
-              <Button className="btn copyModalButton">
+              <Button className="btn copyModalButton" style={{backgroundColor: this.props.secondary, color: this.props.font, border: 0 }}>
                 Copy to clipboard with button
               </Button>
             </CopyToClipboard>
           </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.handleClose}>Close</Button>
+          <Modal.Footer style={{backgroundColor: this.props.primary}}>
+            <Button stlye={{backgroundColor: this.props.secondary, border: 0, color: this.props.font}}onClick={this.handleClose}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>

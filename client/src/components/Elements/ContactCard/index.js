@@ -12,16 +12,16 @@ class ContactCard extends Component {
         id="accordion-example"
         style={{ background: "transparent" }}
       >
-        <Panel eventKey="1" style={{ border: 0, background: "transparent" }}>
+        <Panel eventKey="1" style={{ border: 0, background: "transparent", boxShadow: "none" }}>
           <Panel.Heading style={{ background: this.props.secondary }}>
             <Panel.Title toggle style={{ color: this.props.font }}>
               <PrintText>
-                {this.props.firstName} {this.props.lastName}
+                {this.props.firstName? this.props.firstName : "No First Name"} {this.props.lastName}
               </PrintText>
             </Panel.Title>
           </Panel.Heading>
 
-          <Panel.Body collapsible>
+          <Panel.Body collapsible style={{color: this.props.font, border: 0}}>
             <PrintText className="infoArea">
               <PrintText style={{ background: this.props.secondary }}>
                 {this.props.phone}

@@ -156,42 +156,28 @@ class MenuBar extends React.Component {
           </button>
         </div>
         <CopyLinkModal
-          eventID={this.props.eventID}
-          secondary={this.props.secondary}
-          font={this.props.font}
-          addNotification={this.props.addNotification}
+          {...this.props}
           demoZIndex={this.state.demoZIndex}
           demoCount={this.state.demoCount}
-          isDemo={this.props.isDemo}
         />
         <NewContactModal
           name={this.props.userFirstName + " " + this.props.userLastName}
           {...this.props}
-          sendMessageButton={this.props.sendMessageButton}
-          handleInputChange={this.props.handleInputChange}
-          handleFormSubmit={this.props.handleFormSubmit}
           demoZIndex={this.state.demoZIndex}
           demoCount={this.state.demoCount}
-          isDemo={this.props.isDemo}
         />
         <ExcelModal
-          secondary={this.props.secondary}
-          font={this.props.font}
-          contacts={this.props.contacts}
+          {...this.props}
           demoZIndex={this.state.demoZIndex}
           demoCount={this.state.demoCount}
-          isDemo={this.props.isDemo}
         />
 
         <MessageModal
+          {...this.props}
           name={this.props.userFirstName + " " + this.props.userLastName}
-          contacts={this.props.contacts}
-          secondary={this.props.secondary}
-          font={this.props.font}
           sendMessageButton={this.sendMessageButton}
           demoZIndex={this.state.demoZIndex}
           demoCount={this.state.demoCount}
-          isDemo={this.props.isDemo}
         />
         <div>
           <Button
@@ -229,13 +215,9 @@ class MenuBar extends React.Component {
           </Button>
         </div>
         <LogoutModal
-          secondary={this.props.secondary}
-          font={this.props.font}
-          loggedIn={this.props.loggedIn}
-          logOut={this.props.logOut}
+          {...this.props}
           demoZIndex={this.state.demoZIndex}
           demoCount={this.state.demoCount}
-          isDemo={this.props.isDemo}
         />
       </Container>
     );

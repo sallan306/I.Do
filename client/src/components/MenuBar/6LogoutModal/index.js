@@ -55,13 +55,15 @@ class LogoutModal extends Component {
   showText = () => {
     if (window.innerWidth > 600 && !this.props.isDemo) {
       this.setState({
-        paragraphClass: "hoverButtonText showText", hovered: true
+        paragraphClass: "hoverButtonText showText",
+        hovered: true
       });
     }
   };
   hideText = () => {
     this.setState({
-      paragraphClass: "hoverButtonText", hovered: false
+      paragraphClass: "hoverButtonText",
+      hovered: false
     });
   };
 
@@ -82,7 +84,8 @@ class LogoutModal extends Component {
             border: 0,
             position: "relative",
             zIndex: this.props.isDemo ? 99999 : 10,
-            opacity: this.props.demoZIndex === "logout" || this.state.hovered ? 1 : 0.2
+            opacity:
+              this.props.demoZIndex === "logout" || this.state.hovered ? 1 : 0.2
           }}
         >
           <FontAwesomeIcon
@@ -99,10 +102,23 @@ class LogoutModal extends Component {
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
+          <Modal.Header
+            closeButton
+            style={{
+              backgroundColor: this.props.primary,
+              color: this.props.font,
+              borderColor: this.props.font
+            }}
+          >
             <Modal.Title>Are you sure you want to leave?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body
+            style={{
+              backgroundColor: this.props.primary,
+              color: this.props.font,
+              border: 0
+            }}
+          >
             <Link
               style={{
                 color: this.props.font,
@@ -115,10 +131,26 @@ class LogoutModal extends Component {
               to="/Logout"
               onClick={this.props.logOut}
             >
-              <Button className="btn logoutModalButton">Log Out</Button>
+              <Button
+                style={{
+                  backgroundColor: this.props.secondary,
+                  border: 0,
+                  color: this.props.font
+                }}
+                className="btn logoutModalButton"
+              >
+                Log Out
+              </Button>
             </Link>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer
+            style={{
+              backgroundColor: this.props.primary,
+              color: this.props.secondary,
+              borderColor: this.props.font
+
+            }}
+          >
             {/* Handle Send Button */}
             <Button onClick={this.handleClose}>Close</Button>
           </Modal.Footer>

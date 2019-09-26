@@ -146,7 +146,7 @@ class ColorMenu extends React.Component {
             </button>
             <button
               style={{
-                background: this.props.font
+                background: this.props.font === "#ffffff" ? "black" : this.props.font
               }}
               onClick={this.clickFont}
               className={
@@ -159,12 +159,25 @@ class ColorMenu extends React.Component {
             </button>
             <button
               style={{
-                background: this.props.font
+                backgroundColor: this.props.secondary,
+                color: this.props.font,
+                borderColor: this.props.primary
               }}
               onClick={this.saveColors}
               className={"colorButton buttonSave"}
             >
               Save Colors
+            </button>
+            <button
+              style={{
+                backgroundColor: this.props.secondary,
+                color: this.props.font,
+                borderColor: this.props.primary
+              }}
+              onClick={this.toggleColors}
+              className={"colorButton buttonSave"}
+            >
+              Close
             </button>
           </div>
           <div className={this.state.primaryClass}>

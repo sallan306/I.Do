@@ -218,22 +218,58 @@ class MessageModal extends Component {
           </h3>
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
+          <Modal.Header
+            closeButton
+            style={{
+              backgroundColor: this.props.primary,
+              color: this.props.font,
+              textAlign: "center"
+            }}
+          >
             <Modal.Title>{this.state.messageType} a Contact</Modal.Title>
-            <button onClick={this.setToText}>Text a Contact</button>
-            <button onClick={this.setToEmail}>Email a Contact</button>
+            <button
+              style={{
+                opacity: this.state.messageType === "Text" ? 1 : 0.6,
+                background: this.props.secondary,
+                border: 0,
+                color: this.props.font,
+                display: "inline-block",
+                marginRight: 20
+              }}
+              onClick={this.setToText}
+            >
+              Text a Contact
+            </button>
+            <button
+              style={{
+                opacity: this.state.messageType === "Email" ? 1 : 0.6,
+                background: this.props.secondary,
+                border: 0,
+                color: this.props.font,
+                display: "inline-block"
+              }}
+              onClick={this.setToEmail}
+            >
+              Email a Contact
+            </button>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body
+            style={{
+              backgroundColor: this.props.primary,
+              color: this.props.font
+            }}
+          >
             {this.state.messageType === "Text"
               ? this.textContact()
               : this.emailContact()}
             Your Message:{" "}
             <input
+              style={{ backgroundColor: this.props.secondary, border: 0 }}
               onChange={this.changeMessage}
               value={this.state.message}
             ></input>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer style={{ backgroundColor: this.props.primary }}>
             {/* Handle Send Button */}
             <Button
               onClick={event => this.sendMessage(event, this.state.messageType)}

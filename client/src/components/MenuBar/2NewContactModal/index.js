@@ -71,7 +71,7 @@ class NewContactModal extends Component {
   };
   render(props) {
     return (
-      <div className="newContactModal">
+      <div className="newContactModal" >
         <Button
           bsStyle="primary"
           onClick={this.handleShow}
@@ -102,10 +102,10 @@ class NewContactModal extends Component {
           </h3>
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add A Contact</Modal.Title>
+          <Modal.Header closeButton style={{backgroundColor: this.props.primary}}>
+            <Modal.Title style={{color: this.props.font}}>Add A Contact</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{backgroundColor: this.props.primary}}>
             <PanelGroup
               className="manuallyAddUser"
               accordion
@@ -141,7 +141,7 @@ class NewContactModal extends Component {
               </Panel>
             </PanelGroup>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer style={{backgroundColor: this.props.primary}}>
             <Button onClick={this.handleClose}>Close</Button>
           </Modal.Footer>
         </Modal>

@@ -78,7 +78,7 @@ class EditModal extends React.Component {
 
   render(props) {
     return (
-      <div className="editModal">
+      <div className="editModal" style={{backgroundColor: this.props.primary}}>
         <Button
           bsStyle="primary"
           bsSize="small"
@@ -98,17 +98,18 @@ class EditModal extends React.Component {
           Edit
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit Contact Information</Modal.Title>
+          <Modal.Header closeButton style={{backgroundColor: this.props.primary}}>
+            <Modal.Title style={{color: this.props.font}}>Edit Contact Information</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{backgroundColor: this.props.primary}}>
             <EditContactForm
               {...this.state}
+              {...this.props}
               handleInputChange={this.handleInputChange}
               submitEditedContact={this.submitEditedContact}
             />
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer style={{backgroundColor: this.props.primary}}>
             <Button onClick={this.handleClose}>Close</Button>
           </Modal.Footer>
         </Modal>
