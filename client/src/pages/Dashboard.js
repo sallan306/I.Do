@@ -70,7 +70,7 @@ class Dashboard extends Component {
     console.log("reload contacts");
     API.getContacts(
       results => {
-        // console.log("RESULTS.DATA", results.data);
+        console.log("RESULTS.DATA", results.data);
         this.setState(
           {
             contacts: results.data.contacts

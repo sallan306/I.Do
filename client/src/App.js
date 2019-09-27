@@ -21,6 +21,7 @@ class App extends React.Component {
     this.notificationDOMRef = React.createRef();
 
     this.state = {
+      nameForGuest: "",
       userID: "",
       userData: "",
       loggedIn: false,
@@ -53,7 +54,7 @@ class App extends React.Component {
       dismiss: { duration: 3002 },
       dismissable: { click: true }
     });
-  }
+  };
   updateColors = () => {
     var colorArray = [];
 
@@ -63,6 +64,7 @@ class App extends React.Component {
       console.log("colors: " + colorArray);
       this.setState(
         {
+          nameForGuest: result.data.data.firstName + " "+result.data.data.lastName,
           primary: colorArray[0],
           secondary: colorArray[1],
           font: colorArray[2]
@@ -152,14 +154,14 @@ class App extends React.Component {
     } else {
       this.setState({ dataContainerClass: "dataContainer" });
     }
-  }
+  };
   toggleColorMenu = () => {
     if (this.state.colorMenuClass === "circle-picker-container") {
       this.setState({ colorMenuClass: "circle-picker-container circleChange" });
     } else {
       this.setState({ colorMenuClass: "circle-picker-container" });
     }
-  }
+  };
 
   render() {
     return (
@@ -167,6 +169,7 @@ class App extends React.Component {
         <div>
           <ColorMenu
             {...this.state}
+            addNotification={this.addNotification}
             changePrimaryColor={this.changePrimaryColor}
             changeSecondaryColor={this.changeSecondaryColor}
             changeFontColor={this.changeFontColor}

@@ -107,6 +107,7 @@ class ColorMenu extends React.Component {
     }
     console.log(this.props.userID)
     API.editUserColor(this.props.userID, colorArray)
+    this.props.addNotification("Colors Saved!", "When your guests use the custom link, they can see this color scheme as well!", "success")
   };
   render() {
     return (

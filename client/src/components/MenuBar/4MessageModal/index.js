@@ -232,6 +232,7 @@ class MessageModal extends Component {
                 opacity: this.state.messageType === "Text" ? 1 : 0.6,
                 background: this.props.secondary,
                 border: 0,
+                borderRadius: 5,
                 color: this.props.font,
                 display: "inline-block",
                 marginRight: 20
@@ -245,6 +246,7 @@ class MessageModal extends Component {
                 opacity: this.state.messageType === "Email" ? 1 : 0.6,
                 background: this.props.secondary,
                 border: 0,
+                borderRadius: 5,
                 color: this.props.font,
                 display: "inline-block"
               }}
@@ -264,7 +266,11 @@ class MessageModal extends Component {
               : this.emailContact()}
             Your Message:{" "}
             <input
-              style={{ backgroundColor: this.props.secondary, border: 0 }}
+              style={{
+                backgroundColor: this.props.secondary,
+                border: 0,
+                borderRadius: 5
+              }}
               onChange={this.changeMessage}
               value={this.state.message}
             ></input>
