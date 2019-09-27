@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
 import API from "../../../utils/API.js";
 import { Panel, PanelGroup } from "react-bootstrap";
-import GuestForm from "../../Elements/GuestForm";
+import NewContactForm from "../../Elements/NewContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 
@@ -121,7 +121,7 @@ class NewContactModal extends Component {
                 }}
               >
                 <Panel.Body style={{ borderTop: 0 }}>
-                  <GuestForm
+                  <NewContactForm
                     handleInputChange={this.props.handleInputChange}
                     handleFormSubmit={this.props.handleFormSubmit}
                     firstName={this.props.firstName}

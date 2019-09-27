@@ -8,74 +8,74 @@ class GuestForm extends Component {
     return (
       <form className="formClass" id="guestInfoForm">
         <Input
-          value={this.props.firstName}
+          value={this.props.guestFirstName}
           onChange={this.props.handleInputChange}
-          name="firstName"
-          title="First Name"
+          name="guestFirstName"
+          title={this.props.guestFirstName !== "" ? "" : "First Name"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.lastName}
+          value={this.props.guestLastName}
           onChange={this.props.handleInputChange}
-          name="lastName"
-          title="Last Name"
+          name="guestLastName"
+          title={this.props.guestLastName ? "" : "Last Name"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.email}
+          value={this.props.guestEmail}
           onChange={this.props.handleInputChange}
-          name="email"
-          title="Email"
+          name="guestEmail"
+          title={this.props.guestEmail ? "" : "Email"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.phone}
+          value={this.props.guestPhone}
           onChange={this.props.handleInputChange}
-          name="phone"
-          title="Phone Number"
+          name="guestPhone"
+          title={this.props.guestPhone ? "" : "Phone Number"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.street}
+          value={this.props.guestStreet}
           onChange={this.props.handleInputChange}
-          name="street"
-          title="Street Address"
+          name="guestStreet"
+          title={this.props.guestStreet ? "" : "Street Address"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.city}
+          value={this.props.guestCity}
           onChange={this.props.handleInputChange}
-          name="city"
-          title="City"
+          name="guestCity"
+          title={this.props.guestCity ? "" : "City"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.state}
+          value={this.props.guestState}
           onChange={this.props.handleInputChange}
-          name="state"
-          title="State"
+          name="guestState"
+          title={this.props.guestState ? "" : "State"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.zipcode}
+          value={this.props.guestZipcode}
           onChange={this.props.handleInputChange}
-          name="zipcode"
-          title="Zip Code"
+          name="guestZipcode"
+          title={this.props.guestZipcode ? "" : "Zip Code"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
         <Input
-          value={this.props.comment}
+          value={this.props.guestComment}
           onChange={this.props.handleInputChange}
-          name="comment"
-          title="Comments"
+          name="guestComment"
+          title={this.props.guestComment ? "" : "Comments"}
           secondary={this.props.secondary}
           font={this.props.font}
         />
@@ -83,14 +83,14 @@ class GuestForm extends Component {
           id="guestInfoFormButton"
           disabled={
             !(
-              this.props.firstName &&
-              this.props.lastName &&
-              this.props.street &&
-              this.props.state &&
-              this.props.phone &&
-              this.props.email &&
-              this.props.zipcode &&
-              this.props.city
+              this.props.guestFirstName &&
+              this.props.guestLastName &&
+              this.props.guestStreet &&
+              this.props.guestState &&
+              this.props.guestPhone &&
+              this.props.guestEmail &&
+              this.props.guestZipcode &&
+              this.props.guestCity
             )
           }
           onClick={this.props.handleFormSubmit}

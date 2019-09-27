@@ -15,7 +15,8 @@ class Input extends Component {
             zIndex: 10,
             pointerEvents: "none",
             left: "12px",
-            color: this.props.font
+            color: this.props.font,
+            backgroundColor: this.props.secondary
           }}
         >
           {this.props.title}

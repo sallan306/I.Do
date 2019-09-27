@@ -8,31 +8,32 @@ class EditModal extends React.Component {
       belongsTo: "",
       userFirstName: "",
       userLastName: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      street: "",
-      city: "",
-      state: "",
-      zipcode: "",
-      comment: "",
+      editFirstName: "",
+      editLastName: "",
+      editEmail: "",
+      editPhone: "",
+      editStreet: "",
+      editCity: "",
+      editState: "",
+      editZipcode: "",
+      editComment: "",
       guestID: "",
 
     };
 
   componentDidMount() {
     this.setState({
+      userFirstName: this.props.userFirstName,
       userLastName: this.props.userLastName,
-      firstName: this.props.firstName,
-      lastName: this.props.lastName,
-      email: this.props.email,
-      phone: this.props.phone,
-      street: this.props.street,
-      city: this.props.city,
-      state: this.props.state,
-      zipcode: this.props.zipcode,
-      comment: this.props.comment
+      editFirstName: this.props.firstName,
+      editLastName: this.props.lastName,
+      editEmail: this.props.email,
+      editPhone: this.props.phone,
+      editStreet: this.props.street,
+      editCity: this.props.city,
+      editState: this.props.state,
+      editZipcode: this.props.zipcode,
+      editComment: this.props.comment
     });
   }
   handleInputChange = event => {
@@ -47,15 +48,15 @@ class EditModal extends React.Component {
     event.preventDefault()
     var contactID = this.props._id
     var contact = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      phone: this.state.phone,
-      street: this.state.street,
-      city: this.state.city,
-      state: this.state.state,
-      zipcode: this.state.zipcode,
-      comment: this.state.comment,
+      firstName: this.state.editFirstName,
+      lastName: this.state.editLastName,
+      email: this.state.editEmail,
+      phone: this.state.editPhone,
+      street: this.state.editStreet,
+      city: this.state.editCity,
+      state: this.state.editState,
+      zipcode: this.state.editZipcode,
+      comment: this.state.editComment,
     }
     API.editContact(contactID, contact, res  => {
       console.log(res)

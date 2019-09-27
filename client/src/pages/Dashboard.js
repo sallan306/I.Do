@@ -145,6 +145,7 @@ class Dashboard extends Component {
                 secondary={this.props.secondary}
                 font={this.props.font}
                 key={index}
+                handleInputChange={this.handleInputChange}
                 contactsGotUpdated={this.state.contactsGotUpdated}
                 reloadContacts={this.reloadContacts}
               />
