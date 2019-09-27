@@ -53,7 +53,26 @@
   overflow-y: scroll;
 }
 .colorButton {
-  outline: none
+  outline: none;
+}
+.buttonSave,
+.buttonClose {
+  border-style: solid;
+
+  border-width: 1px;
+  position: relative;
+  width: 60px;
+  height: 50px;
+  left: 100px;
+}
+.buttonSave {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 0;
+}
+.buttonClose {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .colorButtonSelected {
   animation-name: selectedColor;
@@ -62,8 +81,12 @@
   animation-iteration-count: infinite;
 }
 @keyframes selectedColor {
-  from {opacity: 1;}
-  to {opacity: 0.2;}
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.2;
+  }
 }
 .allContentContainer {
   margin-top: 2vh;
@@ -250,7 +273,7 @@ nav {
   border-radius: 5px;
 }
 .panel-group {
-  box-shadow: none
+  box-shadow: none;
 }
 
 .fontAwesome {
@@ -284,7 +307,7 @@ nav {
 }
 @media only screen and (max-width: 900px) {
   .btn-primary {
-    width: 14.5vw
+    width: 14.5vw;
   }
   .hoverButtonText {
     font-size: 14px;

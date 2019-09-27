@@ -104,10 +104,14 @@ class ColorMenu extends React.Component {
       color1: this.props.primary,
       color2: this.props.secondary,
       color3: this.props.font
-    }
-    console.log(this.props.userID)
-    API.editUserColor(this.props.userID, colorArray)
-    this.props.addNotification("Colors Saved!", "When your guests use the custom link, they can see this color scheme as well!", "success")
+    };
+    console.log(this.props.userID);
+    API.editUserColor(this.props.userID, colorArray);
+    this.props.addNotification(
+      "Colors Saved!",
+      "When your guests use the custom link, they can see this color scheme as well!",
+      "success"
+    );
   };
   render() {
     return (
@@ -147,7 +151,8 @@ class ColorMenu extends React.Component {
             </button>
             <button
               style={{
-                background: this.props.font === "#ffffff" ? "black" : this.props.font
+                background:
+                  this.props.font === "#ffffff" ? "black" : this.props.font
               }}
               onClick={this.clickFont}
               className={
@@ -176,7 +181,7 @@ class ColorMenu extends React.Component {
                 borderColor: this.props.primary
               }}
               onClick={this.toggleColors}
-              className={"colorButton buttonSave"}
+              className={"colorButton buttonClose"}
             >
               Close
             </button>

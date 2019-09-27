@@ -49,7 +49,7 @@ export default {
     axios.delete(`/api/v1/contacts/` + contactID, {});
   },
   deleteAllContacts: () => {
-    axios.delete(`/api/v1/contacts/`)
+    axios.delete(`/api/v1/contacts/`);
   },
 
   //==========================================================
@@ -65,7 +65,7 @@ export default {
 
   getUser: (userID, cb) => {
     axios.get(`/api/v1/users/${userID}`).then(result => {
-      cb(result)
+      cb(result);
     });
   },
   editUserColor: (userID, userData) => {
