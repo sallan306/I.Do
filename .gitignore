@@ -23,5 +23,6 @@ node_modules
 npm-debug.log
 package-lock.json
 client/package-lock.json
+client/node_modules
 yarn.lock
 .env
