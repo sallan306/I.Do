@@ -1,5 +1,4 @@
 import React from "react";
-import $ from "jquery";
 import "./style.css";
 import ColorPicker from "./ColorPicker";
 import ColorPicker2 from "./ColorPicker2";
@@ -20,9 +19,6 @@ class ColorMenu extends React.Component {
       bar1Class: "bar1",
       bar2Class: "bar2",
       bar3Class: "bar3",
-      buttonsContainerClass: "",
-      dataContainerClass: "",
-      circlePickerContainerClass: "",
       button1Selected: false,
       button2Selected: false,
       button3Selected: true,
@@ -64,16 +60,13 @@ class ColorMenu extends React.Component {
       });
     }
 
-    $(".circle-picker-container").removeClass("circleChange");
-    $(".buttonsContainer").toggleClass("openMenu");
-    $(".dataContainer").toggleClass("openMenu2");
+    this.props.toggleMenuBar();
+    // $(".buttonsContainer").toggleClass("openMenu");
+    // $(".dataContainer").toggleClass("openMenu2");
   };
 
   clickColor1 = () => {
     this.setState({
-      primaryClass: "circle-picker-primary",
-      secondaryClass: "circle-picker-secondary invisible",
-      fontClass: "circle-picker-font invisible",
       button1Selected: true,
       button2Selected: false,
       button3Selected: false
@@ -81,9 +74,6 @@ class ColorMenu extends React.Component {
   };
   clickColor2 = () => {
     this.setState({
-      primaryClass: "circle-picker-primary invisible",
-      secondaryClass: "circle-picker-secondary",
-      fontClass: "circle-picker-font invisible",
       button1Selected: false,
       button2Selected: true,
       button3Selected: false
@@ -91,9 +81,6 @@ class ColorMenu extends React.Component {
   };
   clickFont = () => {
     this.setState({
-      primaryClass: "circle-picker-primary invisible",
-      secondaryClass: "circle-picker-secondary invisible",
-      fontClass: "circle-picker-font",
       button1Selected: false,
       button2Selected: false,
       button3Selected: true
@@ -116,12 +103,22 @@ class ColorMenu extends React.Component {
   render() {
     return (
       <div className="colorMenu">
-        <div className="MenuContainer invisible" onClick={this.toggleColors}>
+        <div
+          className="MenuContainer invisible"
+          onClick={this.toggleColors}
+          style={{ display: this.props.loggedIn && this.props.isUnder600 ? "block" : "none" }}
+        >
           <div className={this.state.bar1Class}></div>
           <div className={this.state.bar2Class}></div>
           <div className={this.state.bar3Class}></div>
         </div>
-        <div className={this.props.colorMenuClass}>
+        <div
+          className={
+            this.props.colorsExpanded
+              ? "circle-picker-container circleChange"
+              : "circle-picker-container"
+          }
+        >
           <div className="buttonBox">
             <button
               style={{
@@ -165,9 +162,24 @@ class ColorMenu extends React.Component {
             </button>
             <button
               style={{
+                background:
+                  this.props.font === "#ffffff" ? "black" : this.props.font
+              }}
+              onClick={this.clickFont}
+              className={
+                this.state.button3Selected
+                  ? "colorButton buttonFont colorButtonSelected"
+                  : "colorButton buttonFont colorButtonUnselected"
+              }
+            >
+              Font
+            </button>
+            <button
+              style={{
                 backgroundColor: this.props.secondary,
                 color: this.props.font,
-                borderColor: this.props.primary
+                borderColor: this.props.primary,
+                zIndex: 99999
               }}
               onClick={this.saveColors}
               className={"colorButton buttonSave"}
@@ -180,27 +192,27 @@ class ColorMenu extends React.Component {
                 color: this.props.font,
                 borderColor: this.props.primary
               }}
-              onClick={this.toggleColors}
+              onClick={this.props.toggleColorMenu}
               className={"colorButton buttonClose"}
             >
               Close
             </button>
           </div>
-          <div className={this.state.primaryClass}>
+          <div className={this.state.button1Selected ? "circle-picker-primary" : "circle-picker-primary invisible"}>
             <ColorPicker
               colors={this.state.colors}
               primary={this.props.primary}
               changePrimaryColor={this.props.changePrimaryColor}
             />
           </div>
-          <div className={this.state.secondaryClass}>
+          <div className={this.state.button2Selected ? "circle-picker-secondary" : "circle-picker-secondary invisible"}>
             <ColorPicker2
               colors={this.state.colors}
               secondary={this.props.secondary}
               changeSecondaryColor={this.props.changeSecondaryColor}
             />
           </div>
-          <div className={this.state.fontClass}>
+          <div className={this.state.button3Selected ? "circle-picker-font" : "circle-picker-font invisible"}>
             <ColorPickerFont
               colors={this.state.colors}
               font={this.props.font}

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
-import API from "../../../utils/API.js";
 import { Panel, PanelGroup } from "react-bootstrap";
 import NewContactForm from "../../Elements/NewContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,22 +40,6 @@ class NewContactModal extends Component {
     this.setState({ show: true });
   };
 
-  sendMessageButton = event => {
-    event.preventDefault();
-
-    let messageObject = {
-      emailArray: this.state.emailArray,
-      // textArray: this.state.textArray,
-      subject: `You have a message from ${this.props.name}`,
-      message: this.state.message
-    };
-
-    API.message(messageObject, result => {
-      console.log("send message button API result:", result);
-    });
-    this.handleClose();
-  };
-
   showText = () => {
     if (window.innerWidth > 600 && !this.props.isDemo) {
       this.setState({
@@ -86,7 +69,7 @@ class NewContactModal extends Component {
             border: 0,
             position: "relative",
             zIndex: this.props.isDemo ? 99999 : 10,
-            opacity: this.props.demoZIndex === "newContact" || this.state.hovered ? 1 : 0.2
+            opacity: this.props.demoZIndex === "newContact" || this.state.hovered || (this.props.isMobile && !this.props.isDemo) ? 1 : 0.2
           }}
         >
           <FontAwesomeIcon

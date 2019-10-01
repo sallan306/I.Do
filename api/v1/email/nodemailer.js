@@ -1,4 +1,6 @@
 var nodemailer = require("nodemailer");
+var emailAccount = process.env.EMAIL_ACCOUNT;
+var emailPass = process.env.EMAIL_PASS;
 
 function mail(req, res, next) {
   for (let i = 0; i < req.body.emailArray.length; i++) {
@@ -7,8 +9,8 @@ function mail(req, res, next) {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "eggplant.hail.satan.eggplant@gmail.com",
-        pass: "hailsatan1!"
+        user: emailAccount,
+        pass: emailPass
       }
     });
 

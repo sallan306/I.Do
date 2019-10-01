@@ -2,7 +2,7 @@ const express = require('express');
 var app  = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-
+require('dotenv').config()
 //MIDDLE WARE - require initMiddleWare
 require('./server/middleware').initMiddleWare(app);
 

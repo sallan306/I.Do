@@ -132,7 +132,13 @@ class Dashboard extends Component {
           handleFormSubmit={this.handleFormSubmit}
         />
 
-        <Container className={this.props.dataContainerClass}>
+        <Container
+          className={
+            this.props.menuBarExpanded
+              ? "dataContainer openMenu2"
+              : "dataContainer"
+          }
+        >
           <PanelGroup
             value={this.state.contacts}
             id="panelId"

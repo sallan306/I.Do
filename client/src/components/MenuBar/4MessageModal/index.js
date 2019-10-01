@@ -199,7 +199,7 @@ class MessageModal extends Component {
             position: "relative",
             zIndex: this.props.isDemo ? 99999 : 10,
             opacity:
-              this.props.demoZIndex === "message" || this.state.hovered
+              this.props.demoZIndex === "message" || this.state.hovered || (this.props.isMobile && !this.props.isDemo) 
                 ? 1
                 : 0.2
           }}

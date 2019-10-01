@@ -92,7 +92,7 @@ class ExcelModal extends Component {
             outline: "none",
             position: "relative",
             zIndex: this.props.isDemo ? 99999 : 10,
-            opacity: this.props.demoZIndex === "excel" || this.state.hovered ? 1 : 0.2
+            opacity: this.props.demoZIndex === "excel" || this.state.hovered || (this.props.isMobile && !this.props.isDemo)  ? 1 : 0.2
           }}
         >
           <FontAwesomeIcon

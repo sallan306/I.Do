@@ -14,7 +14,8 @@ class MenuBar extends React.Component {
     paragraphClass: "hoverButtonText",
     demoZIndex: "copy",
     demoCount: 1,
-    hovered: false
+    hovered: false,
+    demoAlmostDone: 6
   };
   componentDidMount() {
     if (this.props.isDemo) {
@@ -30,6 +31,7 @@ class MenuBar extends React.Component {
       });
     }
   }
+
   showText = () => {
     if (window.innerWidth > 600 && !this.props.isDemo) {
       this.setState({
@@ -96,88 +98,67 @@ class MenuBar extends React.Component {
   };
   render() {
     return (
-      <Container className="openMenu buttonsContainer col-md-6 col-md-offset-3">
-        <div
-          className="overlay"
-          style={{
-            width: "100vw",
-            height: "100vh",
-            left: 0,
-            top: 0,
-            opacity: this.props.isDemo ? 0.7 : 0,
-            display: this.props.isDemo ? "initial" : "none",
-            position: "fixed",
-            backgroundColor: "gray",
-            zIndex: 9999
-          }}
-        >
-          {this.state.demoCount}
+      <Container
+        className={
+          this.props.menuBarExpanded
+            ? "openMenu buttonsContainer col-md-6 col-md-offset-3"
+            : "buttonsContainer col-md-6 col-md-offset-3"
+        }
+      >
+        <div className="demoContainer">
+          <div
+            className="overlay"
+            style={{
+              opacity: this.props.isDemo ? 0.7 : 0,
+              display: this.props.isDemo ? "initial" : "none"
+            }}
+          ></div>
           <button
             className="demoButton nextButton"
             style={{
-              position: "fixed",
-              zIndex: 999999,
-              width: "20vw",
-              left:
-                this.state.demoCount > this.state.demoDone ? "40vw" : "30vw",
-              bottom: "30vh",
-              borderRadius: this.state.demoCount > this.state.demoDone ? 10 : 0,
-              borderTopLeftRadius: 10,
-              borderBottomLeftRadius: 10,
-              border: 0,
-              borderRightStyle: "solid",
-              borderLeftWidth: 2,
               display:
-                this.state.demoCount > this.state.demoDone ? "none" : "initial"
+                this.state.demoCount < this.state.demoAlmostDone
+                  ? "initial"
+                  : "none"
             }}
             onClick={this.nextDemo}
           >
-            {this.state.demoCount > 5 ? "Start Partying!" : "Next"}
+            Next
           </button>
           <button
             className="demoButton skipButton"
             style={{
-              position: "fixed",
-              zIndex: 999999,
-              width: "20vw",
-              left: "50vw",
-              bottom: "30vh",
               display:
-                this.state.demoCount > this.state.demoDone ? "none" : "initial",
-              borderTopRightRadius: 10,
-              borderBottomRightRadius: 10,
-              border: 0,
-              borderLeftStyle: "solid",
-              borderLeftWidth: 2
+                this.state.demoCount < this.state.demoAlmostDone
+                  ? "initial"
+                  : "none"
             }}
             onClick={this.skipDemo}
           >
             Skip Demo
           </button>
+          <button
+            className="demoButton startParty"
+            style={{
+              display:
+                this.state.demoCount < this.state.demoAlmostDone ||
+                !this.props.isDemo
+                  ? "none"
+                  : "initial"
+            }}
+            onClick={this.skipDemo}
+          >
+            Start Partying!
+          </button>
         </div>
-        <CopyLinkModal
-          {...this.props}
-          demoZIndex={this.state.demoZIndex}
-          demoCount={this.state.demoCount}
-        />
-        <NewContactModal
-          name={this.props.userFirstName + " " + this.props.userLastName}
-          {...this.props}
-          demoZIndex={this.state.demoZIndex}
-          demoCount={this.state.demoCount}
-        />
-        <ExcelModal
-          {...this.props}
-          demoZIndex={this.state.demoZIndex}
-          demoCount={this.state.demoCount}
-        />
+        <CopyLinkModal {...this.props} {...this.state} />
+        <NewContactModal {...this.props} {...this.state} />
+        <ExcelModal {...this.state} {...this.props} />
 
         <MessageModal
+          {...this.state}
           {...this.props}
-          name={this.props.userFirstName + " " + this.props.userLastName}
           sendMessageButton={this.sendMessageButton}
-          demoZIndex={this.state.demoZIndex}
-          demoCount={this.state.demoCount}
         />
         <div>
           <Button
@@ -191,12 +172,12 @@ class MenuBar extends React.Component {
             style={{
               background: this.props.secondary,
               color: this.props.font,
-              border: 0,
-              outline: "none",
-              position: "relative",
+
               zIndex: this.props.isDemo ? 99999 : 10,
               opacity:
-                this.state.demoZIndex === "color" || this.state.hovered
+                this.state.demoZIndex === "color" ||
+                this.state.hovered ||
+                (this.props.isMobile && !this.props.isDemo)
                   ? 1
                   : 0.2
             }}
@@ -214,11 +195,7 @@ class MenuBar extends React.Component {
             </h3>
           </Button>
         </div>
-        <LogoutModal
-          {...this.props}
-          demoZIndex={this.state.demoZIndex}
-          demoCount={this.state.demoCount}
-        />
+        <LogoutModal {...this.props} {...this.state} />
       </Container>
     );
   }

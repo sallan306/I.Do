@@ -30,13 +30,48 @@ class App extends React.Component {
       font: "black",
       savedColors: {},
       colorMenuClass: "circle-picker-container",
-      dataContainerClass: "dataContainer openMenu2",
       isDemo: false,
-      eventID: ""
+      isUnder600: false,
+      isMobile: false,
+      eventID: "",
+      colorsExpanded: false,
+      menuBarExpanded: true
     };
     this.renderDefaultView();
   }
-
+  componentDidMount() {
+    window.changePrimaryColor = this.changePrimaryColor;
+    if (this.state.userID !== "") {
+      this.updateColors();
+    }
+    window.addEventListener("resize", () => this.updateWindowDimensions());
+    this.updateWindowDimensions();
+  }
+  toggleMenuBar = () => {
+    this.setState({ menuBarExpanded: !this.state.menuBarExpanded });
+  };
+  updateWindowDimensions = () => {
+    if (window.innerWidth > 420) {
+      if (this.state.isMobile === true) {
+        this.setState({ isMobile: false });
+      }
+      console.log(window.innerWidth, "notmobile");
+    } else if (window.innerWidth < 420) {
+      if (this.state.isMobile === false) {
+        this.setState({ isMobile: true });
+      }
+      console.log(window.innerWidth, "mobile");
+    }
+    if (window.innerWidth <= 600) {
+      if (this.state.isUnder600 === false) {
+        this.setState({ isUnder600: true });
+      }
+    } else if (window.innerWidth > 600) {
+      if (this.state.isUnder600 === true) {
+        this.setState({ isUnder600: false });
+      }
+    }
+  };
   addNotification = (
     inputTitle,
     inputMessage,
@@ -64,7 +99,8 @@ class App extends React.Component {
       console.log("colors: " + colorArray);
       this.setState(
         {
-          nameForGuest: result.data.data.firstName + " "+result.data.data.lastName,
+          nameForGuest:
+            result.data.data.firstName + " " + result.data.data.lastName,
           primary: colorArray[0],
           secondary: colorArray[1],
           font: colorArray[2]
@@ -84,12 +120,7 @@ class App extends React.Component {
   changeFontColor = newFont => {
     this.setState({ font: newFont });
   };
-  componentDidMount() {
-    window.changePrimaryColor = this.changePrimaryColor;
-    if (this.state.userID !== "") {
-      this.updateColors();
-    }
-  }
+
   setUserID = value => {
     this.setState(
       {
@@ -106,8 +137,8 @@ class App extends React.Component {
       $(".MenuContainer").removeClass("invisible");
       return (
         <Dashboard
-          {...this.props}
           {...this.state}
+          {...this.props}
           logOut={this.logOut}
           addNotification={this.addNotification}
           toggleColorMenu={this.toggleColorMenu}
@@ -139,7 +170,6 @@ class App extends React.Component {
     this.setState({
       isDemo: !this.state.isDemo
     });
-    // console.log("demo activated")
   };
 
   logOut = event => {
@@ -156,11 +186,7 @@ class App extends React.Component {
     }
   };
   toggleColorMenu = () => {
-    if (this.state.colorMenuClass === "circle-picker-container") {
-      this.setState({ colorMenuClass: "circle-picker-container circleChange" });
-    } else {
-      this.setState({ colorMenuClass: "circle-picker-container" });
-    }
+    this.setState({ colorsExpanded: !this.state.colorsExpanded });
   };
 
   render() {
@@ -169,11 +195,12 @@ class App extends React.Component {
         <div>
           <ColorMenu
             {...this.state}
+            toggleMenuBar={this.toggleMenuBar}
+            toggleColorMenu={this.toggleColorMenu}
             addNotification={this.addNotification}
             changePrimaryColor={this.changePrimaryColor}
             changeSecondaryColor={this.changeSecondaryColor}
             changeFontColor={this.changeFontColor}
-            dataContainerClass={this.toggleDataContainer}
           />
           <ReactNotification ref={this.notificationDOMRef} />
           <Nav secondary={this.state.secondary} font={this.state.font} />

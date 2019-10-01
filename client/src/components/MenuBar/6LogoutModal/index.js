@@ -85,7 +85,7 @@ class LogoutModal extends Component {
             position: "relative",
             zIndex: this.props.isDemo ? 99999 : 10,
             opacity:
-              this.props.demoZIndex === "logout" || this.state.hovered ? 1 : 0.2
+              this.props.demoZIndex === "logout" || this.state.hovered || (this.props.isMobile && !this.props.isDemo) ? 1 : 0.2
           }}
         >
           <FontAwesomeIcon

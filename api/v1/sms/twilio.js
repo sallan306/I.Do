@@ -1,8 +1,7 @@
-const accountSid = "AC1bad91ad90b85a0b59831570b0fdbcbc";
-const authToken = "19da2b6d8a4615a7d6568e53e1ceb931";
+const accountSid = process.env.ACCOUNT_SID
+const authToken = process.env.AUTH_TOKEN
 const twilio = require("twilio")(accountSid, authToken);
-const serverNumber = "+13512073202";
-
+const serverNumber = process.env.SERVER_NUMBER
 function handOff(req, res, next) {
   //console.log ("inside handOff ",req.body);
   var txtBody = req.body.txtBody;

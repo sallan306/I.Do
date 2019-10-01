@@ -59,7 +59,7 @@ class CopyLinkModal extends React.Component {
             position: "relative",
             zIndex: this.props.isDemo ? 99999 : 10,
             opacity:
-              this.props.demoZIndex === "copy" || this.state.hovered ? 1 : 0.2
+              this.props.demoZIndex === "copy" || this.state.hovered || (this.props.isMobile && !this.props.isDemo) ? 1 : 0.2
           }}
         >
           {this.state.demoCount}
