@@ -7,7 +7,6 @@ import Guest from "./pages/Guest";
 import Nav from "./components/Nav";
 import ColorMenu from "./components/ColorMenu";
 import API from "./utils/API";
-import $ from "jquery";
 import ReactNotification from "react-notifications-component";
 import { Particles } from "../src/components/Particles";
 
@@ -132,9 +131,8 @@ class App extends React.Component {
       }
     );
   };
-  renderDefaultView = props => {
+  renderDefaultView = () => {
     if (this.state.loggedIn) {
-      $(".MenuContainer").removeClass("invisible");
       return (
         <Dashboard
           {...this.state}
@@ -148,7 +146,6 @@ class App extends React.Component {
         />
       );
     } else {
-      $(".MenuContainer").addClass("invisible");
       return (
         <Home
           {...this.props}

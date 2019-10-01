@@ -61,8 +61,6 @@ class ColorMenu extends React.Component {
     }
 
     this.props.toggleMenuBar();
-    // $(".buttonsContainer").toggleClass("openMenu");
-    // $(".dataContainer").toggleClass("openMenu2");
   };
 
   clickColor1 = () => {
