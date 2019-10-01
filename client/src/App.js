@@ -9,10 +9,8 @@ import ColorMenu from "./components/ColorMenu";
 import API from "./utils/API";
 import ReactNotification from "react-notifications-component";
 import { Particles } from "../src/components/Particles";
-
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import "react-notifications-component/dist/theme.css";
-import "../src/components/Nav/style.css";
+import "../src/style.css";
 
 class App extends React.Component {
   constructor(props) {
